@@ -1,0 +1,174 @@
+#include "print.h"
+
+using namespace std;
+
+void pretty_printing_fmla_aux(vector<FmlaNode> fmla, FmlaNode node, int binary_acestor_amt, side side) {
+    if (node.children.size() == 0) {
+        if (side == side::left) {
+            for (int i = 0; i < binary_acestor_amt; i++) {
+                cout << "(";
+            }
+            cout << node.data;
+        }
+        if (side == side::right) {
+            cout << node.data;
+            for (int i = 0; i < binary_acestor_amt; i++) {
+                cout << ")";
+            }
+        }
+    }
+    if (node.children.size() == 1) {
+        cout << node.data << " ";
+        pretty_printing_fmla_aux(fmla, fmla[node.children[0]], binary_acestor_amt, side::left);
+    }
+    if (node.children.size() == 2) {
+        pretty_printing_fmla_aux(fmla, fmla[node.children[0]], binary_acestor_amt + 1, side::left);
+        cout << " " << node.data << " ";
+        pretty_printing_fmla_aux(fmla, fmla[node.children[1]], binary_acestor_amt + 1, side::right);
+    }
+}
+
+void pretty_printing_fmla(vector<FmlaNode> fmla) {
+    pretty_printing_fmla_aux(fmla, fmla[0], -1, side::left);
+}
+
+void print_vec_int(vector<int> vec) {
+    cout << "[";
+    for (int i = 0; i < vec.size(); i++){
+        if (i < vec.size() - 1) {
+            cout << vec[i] << ", ";
+        }
+        else {
+            cout << vec[i];
+        }
+    }
+    cout << "]";
+}
+
+// void print_tableau(vector<TblNode> tbl) {
+
+//     vector< vector<int>> branches = get_tbl_branches(tbl);
+
+//     // for (vector<int> branch : branches) {
+//     //     cout << "branch: ";
+//     //     print_vec_int(branch);
+//     //     cout << "\n";
+//     // }
+
+//     // BFS: getting the level of the nodes in tableau tree
+//     vector<int> tbl_level = get_tbl_levels(tbl);
+
+//     // DFS: pritting the tree
+//     stack<int> s;
+//     s.push(0);
+
+//     while (!s.empty()) {
+//         int current = s.top();
+
+//         for (int i = 0; i < tbl_level[current] + 1; i++) cout << "=";
+//         cout << " " << current << ": ";
+//         TblNode node = tbl[current];
+//         if (node.sign == polarity::plus) cout << "+ ";
+//         if (node.sign == polarity::minus) cout << "- ";
+//         if (node.sign == polarity::plus || node.sign == polarity::minus) pretty_printing_fmla(node.fmla);
+//         else cout << node.fmla[0].data;
+//         cout << ", ";
+//         print_vec_int(node.proof_parents);
+//         cout << "\n";
+
+//         s.pop();
+//         for (int child : tbl[current].tbl_children) {
+//             s.push(child);
+//         }
+//     }
+
+
+//     // for (int i = 0; i < branches.size(); i++){
+//     //     cout << "Branch " << i + 1 << "\n";
+//     //     vector<int> branch = branches[i];
+//     //     sort(branch.begin(), branch.end());
+//     //     for (int j = 0; j < branch.size(); j++) {
+//     //         TblNode node = tbl[branch[j]];
+//     //         cout << i << ": ";
+//     //         if (node.sign == polarity::plus) cout << "+ ";
+//     //         if (node.sign == polarity::minus) cout << "- ";
+//     //         if (node.sign == polarity::plus || node.sign == polarity::minus) pretty_printing_fmla(node.fmla);
+//     //         else cout << node.fmla[0].data;
+//     //         cout << ", ";
+//     //         print_vec_int(node.proof_parents);
+//     //         cout << "\n";
+
+//     //     }
+//     // }
+// }
+
+
+// void print_tableau_as_list(vector<TblNode> tbl) {
+
+//     for (int i = 0; i < tbl.size(); i++){
+//         TblNode node = tbl[i];
+//         cout << i << ": ";
+//         if (node.sign == polarity::plus) cout << "+ ";
+//         if (node.sign == polarity::minus) cout << "- ";
+//         if (node.sign == polarity::plus || node.sign == polarity::minus) pretty_printing_fmla(node.fmla);
+//         else cout << node.fmla[0].data;
+//         cout << ", ";
+//         print_vec_int(node.proof_parents);
+//         cout << ", " << node.tbl_parent << ", ";
+//         print_vec_int(node.tbl_children);
+//         cout << "\n";
+//     }
+// }
+
+// void print_tableau_with_closure(vector<TblNode> tbl) {
+//     vector< vector<int>> branches = get_tbl_branches(tbl);
+
+//     // get closure nodes
+//     map<int, pair<int, int>> closure_map;
+//     set<int> max_closure_nodes;
+
+//     for (vector<int> branch : branches) {
+//         vector<int> closure_nodes = branch_closure_nodes(branch, tbl);
+
+//         int max_closure_node = -1;
+
+//         if (closure_nodes.size() == 2) max_closure_node = max(closure_nodes[0], closure_nodes[1]);
+
+//         max_closure_nodes.insert(max_closure_node);
+//         closure_map[max_closure_node] = make_pair(closure_nodes[0], closure_nodes[1]);
+//     }
+
+//     vector<int> tbl_level = get_tbl_levels(tbl);
+
+//     // DFS: pritting the tree
+//     stack<int> s;
+//     s.push(0);
+
+//     while (!s.empty()) {
+//         int current = s.top();
+
+//         for (int i = 0; i < tbl_level[current] + 1; i++) cout << "=";
+//         cout << " " << current << ": ";
+//         TblNode node = tbl[current];
+//         if (node.sign == polarity::plus) cout << "+ ";
+//         if (node.sign == polarity::minus) cout << "- ";
+//         if (node.sign == polarity::plus || node.sign == polarity::minus) pretty_printing_fmla(node.fmla);
+//         else cout << node.fmla[0].data;
+//         cout << ", ";
+//         print_vec_int(node.proof_parents);
+//         cout << "\n";
+
+//         if (max_closure_nodes.find(current) != max_closure_nodes.end()) {
+//             int closure_node_1 = min(closure_map[current].first, closure_map[current].second);
+//             for (int i = 0; i < tbl_level[current] + 2; i++) cout << "=";
+//             cout << " * : ";
+//             cout << "[" << closure_node_1 << ", " << current << "]\n";
+//         }
+
+//         s.pop();
+//         for (int child : tbl[current].tbl_children) {
+//             s.push(child);
+//         }
+//     }
+
+// }
