@@ -4,8 +4,13 @@
 #include <vector>
 #include "../src/auxiliary/syntax.h"
 #include "../src/auxiliary/print.h"
+#include "../src/auxiliary/parser.h"
 #include "../src/definitions/definitions.h"
 
-void test_fmla_equality();
+// void test_fmla_equality();
+
+void test_get_term_of_fmla();
+
+void test_subst_parameter_by_term();
 
 #endif // TEST_SYNTAX_H

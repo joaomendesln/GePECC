@@ -2,71 +2,78 @@
 
 using namespace std;
 
-bool is_function_symb(string symb) {
-    return false;
+bool is_function_symb(string symb, map<string, int> function_symbs) {
+    return function_symbs.find(symb) != function_symbs.end();
 }
 
-bool is_predicate_symb(string symb) {
-    return true;
+bool is_predicate_symb(string symb, map<string, int> predicate_symbs) {
+    return predicate_symbs.find(symb) != predicate_symbs.end();
 }
 
-// vector<FmlaNode> get_subfmla(vector<FmlaNode> fmla, int subfmla_root) {
-//     set<int> subfmla_nodes_idx;
-//     // int root = fmla[0].children[0];
+vector<TermNode> get_term_of_fmla(vector<FmlaNode> fmla, int term_root) {
+    set<int> subfmla_nodes_idx;
+    vector<TermNode> term;
 
-//     subfmla_nodes_idx.insert(subfmla_root);
+    // BFS in the term root
+    queue<int> q;
+    q.push(term_root);
 
-//     // BFS in the left subformula of fmla
-//     queue<int> q;
-//     q.push(subfmla_root);
+    // Map to make the correct attribution for the new ids of the term
+    map<int, int> new_idx;
 
-//     while (!q.empty()) {
-//         int current = q.front();
-//         q.pop();
+    while (!q.empty()) {
+        int current = q.front();
+        q.pop();
 
-//         for (int child : fmla[current].children) {
-//             q.push(child);
-//             subfmla_nodes_idx.insert(child);
-//         }
-//     }
+        new_idx[current] = term.size(); 
+        FmlaNode fmla_node = fmla[current];
 
-//     // Map to make the correct attribution for the new ids of the left subfmla
-//     map<int, int> new_idx;
-//     int count = 0;
-    
-//     for(int i = 0; i < fmla.size(); i++){
-//         if(subfmla_nodes_idx.find(i) != subfmla_nodes_idx.end()){
-//             new_idx[i] = count;
-//             count += 1;
-//         }
-//     }
+        TermNode term_node;
+        term_node.data = fmla_node.data;
+        if (term.size() == 0) {
+            term_node.parent = 0;
+        }
+        else {
+            term_node.parent = new_idx[fmla_node.parent];
+            term[term_node.parent].children.push_back(term.size());
+        }
+        term_node.children = {};
 
-//     // Structure left subformula tree
-//     vector<FmlaNode> subfmla;
-    
-//     for(int i = 0; i < fmla.size(); i++){
-//         if(subfmla_nodes_idx.find(i) != subfmla_nodes_idx.end()){
-//             FmlaNode fmla_node;
+        term.push_back(term_node);
 
-//             fmla_node.data = fmla[i].data;
-//             if (i == subfmla_root){
-//                 fmla_node.parent = 0;
-//             }
-//             else {
-//                 fmla_node.parent = new_idx[fmla[i].parent];
-//             }
-//             vector<int> children;
-//             for (auto child : fmla[i].children){
-//                 children.push_back(new_idx[child]);
-//             }
-//             fmla_node.children = children;
+        for (int child : fmla[current].children) {
+            q.push(child);
+        }
+    }
 
-//             subfmla.push_back(fmla_node);
-//         }
-//     }
+    return term;
+}
 
-//     return subfmla;
-// }
+vector<FmlaNode> subst_parameter_by_term(vector<FmlaNode> fmla, int parameter_idx, vector<TermNode> term) {
+    map<int, int> new_idx;
+
+    new_idx[0] = parameter_idx;
+
+    for (int i = 1; i < term.size(); i++) {
+        new_idx[i] = fmla.size() + i - 1;
+    }
+
+    for (int i = 0; i < term.size(); i++) {
+        FmlaNode fmla_node;
+        fmla_node.data = term[i].data;
+        fmla_node.children = {};
+        if (i == 0) {
+            fmla_node.parent = fmla[parameter_idx].parent;
+            fmla[parameter_idx] = fmla_node;
+        }
+        else {
+            fmla_node.parent = new_idx[term[i].parent];
+            fmla[fmla_node.parent].children.push_back(fmla.size());
+            fmla.push_back(fmla_node);
+        }
+    }
+    return fmla;
+}
 
 // vector<FmlaNode> left_gen_subfmla(vector<FmlaNode> fmla) {
 //     vector<FmlaNode> subfmla1 = get_subfmla(fmla, fmla[0].children[0]);

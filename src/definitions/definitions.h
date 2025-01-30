@@ -28,14 +28,20 @@ struct FmlaNode {
     // }
 };
 
+struct TermNode {
+    string data;
+    int parent;
+    vector<int> children;
+};
+
 struct SignedFmla {
     polarity sign;
     vector<FmlaNode> fmla;
 };
 
 struct TblNode {
-    SignedFmla sf;
-    vector<int> justification_parents;
+    SignedFmla signed_fmla;
+    vector<int> justification_parents; // -1 for initial tableau, -2 for 0-premisse rules, -3 for cut formulas
     int tbl_parent;
     vector<int> tbl_children;
 
@@ -71,6 +77,11 @@ struct TblNode {
     //     cout << ", ";
     //     print_vec_int(proof_parents);
     // }
+};
+
+struct TblRule {
+    vector<SignedFmla> premisses;
+    vector<SignedFmla> conclusions;
 };
 
 #endif // DEFINITIONS_H

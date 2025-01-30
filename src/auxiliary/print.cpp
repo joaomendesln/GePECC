@@ -45,6 +45,26 @@ void print_vec_int(vector<int> vec) {
     cout << "]";
 }
 
+void print_fmla_infix(vector<FmlaNode> fmla) {
+    print_fmla_infix_aux(fmla, 0);
+}
+
+void print_fmla_infix_aux(vector<FmlaNode> fmla, int idx) {
+    FmlaNode fmla_node = fmla[idx];
+
+    cout << fmla_node.data;
+
+    if (fmla_node.children.size() > 0) {
+        cout << "(";
+        for (int i = 0; i < fmla_node.children.size(); i++) {
+            print_fmla_infix_aux(fmla, fmla_node.children[i]);
+            if (i < fmla_node.children.size() - 1) cout << ",";
+        }
+        cout << ")";
+    }
+
+}
+
 // void print_tableau(vector<TblNode> tbl) {
 
 //     vector< vector<int>> branches = get_tbl_branches(tbl);
@@ -103,22 +123,23 @@ void print_vec_int(vector<int> vec) {
 // }
 
 
-// void print_tableau_as_list(vector<TblNode> tbl) {
+void print_tableau_as_list(vector<TblNode> tbl) {
 
-//     for (int i = 0; i < tbl.size(); i++){
-//         TblNode node = tbl[i];
-//         cout << i << ": ";
-//         if (node.sign == polarity::plus) cout << "+ ";
-//         if (node.sign == polarity::minus) cout << "- ";
-//         if (node.sign == polarity::plus || node.sign == polarity::minus) pretty_printing_fmla(node.fmla);
-//         else cout << node.fmla[0].data;
-//         cout << ", ";
-//         print_vec_int(node.proof_parents);
-//         cout << ", " << node.tbl_parent << ", ";
-//         print_vec_int(node.tbl_children);
-//         cout << "\n";
-//     }
-// }
+    for (int i = 0; i < tbl.size(); i++){
+        TblNode node = tbl[i];
+        cout << i << ": ";
+        SignedFmla sf = node.signed_fmla;
+        if (sf.sign == polarity::plus) cout << "+ ";
+        if (sf.sign == polarity::minus) cout << "- ";
+        if (sf.sign == polarity::plus || sf.sign == polarity::minus) pretty_printing_fmla(sf.fmla);
+        else cout << sf.fmla[0].data;
+        cout << ", ";
+        print_vec_int(node.justification_parents);
+        cout << ", " << node.tbl_parent << ", ";
+        print_vec_int(node.tbl_children);
+        cout << "\n";
+    }
+}
 
 // void print_tableau_with_closure(vector<TblNode> tbl) {
 //     vector< vector<int>> branches = get_tbl_branches(tbl);

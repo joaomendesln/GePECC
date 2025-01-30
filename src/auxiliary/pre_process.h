@@ -10,11 +10,26 @@
 #include <sstream>
 
 #include "../definitions/definitions.h"
+#include "parser.h"
 
 using namespace std;
 
-map<string, int> process_function_symbs();
+vector<string> open_file(string file_path);
 
-map<string, int> process_predicate_symbs();
+map<string, int> pre_process_symb_line(string symb_line);
+
+map<string, int> pre_process_function_symbs();
+
+map<string, int> pre_process_predicate_symbs();
+
+SignedFmla pre_process_signed_fmla(string signed_fmla_str);
+
+vector<SignedFmla> pre_process_signed_fmla_list(string list);
+
+TblRule pre_process_single_expansion_rule(string line);
+
+vector<TblRule> pre_process_expansion_rules();
+
+vector<SignedFmla> pre_process_signed_fmla_input();
 
 #endif // PRE_PROCESS_H

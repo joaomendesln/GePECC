@@ -15,15 +15,13 @@
 
 using namespace std;
 
-map<string, int> get_function_symbs();
+bool is_function_symb(string symb, map<string, int> function_symbs);
 
-map<string, int> get_predicate_symbs();
+bool is_predicate_symb(string symb, map<string, int> predicate_symbs);
 
-bool is_function_symb(string symb);
+vector<TermNode> get_term_of_fmla(vector<FmlaNode> fmla, int subfmla_root);
 
-bool is_predicate_symb(string symb);
-
-// vector<FmlaNode> get_subfmla(vector<FmlaNode> fmla, int subfmla_root);
+vector<FmlaNode> subst_parameter_by_term(vector<FmlaNode> fmla, int parameter_idx, vector<TermNode> term);
 
 // vector<FmlaNode> left_gen_subfmla(vector<FmlaNode> fmla);
 

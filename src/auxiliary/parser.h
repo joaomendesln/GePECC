@@ -17,20 +17,6 @@
 
 using namespace std;
 
-vector<FmlaNode> parse_fmla(string fmla);
-
-vector<string> split(string fmla, char delimiter);
-
-vector<string> get_tokens(string fmla);
-
-bool has_non_unicode(string str);
-
-pair<int, string> get_pred_symb(vector<string> tokens_fmla);
-
-pair<int, string> parse_term(vector<string> tokens_term);
-
-vector< vector<string>> split_by_symb_idx(vector<string> tokens_fmla, int symb_idx);
-
-vector<string> remove_external_parentheses(vector<string> str);
+vector<FmlaNode> parse_fmla(string fmla_str);
 
 #endif // PARSER_H
