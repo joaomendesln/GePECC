@@ -19,3 +19,33 @@ void test_get_all_arranges() {
     }
 
 }
+
+void test_is_a_match() {
+    SignedFmla sf_tbl;
+    sf_tbl.sign = polarity::plus;
+    sf_tbl.fmla = parse_fmla("∈(p1,∩(p2,p3))");
+
+    SignedFmla sf_premisse;
+    sf_premisse.sign = polarity::plus;
+    sf_premisse.fmla = parse_fmla("∈(p1,p2)");
+
+    cout << is_a_match(sf_tbl, sf_premisse) << "\n";
+}
+
+void test_matching_parameters() {
+    SignedFmla sf_tbl;
+    sf_tbl.sign = polarity::plus;
+    sf_tbl.fmla = parse_fmla("∈(p1,∩(p2,p3))");
+
+    SignedFmla sf_premisse;
+    sf_premisse.sign = polarity::plus;
+    sf_premisse.fmla = parse_fmla("∈(p1,p2)");
+
+    map<string, vector<TermNode>> matching_parameters_map = matching_parameters(sf_tbl, sf_premisse);
+
+    for (const auto& pair : matching_parameters_map) {
+        cout << pair.first << ": ";
+        print_term_infix(pair.second);
+        cout << "\n";
+    }
+}

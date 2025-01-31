@@ -8,7 +8,7 @@ void test_pre_process_function_symbs() {
     map <string, int> function_symbs = pre_process_function_symbs();
 
     for (const auto& pair : function_symbs) {
-        std::cout << pair.first << ": " << pair.second << std::endl;
+        cout << pair.first << ": " << pair.second << "\n";
     }
 
 }
@@ -18,7 +18,7 @@ void test_pre_process_predicate_symbs() {
     map <string, int> predicate_symbs = pre_process_predicate_symbs();
 
     for (const auto& pair : predicate_symbs) {
-        std::cout << pair.first << ": " << pair.second << std::endl;
+        cout << pair.first << ": " << pair.second << "\n";
     }
 
 }

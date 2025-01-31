@@ -22,6 +22,10 @@ void print_fmla_infix(vector<FmlaNode> fmla);
 
 void print_fmla_infix_aux(vector<FmlaNode> fmla, int idx);
 
+void print_term_infix(vector<TermNode> term);
+
+void print_term_infix_aux(vector<TermNode> term, int idx);
+
 void print_tableau(vector<TblNode> tbl); // TODO
 
 void print_tableau_as_list(vector<TblNode> tbl);

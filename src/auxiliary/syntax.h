@@ -12,6 +12,7 @@
 #include <sstream>
 
 #include "../definitions/definitions.h"
+#include "pre_process.h"
 
 using namespace std;
 
@@ -22,6 +23,12 @@ bool is_predicate_symb(string symb, map<string, int> predicate_symbs);
 vector<TermNode> get_term_of_fmla(vector<FmlaNode> fmla, int subfmla_root);
 
 vector<FmlaNode> subst_parameter_by_term(vector<FmlaNode> fmla, int parameter_idx, vector<TermNode> term);
+
+set<string> get_all_parameters(vector<vector<FmlaNode>> fmlas);
+
+bool fmla_equality(vector<FmlaNode> fmla1, vector<FmlaNode> fmla2);
+
+bool term_equality(vector<TermNode> term1, vector<TermNode> term2);
 
 // vector<FmlaNode> left_gen_subfmla(vector<FmlaNode> fmla);
 

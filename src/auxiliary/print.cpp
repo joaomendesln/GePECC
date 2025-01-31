@@ -65,6 +65,26 @@ void print_fmla_infix_aux(vector<FmlaNode> fmla, int idx) {
 
 }
 
+void print_term_infix(vector<TermNode> term) {
+    print_term_infix_aux(term, 0);
+}
+
+void print_term_infix_aux(vector<TermNode> term, int idx) {
+    TermNode term_node = term[idx];
+
+    cout << term_node.data;
+
+    if (term_node.children.size() > 0) {
+        cout << "(";
+        for (int i = 0; i < term_node.children.size(); i++) {
+            print_term_infix_aux(term, term_node.children[i]);
+            if (i < term_node.children.size() - 1) cout << ",";
+        }
+        cout << ")";
+    }
+
+}
+
 // void print_tableau(vector<TblNode> tbl) {
 
 //     vector< vector<int>> branches = get_tbl_branches(tbl);

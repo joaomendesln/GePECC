@@ -75,6 +75,81 @@ vector<FmlaNode> subst_parameter_by_term(vector<FmlaNode> fmla, int parameter_id
     return fmla;
 }
 
+set<string> get_all_parameters(vector<vector<FmlaNode>> fmlas) {
+    set<string> parameters;
+
+    map<string, int> function_symbs = pre_process_function_symbs();
+
+    for (vector<FmlaNode> fmla : fmlas){
+        for (int i = 0; i < fmla.size(); i++) {
+            FmlaNode fmla_node = fmla[i];
+            if (fmla_node.children.size() == 0 && !is_function_symb(fmla_node.data, function_symbs)) parameters.insert(fmla_node.data);
+
+        }
+    }
+
+    return parameters;
+}
+
+bool fmla_equality(vector<FmlaNode> fmla1, vector<FmlaNode> fmla2) {
+    if (fmla1.size() != fmla2.size()) return false;
+
+    queue<FmlaNode> q1, q2;
+    q1.push(fmla1[0]);
+    q2.push(fmla2[0]);
+
+    while (!q1.empty()) {
+        FmlaNode current1 = q1.front();
+        FmlaNode current2 = q2.front();
+
+        if (current1.data != current2.data) return false;
+
+        q1.pop(); q2.pop();
+
+
+        if (current1.children.size() != current2.children.size()) {
+            return false;
+        }
+        else {
+            for (int i = 0; i < current1.children.size(); i++) {
+                q1.push(fmla1[current1.children[i]]);
+                q2.push(fmla2[current2.children[i]]);
+            }
+        }
+    }
+
+    return true;
+}
+
+bool term_equality(vector<TermNode> term1, vector<TermNode> term2) {
+    if (term1.size() != term2.size()) return false;
+
+    queue<TermNode> q1, q2;
+    q1.push(term1[0]);
+    q2.push(term2[0]);
+
+    while (!q1.empty()) {
+        TermNode current1 = q1.front();
+        TermNode current2 = q2.front();
+
+        if (current1.data != current2.data) return false;
+
+        q1.pop(); q2.pop();
+
+        if (current1.children.size() != current2.children.size()) {
+            return false;
+        }
+        else {
+            for (int i = 0; i < current1.children.size(); i++) {
+                q1.push(term1[current1.children[i]]);
+                q2.push(term2[current2.children[i]]);
+            }
+        }
+    }
+
+    return true;
+}
+
 // vector<FmlaNode> left_gen_subfmla(vector<FmlaNode> fmla) {
 //     vector<FmlaNode> subfmla1 = get_subfmla(fmla, fmla[0].children[0]);
 

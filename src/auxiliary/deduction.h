@@ -26,4 +26,18 @@ vector<vector<TblNode>> trying_apply_expansion_rule(vector<TblNode> tbl, TblRule
 
 bool is_a_match(SignedFmla sf, SignedFmla premisse);
 
+map<string, vector<TermNode>> matching_parameters(SignedFmla sf_tbl, SignedFmla premisse);
+
+vector<int> get_tbl_leaves(vector<TblNode> tbl);
+
+vector< vector<int>> get_tbl_branches(vector<TblNode> tbl);
+
+bool opposite_polarity_nodes(TblNode node1, TblNode node2);
+
+bool branch_is_closed(vector<int> branch, vector<TblNode> tbl);
+
+vector< vector<int>> get_tbl_open_branches(vector<TblNode> tbl);
+
+bool tbl_is_closed(vector<TblNode> tbl);
+
 #endif // DEDUCTION_H

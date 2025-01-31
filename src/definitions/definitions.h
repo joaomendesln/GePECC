@@ -81,7 +81,11 @@ struct TblNode {
 
 struct TblRule {
     vector<SignedFmla> premisses;
-    vector<SignedFmla> conclusions;
+    vector<SignedFmla> conclusion;
 };
+
+typedef vector<FmlaNode> Fmla;
+typedef vector<TermNode> Term;
+typedef map<string, Term> Subst;
 
 #endif // DEFINITIONS_H
