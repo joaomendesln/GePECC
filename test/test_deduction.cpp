@@ -54,7 +54,33 @@ void test_trying_apply_expansion_rule(){
     Tableau tbl = get_initial_tableau();
 
     vector<TblRule> expansion_rules = pre_process_expansion_rules();
-    trying_apply_expansion_rule(tbl, expansion_rules[3]);
+    
+    vector<Tableau> tableaux = trying_apply_expansion_rule(tbl, expansion_rules[9]);
 
-    // print_tableau_as_list(tbl);
+    int i = 0;
+    for (Tableau tableau : tableaux) {
+        cout << "Tableau " << i + 1 << ":\n";
+        i++;
+        print_tableau_as_list_fmla_infix(tableau);
+        cout << "\n";
+    }
+}
+
+void test_apply_cut() {
+    Tableau tbl = get_initial_tableau();
+
+    vector<TblRule> expansion_rules = pre_process_expansion_rules();
+    Fmla cut_fmla = parse_fmla("∈(g(p1,p2),p1)");
+
+    vector<Tableau> tableaux = apply_cut(tbl, cut_fmla);
+
+    int i = 0;
+    for (Tableau tableau : tableaux) {
+        cout << "Tableau " << i + 1 << ":\n";
+        i++;
+        print_tableau_as_list_fmla_infix(tableau);
+        cout << "\n";
+    }
+    
+
 }

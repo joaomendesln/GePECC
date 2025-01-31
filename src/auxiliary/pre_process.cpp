@@ -72,7 +72,7 @@ map<string, int> pre_process_function_symbs() {
 
     map <string, int> resulting_function_symbs;
 
-    vector<string> lines = {"function", "2: ∩, ∪", "predicate", "2: ∈"};
+    vector<string> lines = {"function", "0: ∅", "2: g, ∩, ∪", "predicate", "2: ∈"};
     // vector<string> lines = {};
     
     if (lines.size() == 0){
@@ -101,7 +101,7 @@ map<string, int> pre_process_function_symbs() {
 map<string, int> pre_process_predicate_symbs() {
     map <string, int> resulting_predicate_symbs;
 
-    vector<string> lines = {"function", "2: ∩, ∪", "predicate", "2: ∈"};
+    vector<string> lines = {"function", "0: ∅", "2: g, ∩, ∪", "predicate", "2: ∈"};
     // vector<string> lines = {};
 
     if (lines.size() == 0){
@@ -280,7 +280,9 @@ vector<TblRule> pre_process_expansion_rules() {
      "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p2))",
      "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p3))",
      "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p2)); (+, ∈(p1, p3))",
-     "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p3)); (+, ∈(p1, p2))"};
+     "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p3)); (+, ∈(p1, p2))",
+     "; (-, ∈(p1,∅))",
+     "; (-, ∈(∩(p1,p2),∅))"};
     // vector<string> lines = {};
 
     if (lines.size() == 0){

@@ -29,6 +29,8 @@ vector<vector<int>> get_all_arranges_repetition(int terms_tbl_amt, int parameter
 
 vector<Tableau> trying_apply_expansion_rule(Tableau tbl, TblRule expansion_rule); // One expansion rule may be applied in a tableau in several ways. That's why the output is a vector of tableaux
 
+vector<Tableau> apply_cut(Tableau tbl, Fmla cut_fmla);
+
 bool is_a_match(SignedFmla sf, SignedFmla premisse);
 
 Subst matching_parameters(SignedFmla sf_tbl, SignedFmla premisse);

@@ -20,7 +20,8 @@ int main() {
     // test_get_all_arranges();
     // test_is_a_match();
     // test_matching_parameters();
-    test_trying_apply_expansion_rule();
+    // test_trying_apply_expansion_rule();
+    test_apply_cut();
 
     // ++ Syntax
     // test_get_term_of_fmla(); 

@@ -30,6 +30,8 @@ void print_tableau(Tableau tbl); // TODO
 
 void print_tableau_as_list(Tableau tbl);
 
+void print_tableau_as_list_fmla_infix(Tableau tbl);
+
 // void print_tableau_with_closure(Tableau tbl);
 
 #endif // PRINT_H

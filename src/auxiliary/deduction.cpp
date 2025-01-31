@@ -108,8 +108,8 @@ vector<vector<int>> get_all_arranges_repetition(int terms_tbl_amt, int parameter
 
     for (int i = 0; i < parameters_conclustion_amt; i++) arrange.push_back(0);
     all_arranges.push_back(arrange); // start all arrange with the arrange containing only 0's
-    for (int i = 1; i < arranges_amt - 1; i++){
-        arrange = increment_arrange_mask(arrange, terms_tbl_amt);
+    for (int i = 1; i < arranges_amt; i++){
+        arrange = increment_arrange_repitition_mask(arrange, terms_tbl_amt);
         all_arranges.push_back(arrange);
     }
 
@@ -117,9 +117,9 @@ vector<vector<int>> get_all_arranges_repetition(int terms_tbl_amt, int parameter
 }
 
 vector<Tableau> trying_apply_expansion_rule(Tableau tbl, TblRule expansion_rule) {
+    vector<Tableau> resuling_tableaux;
     vector<SignedFmla> premisses = expansion_rule.premisses;
     SignedFmla conclusion = expansion_rule.conclusion;
-    vector<Tableau> resuling_tableaux;
 
     vector<vector<int>> branches_idxs = get_tbl_open_branches(tbl);
 
@@ -127,6 +127,10 @@ vector<Tableau> trying_apply_expansion_rule(Tableau tbl, TblRule expansion_rule)
         if (premisses.size() == 0) {
 
             vector<string> parameters = get_all_parameters_of_fmla(conclusion.fmla);
+
+            // remove duplicated parameters
+            set<string> parameters_set(parameters.begin(), parameters.end());
+            parameters.assign(parameters_set.begin(), parameters_set.end());
 
             vector<Term> branch_terms = get_all_terms_of_branch(tbl, branch_idxs);
 
@@ -145,9 +149,7 @@ vector<Tableau> trying_apply_expansion_rule(Tableau tbl, TblRule expansion_rule)
 
                 SignedFmla expansion_node;
                 expansion_node.sign = conclusion.sign;
-                expansion_node.fmla = conclusion.fmla;
-
-                expansion_node.fmla = subst_extension(expansion_node.fmla, conclusion_subst);
+                expansion_node.fmla = subst_extension(conclusion.fmla, conclusion_subst);
 
                 Tableau new_tbl = tbl;
 
@@ -162,7 +164,6 @@ vector<Tableau> trying_apply_expansion_rule(Tableau tbl, TblRule expansion_rule)
 
                 new_tbl.push_back(new_tbl_node);
                 resuling_tableaux.push_back(new_tbl);
-
             }
         }
         else {
@@ -233,11 +234,68 @@ vector<Tableau> trying_apply_expansion_rule(Tableau tbl, TblRule expansion_rule)
                 }
 
             }
-            else {
-                // DO NOTHING
-            }
         }
     }
+    return resuling_tableaux;
+}
+
+vector<Tableau> apply_cut(Tableau tbl, Fmla cut_fmla) {
+    vector<Tableau> resuling_tableaux;
+
+    vector<vector<int>> branches_idxs = get_tbl_open_branches(tbl);
+
+    for (vector<int> branch_idxs : branches_idxs) {
+        vector<string> parameters = get_all_parameters_of_fmla(cut_fmla);
+
+        // remove duplicated parameters
+        set<string> parameters_set(parameters.begin(), parameters.end());
+        parameters.assign(parameters_set.begin(), parameters_set.end());
+
+        vector<Term> branch_terms = get_all_terms_of_branch(tbl, branch_idxs);
+
+        vector<vector<int>> all_arranges_repitition = get_all_arranges_repetition(branch_terms.size(), parameters.size());
+        int arranges_repitition_amt = all_arranges_repitition.size();
+
+        for (int i = 0; i < arranges_repitition_amt; i++) {
+
+            vector<int> arrange = all_arranges_repitition[i];
+
+            Subst conclusion_subst;
+
+            for (int j = 0; j < arrange.size(); j++) {
+                conclusion_subst[parameters[j]] = branch_terms[arrange[j]];
+            }
+
+            SignedFmla expansion_node1, expansion_node2;
+            expansion_node1.sign = polarity::plus;
+            expansion_node1.fmla = subst_extension(cut_fmla, conclusion_subst);
+
+            expansion_node2.sign = polarity::minus;
+            expansion_node2.fmla = subst_extension(cut_fmla, conclusion_subst);
+
+            Tableau new_tbl = tbl;
+
+            int leaf = branch_leaf(tbl, branch_idxs);
+            TblNode new_tbl_node1, new_tbl_node2;
+            new_tbl_node1.signed_fmla = expansion_node1;
+            new_tbl_node1.tbl_children = {};
+            new_tbl_node1.tbl_parent = leaf;
+            new_tbl_node1.justification_parents = {-3};
+
+            new_tbl_node2.signed_fmla = expansion_node2;
+            new_tbl_node2.tbl_children = {};
+            new_tbl_node2.tbl_parent = leaf;
+            new_tbl_node2.justification_parents = {-3};
+            
+            new_tbl[leaf].tbl_children.push_back(tbl.size());
+            new_tbl[leaf].tbl_children.push_back(tbl.size() + 1);
+
+            new_tbl.push_back(new_tbl_node1);
+            new_tbl.push_back(new_tbl_node2);
+            resuling_tableaux.push_back(new_tbl);
+        }
+    }
+
     return resuling_tableaux;
 }
 

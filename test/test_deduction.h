@@ -13,4 +13,6 @@ void test_matching_parameters();
 
 void test_trying_apply_expansion_rule();
 
+void test_apply_cut();
+
 #endif // TEST_DEDUCTION_H

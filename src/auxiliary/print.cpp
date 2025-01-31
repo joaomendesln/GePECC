@@ -142,9 +142,7 @@ void print_term_infix_aux(Term term, int idx) {
 //     // }
 // }
 
-
 void print_tableau_as_list(Tableau tbl) {
-
     for (int i = 0; i < tbl.size(); i++){
         TblNode node = tbl[i];
         cout << i << ": ";
@@ -152,6 +150,23 @@ void print_tableau_as_list(Tableau tbl) {
         if (sf.sign == polarity::plus) cout << "+ ";
         if (sf.sign == polarity::minus) cout << "- ";
         if (sf.sign == polarity::plus || sf.sign == polarity::minus) pretty_printing_fmla(sf.fmla);
+        else cout << sf.fmla[0].data;
+        cout << ", ";
+        print_vec_int(node.justification_parents);
+        cout << ", " << node.tbl_parent << ", ";
+        print_vec_int(node.tbl_children);
+        cout << "\n";
+    }
+}
+
+void print_tableau_as_list_fmla_infix(Tableau tbl) {
+    for (int i = 0; i < tbl.size(); i++){
+        TblNode node = tbl[i];
+        cout << i << ": ";
+        SignedFmla sf = node.signed_fmla;
+        if (sf.sign == polarity::plus) cout << "+ ";
+        if (sf.sign == polarity::minus) cout << "- ";
+        if (sf.sign == polarity::plus || sf.sign == polarity::minus) print_fmla_infix(sf.fmla);
         else cout << sf.fmla[0].data;
         cout << ", ";
         print_vec_int(node.justification_parents);
