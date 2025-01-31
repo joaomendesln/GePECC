@@ -17,6 +17,6 @@
 
 using namespace std;
 
-vector<FmlaNode> parse_fmla(string fmla_str);
+Fmla parse_fmla(string fmla_str);
 
 #endif // PARSER_H

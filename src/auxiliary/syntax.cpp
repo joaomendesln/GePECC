@@ -10,9 +10,19 @@ bool is_predicate_symb(string symb, map<string, int> predicate_symbs) {
     return predicate_symbs.find(symb) != predicate_symbs.end();
 }
 
-vector<TermNode> get_term_of_fmla(vector<FmlaNode> fmla, int term_root) {
+bool is_language_symb(string symb, map<string, int> language_symbs) {
+    return language_symbs.find(symb) != language_symbs.end();
+}
+
+bool is_a_parameter(FmlaNode fmla_node) {
+    map<string, int> language_symbs = pre_process_language_symbs();
+
+    return fmla_node.children.size() == 0 && !is_language_symb(fmla_node.data, language_symbs);
+}
+
+Term get_term_of_fmla(Fmla fmla, int term_root) {
     set<int> subfmla_nodes_idx;
-    vector<TermNode> term;
+    Term term;
 
     // BFS in the term root
     queue<int> q;
@@ -49,7 +59,21 @@ vector<TermNode> get_term_of_fmla(vector<FmlaNode> fmla, int term_root) {
     return term;
 }
 
-vector<FmlaNode> subst_parameter_by_term(vector<FmlaNode> fmla, int parameter_idx, vector<TermNode> term) {
+vector<Term> get_all_terms_of_fmla(Fmla fmla) {
+    map<string, int> predicate_symbs = pre_process_predicate_symbs();
+
+    vector<Term> all_terms;
+
+    for (int i = 0; i < fmla.size(); i++) {
+        if (!is_predicate_symb(fmla[i].data, predicate_symbs)) {
+            all_terms.push_back(get_term_of_fmla(fmla, i));
+        }
+    }
+
+    return all_terms;
+}
+
+Fmla subst_parameter_by_term(Fmla fmla, int parameter_idx, Term term) {
     map<int, int> new_idx;
 
     new_idx[0] = parameter_idx;
@@ -75,15 +99,52 @@ vector<FmlaNode> subst_parameter_by_term(vector<FmlaNode> fmla, int parameter_id
     return fmla;
 }
 
-set<string> get_all_parameters(vector<vector<FmlaNode>> fmlas) {
-    set<string> parameters;
+set<int> get_parameters_idxs(Fmla fmla) {
+    set<int> parameters_idx;
 
     map<string, int> function_symbs = pre_process_function_symbs();
+    map<string, int> predicate_symbs = pre_process_predicate_symbs();
 
-    for (vector<FmlaNode> fmla : fmlas){
+    for (int i = 0; i < fmla.size(); i++) {
+        if (is_a_parameter(fmla[i])) parameters_idx.insert(i);
+    }
+
+    return parameters_idx;
+}
+
+Fmla subst_extension(Fmla fmla, Subst subs) {
+    int fmla_initial_size = fmla.size();
+
+    set<int> parameters_idxs = get_parameters_idxs(fmla);
+
+    for (int i = 0; i < fmla_initial_size; i++) {
+        if (parameters_idxs.find(i) != parameters_idxs.end()) {
+            fmla = subst_parameter_by_term(fmla, i, subs[fmla[i].data]);
+        }
+    }
+
+   return fmla;
+}
+
+vector<string> get_all_parameters_of_fmla(Fmla fmla) {
+    vector<string> parameters;
+
+    for (int i = 0; i < fmla.size(); i++) {
+        FmlaNode fmla_node = fmla[i];
+        if (is_a_parameter(fmla_node)) parameters.push_back(fmla_node.data);
+
+    }
+
+    return parameters;
+}
+
+set<string> get_all_parameters(vector<Fmla> fmlas) {
+    set<string> parameters;
+
+    for (Fmla fmla : fmlas){
         for (int i = 0; i < fmla.size(); i++) {
             FmlaNode fmla_node = fmla[i];
-            if (fmla_node.children.size() == 0 && !is_function_symb(fmla_node.data, function_symbs)) parameters.insert(fmla_node.data);
+            if (is_a_parameter(fmla_node)) parameters.insert(fmla_node.data);
 
         }
     }
@@ -91,7 +152,7 @@ set<string> get_all_parameters(vector<vector<FmlaNode>> fmlas) {
     return parameters;
 }
 
-bool fmla_equality(vector<FmlaNode> fmla1, vector<FmlaNode> fmla2) {
+bool fmla_equality(Fmla fmla1, Fmla fmla2) {
     if (fmla1.size() != fmla2.size()) return false;
 
     queue<FmlaNode> q1, q2;
@@ -121,7 +182,7 @@ bool fmla_equality(vector<FmlaNode> fmla1, vector<FmlaNode> fmla2) {
     return true;
 }
 
-bool term_equality(vector<TermNode> term1, vector<TermNode> term2) {
+bool term_equality(Term term1, Term term2) {
     if (term1.size() != term2.size()) return false;
 
     queue<TermNode> q1, q2;
@@ -150,13 +211,13 @@ bool term_equality(vector<TermNode> term1, vector<TermNode> term2) {
     return true;
 }
 
-// vector<FmlaNode> left_gen_subfmla(vector<FmlaNode> fmla) {
-//     vector<FmlaNode> subfmla1 = get_subfmla(fmla, fmla[0].children[0]);
+// Fmla left_gen_subfmla(Fmla fmla) {
+//     Fmla subfmla1 = get_subfmla(fmla, fmla[0].children[0]);
 
 //     int right_root = fmla[0].children[1];
-//     vector<FmlaNode> subfmla2 = get_subfmla(fmla, fmla[right_root].children[0]);
+//     Fmla subfmla2 = get_subfmla(fmla, fmla[right_root].children[0]);
 
-//     vector<FmlaNode> resulting_fmla = {
+//     Fmla resulting_fmla = {
 //         {"∈", 0, {}}
 //     };
 //     resulting_fmla = join_subfmla(resulting_fmla, 0, 1, subfmla1);
@@ -165,13 +226,13 @@ bool term_equality(vector<TermNode> term1, vector<TermNode> term2) {
 //     return resulting_fmla;
 // }
 
-// vector<FmlaNode> right_gen_subfmla(vector<FmlaNode> fmla) {
-//     vector<FmlaNode> subfmla1 = get_subfmla(fmla, fmla[0].children[0]);
+// Fmla right_gen_subfmla(Fmla fmla) {
+//     Fmla subfmla1 = get_subfmla(fmla, fmla[0].children[0]);
 
 //     int right_root = fmla[0].children[1];
-//     vector<FmlaNode> subfmla2 = get_subfmla(fmla, fmla[right_root].children[1]);
+//     Fmla subfmla2 = get_subfmla(fmla, fmla[right_root].children[1]);
 
-//     vector<FmlaNode> resulting_fmla = {
+//     Fmla resulting_fmla = {
 //         {"∈", 0, {}}
 //     };
 //     resulting_fmla = join_subfmla(resulting_fmla, 0, 1, subfmla1);
@@ -181,8 +242,8 @@ bool term_equality(vector<TermNode> term1, vector<TermNode> term2) {
 
 // }
 
-// vector<FmlaNode> join_subfmla(vector<FmlaNode> fmla, int parent_node, int child_position, vector<FmlaNode> subfmla) {
-//     vector<FmlaNode> resulting_fmla = fmla;
+// Fmla join_subfmla(Fmla fmla, int parent_node, int child_position, Fmla subfmla) {
+//     Fmla resulting_fmla = fmla;
 
 //     int size = resulting_fmla.size();
 
@@ -211,7 +272,7 @@ bool term_equality(vector<TermNode> term1, vector<TermNode> term2) {
 //     return resulting_fmla;
 // }
 
-// set<string> get_fmla_vars(vector<FmlaNode> fmla){
+// set<string> get_fmla_vars(Fmla fmla){
 //     set<string> vars;
 
 //     for (int i = 0; i < fmla.size(); i++) {
@@ -223,7 +284,7 @@ bool term_equality(vector<TermNode> term1, vector<TermNode> term2) {
 //     return vars;
 // }
 
-// bool fmla_equality(vector<FmlaNode> fmla1, vector<FmlaNode> fmla2) {
+// bool fmla_equality(Fmla fmla1, Fmla fmla2) {
 //     if (fmla1.size() != fmla2.size()) return false;
 
 //     queue<FmlaNode> q1, q2;
@@ -267,21 +328,21 @@ bool term_equality(vector<TermNode> term1, vector<TermNode> term2) {
 //     return ""; // the case in which there are more variables in the tableau than letters in the alphabet is not covered
 // }
 
-// bool is_predicate_symb(vector<FmlaNode> fmla) {
+// bool is_predicate_symb(Fmla fmla) {
 //     if (fmla[0].data == "⊆" || fmla[0].data == "≍"){
 //         return true;
 //     }
 //     return false;
 // }
 
-// bool is_function_symb(vector<FmlaNode> fmla) {
+// bool is_function_symb(Fmla fmla) {
 //     if (fmla[0].data == "∈"){
 //         return true;
 //     }
 //     return false;
 // }
 
-// bool is_unary_function_symb(vector<FmlaNode> fmla) {
+// bool is_unary_function_symb(Fmla fmla) {
 //     if (fmla[0].data == "∈"){
 //         if (fmla[0].children.size() > 0){
 //             FmlaNode right_root = fmla[fmla[0].children[1]];
@@ -293,7 +354,7 @@ bool term_equality(vector<TermNode> term1, vector<TermNode> term2) {
 //     return false;
 // }
 
-// bool is_atomic(vector<FmlaNode> fmla) {
+// bool is_atomic(Fmla fmla) {
 //     int right_root = fmla[0].children[1];
 //     if (fmla[right_root].children.size() == 0){
 //         return true;

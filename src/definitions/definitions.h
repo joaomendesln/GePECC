@@ -2,7 +2,9 @@
 #define DEFINITIONS_H
 
 #include <vector>
+#include <map>
 #include <string>
+
 
 using namespace std;
 
@@ -28,15 +30,20 @@ struct FmlaNode {
     // }
 };
 
+typedef vector<FmlaNode> Fmla;
+
 struct TermNode {
     string data;
     int parent;
     vector<int> children;
 };
 
+typedef vector<TermNode> Term;
+typedef map<string, Term> Subst;
+
 struct SignedFmla {
     polarity sign;
-    vector<FmlaNode> fmla;
+    Fmla fmla;
 };
 
 struct TblNode {
@@ -79,13 +86,11 @@ struct TblNode {
     // }
 };
 
+typedef vector<TblNode> Tableau;
+
 struct TblRule {
     vector<SignedFmla> premisses;
-    vector<SignedFmla> conclusion;
+    SignedFmla conclusion;
 };
-
-typedef vector<FmlaNode> Fmla;
-typedef vector<TermNode> Term;
-typedef map<string, Term> Subst;
 
 #endif // DEFINITIONS_H

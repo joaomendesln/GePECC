@@ -2,12 +2,12 @@
 
 using namespace std;
 
-vector<FmlaNode> parse_fmla(string fmla_str) {
+Fmla parse_fmla(string fmla_str) {
 
     map<string, int> function_symbs = pre_process_function_symbs();
     map<string, int> predicate_symbs = pre_process_predicate_symbs();
 
-    vector<FmlaNode> resulting_fmla;
+    Fmla resulting_fmla;
 
     // remove white spaces
     string fmla_no_space = "";

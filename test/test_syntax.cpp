@@ -5,7 +5,7 @@ using namespace std;
 
 // void test_fmla_equality() {
 
-//     vector<FmlaNode> fmla1 = {
+//     Fmla fmla1 = {
 //         { "⊆", 0, {1, 2}},                    
 //         { "∩", 0, {3, 4}},
 //         { "∪", 0, {5, 6}},
@@ -15,7 +15,7 @@ using namespace std;
 //         { "b", 2, {}} 
 //     };
 
-//     vector<FmlaNode> fmla2 = {
+//     Fmla fmla2 = {
 //         { "⊆", 0, {1, 2}},   
 //         { "∩", 0, {5, 6}},                 
 //         { "∪", 0, {3, 4}},
@@ -25,7 +25,7 @@ using namespace std;
 //         { "d", 1, {}} 
 //     };
 
-//     vector<FmlaNode> fmla3 = {
+//     Fmla fmla3 = {
 //         { "⊆", 0, {1, 2}},   
 //         { "∪", 0, {5, 6}},                 
 //         { "∩", 0, {3, 4}},
@@ -59,18 +59,18 @@ using namespace std;
 // }
 
 void test_get_term_of_fmla() {
-    vector<FmlaNode> fmla = parse_fmla("∈(p1,∪(p2, ∩(p3, p4)))");
+    Fmla fmla = parse_fmla("∈(p1,∪(p2, ∩(p3, p4)))");
 
-    vector<TermNode> term1 = get_term_of_fmla(fmla, 2);
-    vector<TermNode> term2 = get_term_of_fmla(fmla, 4);
+    Term term1 = get_term_of_fmla(fmla, 2);
+    Term term2 = get_term_of_fmla(fmla, 4);
 }
 
 void test_subst_parameter_by_term() {
 
-    vector<FmlaNode> fmla = parse_fmla("∈(p1,∪(p2, ∩(p3, p4)))");
-    vector<TermNode> term = get_term_of_fmla(fmla, 2);
+    Fmla fmla = parse_fmla("∈(p1,∪(p2, ∩(p3, p4)))");
+    Term term = get_term_of_fmla(fmla, 2);
 
-    vector<FmlaNode> resulting_fmla = subst_parameter_by_term(fmla, 1, term);
+    Fmla resulting_fmla = subst_parameter_by_term(fmla, 1, term);
     print_fmla_infix(resulting_fmla);
 
     cout << "\n";

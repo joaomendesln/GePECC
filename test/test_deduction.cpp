@@ -4,7 +4,7 @@
 using namespace std;
 
 void test_get_initial_tableau() {
-    vector<TblNode> tbl = get_initial_tableau();
+    Tableau tbl = get_initial_tableau();
 
     print_tableau_as_list(tbl);
 }
@@ -41,11 +41,20 @@ void test_matching_parameters() {
     sf_premisse.sign = polarity::plus;
     sf_premisse.fmla = parse_fmla("∈(p1,p2)");
 
-    map<string, vector<TermNode>> matching_parameters_map = matching_parameters(sf_tbl, sf_premisse);
+    Subst matching_parameters_map = matching_parameters(sf_tbl, sf_premisse);
 
     for (const auto& pair : matching_parameters_map) {
         cout << pair.first << ": ";
         print_term_infix(pair.second);
         cout << "\n";
     }
+}
+
+void test_trying_apply_expansion_rule(){
+    Tableau tbl = get_initial_tableau();
+
+    vector<TblRule> expansion_rules = pre_process_expansion_rules();
+    trying_apply_expansion_rule(tbl, expansion_rules[3]);
+
+    // print_tableau_as_list(tbl);
 }

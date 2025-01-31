@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void pretty_printing_fmla_aux(vector<FmlaNode> fmla, FmlaNode node, int binary_acestor_amt, side side) {
+void pretty_printing_fmla_aux(Fmla fmla, FmlaNode node, int binary_acestor_amt, side side) {
     if (node.children.size() == 0) {
         if (side == side::left) {
             for (int i = 0; i < binary_acestor_amt; i++) {
@@ -28,7 +28,7 @@ void pretty_printing_fmla_aux(vector<FmlaNode> fmla, FmlaNode node, int binary_a
     }
 }
 
-void pretty_printing_fmla(vector<FmlaNode> fmla) {
+void pretty_printing_fmla(Fmla fmla) {
     pretty_printing_fmla_aux(fmla, fmla[0], -1, side::left);
 }
 
@@ -45,11 +45,11 @@ void print_vec_int(vector<int> vec) {
     cout << "]";
 }
 
-void print_fmla_infix(vector<FmlaNode> fmla) {
+void print_fmla_infix(Fmla fmla) {
     print_fmla_infix_aux(fmla, 0);
 }
 
-void print_fmla_infix_aux(vector<FmlaNode> fmla, int idx) {
+void print_fmla_infix_aux(Fmla fmla, int idx) {
     FmlaNode fmla_node = fmla[idx];
 
     cout << fmla_node.data;
@@ -65,11 +65,11 @@ void print_fmla_infix_aux(vector<FmlaNode> fmla, int idx) {
 
 }
 
-void print_term_infix(vector<TermNode> term) {
+void print_term_infix(Term term) {
     print_term_infix_aux(term, 0);
 }
 
-void print_term_infix_aux(vector<TermNode> term, int idx) {
+void print_term_infix_aux(Term term, int idx) {
     TermNode term_node = term[idx];
 
     cout << term_node.data;
@@ -85,7 +85,7 @@ void print_term_infix_aux(vector<TermNode> term, int idx) {
 
 }
 
-// void print_tableau(vector<TblNode> tbl) {
+// void print_tableau(Tableau tbl) {
 
 //     vector< vector<int>> branches = get_tbl_branches(tbl);
 
@@ -143,7 +143,7 @@ void print_term_infix_aux(vector<TermNode> term, int idx) {
 // }
 
 
-void print_tableau_as_list(vector<TblNode> tbl) {
+void print_tableau_as_list(Tableau tbl) {
 
     for (int i = 0; i < tbl.size(); i++){
         TblNode node = tbl[i];
@@ -161,7 +161,7 @@ void print_tableau_as_list(vector<TblNode> tbl) {
     }
 }
 
-// void print_tableau_with_closure(vector<TblNode> tbl) {
+// void print_tableau_with_closure(Tableau tbl) {
 //     vector< vector<int>> branches = get_tbl_branches(tbl);
 
 //     // get closure nodes

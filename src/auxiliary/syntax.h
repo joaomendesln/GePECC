@@ -20,34 +20,46 @@ bool is_function_symb(string symb, map<string, int> function_symbs);
 
 bool is_predicate_symb(string symb, map<string, int> predicate_symbs);
 
-vector<TermNode> get_term_of_fmla(vector<FmlaNode> fmla, int subfmla_root);
+bool is_language_symb(string symb, map<string, int> language_symbs);
 
-vector<FmlaNode> subst_parameter_by_term(vector<FmlaNode> fmla, int parameter_idx, vector<TermNode> term);
+bool is_a_parameter(FmlaNode fmla_node);
 
-set<string> get_all_parameters(vector<vector<FmlaNode>> fmlas);
+Term get_term_of_fmla(Fmla fmla, int subfmla_root);
 
-bool fmla_equality(vector<FmlaNode> fmla1, vector<FmlaNode> fmla2);
+vector<Term> get_all_terms_of_fmla(Fmla fmla);
 
-bool term_equality(vector<TermNode> term1, vector<TermNode> term2);
+Fmla subst_parameter_by_term(Fmla fmla, int parameter_idx, Term term);
 
-// vector<FmlaNode> left_gen_subfmla(vector<FmlaNode> fmla);
+set<int> get_parameters_idxs(Fmla fmla);
 
-// vector<FmlaNode> right_gen_subfmla(vector<FmlaNode> fmla);
+Fmla subst_extension(Fmla fmla, Subst subs);
 
-// vector<FmlaNode> join_subfmla(vector<FmlaNode> fmla, int parent_node, int child_position, vector<FmlaNode> subfmla);
+vector<string> get_all_parameters_of_fmla(Fmla fmla);
 
-// bool fmla_equality(vector<FmlaNode> fmla1, vector<FmlaNode> fmla2);
+set<string> get_all_parameters(vector<Fmla> fmlas);
 
-// set<string> get_fmla_vars(vector<FmlaNode> fmla);
+bool fmla_equality(Fmla fmla1, Fmla fmla2);
+
+bool term_equality(Term term1, Term term2);
+
+// Fmla left_gen_subfmla(Fmla fmla);
+
+// Fmla right_gen_subfmla(Fmla fmla);
+
+// Fmla join_subfmla(Fmla fmla, int parent_node, int child_position, Fmla subfmla);
+
+// bool fmla_equality(Fmla fmla1, Fmla fmla2);
+
+// set<string> get_fmla_vars(Fmla fmla);
 
 // string get_new_var(set<string> vars);
 
-// bool is_predicate_symb(vector<FmlaNode> fmla);
+// bool is_predicate_symb(Fmla fmla);
 
-// bool is_function_symb(vector<FmlaNode> fmla);
+// bool is_function_symb(Fmla fmla);
 
-// bool is_unary_function_symb(vector<FmlaNode> fmla);
+// bool is_unary_function_symb(Fmla fmla);
 
-// bool is_atomic(vector<FmlaNode> fmla);
+// bool is_atomic(Fmla fmla);
 
 #endif // SYNTAX_H

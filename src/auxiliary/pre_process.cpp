@@ -135,10 +135,27 @@ map<string, int> pre_process_predicate_symbs() {
 
 }
 
+map<string, int> pre_process_language_symbs() {
+    map<string, int> function_symbs = pre_process_function_symbs();
+    map<string, int> predicate_symbs = pre_process_predicate_symbs();
+
+    map<string, int> language_symbs;
+
+    for (const auto& pair : function_symbs) {
+        language_symbs[pair.first] = pair.second;
+    }
+
+    for (const auto& pair : predicate_symbs) {
+        language_symbs[pair.first] = pair.second;
+    }
+
+    return language_symbs;
+}
+
 TblRule pre_process_single_expansion_rule(string line) {
 
     string str_premisses;
-    string str_conclusions;
+    string str_conclusion;
     bool premisses_finished = false;
     for (int i = 0; i < line.size(); i++) {
         char c = line[i];
@@ -149,16 +166,16 @@ TblRule pre_process_single_expansion_rule(string line) {
             str_premisses += c;
         }
         if (premisses_finished == true && c != ';') {
-            str_conclusions += c;
+            str_conclusion += c;
         }
     }
 
     vector<SignedFmla> premisses = pre_process_signed_fmla_list(str_premisses);
-    vector<SignedFmla> conclusions = pre_process_signed_fmla_list(str_conclusions);
+    SignedFmla conclusion = pre_process_signed_fmla(str_conclusion);
 
     TblRule expansion_rules;
     expansion_rules.premisses = premisses;
-    expansion_rules.conclusions = conclusions;
+    expansion_rules.conclusion = conclusion;
 
     return expansion_rules;
 }
@@ -255,16 +272,16 @@ vector<TblRule> pre_process_expansion_rules() {
 
     vector<TblRule> expansion_rules;
 
-    // vector<string> lines = 
-    // {"(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p2))",
-    //  "(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p3))",
-    //  "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p2)); (-, ∈(p1, p3))",
-    //  "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p3)); (-, ∈(p1, p2))",
-    //  "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p2))",
-    //  "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p3))",
-    //  "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p2)); (+, ∈(p1, p3))",
-    //  "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p3)); (+, ∈(p1, p2))"};
-    vector<string> lines = {};
+    vector<string> lines = 
+    {"(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p2))",
+     "(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p3))",
+     "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p2)); (-, ∈(p1, p3))",
+     "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p3)); (-, ∈(p1, p2))",
+     "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p2))",
+     "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p3))",
+     "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p2)); (+, ∈(p1, p3))",
+     "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p3)); (+, ∈(p1, p2))"};
+    // vector<string> lines = {};
 
     if (lines.size() == 0){
         string file_path = "../src/inputs/expansion_rules";
@@ -282,8 +299,8 @@ vector<TblRule> pre_process_expansion_rules() {
 vector<SignedFmla> pre_process_signed_fmla_input() {
     vector<SignedFmla> resulting_signed_fmlas;
 
-    // vector<string> lines = {"(+, ∈(p1, ∩(p2,p3)))", "(-, ∈(p1, p2))"};
-    vector<string> lines = {};
+    vector<string> lines = {"(+, ∈(p1, p5))", "(-, ∈(p1, ∩(∩(p3,p4),p5)))"};
+    // vector<string> lines = {};
 
     if (lines.size() == 0){
         string file_path = "../src/inputs/signed_fmlas";

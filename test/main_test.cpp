@@ -18,8 +18,9 @@ int main() {
     // ++ Deduction
     // test_get_initial_tableau();
     // test_get_all_arranges();
-    test_is_a_match();
-    test_matching_parameters();
+    // test_is_a_match();
+    // test_matching_parameters();
+    test_trying_apply_expansion_rule();
 
     // ++ Syntax
     // test_get_term_of_fmla(); 

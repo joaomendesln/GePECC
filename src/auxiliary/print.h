@@ -12,24 +12,24 @@
 
 using namespace std;
 
-void pretty_printing_fmla_aux(vector<FmlaNode> fmla, FmlaNode node, int binary_acestor_amt, side side);
+void pretty_printing_fmla_aux(Fmla fmla, FmlaNode node, int binary_acestor_amt, side side);
 
-void pretty_printing_fmla(vector<FmlaNode> fmla);
+void pretty_printing_fmla(Fmla fmla);
 
 void print_vec_int(vector<int> vec);
 
-void print_fmla_infix(vector<FmlaNode> fmla);
+void print_fmla_infix(Fmla fmla);
 
-void print_fmla_infix_aux(vector<FmlaNode> fmla, int idx);
+void print_fmla_infix_aux(Fmla fmla, int idx);
 
-void print_term_infix(vector<TermNode> term);
+void print_term_infix(Term term);
 
-void print_term_infix_aux(vector<TermNode> term, int idx);
+void print_term_infix_aux(Term term, int idx);
 
-void print_tableau(vector<TblNode> tbl); // TODO
+void print_tableau(Tableau tbl); // TODO
 
-void print_tableau_as_list(vector<TblNode> tbl);
+void print_tableau_as_list(Tableau tbl);
 
-// void print_tableau_with_closure(vector<TblNode> tbl);
+// void print_tableau_with_closure(Tableau tbl);
 
 #endif // PRINT_H

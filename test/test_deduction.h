@@ -11,4 +11,6 @@ void test_is_a_match();
 
 void test_matching_parameters();
 
+void test_trying_apply_expansion_rule();
+
 #endif // TEST_DEDUCTION_H
