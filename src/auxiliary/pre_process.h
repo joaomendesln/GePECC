@@ -30,7 +30,7 @@ vector<SignedFmla> pre_process_signed_fmla_list(string list);
 
 TblRule pre_process_single_expansion_rule(string line);
 
-vector<TblRule> pre_process_expansion_rules();
+vector<TblRule> pre_process_expansion_rules_input();
 
 vector<SignedFmla> pre_process_signed_fmla_input();
 

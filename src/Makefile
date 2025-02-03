@@ -5,7 +5,7 @@ CXX = g++
 CXXFLAGS = -std=c++11 -Wall -g
 
 # Source files
-SRCS = main.cpp minimal.cpp auxiliary/print.cpp auxiliary/syntax.cpp auxiliary/tableaux.cpp auxiliary/parser.cpp
+SRCS = main.cpp auxiliary/print.cpp auxiliary/syntax.cpp auxiliary/deduction.cpp auxiliary/parser.cpp auxiliary/pre_process.cpp
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)

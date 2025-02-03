@@ -23,9 +23,9 @@ void test_pre_process_predicate_symbs() {
 
 }
 
-void test_pre_process_expansion_rules() {
+void test_pre_process_expension_rules() {
 
-    vector<TblRule> expansion_rules = pre_process_expansion_rules();
+    vector<TblRule> expansion_rules = pre_process_expansion_rules_input();
 
     for (int i = 0; i < expansion_rules.size(); i++) {
         cout << "++++ Rule "<< i << " ++++\n\n";
@@ -42,7 +42,7 @@ void test_pre_process_expansion_rules() {
             if (premisse.sign == polarity::minus) s = "- ";
             if (premisse.sign == polarity::plus) s = "+ ";
             cout << s;
-            print_fmla_infix(premisse.fmla);
+            print_fmla_prefix(premisse.fmla);
             cout << "\n";
 
         }
@@ -51,7 +51,7 @@ void test_pre_process_expansion_rules() {
         if (conclusion.sign == polarity::minus) s = "- ";
         if (conclusion.sign == polarity::plus) s = "+ ";
         cout << s;
-        print_fmla_infix(conclusion.fmla);
+        print_fmla_prefix(conclusion.fmla);
         cout << "\n";
         cout << "\n\n";
     }
@@ -66,7 +66,7 @@ void test_pre_process_signed_fmlas_input() {
         if (sf.sign == polarity::minus) s = "- ";
         if (sf.sign == polarity::plus) s = "+ ";
         cout << s;
-        print_fmla_infix(sf.fmla);
+        print_fmla_prefix(sf.fmla);
         cout << "\n";
 
     }

@@ -15,4 +15,6 @@ void test_trying_apply_expansion_rule();
 
 void test_apply_cut();
 
+void test_get_cut_fmlas();
+
 #endif // TEST_DEDUCTION_H

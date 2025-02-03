@@ -268,21 +268,34 @@ SignedFmla pre_process_signed_fmla(string signed_fmla_str) {
     return signed_fmla;
 }
 
-vector<TblRule> pre_process_expansion_rules() {
+vector<TblRule> pre_process_expansion_rules_input() {
 
-    vector<TblRule> expansion_rules;
+    vector<TblRule> resulting_expansion_rules;
 
-    vector<string> lines = 
-    {"(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p2))",
-     "(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p3))",
-     "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p2)); (-, ∈(p1, p3))",
-     "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p3)); (-, ∈(p1, p2))",
-     "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p2))",
-     "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p3))",
-     "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p2)); (+, ∈(p1, p3))",
-     "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p3)); (+, ∈(p1, p2))",
-     "; (-, ∈(p1,∅))",
-     "; (-, ∈(∩(p1,p2),∅))"};
+    vector<string> lines = {
+        "[ax∩]",
+        "(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p2))",
+        "(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p3))",
+        "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p2)); (-, ∈(p1, p3))",
+        "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p3)); (-, ∈(p1, p2))",
+        "[ax∪]",
+        "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p2))",
+        "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p3))",
+        "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p2)); (+, ∈(p1, p3))",
+        "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p3)); (+, ∈(p1, p2))",
+        "; (-, ∈(p1,∅))"};
+
+    // vector<string> lines = 
+    // {"(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p2))",
+    //  "(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p3))",
+    //  "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p2)); (-, ∈(p1, p3))",
+    //  "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p3)); (-, ∈(p1, p2))",
+    //  "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p2))",
+    //  "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p3))",
+    //  "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p2)); (+, ∈(p1, p3))",
+    //  "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p3)); (+, ∈(p1, p2))",
+    //  "; (-, ∈(p1,∅))",
+    //  "; (-, ∈(∩(p1,p2),∅))"};
     // vector<string> lines = {};
 
     if (lines.size() == 0){
@@ -291,17 +304,28 @@ vector<TblRule> pre_process_expansion_rules() {
     }
 
     for (int i = 0; i < lines.size(); i++) {
-        expansion_rules.push_back(pre_process_single_expansion_rule(lines[i]));
+        string line = lines[i];
+        if (line.size() > 0 && line[0] != '[') {
+            resulting_expansion_rules.push_back(pre_process_single_expansion_rule(lines[i]));
+        }
     }
 
-    return expansion_rules;
+    return resulting_expansion_rules;
 
 }
 
 vector<SignedFmla> pre_process_signed_fmla_input() {
     vector<SignedFmla> resulting_signed_fmlas;
 
-    vector<string> lines = {"(+, ∈(p1, p5))", "(-, ∈(p1, ∩(∩(p3,p4),p5)))"};
+    // vector<string> lines = {
+    //     "(+, ∈(p1, ∩(p2,p3)))", 
+    //     "(-, ∈(p1, p2))"
+    // };
+    vector<string> lines = {
+        "(+, ∈(p1, ∩(p2, ∪(p3, p4))))", 
+        "(-, ∈(p1, ∪(∩(p2, p3), p4)))"
+    };
+
     // vector<string> lines = {};
 
     if (lines.size() == 0){

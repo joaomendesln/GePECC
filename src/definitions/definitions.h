@@ -90,7 +90,7 @@ typedef vector<TblNode> Tableau;
 
 struct TblRule {
     vector<SignedFmla> premisses;
-    SignedFmla conclusion;
+    SignedFmla conclusion; // The only rule which has multiple conclusion is the cut
 };
 
 #endif // DEFINITIONS_H

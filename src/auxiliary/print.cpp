@@ -45,11 +45,11 @@ void print_vec_int(vector<int> vec) {
     cout << "]";
 }
 
-void print_fmla_infix(Fmla fmla) {
-    print_fmla_infix_aux(fmla, 0);
+void print_fmla_prefix(Fmla fmla) {
+    print_fmla_prefix_aux(fmla, 0);
 }
 
-void print_fmla_infix_aux(Fmla fmla, int idx) {
+void print_fmla_prefix_aux(Fmla fmla, int idx) {
     FmlaNode fmla_node = fmla[idx];
 
     cout << fmla_node.data;
@@ -57,7 +57,7 @@ void print_fmla_infix_aux(Fmla fmla, int idx) {
     if (fmla_node.children.size() > 0) {
         cout << "(";
         for (int i = 0; i < fmla_node.children.size(); i++) {
-            print_fmla_infix_aux(fmla, fmla_node.children[i]);
+            print_fmla_prefix_aux(fmla, fmla_node.children[i]);
             if (i < fmla_node.children.size() - 1) cout << ",";
         }
         cout << ")";
@@ -65,11 +65,11 @@ void print_fmla_infix_aux(Fmla fmla, int idx) {
 
 }
 
-void print_term_infix(Term term) {
-    print_term_infix_aux(term, 0);
+void print_term_prefix(Term term) {
+    print_term_prefix_aux(term, 0);
 }
 
-void print_term_infix_aux(Term term, int idx) {
+void print_term_prefix_aux(Term term, int idx) {
     TermNode term_node = term[idx];
 
     cout << term_node.data;
@@ -77,7 +77,7 @@ void print_term_infix_aux(Term term, int idx) {
     if (term_node.children.size() > 0) {
         cout << "(";
         for (int i = 0; i < term_node.children.size(); i++) {
-            print_term_infix_aux(term, term_node.children[i]);
+            print_term_prefix_aux(term, term_node.children[i]);
             if (i < term_node.children.size() - 1) cout << ",";
         }
         cout << ")";
@@ -159,14 +159,14 @@ void print_tableau_as_list(Tableau tbl) {
     }
 }
 
-void print_tableau_as_list_fmla_infix(Tableau tbl) {
+void print_tableau_as_list_fmla_prefix(Tableau tbl) {
     for (int i = 0; i < tbl.size(); i++){
         TblNode node = tbl[i];
         cout << i << ": ";
         SignedFmla sf = node.signed_fmla;
         if (sf.sign == polarity::plus) cout << "+ ";
         if (sf.sign == polarity::minus) cout << "- ";
-        if (sf.sign == polarity::plus || sf.sign == polarity::minus) print_fmla_infix(sf.fmla);
+        if (sf.sign == polarity::plus || sf.sign == polarity::minus) print_fmla_prefix(sf.fmla);
         else cout << sf.fmla[0].data;
         cout << ", ";
         print_vec_int(node.justification_parents);

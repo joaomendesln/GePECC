@@ -66,12 +66,11 @@ void test_get_term_of_fmla() {
 }
 
 void test_subst_parameter_by_term() {
-
     Fmla fmla = parse_fmla("∈(p1,∪(p2, ∩(p3, p4)))");
     Term term = get_term_of_fmla(fmla, 2);
 
     Fmla resulting_fmla = subst_parameter_by_term(fmla, 1, term);
-    print_fmla_infix(resulting_fmla);
+    print_fmla_prefix(resulting_fmla);
 
     cout << "\n";
 
@@ -79,7 +78,19 @@ void test_subst_parameter_by_term() {
     term = get_term_of_fmla(fmla, 5);
 
     resulting_fmla = subst_parameter_by_term(fmla, 1, term);
-    print_fmla_infix(resulting_fmla);
+    print_fmla_prefix(resulting_fmla);
 
     cout << "\n";
+}
+
+void test_fmla_equality_under_subst() {
+    Fmla fmla1 = parse_fmla("∈(p1,∪(p2, ∩(p3, p4)))");
+    Fmla fmla2 = parse_fmla("∈(p2,∪(p3, ∩(p4, p1)))");
+    Fmla fmla3 = parse_fmla("∈(p2,∪(p3, ∩(p4, p3)))");
+    Fmla fmla4 = parse_fmla("∈(p2,∪(p3, p1))");
+
+    cout << fmla_equality_under_subst(fmla1, fmla2) << "\n";
+    cout << fmla_equality_under_subst(fmla1, fmla3) << "\n";
+    cout << fmla_equality_under_subst(fmla1, fmla4) << "\n";
+    cout << fmla_equality_under_subst(fmla2, fmla3) << "\n";
 }

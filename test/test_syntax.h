@@ -13,4 +13,6 @@ void test_get_term_of_fmla();
 
 void test_subst_parameter_by_term();
 
+void test_fmla_equality_under_subst();
+
 #endif // TEST_SYNTAX_H

@@ -40,6 +40,8 @@ set<string> get_all_parameters(vector<Fmla> fmlas);
 
 bool fmla_equality(Fmla fmla1, Fmla fmla2);
 
+bool fmla_equality_under_subst(Fmla fmla1, Fmla fmla2);
+
 bool term_equality(Term term1, Term term2);
 
 // Fmla left_gen_subfmla(Fmla fmla);

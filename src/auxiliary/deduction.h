@@ -15,7 +15,7 @@
 
 using namespace std;
 
-Tableau get_initial_tableau();
+Tableau get_initial_tableau(vector<SignedFmla> sf_input);
 
 bool are_mask_digits_different(vector<int> arrange_mask);
 
@@ -50,5 +50,25 @@ vector< vector<int>> get_tbl_open_branches(Tableau tbl);
 bool tbl_is_closed(Tableau tbl);
 
 vector<Term> get_all_terms_of_branch(Tableau tbl, vector<int> branch);
+
+vector<Fmla> get_cut_fmlas(vector<TblRule> er);
+
+vector<Tableau> get_tbl_successors(Tableau tbl, vector<TblRule> er);
+
+bool is_closed(Tableau tbl);
+
+pair<int, int> branch_closure_nodes(vector<int> branch, Tableau tbl);
+
+bool is_clean(Tableau tbl);
+
+int get_branch_size(Tableau tbl, vector<int> branch);
+
+int get_size(Tableau tbl);
+
+vector<Tableau> extract_minimal_proofs(vector<SignedFmla> sf, vector<TblRule> er);
+
+bool node_in_tbl(SignedFmla sf, Tableau tbl);
+
+int get_fmla_max_size(Tableau tbl, vector<int> branch);
 
 #endif // DEDUCTION_H
