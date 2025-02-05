@@ -173,11 +173,12 @@ TblRule pre_process_single_expansion_rule(string line) {
     vector<SignedFmla> premisses = pre_process_signed_fmla_list(str_premisses);
     SignedFmla conclusion = pre_process_signed_fmla(str_conclusion);
 
-    TblRule expansion_rules;
-    expansion_rules.premisses = premisses;
-    expansion_rules.conclusion = conclusion;
+    TblRule expansion_rule;
+    expansion_rule.premisses = premisses;
+    expansion_rule.conclusion = conclusion;
+    expansion_rule.is_cut = false;
 
-    return expansion_rules;
+    return expansion_rule;
 }
 
 vector<SignedFmla> pre_process_signed_fmla_list(string list) {
@@ -321,9 +322,13 @@ vector<SignedFmla> pre_process_signed_fmla_input() {
     //     "(+, ∈(p1, ∩(p2,p3)))", 
     //     "(-, ∈(p1, p2))"
     // };
+    // vector<string> lines = {
+    //     "(+, ∈(p1, ∩(p2, ∪(p3, p4))))", 
+    //     "(-, ∈(p1, ∪(∩(p2, p3), p4)))"
+    // };
     vector<string> lines = {
-        "(+, ∈(p1, ∩(p2, ∪(p3, p4))))", 
-        "(-, ∈(p1, ∪(∩(p2, p3), p4)))"
+        "(+, ∈(p1, ∩(p2, p3)))", 
+        "(-, ∈(p1, ∩(∪(p2, p4), ∪(p3, p5))))"
     };
 
     // vector<string> lines = {};

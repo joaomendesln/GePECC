@@ -27,7 +27,9 @@ vector<int> increment_arrange_repitition_mask(vector<int> arrange_mask, int base
 
 vector<vector<int>> get_all_arranges_repetition(int terms_tbl_amt, int parameters_conclustion_amt);
 
-vector<Tableau> trying_apply_expansion_rule(Tableau tbl, TblRule expansion_rule); // One expansion rule may be applied in a tableau in several ways. That's why the output is a vector of tableaux
+vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule); // One expansion rule may be applied in a tableau in several ways. That's why the output is a vector of tableaux
+
+vector<Tableau> apply_rule_no_premisse(Tableau tbl, TblRule expansion_rule);
 
 vector<Tableau> apply_cut(Tableau tbl, Fmla cut_fmla);
 
@@ -53,6 +55,8 @@ vector<Term> get_all_terms_of_branch(Tableau tbl, vector<int> branch);
 
 vector<Fmla> get_cut_fmlas(vector<TblRule> er);
 
+vector<TblRule> add_cut_rule(vector<TblRule> er);
+
 vector<Tableau> get_tbl_successors(Tableau tbl, vector<TblRule> er);
 
 bool is_closed(Tableau tbl);
@@ -65,10 +69,24 @@ int get_branch_size(Tableau tbl, vector<int> branch);
 
 int get_size(Tableau tbl);
 
+int get_branch_size2(Tableau tbl, vector<int> branch);
+
+int get_size2(Tableau tbl);
+
 vector<Tableau> extract_minimal_proofs(vector<SignedFmla> sf, vector<TblRule> er);
+
+vector<Fmla> potential_premisse_nodes_branch(Tableau tbl, vector<int> branch, vector<TblRule> er);
+
+vector<Fmla> potential_premisse_nodes_rule(SignedFmla sf, TblRule rule);
 
 bool node_in_tbl(SignedFmla sf, Tableau tbl);
 
 int get_fmla_max_size(Tableau tbl, vector<int> branch);
+
+vector<TblRule> remove_unnecessary_rules(vector<SignedFmla> sf, vector<TblRule> er);
+
+// bool are_deductively_isomorphic(Tableau tbl1, Tableau tbl2);
+
+// vector<Tableau> remove_deductively_isomorphic_proof(vector<Tableau> tableaux);
 
 #endif // DEDUCTION_H

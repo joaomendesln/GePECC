@@ -23,7 +23,7 @@ int main() {
     // test_get_all_arranges();
     // test_is_a_match();
     // test_matching_parameters();
-    // test_trying_apply_expansion_rule();
+    // test_apply_rule_with_premisse();
     // test_apply_cut();
     // test_get_cut_fmlas();
 

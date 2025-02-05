@@ -11,7 +11,7 @@ void test_is_a_match();
 
 void test_matching_parameters();
 
-void test_trying_apply_expansion_rule();
+void test_apply_rule_with_premisse();
 
 void test_apply_cut();
 

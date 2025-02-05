@@ -51,13 +51,13 @@ void test_matching_parameters() {
     }
 }
 
-void test_trying_apply_expansion_rule(){
+void test_apply_rule_with_premisse(){
     vector<SignedFmla> sf = pre_process_signed_fmla_input();
     Tableau tbl = get_initial_tableau(sf);
 
     vector<TblRule> expansion_rules = pre_process_expansion_rules_input();
     
-    vector<Tableau> tableaux = trying_apply_expansion_rule(tbl, expansion_rules[9]);
+    vector<Tableau> tableaux = apply_rule_with_premisse(tbl, expansion_rules[9]);
 
     int i = 0;
     for (Tableau tableau : tableaux) {
