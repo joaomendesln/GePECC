@@ -29,9 +29,9 @@ vector<vector<int>> get_all_arranges_repetition(int terms_tbl_amt, int parameter
 
 vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule); // One expansion rule may be applied in a tableau in several ways. That's why the output is a vector of tableaux
 
-vector<Tableau> apply_rule_no_premisse(Tableau tbl, TblRule expansion_rule);
+vector<Tableau> apply_rule_no_premisse(Tableau tbl, TblRule expansion_rule, vector<TblRule> er);
 
-vector<Tableau> apply_cut(Tableau tbl, Fmla cut_fmla);
+vector<Tableau> apply_cut(Tableau tbl, Fmla cut_fmla, vector<TblRule> er);
 
 bool is_a_match(SignedFmla sf, SignedFmla premisse);
 
@@ -75,9 +75,11 @@ int get_size2(Tableau tbl);
 
 vector<Tableau> extract_minimal_proofs(vector<SignedFmla> sf, vector<TblRule> er);
 
-vector<Fmla> potential_premisse_nodes_branch(Tableau tbl, vector<int> branch, vector<TblRule> er);
+vector<SignedFmla> potential_premisse_nodes_branch(Tableau tbl, vector<int> branch, vector<TblRule> er);
 
-vector<Fmla> potential_premisse_nodes_rule(SignedFmla sf, TblRule rule);
+bool is_potential_premisse_nodes_branch(SignedFmla sf_input, Tableau tbl, vector<int> branch, vector<TblRule> er);
+
+vector<SignedFmla> potential_premisse_nodes_rule(SignedFmla sf, TblRule rule);
 
 bool node_in_tbl(SignedFmla sf, Tableau tbl);
 

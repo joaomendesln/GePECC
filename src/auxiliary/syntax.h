@@ -24,9 +24,13 @@ bool is_language_symb(string symb, map<string, int> language_symbs);
 
 bool is_a_parameter(FmlaNode fmla_node);
 
+bool is_a_parameter(TermNode term_node);
+
 Term get_term_of_fmla(Fmla fmla, int subfmla_root);
 
 vector<Term> get_all_terms_of_fmla(Fmla fmla);
+
+bool term_in_vector_of_terms(Term term, vector<Term> terms);
 
 Fmla subst_parameter_by_term(Fmla fmla, int parameter_idx, Term term);
 
@@ -34,7 +38,13 @@ set<int> get_parameters_idxs(Fmla fmla);
 
 Fmla subst_extension(Fmla fmla, Subst subs);
 
+Fmla subst_extension_potential(Fmla fmla, Subst subs);
+
+string get_new_parameter(set<string> parameters);
+
 vector<string> get_all_parameters_of_fmla(Fmla fmla);
+
+vector<string> get_all_parameters_of_term(Term term);
 
 set<string> get_all_parameters(vector<Fmla> fmlas);
 

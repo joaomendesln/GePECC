@@ -75,7 +75,7 @@ void test_apply_cut() {
     vector<TblRule> expansion_rules = pre_process_expansion_rules_input();
     Fmla cut_fmla = parse_fmla("∈(g(p1,p2),p1)");
 
-    vector<Tableau> tableaux = apply_cut(tbl, cut_fmla);
+    vector<Tableau> tableaux = apply_cut(tbl, cut_fmla, expansion_rules);
 
     int i = 0;
     for (Tableau tableau : tableaux) {
@@ -92,6 +92,23 @@ void test_get_cut_fmlas() {
 
     for (Fmla fmla : cut_fmlas) {
         print_fmla_prefix(fmla);
+        cout << "\n";
+    }
+}
+
+void test_potential_premisse_nodes_rule() {
+
+    vector<TblRule> expansion_rules = pre_process_expansion_rules_input();
+
+    SignedFmla sf = pre_process_signed_fmla("(+, ∈(p1,∩(p2,p3)))");
+    TblRule rule = expansion_rules[2];
+    vector<SignedFmla> potential_nodes = potential_premisse_nodes_rule(sf, rule);
+
+    for (SignedFmla node : potential_nodes) {
+        if (node.sign == polarity::minus) cout << "- ";
+        if (node.sign == polarity::plus) cout << "+ ";
+
+        print_fmla_prefix(node.fmla);
         cout << "\n";
     }
 }

@@ -20,6 +20,12 @@ bool is_a_parameter(FmlaNode fmla_node) {
     return fmla_node.children.size() == 0 && !is_language_symb(fmla_node.data, language_symbs);
 }
 
+bool is_a_parameter(TermNode term_node) {
+    map<string, int> language_symbs = pre_process_language_symbs();
+
+    return term_node.children.size() == 0 && !is_language_symb(term_node.data, language_symbs);
+}
+
 Term get_term_of_fmla(Fmla fmla, int term_root) {
     set<int> subfmla_nodes_idx;
     Term term;
@@ -126,12 +132,92 @@ Fmla subst_extension(Fmla fmla, Subst subs) {
    return fmla;
 }
 
+Fmla subst_extension_potential(Fmla fmla, Subst subs) {
+
+    set<string> parameters_subs, parameters_subs_domain;
+
+    for (const auto& pair : subs) {
+        parameters_subs.insert(pair.first);
+        parameters_subs_domain.insert(pair.first);
+
+        vector<string> parameters = get_all_parameters_of_term(pair.second);
+
+        for (string parameter : parameters) {
+            parameters_subs.insert(parameter);
+        }
+
+    }
+
+    int fmla_initial_size = fmla.size();
+    
+
+    vector<string> fmla_parameters = get_all_parameters_of_fmla(fmla);
+    set<string> fmla_parameters_set(fmla_parameters.begin(), fmla_parameters.end());
+    
+    set<int> parameters_idxs = get_parameters_idxs(fmla);
+
+    for (int parameter_idx : parameters_idxs) {
+        string parameter_str = fmla[parameter_idx].data;
+        if (parameters_subs_domain.find(parameter_str) == parameters_subs_domain.end()) {
+            string new_parameter = get_new_parameter(parameters_subs);
+
+            fmla_parameters_set.insert(new_parameter);
+
+            TermNode term_node;
+            term_node.data = new_parameter;
+            term_node.parent = 0;
+            term_node.children = {};
+
+            subs[parameter_str] = {term_node};
+            parameters_subs.insert(new_parameter);
+        }
+    }
+
+    for (int i = 0; i < fmla_initial_size; i++) {
+        if (parameters_idxs.find(i) != parameters_idxs.end()) {
+            fmla = subst_parameter_by_term(fmla, i, subs[fmla[i].data]);
+        }
+    }
+
+   return fmla;
+}
+
+string get_new_parameter(set<string> parameters) {
+    for (int i = 1; i <= parameters.size(); i++) {
+        string parameter_test = "p" + to_string(i);
+        if (parameters.find(parameter_test) == parameters.end()) {
+            return parameter_test;
+        }
+    }
+    return "p" + to_string(parameters.size() + 1);
+}
+
 vector<string> get_all_parameters_of_fmla(Fmla fmla) {
     vector<string> parameters;
 
     for (int i = 0; i < fmla.size(); i++) {
         FmlaNode fmla_node = fmla[i];
         if (is_a_parameter(fmla_node)) parameters.push_back(fmla_node.data);
+
+    }
+
+    return parameters;
+}
+
+bool term_in_vector_of_terms(Term term, vector<Term> terms) {
+    bool result = false;
+    for (Term t : terms) {
+        if (term_equality(term, t)) result = true;
+    }
+    return result;
+}
+
+vector<string> get_all_parameters_of_term(Term term) {
+    vector<string> parameters;
+
+    for (int i = 0; i < term.size(); i++) {
+        TermNode term_node = term[i];
+        if (is_a_parameter(term_node)) parameters.push_back(term_node.data);
 
     }
 

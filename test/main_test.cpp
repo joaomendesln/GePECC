@@ -13,6 +13,7 @@ int main() {
     // test_pre_process_expansion_rules();
     // test_pre_process_signed_fmlas_input();
     // test_pre_process_cut_fmlas();
+    test_potential_premisse_nodes_rule();
 
     // // ++ Parser
     // test_parser();

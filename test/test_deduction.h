@@ -17,4 +17,6 @@ void test_apply_cut();
 
 void test_get_cut_fmlas();
 
+void test_potential_premisse_nodes_rule();
+
 #endif // TEST_DEDUCTION_H
