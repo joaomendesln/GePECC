@@ -7,14 +7,17 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
+    cout << "===== Pre-processing signed formulas file\n";
     vector<SignedFmla> sf = pre_process_signed_fmla_input();
+
+    cout << "===== Pre-processing expansion rules file\n";
     vector<TblRule> er = pre_process_expansion_rules_input();
 
     cout << "ER size before: " << er.size() << "\n";
     er = add_cut_rule(er);
     cout << "ER size after cut: " << er.size() << "\n";
 
-    er = remove_unnecessary_rules(sf, er);
+    // er = remove_unnecessary_rules(sf, er);
 
     vector<Tableau> minimal_proofs = extract_minimal_proofs(sf, er);
 

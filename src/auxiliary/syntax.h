@@ -36,6 +36,8 @@ Fmla subst_parameter_by_term(Fmla fmla, int parameter_idx, Term term);
 
 set<int> get_parameters_idxs(Fmla fmla);
 
+set<string> get_parameters(Fmla fmla);
+
 Fmla subst_extension(Fmla fmla, Subst subs);
 
 Fmla subst_extension_potential(Fmla fmla, Subst subs);

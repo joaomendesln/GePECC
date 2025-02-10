@@ -72,7 +72,7 @@ map<string, int> pre_process_function_symbs() {
 
     map <string, int> resulting_function_symbs;
 
-    vector<string> lines = {"function", "0: ∅", "2: g, ∩, ∪", "predicate", "2: ∈"};
+    vector<string> lines = {"function", "0: ∅", "1: fst, snd", "2: f, g, ∩, ∪, ×", "predicate", "2: ∈, ⊆"};
     // vector<string> lines = {};
     
     if (lines.size() == 0){
@@ -98,10 +98,43 @@ map<string, int> pre_process_function_symbs() {
 
 }
 
+set<string> pre_process_skolem_symbs() {
+    string line = "f, g";
+
+    if (line.size() == 0){
+        string file_path = "../src/inputs/symbols";
+        line = open_file(file_path)[0];
+    }
+
+    string skolem_symbs_no_space = "";
+
+    for (char c : line) {
+        if(!isspace(c)) {
+            skolem_symbs_no_space += c;
+        }
+    }
+
+    vector<string> skolem_symbs_vec;
+    stringstream stream_func(skolem_symbs_no_space);
+    string symb;
+
+    while (getline(stream_func, symb, ',')) {
+        skolem_symbs_vec.push_back(symb);
+    }
+
+    set<string> skolem_symbs;
+
+    for (string symb : skolem_symbs_vec) {
+        skolem_symbs.insert(symb);
+    }
+
+    return skolem_symbs;
+}
+
 map<string, int> pre_process_predicate_symbs() {
     map <string, int> resulting_predicate_symbs;
 
-    vector<string> lines = {"function", "0: ∅", "2: g, ∩, ∪", "predicate", "2: ∈"};
+    vector<string> lines = {"function", "0: ∅", "1: fst, snd", "2: f, g, ∩, ∪, ×", "predicate", "2: ∈, ⊆"};
     // vector<string> lines = {};
 
     if (lines.size() == 0){
@@ -182,7 +215,11 @@ TblRule pre_process_single_expansion_rule(string line) {
 }
 
 vector<SignedFmla> pre_process_signed_fmla_list(string list) {
+    // cout << list << "\n";
+    if (list.size() == 0) return {};
+
     vector<SignedFmla> signed_fmla_vec;
+
     
     int parentheses_counter = 0;
     string signed_fmla_str = "";
@@ -273,18 +310,56 @@ vector<TblRule> pre_process_expansion_rules_input() {
 
     vector<TblRule> resulting_expansion_rules;
 
-    vector<string> lines = {
+    // vector<string> lines = {
+    //     "[ax∩]",
+    //     "(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p2))",
+    //     "(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p3))",
+    //     "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p2)); (-, ∈(p1, p3))",
+    //     "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p3)); (-, ∈(p1, p2))",
+    //     "[ax∪]",
+    //     "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p2))",
+    //     "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p3))",
+    //     "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p2)); (+, ∈(p1, p3))",
+    //     "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p3)); (+, ∈(p1, p2))",
+    //     "; (-, ∈(p1,∅))"};
+
+    vector<string> lines = 
+    {
         "[ax∩]",
         "(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p2))",
         "(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p3))",
         "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p2)); (-, ∈(p1, p3))",
         "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p3)); (-, ∈(p1, p2))",
+        "(+, ∈(p1, p2)), (+, ∈(p1, p3)); (+, ∈(p1, ∩(p2, p3)))",
+        "(-, ∈(p1, p2)); (-, ∈(p1, ∩(p2, p3)))",
+        "(-, ∈(p1, p3)); (-, ∈(p1, ∩(p2, p3)))",
         "[ax∪]",
         "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p2))",
         "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p3))",
         "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p2)); (+, ∈(p1, p3))",
         "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p3)); (+, ∈(p1, p2))",
-        "; (-, ∈(p1,∅))"};
+        "(+, ∈(p1, p2)); (+, ∈(p1, ∪(p2, p3)))",
+        "(+, ∈(p1, p3)); (+, ∈(p1, ∪(p2, p3)))",
+        "(-, ∈(p1, p2)), (-, ∈(p1, p3)); (-, ∈(p1, ∪(p2, p3)))",
+        "[ax∅]",
+        ";(-, ∈(p1,∅))",
+        "[ax×]",
+        "(+, ∈(p1, ×(p2,p3))); (+, ∈(fst(p1), p2))",
+        "(+, ∈(p1, ×(p2,p3))); (+, ∈(snd(p1), p3))",
+        "(+, ∈(fst(p1), p2)), (-, ∈(p1, ×(p2,p3))); (-, ∈(snd(p1), p3))",
+        "(+, ∈(snd(p1), p3)), (-, ∈(p1, ×(p2,p3))); (-, ∈(fst(p1), p2))",
+        "(+, ∈(fst(p1), p2)), (+, ∈(snd(p1), p3)); (+, ∈(p1, ×(p2,p3)))",
+        "(-, ∈(fst(p1), p2)); (-, ∈(p1, ×(p2,p3)))",
+        "(-, ∈(snd(p1), p3)); (-, ∈(p1, ×(p2,p3)))",
+        "[ax⊆]",
+        "(+, ∈(p3, p1)), (+, ⊆(p1,p2)); (+, ∈(p3,p2))",
+        "(-, ∈(p3,p2)), (+, ⊆(p1,p2)); (-, ∈(p3, p1))",
+        // "(+, ∈(p3, p1)), (-, ∈(p3,p2)); (-, ⊆(p1,p2))",
+        // "(-, ∈(f(p1,p2), p1)); (+, ⊆(p1, p2))",
+        // "(+, ∈(f(p1,p2), p2)); (+, ⊆(p1, p2))",
+        "(-, ⊆(p1, p2)); (+, ∈(f(p1,p2), p1))",
+        "(-, ⊆(p1, p2)); (-, ∈(f(p1,p2), p2))",
+    };
 
     // vector<string> lines = 
     // {"(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p2))",
@@ -307,6 +382,7 @@ vector<TblRule> pre_process_expansion_rules_input() {
     for (int i = 0; i < lines.size(); i++) {
         string line = lines[i];
         if (line.size() > 0 && line[0] != '[') {
+            // cout << line << "\n";
             resulting_expansion_rules.push_back(pre_process_single_expansion_rule(lines[i]));
         }
     }
@@ -326,9 +402,19 @@ vector<SignedFmla> pre_process_signed_fmla_input() {
     //     "(+, ∈(p1, ∩(p2, ∪(p3, p4))))", 
     //     "(-, ∈(p1, ∪(∩(p2, p3), p4)))"
     // };
+    // vector<string> lines = {
+    //     "(+, ∈(p1, ∩(p2, p3)))", 
+    //     "(-, ∈(p1, ∩(∪(p2, p4), ∪(p3, p5))))"
+    // };
+    // vector<string> lines = {
+    //     "(+, ∈(p1, ∩(p2, ∩(p3, p4))))", 
+    //     "(-, ∈(p1, p2))"
+    // };
+    // vector<string> lines = {
+    //     "(-, ⊆(p1, p1))"
+    // };
     vector<string> lines = {
-        "(+, ∈(p1, ∩(p2, p3)))", 
-        "(-, ∈(p1, ∩(∪(p2, p4), ∪(p3, p5))))"
+        "(-, ⊆(∩(×(p1,p2),×(p3,p4)),×(∩(p1,p2),∩(p3,p4))))" 
     };
 
     // vector<string> lines = {};

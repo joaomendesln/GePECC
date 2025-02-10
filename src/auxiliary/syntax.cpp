@@ -108,14 +108,22 @@ Fmla subst_parameter_by_term(Fmla fmla, int parameter_idx, Term term) {
 set<int> get_parameters_idxs(Fmla fmla) {
     set<int> parameters_idx;
 
-    map<string, int> function_symbs = pre_process_function_symbs();
-    map<string, int> predicate_symbs = pre_process_predicate_symbs();
-
     for (int i = 0; i < fmla.size(); i++) {
         if (is_a_parameter(fmla[i])) parameters_idx.insert(i);
     }
 
     return parameters_idx;
+}
+
+set<string> get_parameters(Fmla fmla) {
+    set<string> parameters;
+
+    for (int i = 0; i < fmla.size(); i++) {
+        if (is_a_parameter(fmla[i])) parameters.insert(fmla[i].data);
+    }
+
+    return parameters;
+
 }
 
 Fmla subst_extension(Fmla fmla, Subst subs) {

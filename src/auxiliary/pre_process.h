@@ -34,4 +34,6 @@ vector<TblRule> pre_process_expansion_rules_input();
 
 vector<SignedFmla> pre_process_signed_fmla_input();
 
+set<string> pre_process_skolem_symbs();
+
 #endif // PRE_PROCESS_H
