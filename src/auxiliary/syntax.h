@@ -26,6 +26,8 @@ bool is_a_parameter(FmlaNode fmla_node);
 
 bool is_a_parameter(TermNode term_node);
 
+bool parameter_in_fmla(Fmla fmla, string parameter);
+
 Term get_term_of_fmla(Fmla fmla, int subfmla_root);
 
 vector<Term> get_all_terms_of_fmla(Fmla fmla);
@@ -44,7 +46,7 @@ Fmla subst_extension_potential(Fmla fmla, Subst subs);
 
 string get_new_parameter(set<string> parameters);
 
-vector<string> get_all_parameters_of_fmla(Fmla fmla);
+set<string> get_all_parameters_of_fmla(Fmla fmla);
 
 vector<string> get_all_parameters_of_term(Term term);
 

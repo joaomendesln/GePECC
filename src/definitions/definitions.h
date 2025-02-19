@@ -12,6 +12,10 @@ enum class polarity { // TODO: check if "class" is necessary
     plus, minus, none
 };
 
+enum class symbType {
+    func, pred
+};
+
 enum class side { // TODO: delete this class if it is not necessary
     left, right
 };
@@ -90,7 +94,7 @@ typedef vector<TblNode> Tableau;
 
 struct TblRule {
     vector<SignedFmla> premisses;
-    SignedFmla conclusion; // The only rule which has multiple conclusion is the cut
+    vector<SignedFmla> conclusions; // The only rule which has multiple conclusion is the cut
     bool is_cut;
 };
 

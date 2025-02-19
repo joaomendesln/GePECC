@@ -53,6 +53,8 @@ bool tbl_is_closed(Tableau tbl);
 
 vector<Term> get_all_terms_of_branch(Tableau tbl, vector<int> branch);
 
+bool is_a_term_in_branch(Tableau tbl, vector<int> branch, Term term);
+
 vector<Fmla> get_cut_fmlas(vector<TblRule> er);
 
 vector<TblRule> add_cut_rule(vector<TblRule> er);
@@ -86,6 +88,18 @@ bool node_in_tbl(SignedFmla sf, Tableau tbl);
 int get_fmla_max_size(Tableau tbl, vector<int> branch);
 
 vector<TblRule> remove_unnecessary_rules(vector<SignedFmla> sf, vector<TblRule> er);
+
+vector<Tableau> proofs_with_same_structure(Tableau tbl, vector<TblRule> er);
+
+bool is_valid_filled_ps(Tableau filled_ps, vector<pair<symbType, int>> proof_schema);
+
+bool is_a_proof(Tableau filled_ps, vector<TblRule> er);
+
+bool check_rule_application(vector<SignedFmla> premisses, SignedFmla conclusion, vector<TblRule> er);
+
+bool check_cuts(Tableau filled_ps);
+
+vector<SignedFmla> get_initial_sf(Tableau tbl);
 
 // bool are_deductively_isomorphic(Tableau tbl1, Tableau tbl2);
 

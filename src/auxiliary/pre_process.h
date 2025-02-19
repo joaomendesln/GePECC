@@ -24,6 +24,8 @@ map<string, int> pre_process_predicate_symbs();
 
 map<string, int> pre_process_language_symbs();
 
+map<string, int> pre_process_no_skolem_symbs();
+
 SignedFmla pre_process_signed_fmla(string signed_fmla_str);
 
 vector<SignedFmla> pre_process_signed_fmla_list(string list);

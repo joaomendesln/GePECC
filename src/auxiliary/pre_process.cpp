@@ -102,7 +102,7 @@ set<string> pre_process_skolem_symbs() {
     string line = "f, g";
 
     if (line.size() == 0){
-        string file_path = "../src/inputs/symbols";
+        string file_path = "../src/inputs/skolem_symbols";
         line = open_file(file_path)[0];
     }
 
@@ -185,10 +185,29 @@ map<string, int> pre_process_language_symbs() {
     return language_symbs;
 }
 
+map<string, int> pre_process_no_skolem_symbs() {
+    map<string, int> function_symbs = pre_process_function_symbs();
+    map<string, int> predicate_symbs = pre_process_predicate_symbs();
+    set<string> skolem_symbs = pre_process_skolem_symbs();
+
+    map<string, int> no_skolem_symbs;
+
+    for (const auto& pair : function_symbs) {
+        if (skolem_symbs.find(pair.first) == skolem_symbs.end()) no_skolem_symbs[pair.first] = pair.second;
+    }
+
+    for (const auto& pair : predicate_symbs) {
+        no_skolem_symbs[pair.first] = pair.second;
+    }
+
+    return no_skolem_symbs;
+
+}
+
 TblRule pre_process_single_expansion_rule(string line) {
 
     string str_premisses;
-    string str_conclusion;
+    string str_conclusions;
     bool premisses_finished = false;
     for (int i = 0; i < line.size(); i++) {
         char c = line[i];
@@ -199,16 +218,16 @@ TblRule pre_process_single_expansion_rule(string line) {
             str_premisses += c;
         }
         if (premisses_finished == true && c != ';') {
-            str_conclusion += c;
+            str_conclusions += c;
         }
     }
 
     vector<SignedFmla> premisses = pre_process_signed_fmla_list(str_premisses);
-    SignedFmla conclusion = pre_process_signed_fmla(str_conclusion);
+    vector<SignedFmla> conclusions = pre_process_signed_fmla_list(str_conclusions);
 
     TblRule expansion_rule;
     expansion_rule.premisses = premisses;
-    expansion_rule.conclusion = conclusion;
+    expansion_rule.conclusions = conclusions;
     expansion_rule.is_cut = false;
 
     return expansion_rule;
@@ -323,56 +342,77 @@ vector<TblRule> pre_process_expansion_rules_input() {
     //     "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p3)); (+, ∈(p1, p2))",
     //     "; (-, ∈(p1,∅))"};
 
+    // vector<string> lines = 
+    // {
+    //     "[ax∩]",
+    //     "(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p2))",
+    //     "(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p3))",
+    //     "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p2)); (-, ∈(p1, p3))",
+    //     "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p3)); (-, ∈(p1, p2))",
+    //     "(+, ∈(p1, p2)), (+, ∈(p1, p3)); (+, ∈(p1, ∩(p2, p3)))",
+    //     "(-, ∈(p1, p2)); (-, ∈(p1, ∩(p2, p3)))",
+    //     "(-, ∈(p1, p3)); (-, ∈(p1, ∩(p2, p3)))",
+    //     "[ax∪]",
+    //     "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p2))",
+    //     "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p3))",
+    //     "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p2)); (+, ∈(p1, p3))",
+    //     "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p3)); (+, ∈(p1, p2))",
+    //     "(+, ∈(p1, p2)); (+, ∈(p1, ∪(p2, p3)))",
+    //     "(+, ∈(p1, p3)); (+, ∈(p1, ∪(p2, p3)))",
+    //     "(-, ∈(p1, p2)), (-, ∈(p1, p3)); (-, ∈(p1, ∪(p2, p3)))",
+    //     "[ax∅]",
+    //     ";(-, ∈(p1,∅))",
+    //     "[ax×]",
+    //     "(+, ∈(p1, ×(p2,p3))); (+, ∈(fst(p1), p2))",
+    //     "(+, ∈(p1, ×(p2,p3))); (+, ∈(snd(p1), p3))",
+    //     "(+, ∈(fst(p1), p2)), (-, ∈(p1, ×(p2,p3))); (-, ∈(snd(p1), p3))",
+    //     "(+, ∈(snd(p1), p3)), (-, ∈(p1, ×(p2,p3))); (-, ∈(fst(p1), p2))",
+    //     "(+, ∈(fst(p1), p2)), (+, ∈(snd(p1), p3)); (+, ∈(p1, ×(p2,p3)))",
+    //     "(-, ∈(fst(p1), p2)); (-, ∈(p1, ×(p2,p3)))",
+    //     "(-, ∈(snd(p1), p3)); (-, ∈(p1, ×(p2,p3)))",
+    //     "[ax⊆]",
+    //     "(+, ∈(p3, p1)), (+, ⊆(p1,p2)); (+, ∈(p3,p2))",
+    //     "(-, ∈(p3,p2)), (+, ⊆(p1,p2)); (-, ∈(p3, p1))",
+    //     // "(+, ∈(p3, p1)), (-, ∈(p3,p2)); (-, ⊆(p1,p2))",
+    //     // "(-, ∈(f(p1,p2), p1)); (+, ⊆(p1, p2))",
+    //     // "(+, ∈(f(p1,p2), p2)); (+, ⊆(p1, p2))",
+    //     "(-, ⊆(p1, p2)); (+, ∈(f(p1,p2), p1))",
+    //     "(-, ⊆(p1, p2)); (-, ∈(f(p1,p2), p2))",
+    // };
+
     vector<string> lines = 
     {
         "[ax∩]",
-        "(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p2))",
-        "(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p3))",
+        "(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p2)), (+, ∈(p1, p3))",
         "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p2)); (-, ∈(p1, p3))",
         "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p3)); (-, ∈(p1, p2))",
-        "(+, ∈(p1, p2)), (+, ∈(p1, p3)); (+, ∈(p1, ∩(p2, p3)))",
-        "(-, ∈(p1, p2)); (-, ∈(p1, ∩(p2, p3)))",
-        "(-, ∈(p1, p3)); (-, ∈(p1, ∩(p2, p3)))",
+        // "(+, ∈(p1, p2)), (+, ∈(p1, p3)); (+, ∈(p1, ∩(p2, p3)))",
+        // "(-, ∈(p1, p2)); (-, ∈(p1, ∩(p2, p3)))",
+        // "(-, ∈(p1, p3)); (-, ∈(p1, ∩(p2, p3)))",
         "[ax∪]",
-        "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p2))",
-        "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p3))",
+        "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p2)), (-, ∈(p1, p3))",
         "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p2)); (+, ∈(p1, p3))",
         "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p3)); (+, ∈(p1, p2))",
-        "(+, ∈(p1, p2)); (+, ∈(p1, ∪(p2, p3)))",
-        "(+, ∈(p1, p3)); (+, ∈(p1, ∪(p2, p3)))",
-        "(-, ∈(p1, p2)), (-, ∈(p1, p3)); (-, ∈(p1, ∪(p2, p3)))",
+        // "(+, ∈(p1, p2)); (+, ∈(p1, ∪(p2, p3)))",
+        // "(+, ∈(p1, p3)); (+, ∈(p1, ∪(p2, p3)))",
+        // "(-, ∈(p1, p2)), (-, ∈(p1, p3)); (-, ∈(p1, ∪(p2, p3)))",
         "[ax∅]",
         ";(-, ∈(p1,∅))",
         "[ax×]",
-        "(+, ∈(p1, ×(p2,p3))); (+, ∈(fst(p1), p2))",
-        "(+, ∈(p1, ×(p2,p3))); (+, ∈(snd(p1), p3))",
+        "(+, ∈(p1, ×(p2,p3))); (+, ∈(fst(p1), p2)), (+, ∈(snd(p1), p3))",
         "(+, ∈(fst(p1), p2)), (-, ∈(p1, ×(p2,p3))); (-, ∈(snd(p1), p3))",
         "(+, ∈(snd(p1), p3)), (-, ∈(p1, ×(p2,p3))); (-, ∈(fst(p1), p2))",
-        "(+, ∈(fst(p1), p2)), (+, ∈(snd(p1), p3)); (+, ∈(p1, ×(p2,p3)))",
+        // "(+, ∈(fst(p1), p2)), (+, ∈(snd(p1), p3)); (+, ∈(p1, ×(p2,p3)))",
         "(-, ∈(fst(p1), p2)); (-, ∈(p1, ×(p2,p3)))",
         "(-, ∈(snd(p1), p3)); (-, ∈(p1, ×(p2,p3)))",
         "[ax⊆]",
         "(+, ∈(p3, p1)), (+, ⊆(p1,p2)); (+, ∈(p3,p2))",
         "(-, ∈(p3,p2)), (+, ⊆(p1,p2)); (-, ∈(p3, p1))",
         // "(+, ∈(p3, p1)), (-, ∈(p3,p2)); (-, ⊆(p1,p2))",
-        // "(-, ∈(f(p1,p2), p1)); (+, ⊆(p1, p2))",
-        // "(+, ∈(f(p1,p2), p2)); (+, ⊆(p1, p2))",
-        "(-, ⊆(p1, p2)); (+, ∈(f(p1,p2), p1))",
-        "(-, ⊆(p1, p2)); (-, ∈(f(p1,p2), p2))",
+        "(-, ∈(f(p1,p2), p1)); (+, ⊆(p1, p2))",
+        "(+, ∈(f(p1,p2), p2)); (+, ⊆(p1, p2))",
+        "(-, ⊆(p1, p2)); (+, ∈(f(p1,p2), p1)), (-, ∈(f(p1,p2), p2))",
     };
-
-    // vector<string> lines = 
-    // {"(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p2))",
-    //  "(+, ∈(p1, ∩(p2, p3))); (+, ∈(p1, p3))",
-    //  "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p2)); (-, ∈(p1, p3))",
-    //  "(-, ∈(p1, ∩(p2, p3))), (+, ∈(p1, p3)); (-, ∈(p1, p2))",
-    //  "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p2))",
-    //  "(-, ∈(p1, ∪(p2, p3))); (-, ∈(p1, p3))",
-    //  "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p2)); (+, ∈(p1, p3))",
-    //  "(+, ∈(p1, ∪(p2, p3))), (-, ∈(p1, p3)); (+, ∈(p1, p2))",
-    //  "; (-, ∈(p1,∅))",
-    //  "; (-, ∈(∩(p1,p2),∅))"};
-    // vector<string> lines = {};
 
     if (lines.size() == 0){
         string file_path = "../src/inputs/expansion_rules";
@@ -402,10 +442,10 @@ vector<SignedFmla> pre_process_signed_fmla_input() {
     //     "(+, ∈(p1, ∩(p2, ∪(p3, p4))))", 
     //     "(-, ∈(p1, ∪(∩(p2, p3), p4)))"
     // };
-    // vector<string> lines = {
-    //     "(+, ∈(p1, ∩(p2, p3)))", 
-    //     "(-, ∈(p1, ∩(∪(p2, p4), ∪(p3, p5))))"
-    // };
+    vector<string> lines = {
+        "(+, ∈(p1, ∩(p2, p3)))", 
+        "(-, ∈(p1, ∩(∪(p2, p4), ∪(p3, p5))))"
+    };
     // vector<string> lines = {
     //     "(+, ∈(p1, ∩(p2, ∩(p3, p4))))", 
     //     "(-, ∈(p1, p2))"
@@ -413,9 +453,9 @@ vector<SignedFmla> pre_process_signed_fmla_input() {
     // vector<string> lines = {
     //     "(-, ⊆(p1, p1))"
     // };
-    vector<string> lines = {
-        "(-, ⊆(∩(×(p1,p2),×(p3,p4)),×(∩(p1,p2),∩(p3,p4))))" 
-    };
+    // vector<string> lines = {
+    //     "(-, ⊆(∩(×(p1,p2),×(p3,p4)),×(∩(p1,p3),∩(p2,p4))))" 
+    // };
 
     // vector<string> lines = {};
 

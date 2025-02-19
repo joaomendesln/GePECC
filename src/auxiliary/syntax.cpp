@@ -26,6 +26,14 @@ bool is_a_parameter(TermNode term_node) {
     return term_node.children.size() == 0 && !is_language_symb(term_node.data, language_symbs);
 }
 
+
+bool parameter_in_fmla(Fmla fmla, string parameter) {
+    for (FmlaNode fmla_node : fmla) {
+        if (is_a_parameter(fmla_node) && fmla_node.data == parameter) return true;
+    }
+    return false;
+}
+
 Term get_term_of_fmla(Fmla fmla, int term_root) {
     set<int> subfmla_nodes_idx;
     Term term;
@@ -158,9 +166,7 @@ Fmla subst_extension_potential(Fmla fmla, Subst subs) {
 
     int fmla_initial_size = fmla.size();
     
-
-    vector<string> fmla_parameters = get_all_parameters_of_fmla(fmla);
-    set<string> fmla_parameters_set(fmla_parameters.begin(), fmla_parameters.end());
+    set<string> fmla_parameters_set = get_all_parameters_of_fmla(fmla);
     
     set<int> parameters_idxs = get_parameters_idxs(fmla);
 
@@ -200,12 +206,12 @@ string get_new_parameter(set<string> parameters) {
     return "p" + to_string(parameters.size() + 1);
 }
 
-vector<string> get_all_parameters_of_fmla(Fmla fmla) {
-    vector<string> parameters;
+set<string> get_all_parameters_of_fmla(Fmla fmla) {
+    set<string> parameters;
 
     for (int i = 0; i < fmla.size(); i++) {
         FmlaNode fmla_node = fmla[i];
-        if (is_a_parameter(fmla_node)) parameters.push_back(fmla_node.data);
+        if (is_a_parameter(fmla_node)) parameters.insert(fmla_node.data);
 
     }
 
