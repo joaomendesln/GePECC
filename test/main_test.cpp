@@ -27,6 +27,7 @@ int main() {
     // test_apply_rule_with_premisse();
     // test_apply_cut();
     // test_get_cut_fmlas();
+    test_check_rule_application();
 
     // // ++ Syntax
     // test_get_term_of_fmla(); 

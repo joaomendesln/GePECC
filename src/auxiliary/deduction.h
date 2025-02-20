@@ -95,7 +95,7 @@ bool is_valid_filled_ps(Tableau filled_ps, vector<pair<symbType, int>> proof_sch
 
 bool is_a_proof(Tableau filled_ps, vector<TblRule> er);
 
-bool check_rule_application(vector<SignedFmla> premisses, SignedFmla conclusion, vector<TblRule> er);
+bool check_rule_application(vector<SignedFmla> justifications, SignedFmla expansion, vector<TblRule> er);
 
 bool check_cuts(Tableau filled_ps);
 
