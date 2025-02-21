@@ -23,7 +23,20 @@ int main(int argc, char* argv[]) {
 
     cout << "\nResulting minimal proofs: \n";
     cout << "Size: " << get_size(minimal_proofs[0]) << "\n";
+    int i = 1;
     for (Tableau m : minimal_proofs) {
+        vector<vector<SignedFmla>> isomorphic_sets = proof_isomorphic_sf_sets(m, er);
+        for (vector<SignedFmla> set_sf : isomorphic_sets) {
+            cout << "Set " << i << "\n";
+            i += 1;
+            for (SignedFmla sf : set_sf) {
+                if (sf.sign == polarity::plus) cout << "+ ";
+                if (sf.sign == polarity::minus) cout << "- ";
+                print_fmla_prefix(sf.fmla);
+                cout << "\n";
+            }
+            cout << "\n";
+        }
         print_tableau_as_list_fmla_prefix(m);
         cout << "\n";
     }

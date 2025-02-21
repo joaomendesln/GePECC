@@ -33,7 +33,7 @@ void test_pre_process_expension_rules() {
         TblRule single_expansion_rule = expansion_rules[i];
 
         vector<SignedFmla> premisses = single_expansion_rule.premisses;
-        SignedFmla conclusion = single_expansion_rule.conclusion;
+        vector<SignedFmla> conclusions = single_expansion_rule.conclusions;
 
         cout << ">>> Premisses\n";
         for (int j = 0; j < premisses.size(); j++) {
@@ -47,13 +47,16 @@ void test_pre_process_expension_rules() {
 
         }
         cout << ">>> Conclusion\n";
-        string s = "";
-        if (conclusion.sign == polarity::minus) s = "- ";
-        if (conclusion.sign == polarity::plus) s = "+ ";
-        cout << s;
-        print_fmla_prefix(conclusion.fmla);
-        cout << "\n";
-        cout << "\n\n";
+        for (int j = 0; j < conclusions.size(); j++) {
+            SignedFmla conclusion = conclusions[j];
+            string s = "";
+            if (conclusion.sign == polarity::minus) s = "- ";
+            if (conclusion.sign == polarity::plus) s = "+ ";
+            cout << s;
+            print_fmla_prefix(conclusion.fmla);
+            cout << "\n";
+
+        }
     }
 
 }

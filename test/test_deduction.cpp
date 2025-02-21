@@ -117,10 +117,13 @@ void test_check_rule_application() {
 
     vector<TblRule> expansion_rules = pre_process_expansion_rules_input();
 
-    SignedFmla sf1 = pre_process_signed_fmla("(+, ∈(p1,∩(p2,p3)))");
-    SignedFmla sf2 = pre_process_signed_fmla("(+, ∈(p1,p2))");
+    SignedFmla sf1 = pre_process_signed_fmla("(+, ∈(p1,∩(∩(p2,p4),p3)))");
+    SignedFmla sf2 = pre_process_signed_fmla("(+, ∈(p1,∩(p2,p4)))");
 
     vector<SignedFmla> justifictions = {sf1};
+    // justifictions.push_back(sf1);
+
+    cout << "aaa\n";
     
     cout << check_rule_application(justifictions, sf2, expansion_rules) << "\n";
 

@@ -68,36 +68,6 @@ map<string, int> pre_process_symb_line(string symb_line) {
     return resulting_symbs_map;
 }
 
-map<string, int> pre_process_function_symbs() {
-
-    map <string, int> resulting_function_symbs;
-
-    vector<string> lines = {"function", "0: ∅", "1: fst, snd", "2: f, g, ∩, ∪, ×", "predicate", "2: ∈, ⊆"};
-    // vector<string> lines = {};
-    
-    if (lines.size() == 0){
-        string file_path = "../src/inputs/symbols";
-        lines = open_file(file_path);
-    }
-
-    if (lines[0] != "function") {
-        cout << "Wrong file fomatting\n";
-        return resulting_function_symbs;
-    }
-
-    for (int i = 1; i < lines.size(); i++) {
-        if (lines[i] == "predicate") break;
-
-        map<string, int> line_map = pre_process_symb_line(lines[i]);
-        for (const auto& pair : line_map) {
-            resulting_function_symbs[pair.first] = pair.second;
-        }
-
-    }
-    return resulting_function_symbs;
-
-}
-
 set<string> pre_process_skolem_symbs() {
     string line = "f, g";
 
@@ -131,10 +101,40 @@ set<string> pre_process_skolem_symbs() {
     return skolem_symbs;
 }
 
+map<string, int> pre_process_function_symbs() {
+
+    map <string, int> resulting_function_symbs;
+
+    vector<string> lines = {"function", "0: ∅", "1: fst, snd", "2: f, g, ∩, ∪, ×, △", "predicate", "2: ∈, ⊆"};
+    // vector<string> lines = {};
+    
+    if (lines.size() == 0){
+        string file_path = "../src/inputs/symbols";
+        lines = open_file(file_path);
+    }
+
+    if (lines[0] != "function") {
+        cout << "Wrong file fomatting\n";
+        return resulting_function_symbs;
+    }
+
+    for (int i = 1; i < lines.size(); i++) {
+        if (lines[i] == "predicate") break;
+
+        map<string, int> line_map = pre_process_symb_line(lines[i]);
+        for (const auto& pair : line_map) {
+            resulting_function_symbs[pair.first] = pair.second;
+        }
+
+    }
+    return resulting_function_symbs;
+
+}
+
 map<string, int> pre_process_predicate_symbs() {
     map <string, int> resulting_predicate_symbs;
 
-    vector<string> lines = {"function", "0: ∅", "1: fst, snd", "2: f, g, ∩, ∪, ×", "predicate", "2: ∈, ⊆"};
+    vector<string> lines = {"function", "0: ∅", "1: fst, snd", "2: f, g, ∩, ∪, ×, △", "predicate", "2: ∈, ⊆"};
     // vector<string> lines = {};
 
     if (lines.size() == 0){
@@ -396,8 +396,17 @@ vector<TblRule> pre_process_expansion_rules_input() {
         // "(+, ∈(p1, p2)); (+, ∈(p1, ∪(p2, p3)))",
         // "(+, ∈(p1, p3)); (+, ∈(p1, ∪(p2, p3)))",
         // "(-, ∈(p1, p2)), (-, ∈(p1, p3)); (-, ∈(p1, ∪(p2, p3)))",
-        "[ax∅]",
-        ";(-, ∈(p1,∅))",
+        "[ax△]",
+        "(+, ∈(p1, △(p2, p3))), (-, ∈(p1, p2)); (+, ∈(p1, p3))",
+        "(+, ∈(p1, △(p2, p3))), (-, ∈(p1, p3)); (+, ∈(p1, p2))",
+        "(+, ∈(p1, △(p2, p3))), (+, ∈(p1, p2)); (-, ∈(p1, p3))",
+        "(+, ∈(p1, △(p2, p3))), (+, ∈(p1, p3)); (-, ∈(p1, p2))",
+        "(-, ∈(p1, △(p2, p3))), (-, ∈(p1, p2)); (-, ∈(p1, p3))",
+        "(-, ∈(p1, △(p2, p3))), (-, ∈(p1, p3)); (-, ∈(p1, p2))",
+        "(-, ∈(p1, △(p2, p3))), (+, ∈(p1, p2)); (+, ∈(p1, p3))",
+        "(-, ∈(p1, △(p2, p3))), (+, ∈(p1, p3)); (+, ∈(p1, p2))",
+        // "[ax∅]",
+        // ";(-, ∈(p1,∅))",
         "[ax×]",
         "(+, ∈(p1, ×(p2,p3))); (+, ∈(fst(p1), p2)), (+, ∈(snd(p1), p3))",
         "(+, ∈(fst(p1), p2)), (-, ∈(p1, ×(p2,p3))); (-, ∈(snd(p1), p3))",
@@ -438,14 +447,14 @@ vector<SignedFmla> pre_process_signed_fmla_input() {
     //     "(+, ∈(p1, ∩(p2,p3)))", 
     //     "(-, ∈(p1, p2))"
     // };
-    // vector<string> lines = {
-    //     "(+, ∈(p1, ∩(p2, ∪(p3, p4))))", 
-    //     "(-, ∈(p1, ∪(∩(p2, p3), p4)))"
-    // };
     vector<string> lines = {
-        "(+, ∈(p1, ∩(p2, p3)))", 
-        "(-, ∈(p1, ∩(∪(p2, p4), ∪(p3, p5))))"
+        "(+, ∈(p1, ∩(p2, ∪(p3, p4))))", 
+        "(-, ∈(p1, ∪(∩(p2, p3), p4)))"
     };
+    // vector<string> lines = {
+    //     "(+, ∈(p1, ∩(p2, p3)))", 
+    //     "(-, ∈(p1, ∩(∪(p2, p4), ∪(p3, p5))))"
+    // };
     // vector<string> lines = {
     //     "(+, ∈(p1, ∩(p2, ∩(p3, p4))))", 
     //     "(-, ∈(p1, p2))"

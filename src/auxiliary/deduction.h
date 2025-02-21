@@ -89,7 +89,7 @@ int get_fmla_max_size(Tableau tbl, vector<int> branch);
 
 vector<TblRule> remove_unnecessary_rules(vector<SignedFmla> sf, vector<TblRule> er);
 
-vector<Tableau> proofs_with_same_structure(Tableau tbl, vector<TblRule> er);
+vector<vector<SignedFmla>> proof_isomorphic_sf_sets(Tableau tbl, vector<TblRule> er);
 
 bool is_valid_filled_ps(Tableau filled_ps, vector<pair<symbType, int>> proof_schema);
 

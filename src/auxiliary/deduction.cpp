@@ -1327,7 +1327,7 @@ int get_fmla_max_size(Tableau tbl, vector<int> branch) {
 //     for (Tableau)
 // }
 
-vector<Tableau> proofs_with_same_structure(Tableau tbl, vector<TblRule> er) {
+vector<vector<SignedFmla>> proof_isomorphic_sf_sets(Tableau tbl, vector<TblRule> er) {
     // count amount of combinations
     int signed_fmlas_amt = tbl.size();
 
@@ -1359,16 +1359,15 @@ vector<Tableau> proofs_with_same_structure(Tableau tbl, vector<TblRule> er) {
 
     vector<int> signs_mask(signed_fmlas_amt, 1); // start with a vector of 1's so in 1st iteration, they are all set to 0
 
-    int theory_symbs_amt = 0;
     map<int, pair<string, int>> map_theory_symbs;
     map<string, int> no_skolem = pre_process_no_skolem_symbs();
+    int theory_symbs_amt = no_skolem.size();
     for(const auto& pair : no_skolem) {
         map_theory_symbs[theory_symbs_amt] = pair;
-        theory_symbs_amt += 1;
     }
     vector<int> theory_symbs_mask(no_skolem_symbs_amt, theory_symbs_amt - 1);
 
-    set<vector<SignedFmla>> resulting_sf;
+    vector<vector<SignedFmla>> resulting_sf;
 
     for (int i = 0; i < combinations_signs; i++) {
         Tableau filled_ps = tbl;
@@ -1401,16 +1400,18 @@ vector<Tableau> proofs_with_same_structure(Tableau tbl, vector<TblRule> er) {
         }
 
         if (is_valid_filled_ps(filled_ps, proof_schema)) {
+
             if (is_a_proof(filled_ps, er)) {
-                resulting_sf.insert(get_initial_sf(filled_ps));
+                resulting_sf.push_back(get_initial_sf(filled_ps));
             }
         }
     }
-    return {};
+    return resulting_sf;
 }
 
-bool is_valid_filled_ps(Tableau filled_ps, vector<pair<symbType, int>> proof_schema) {
 
+
+bool is_valid_filled_ps(Tableau filled_ps, vector<pair<symbType, int>> proof_schema) {
     set<string> skolem_symbs = pre_process_skolem_symbs();
     map<string, int> function_symbs = pre_process_function_symbs();
     map<string, int> predicate_symbs = pre_process_predicate_symbs();
@@ -1471,6 +1472,7 @@ bool is_a_proof(Tableau filled_ps, vector<TblRule> er) {
 }
 
 bool check_rule_application(vector<SignedFmla> justifications, SignedFmla expansion, vector<TblRule> er) {
+    cout << "bbb\n";
     for (TblRule rule : er) {
         vector<SignedFmla> premisses = rule.premisses;
         vector<SignedFmla> conclusions = rule.conclusions;
@@ -1515,14 +1517,13 @@ bool check_rule_application(vector<SignedFmla> justifications, SignedFmla expans
 
                     // expand tableau
                     if (all_parameters_match) {
-                        SignedFmla expansion_node;
+                        // SignedFmla expansion_node;
                         for (int j = 0; j < conclusions.size(); j++) {
                             SignedFmla conclusion = conclusions[j];
                             conclusion.fmla = subst_extension(conclusion.fmla, parameters_conclusion_subst);
-                            // if (conclusion.sign == expansion_node.sign && fmla_equality(conclusion.fmla, expansion_node.fmla)) return true;
+                            if (conclusion.sign == expansion.sign && fmla_equality(conclusion.fmla, expansion.fmla)) return true;
                         }
                     }
-
                 }
             }
         }
@@ -1531,7 +1532,7 @@ bool check_rule_application(vector<SignedFmla> justifications, SignedFmla expans
 }
 
 bool check_cuts(Tableau filled_ps) {
-    for(int i = 0; i < filled_ps.size(); i++) {
+    for (int i = 0; i < filled_ps.size(); i++) {
         TblNode tbl_node = filled_ps[i];
         if (tbl_node.tbl_children.size() == 2) { // is the tbl_parent of cut node
             TblNode cut_node1 = filled_ps[tbl_node.tbl_children[0]];
