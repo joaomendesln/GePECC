@@ -25,7 +25,13 @@ int main(int argc, char* argv[]) {
     cout << "Size: " << get_size(minimal_proofs[0]) << "\n";
     int i = 1;
     for (Tableau m : minimal_proofs) {
+
+        print_tableau_as_list_fmla_prefix(m);
+
         vector<vector<SignedFmla>> isomorphic_sets = proof_isomorphic_sf_sets(m, er);
+        cout << "\nAmount of proof-isomorphic sets:\n";
+        cout << isomorphic_sets.size() << "\n";
+        cout << ">>>>>>>>>>>>>>>>>>>>>>\n\n";
         for (vector<SignedFmla> set_sf : isomorphic_sets) {
             cout << "Set " << i << "\n";
             i += 1;
@@ -37,7 +43,6 @@ int main(int argc, char* argv[]) {
             }
             cout << "\n";
         }
-        print_tableau_as_list_fmla_prefix(m);
         cout << "\n";
     }
     return 0;

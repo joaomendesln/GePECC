@@ -18,7 +18,11 @@ using namespace std;
 
 bool is_function_symb(string symb, map<string, int> function_symbs);
 
+bool is_function_symb(string symb);
+
 bool is_predicate_symb(string symb, map<string, int> predicate_symbs);
+
+bool is_predicate_symb(string symb);
 
 bool is_language_symb(string symb, map<string, int> language_symbs);
 
@@ -55,6 +59,8 @@ set<string> get_all_parameters(vector<Fmla> fmlas);
 bool fmla_equality(Fmla fmla1, Fmla fmla2);
 
 bool fmla_equality_under_subst(Fmla fmla1, Fmla fmla2);
+
+bool are_syntactically_isomorphic(Fmla fmla1, Fmla fmla2);
 
 bool term_equality(Term term1, Term term2);
 

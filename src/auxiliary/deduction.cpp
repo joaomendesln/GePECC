@@ -116,6 +116,19 @@ vector<vector<int>> get_all_arranges_repetition(int terms_tbl_amt, int parameter
     return all_arranges;
 }
 
+vector<int> increment_arrange_repitition_mask(vector<int> arrange_mask, vector<int> base){
+    for (int i = arrange_mask.size() - 1; i >= 0; i--) {
+        if (arrange_mask[i] == base[i] - 1) {
+            arrange_mask[i] = 0;
+        }
+        else {
+            arrange_mask[i] = arrange_mask[i] + 1;
+            return arrange_mask;
+        }
+    }
+    return arrange_mask;
+}
+
 vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule) {
     vector<Tableau> resuling_tableaux;
     vector<SignedFmla> premisses = expansion_rule.premisses;
@@ -722,6 +735,8 @@ bool branch_is_closed(vector<int> branch, Tableau tbl) {
             }
         }
     }
+    // TODO Implement closure for 0-conclusion rules
+
     return false;
 }
 
@@ -908,7 +923,7 @@ bool is_closed(Tableau tbl) {
     return is_closed;
 }
 
-pair<int, int> branch_closure_nodes(vector<int> branch, Tableau tbl) {
+vector<int> branch_closure_nodes(vector<int> branch, Tableau tbl) {
     for (int i = 0; i < branch.size(); i++) {
         for (int j = 0; j < branch.size(); j++) {
             int node1 = branch[i];
@@ -931,37 +946,21 @@ bool is_clean(Tableau tbl) {
     vector<vector<int>> branches = get_tbl_branches(tbl);
 
     for (vector<int> branch : branches) {
-        pair<int, int> closure_nodes = branch_closure_nodes(branch, tbl);
+        vector<int> closure_nodes = branch_closure_nodes(branch, tbl);
 
-        int node1 = get<0>(closure_nodes);
+        for (int node : closure_nodes) {
+            queue<int> q;
+            q.push(node);
 
-        queue<int> q1;
-        q1.push(node1);
+            while (!q.empty()) {
+                int current = q.front();
+                q.pop();
 
-        while (!q1.empty()) {
-            int current = q1.front();
-            q1.pop();
+                is_dispensable[current] = false;
 
-            is_dispensable[current] = false;
-
-            for (int justification : tbl[current].justification_parents) {
-                if (justification > 0) q1.push(justification);
-            }
-        }
-
-        int node2 = get<1>(closure_nodes);
-
-        queue<int> q2;
-        q2.push(node2);
-
-        while (!q2.empty()) {
-            int current = q2.front();
-            q2.pop();
-
-            is_dispensable[current] = false;
-
-            for (int justification : tbl[current].justification_parents) {
-                if (justification > 0) q2.push(justification);
+                for (int justification : tbl[current].justification_parents) {
+                    if (justification > 0) q.push(justification);
+                }
             }
         }
     }
@@ -978,45 +977,27 @@ bool is_clean(Tableau tbl) {
 
 int get_branch_size(Tableau tbl, vector<int> branch) {
     int branch_size = 0;
-    pair<int, int> closure_nodes = branch_closure_nodes(branch, tbl);
+    vector<int> closure_nodes = branch_closure_nodes(branch, tbl);
 
-    int node1 = get<0>(closure_nodes);
+    for (int node : closure_nodes) {
+        queue<int> q;
+        q.push(node);
 
-    queue<int> q1;
-    q1.push(node1);
+        while (!q.empty()) {
+            int current = q.front();
+            branch_size += 1;
+            q.pop();
 
-    while (!q1.empty()) {
-        int current = q1.front();
-        branch_size += 1;
-        q1.pop();
-
-        for (int justification : tbl[current].justification_parents) {
-            if (justification == 0) {
-                if (current > 0) q1.push(justification);
+            for (int justification : tbl[current].justification_parents) {
+                if (justification == 0) {
+                    if (current > 0) q.push(justification);
+                }
+                if (justification > 0) q.push(justification);
             }
-            if (justification > 0) q1.push(justification);
         }
-    }
+    }    
 
-    int node2 = get<1>(closure_nodes);
-
-    queue<int> q2;
-    q2.push(node2);
-
-    while (!q2.empty()) {
-        int current = q2.front();
-        branch_size += 1;
-        q2.pop();
-
-        for (int justification : tbl[current].justification_parents) {
-            if (justification == 0) {
-                if (current > 0) q2.push(justification);
-            }
-            if (justification > 0) q2.push(justification);
-        }
-    }
-
-    return branch_size + 1; // '+ 1' so we count closure nodes
+    return branch_size + 1; // '+ 1' so we count the closure
 }
 
 int get_size(Tableau tbl) {
@@ -1030,65 +1011,65 @@ int get_size(Tableau tbl) {
     return size;
 }
 
-int get_branch_size2(Tableau tbl, vector<int> branch) {
-    int branch_size = 0;
-    pair<int, int> closure_nodes = branch_closure_nodes(branch, tbl);
+// int get_branch_size2(Tableau tbl, vector<int> branch) {
+//     int branch_size = 0;
+//     pair<int, int> closure_nodes = branch_closure_nodes(branch, tbl);
 
-    int node1 = get<0>(closure_nodes);
+//     int node1 = get<0>(closure_nodes);
 
-    queue<int> q1;
-    q1.push(node1);
+//     queue<int> q1;
+//     q1.push(node1);
 
-    while (!q1.empty()) {
-        int current = q1.front();
-        cout << current << ": ";
-        print_fmla_prefix(tbl[current].signed_fmla.fmla);
-        branch_size += 1;
-        cout << " -> " << branch_size << "\n";
-        q1.pop();
+//     while (!q1.empty()) {
+//         int current = q1.front();
+//         cout << current << ": ";
+//         print_fmla_prefix(tbl[current].signed_fmla.fmla);
+//         branch_size += 1;
+//         cout << " -> " << branch_size << "\n";
+//         q1.pop();
 
-        for (int justification : tbl[current].justification_parents) {
-            if (justification == 0) {
-                if (current > 0) q1.push(justification);
-            }
-            if (justification > 0) q1.push(justification);
-        }
-    }
+//         for (int justification : tbl[current].justification_parents) {
+//             if (justification == 0) {
+//                 if (current > 0) q1.push(justification);
+//             }
+//             if (justification > 0) q1.push(justification);
+//         }
+//     }
 
-    int node2 = get<1>(closure_nodes);
+//     int node2 = get<1>(closure_nodes);
 
-    queue<int> q2;
-    q2.push(node2);
+//     queue<int> q2;
+//     q2.push(node2);
 
-    while (!q2.empty()) {
-        int current = q2.front();
-        cout << current << ": ";
-        print_fmla_prefix(tbl[current].signed_fmla.fmla);
-        branch_size += 1;
-        cout << " -> " << branch_size << "\n";
-        q2.pop();
+//     while (!q2.empty()) {
+//         int current = q2.front();
+//         cout << current << ": ";
+//         print_fmla_prefix(tbl[current].signed_fmla.fmla);
+//         branch_size += 1;
+//         cout << " -> " << branch_size << "\n";
+//         q2.pop();
 
-        for (int justification : tbl[current].justification_parents) {
-            if (justification == 0) {
-                if (current > 0) q2.push(justification);
-            }
-            if (justification > 0) q2.push(justification);
-        }
-    }
+//         for (int justification : tbl[current].justification_parents) {
+//             if (justification == 0) {
+//                 if (current > 0) q2.push(justification);
+//             }
+//             if (justification > 0) q2.push(justification);
+//         }
+//     }
 
-    return branch_size + 1; // '+ 1' so we count closure nodes
-}
+//     return branch_size + 1; // '+ 1' so we count closure nodes
+// }
 
-int get_size2(Tableau tbl) {
-    int size = 0;
-    vector<vector<int>> branches = get_tbl_branches(tbl);
+// int get_size2(Tableau tbl) {
+//     int size = 0;
+//     vector<vector<int>> branches = get_tbl_branches(tbl);
 
-    for (vector<int> branch : branches) {
-        size += get_branch_size2(tbl, branch);
-    }
+//     for (vector<int> branch : branches) {
+//         size += get_branch_size2(tbl, branch);
+//     }
 
-    return size;
-}
+//     return size;
+// }
 
 vector<Tableau> extract_minimal_proofs(vector<SignedFmla> sf, vector<TblRule> er) {
     queue<tuple<Tableau, int>> aux_queue;
@@ -1327,27 +1308,171 @@ int get_fmla_max_size(Tableau tbl, vector<int> branch) {
 //     for (Tableau)
 // }
 
-vector<vector<SignedFmla>> proof_isomorphic_sf_sets(Tableau tbl, vector<TblRule> er) {
-    // count amount of combinations
-    int signed_fmlas_amt = tbl.size();
+// vector<vector<SignedFmla>> proof_isomorphic_sf_sets(Tableau tbl, vector<TblRule> er) {
+//     // count amount of combinations
+//     int signed_fmlas_amt = tbl.size();
 
-    vector<pair<symbType, int>> proof_schema;
+//     map<pair<int, int>, pair<symbType, int>> proof_schema;
+//     set<string> skolem_symbs = pre_process_skolem_symbs();
+//     int no_skolem_symbs_amt = 0;
+//     map<int, pair<int, int>> map_no_skolem_symb; // map the position in the tableau and in the formula for each symbol in the filled proof-schema
+
+//     for (int i = 0; i < tbl.size(); i++) {
+//         TblNode tbl_node = tbl[i];
+//         Fmla fmla = tbl_node.signed_fmla.fmla;
+//         for (int j = 0; j < fmla.size(); j++) {
+//             if (j == 0) { // predicate symbols
+//                 proof_schema[make_pair(i,j)] = make_pair(symbType::pred, fmla[0].children.size());
+//                 map_no_skolem_symb[no_skolem_symbs_amt] = make_pair(i,j);
+//                 no_skolem_symbs_amt += 1;
+//             }
+//             else { // function symbol or parameter
+//                 if (!is_a_parameter(fmla[j]) && skolem_symbs.find(fmla[j].data) == skolem_symbs.end()) {
+//                     proof_schema[make_pair(i,j)] = make_pair(symbType::func, fmla[j].children.size());
+//                     map_no_skolem_symb[no_skolem_symbs_amt] = make_pair(i,j);
+//                     no_skolem_symbs_amt += 1;
+//                 }
+//             }
+//         }
+//     }
+
+//     int combinations_signs = pow(2, signed_fmlas_amt);
+
+//     vector<int> signs_mask(signed_fmlas_amt, 1); // start with a vector of 1's so in 1st iteration, they are all set to 0
+
+//     map<int, pair<string, int>> map_theory_symbs;
+//     map<string, int> no_skolem = pre_process_no_skolem_symbs();
+//     int theory_symbs_amt = no_skolem.size();
+//     int count = 0;
+//     for(const auto& pair : no_skolem) {
+//         map_theory_symbs[count] = pair;
+//         count += 1;
+//     }
+
+//     vector<vector<SignedFmla>> resulting_sf;
+
+//     for (int i = 0; i < combinations_signs; i++) {
+//         Tableau filled_ps = tbl;
+//         signs_mask = increment_arrange_repitition_mask(signs_mask, 2);
+//         for (int j = 0; j < filled_ps.size(); j++) {
+//             TblNode tbl_node = filled_ps[j];
+//             if (signs_mask[j] == 0) {
+//                 tbl_node.signed_fmla.sign = polarity::minus;
+//             }
+//             else {
+//                 tbl_node.signed_fmla.sign = polarity::plus;
+//             }
+//             filled_ps[j] = tbl_node;
+//         }
+
+//         vector<int> theory_symbs_mask(no_skolem_symbs_amt, theory_symbs_amt - 1);
+//         long int combinations_symbs = pow(theory_symbs_amt, no_skolem_symbs_amt);
+//         for (int j = 0; j < combinations_symbs; j,++) {
+//             theory_symbs_mask = increment_arrange_repitition_mask(theory_symbs_mask, theory_symbs_amt);
+//             bool is_valid_ps = true;
+//             for (int k = 0; k < no_skolem_symbs_amt; k++) {
+//                 int tbl_node_idx = map_no_skolem_symb[k].first;
+//                 int fmla_node_idx = map_no_skolem_symb[k].second;
+//                 int l = no_skolem_symbs_amt - 1 - k;
+//                 string symb_subst = map_theory_symbs[theory_symbs_mask[l]].first;
+//                 int symb_arity = map_theory_symbs[theory_symbs_mask[l]].second;
+
+//                 if ((fmla_node_idx == 0 && is_predicate_symb(symb_subst)) || (fmla_node_idx > 0 && is_function_symb(symb_subst))) {
+//                     // getting the correspondent fmla_node we want to manipulate
+//                     TblNode tbl_node = filled_ps[tbl_node_idx];
+//                     FmlaNode fmla_node = tbl_node.signed_fmla.fmla[fmla_node_idx];
+
+//                     // set the data of fmla_node for its correspondent theory symbol
+//                     if (fmla_node.children.size() == symb_arity){
+//                         fmla_node.data = symb_subst;
+//                     }
+//                     else {
+//                         is_valid_ps = false;
+//                         k = no_skolem_symbs_amt;
+//                     }
+
+//                     tbl_node.signed_fmla.fmla[fmla_node_idx] = fmla_node;
+//                     filled_ps[tbl_node_idx] = tbl_node;
+//                 }
+//                 else {
+//                     is_valid_ps = false;
+//                     k = no_skolem_symbs_amt;
+//                 }
+//             }
+
+//             // if (is_valid_filled_ps(filled_ps, proof_schema)) {
+//             if (is_valid_ps == true){
+//                 print_tableau_as_list_fmla_prefix(filled_ps);
+//                 cout << "\n\n";
+//                 if (is_a_proof(filled_ps, er)) {
+//                     resulting_sf.push_back(get_initial_sf(filled_ps));
+//                 }
+//             }
+//             // }
+//         }
+        
+
+//     }
+//     return resulting_sf;
+// }
+
+vector<vector<SignedFmla>> proof_isomorphic_sf_sets(Tableau tbl, vector<TblRule> er) {
+    vector<vector <SignedFmla>> resulting_sf_sets;
+    vector<SignedFmla> initial_sf = get_initial_sf(tbl);
+
+    vector<vector<SignedFmla>> sf_candidates = get_sf_candidates(initial_sf);
+
+    for (vector<SignedFmla> sf_candidate : sf_candidates) {
+
+        if (sf_candidate.size() == 2) {
+            if (fmla_equality(sf_candidate[0].fmla, parse_fmla("∈(p1,∩(p2,△(p3,p4)))")) && fmla_equality(sf_candidate[1].fmla, parse_fmla("∈(p1,∪(∩(p2,p3),p4))"))) {
+                1;
+            }
+            // if (fmla_equality(sf_candidate[0].fmla, parse_fmla("∈(p1,∪(p2,△(p3,p4)))")) && sf_candidate[0].sign == polarity::minus && fmla_equality(sf_candidate[1].fmla, parse_fmla("∈(p1,∪(△(p2,p3),p4))")) && sf_candidate[1].sign == polarity::minus ) {
+            //     1;
+
+            // }
+        }
+        // cout << "--------\n";
+        // for (SignedFmla sf : sf_candidate) {
+        //     if (sf.sign == polarity::plus) cout << "+ ";
+        //     if (sf.sign == polarity::minus) cout << "- ";
+        //     print_fmla_prefix(sf.fmla);
+        //     cout << "\n";
+        // }
+        // cout << "\n";
+
+        if (is_proof_isomorphic_sf_set(tbl, er, sf_candidate)) {
+            cout << "\nis proof isomorphic!\n";
+            // is_proof_isomorphic_sf_set(tbl, er, sf_candidate);
+            print_tableau_as_list_fmla_prefix(proof_isomorphic_sf_set(tbl, er, sf_candidate));
+            resulting_sf_sets.push_back(sf_candidate);
+            cout << "\n";
+        }
+        else {
+            // cout << "is not proof isomorphic!\n";
+        }
+    }
+    return resulting_sf_sets;
+}
+
+vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf) {
+
+    vector<vector<SignedFmla>> sf_candidates;
+
     set<string> skolem_symbs = pre_process_skolem_symbs();
     int no_skolem_symbs_amt = 0;
     map<int, pair<int, int>> map_no_skolem_symb; // map the position in the tableau and in the formula for each symbol in the filled proof-schema
 
-    for (int i = 0; i < tbl.size(); i++) {
-        TblNode tbl_node = tbl[i];
-        Fmla fmla = tbl_node.signed_fmla.fmla;
+    for (int i = 0; i < initial_sf.size(); i++) {
+        Fmla fmla = initial_sf[i].fmla;
         for (int j = 0; j < fmla.size(); j++) {
             if (j == 0) { // predicate symbols
-                proof_schema.push_back(make_pair(symbType::pred, fmla[0].children.size()));
                 map_no_skolem_symb[no_skolem_symbs_amt] = make_pair(i,j);
                 no_skolem_symbs_amt += 1;
             }
             else { // function symbol or parameter
                 if (!is_a_parameter(fmla[j]) && skolem_symbs.find(fmla[j].data) == skolem_symbs.end()) {
-                    proof_schema.push_back(make_pair(symbType::func, fmla[j].children.size()));
                     map_no_skolem_symb[no_skolem_symbs_amt] = make_pair(i,j);
                     no_skolem_symbs_amt += 1;
                 }
@@ -1355,61 +1480,266 @@ vector<vector<SignedFmla>> proof_isomorphic_sf_sets(Tableau tbl, vector<TblRule>
         }
     }
 
+    map<int, pair<string, int>> map_theory_symbs;
+    map<string, int> no_skolem = pre_process_no_skolem_symbs();
+    int theory_symbs_amt = no_skolem.size();
+    int count = 0;
+    for(const auto& pair : no_skolem) {
+        map_theory_symbs[count] = pair;
+        count += 1;
+    }
+
+    // count amount of combinations
+    int signed_fmlas_amt = initial_sf.size();
     int combinations_signs = pow(2, signed_fmlas_amt);
 
     vector<int> signs_mask(signed_fmlas_amt, 1); // start with a vector of 1's so in 1st iteration, they are all set to 0
 
-    map<int, pair<string, int>> map_theory_symbs;
-    map<string, int> no_skolem = pre_process_no_skolem_symbs();
-    int theory_symbs_amt = no_skolem.size();
-    for(const auto& pair : no_skolem) {
-        map_theory_symbs[theory_symbs_amt] = pair;
-    }
-    vector<int> theory_symbs_mask(no_skolem_symbs_amt, theory_symbs_amt - 1);
-
     vector<vector<SignedFmla>> resulting_sf;
 
     for (int i = 0; i < combinations_signs; i++) {
-        Tableau filled_ps = tbl;
+        vector<SignedFmla> filled_cs = initial_sf;
         signs_mask = increment_arrange_repitition_mask(signs_mask, 2);
-        for (int j = 0; j < filled_ps.size(); j++) {
-            TblNode tbl_node = filled_ps[j];
+        for (int j = 0; j < filled_cs.size(); j++) {
+            SignedFmla sf = filled_cs[j];
             if (signs_mask[j] == 0) {
-                tbl_node.signed_fmla.sign = polarity::minus;
+                sf.sign = polarity::minus;
             }
             else {
-                tbl_node.signed_fmla.sign = polarity::plus;
+                sf.sign = polarity::plus;
             }
-            filled_ps[j] = tbl_node;
+            filled_cs[j] = sf;
         }
 
-        theory_symbs_mask = increment_arrange_repitition_mask(theory_symbs_mask, theory_symbs_amt);
-        for (int j = 0; j < no_skolem_symbs_amt; j++) {
-            int tbl_node_idx = map_no_skolem_symb[j].first;
-            int fmla_node_idx = map_no_skolem_symb[j].second;
+        vector<int> theory_symbs_mask(no_skolem_symbs_amt, theory_symbs_amt - 1);
+        long int combinations_symbs = pow(theory_symbs_amt, no_skolem_symbs_amt);
+        for (int j = 0; j < combinations_symbs; j++) {
+            theory_symbs_mask = increment_arrange_repitition_mask(theory_symbs_mask, theory_symbs_amt);
+            bool is_valid_sf = true;
+            for (int k = 0; k < no_skolem_symbs_amt; k++) {
+                int sf_node_idx = map_no_skolem_symb[k].first;
+                int fmla_node_idx = map_no_skolem_symb[k].second;
+                int l = no_skolem_symbs_amt - 1 - k;
+                string symb_subst = map_theory_symbs[theory_symbs_mask[l]].first;
+                int symb_arity = map_theory_symbs[theory_symbs_mask[l]].second;
 
-            // getting the correspondent fmla_node we want to manipulate
-            TblNode tbl_node = filled_ps[tbl_node_idx];
-            FmlaNode fmla_node = tbl_node.signed_fmla.fmla[fmla_node_idx];
+                if ((fmla_node_idx == 0 && is_predicate_symb(symb_subst)) || (fmla_node_idx > 0 && is_function_symb(symb_subst))) {
+                    // getting the correspondent fmla_node we want to manipulate
+                    SignedFmla sf = filled_cs[sf_node_idx];
+                    FmlaNode fmla_node = sf.fmla[fmla_node_idx];
 
-            // set the data of fmla_node for its correspondent theory symbol
-            fmla_node.data = map_theory_symbs[theory_symbs_mask[j]].first;
+                    // set the data of fmla_node for its correspondent theory symbol
+                    if (fmla_node.children.size() == symb_arity){
+                        fmla_node.data = symb_subst;
+                    }
+                    else {
+                        is_valid_sf = false;
+                        k = no_skolem_symbs_amt;
+                    }
 
-            tbl_node.signed_fmla.fmla[fmla_node_idx] = fmla_node;
-            filled_ps[tbl_node_idx] = tbl_node;
+                    sf.fmla[fmla_node_idx] = fmla_node;
+                    filled_cs[sf_node_idx] = sf;
+                }
+                else {
+                    is_valid_sf = false;
+                    k = no_skolem_symbs_amt;
+                }
+            }
+
+            // if (is_valid_filled_ps(filled_ps, proof_schema)) {
+            if (is_valid_sf == true){
+                sf_candidates.push_back(filled_cs);
+                // for (SignedFmla sf : filled_cs) {
+                //     if (sf.sign == polarity::plus) cout << "+ ";
+                //     if (sf.sign == polarity::minus) cout << "- ";
+                //     print_fmla_prefix(sf.fmla);
+                //     cout << "\n";
+                // }
+                // cout << "\n";
+            }
+            // }
         }
+    }
+    return sf_candidates;
+}
 
-        if (is_valid_filled_ps(filled_ps, proof_schema)) {
+bool is_proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFmla> sf) {
+    Tableau proof_isomorphic_tbl = get_initial_tableau(sf);
+    for (int i = 0; i < tbl.size(); i++) {
+        TblNode tbl_node = tbl[i];
+        if (tbl_node.justification_parents[0] != -1) {
 
-            if (is_a_proof(filled_ps, er)) {
-                resulting_sf.push_back(get_initial_sf(filled_ps));
+            vector<SignedFmla> justifications;
+            for (int j : tbl_node.justification_parents) {
+                justifications.push_back(proof_isomorphic_tbl[j].signed_fmla);
+            }
+            
+            vector<SignedFmla> conclusions = get_conclusions_from_justifications(justifications, er);
+            if (conclusions.size() > 0) {
+                TblNode expansion_node;
+                bool has_expansion_node = false;
+                for (SignedFmla conclusion : conclusions) {
+                    if (are_syntactically_isomorphic(conclusion.fmla, tbl_node.signed_fmla.fmla)){
+                        expansion_node.justification_parents = tbl_node.justification_parents;
+                        expansion_node.tbl_parent = tbl_node.tbl_parent;
+                        expansion_node.tbl_children = tbl_node.tbl_children;
+                        expansion_node.signed_fmla = conclusion;
+
+                        has_expansion_node = true;
+                    }
+                }
+
+                if (has_expansion_node) {
+                    proof_isomorphic_tbl.push_back(expansion_node);
+                }
+                else {
+                    return false;
+                }
+            }
+            else {
+                return false;
             }
         }
     }
-    return resulting_sf;
+    if (is_closure_isomorphic(tbl, proof_isomorphic_tbl)) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
+Tableau proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFmla> sf) {
+    Tableau proof_isomorphic_tbl = get_initial_tableau(sf);
+    for (int i = 0; i < tbl.size(); i++) {
+        TblNode tbl_node = tbl[i];
+        if (tbl_node.justification_parents[0] != -1) {
 
+            vector<SignedFmla> justifications;
+            for (int j : tbl_node.justification_parents) {
+                justifications.push_back(proof_isomorphic_tbl[j].signed_fmla);
+            }
+            
+            vector<SignedFmla> conclusions = get_conclusions_from_justifications(justifications, er);
+            if (conclusions.size() > 0) {
+                TblNode expansion_node;
+                bool has_expansion_node = false;
+                for (SignedFmla conclusion : conclusions) {
+                    if (are_syntactically_isomorphic(conclusion.fmla, tbl_node.signed_fmla.fmla)){
+                        expansion_node.justification_parents = tbl_node.justification_parents;
+                        expansion_node.tbl_parent = tbl_node.tbl_parent;
+                        expansion_node.tbl_children = tbl_node.tbl_children;
+                        expansion_node.signed_fmla = conclusion;
+
+                        has_expansion_node = true;
+                    }
+                }
+
+                if (has_expansion_node) {
+                    proof_isomorphic_tbl.push_back(expansion_node);
+                }
+                else {
+                    return {};
+                }
+            }
+            else {
+                return {};
+            }
+        }
+    }
+    if (is_closure_isomorphic(tbl, proof_isomorphic_tbl)) {
+        return proof_isomorphic_tbl;
+    }
+    else {
+        return {};
+    }
+}
+
+bool is_closure_isomorphic(Tableau tbl, Tableau proof_isomorphic_tbl) {
+    // tbl is the tableau that is closed
+    vector< vector<int>> branches = get_tbl_branches(tbl);
+
+    for (int i = 0; i < branches.size(); i++){
+        vector<int> closure_nodes = branch_closure_nodes(branches[i], tbl);
+
+        if (!are_closure_nodes(proof_isomorphic_tbl, closure_nodes)) {
+            return false;
+        }
+    }
+    return true; 
+}
+
+bool are_closure_nodes(Tableau tbl, vector<int> closure_nodes) {
+    if (closure_nodes.size() == 2) {
+        int node1 = closure_nodes[0];
+        int node2 = closure_nodes[1];
+        if (fmla_equality(tbl[node1].signed_fmla.fmla, tbl[node2].signed_fmla.fmla) == true && opposite_polarity_nodes(tbl[node1], tbl[node2]) == true) {
+            return true;
+        }
+    }
+    // closure
+    return false;
+}
+
+vector<SignedFmla> get_conclusions_from_justifications(vector<SignedFmla> justifications, vector<TblRule> er) {
+    vector<SignedFmla> resulting_conclusions;
+    for (TblRule rule : er) {
+        vector<SignedFmla> premisses = rule.premisses;
+        vector<SignedFmla> conclusions = rule.conclusions;
+        if (premisses.size() == justifications.size()) {
+            vector<vector<int>> all_arranges = get_all_arranges(justifications.size(), premisses.size());
+            int arranges_amt = all_arranges.size();
+            for (int i = 0; i < arranges_amt; i++) {
+                vector<int> justifications_idx = all_arranges[i];
+
+                bool all_premisses_match = true;
+                for (int j = 0; j < premisses.size(); j++) {
+                    if (!is_a_match(justifications[justifications_idx[j]], premisses[j])) all_premisses_match = false;
+                }
+
+                if (all_premisses_match) {
+                    // check if all matching of premisses agree on substitution of parameters
+                    bool all_parameters_match = true;
+                    Subst parameters_conclusion_subst;
+                    
+                    vector<Fmla> premisses_fmlas;
+                    for (SignedFmla premisse : premisses) {
+                        premisses_fmlas.push_back(premisse.fmla);
+                    }
+                    set<string> premisses_parameters = get_all_parameters(premisses_fmlas);
+
+                    for (int j = 0; j < premisses.size(); j++) {
+                        set<string> premisse_parameter = get_parameters(premisses[j].fmla);
+                        Subst matching_parameters_map = matching_parameters(justifications[justifications_idx[j]], premisses[j]);
+                        for (string parameter : premisse_parameter) {
+                            if (parameters_conclusion_subst.find(parameter) != parameters_conclusion_subst.end()) {
+                                if (matching_parameters_map.find(parameter) != matching_parameters_map.end()) {
+                                    // if (parameters_conclusion_subst[parameter].size() > 0)
+                                    if (!term_equality(parameters_conclusion_subst[parameter], matching_parameters_map[parameter])) all_parameters_match = false;
+                                }
+                            } else {
+                                // if (is_a_term_in_branch(tbl, branch_idxs, matching_parameters_map[parameter])) {
+                                    parameters_conclusion_subst[parameter] = matching_parameters_map[parameter];
+                                // }
+                            }
+                        }
+                    }
+
+                    // expand tableau
+                    if (all_parameters_match) {
+                        // SignedFmla expansion_node;
+                        for (int j = 0; j < conclusions.size(); j++) {
+                            SignedFmla conclusion = conclusions[j];
+                            conclusion.fmla = subst_extension(conclusion.fmla, parameters_conclusion_subst);
+                            resulting_conclusions.push_back(conclusion);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return resulting_conclusions;
+}
 
 bool is_valid_filled_ps(Tableau filled_ps, vector<pair<symbType, int>> proof_schema) {
     set<string> skolem_symbs = pre_process_skolem_symbs();

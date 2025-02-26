@@ -63,7 +63,11 @@ vector<Tableau> get_tbl_successors(Tableau tbl, vector<TblRule> er);
 
 bool is_closed(Tableau tbl);
 
-pair<int, int> branch_closure_nodes(vector<int> branch, Tableau tbl);
+vector<int> branch_closure_nodes(vector<int> branch, Tableau tbl);
+
+bool is_closure_isomorphic(Tableau tbl, Tableau proof_isomorphic_tbl);
+
+bool are_closure_nodes(Tableau tbl, vector<int> closure_nodes);
 
 bool is_clean(Tableau tbl);
 
@@ -90,6 +94,14 @@ int get_fmla_max_size(Tableau tbl, vector<int> branch);
 vector<TblRule> remove_unnecessary_rules(vector<SignedFmla> sf, vector<TblRule> er);
 
 vector<vector<SignedFmla>> proof_isomorphic_sf_sets(Tableau tbl, vector<TblRule> er);
+
+vector<SignedFmla> get_conclusions_from_justifications(vector<SignedFmla> justifications, vector<TblRule> er);
+
+bool is_proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFmla> sf);
+
+Tableau proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFmla> sf);
+
+vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf);
 
 bool is_valid_filled_ps(Tableau filled_ps, vector<pair<symbType, int>> proof_schema);
 

@@ -71,6 +71,5 @@ void test_pre_process_signed_fmlas_input() {
         cout << s;
         print_fmla_prefix(sf.fmla);
         cout << "\n";
-
     }
 }

@@ -6,7 +6,17 @@ bool is_function_symb(string symb, map<string, int> function_symbs) {
     return function_symbs.find(symb) != function_symbs.end();
 }
 
+bool is_function_symb(string symb) {
+    map<string, int> function_symbs = pre_process_function_symbs();
+    return function_symbs.find(symb) != function_symbs.end();
+}
+
 bool is_predicate_symb(string symb, map<string, int> predicate_symbs) {
+    return predicate_symbs.find(symb) != predicate_symbs.end();
+}
+
+bool is_predicate_symb(string symb) {
+    map<string, int> predicate_symbs = pre_process_predicate_symbs();
     return predicate_symbs.find(symb) != predicate_symbs.end();
 }
 
@@ -310,6 +320,49 @@ bool fmla_equality_under_subst(Fmla fmla1, Fmla fmla2) {
             }
         }
         else if (current1.data != current2.data) return false;
+
+        if (current1.children.size() != current2.children.size()) {
+            return false;
+        }
+        else {
+            for (int i = 0; i < current1.children.size(); i++) {
+                q1.push(fmla1[current1.children[i]]);
+                q2.push(fmla2[current2.children[i]]);
+            }
+        }
+    }
+
+    return true;
+
+}
+
+bool are_syntactically_isomorphic(Fmla fmla1, Fmla fmla2) {
+    if (fmla1.size() != fmla2.size()) return false;
+
+    map<string, string> subst;
+    set<string> subst_img;
+
+    queue<FmlaNode> q1, q2;
+    q1.push(fmla1[0]);
+    q2.push(fmla2[0]);
+
+    while (!q1.empty()) {
+        FmlaNode current1 = q1.front();
+        FmlaNode current2 = q2.front();
+        q1.pop(); q2.pop();
+
+        if (is_a_parameter(current1) && is_a_parameter(current2)) {
+            if (subst.find(current1.data) != subst.end()) {
+                if (subst[current1.data] != current2.data) return false;
+            }
+            else {
+                if (subst_img.find(current2.data) != subst_img.end()) return false;
+                else {
+                    subst[current1.data] = current2.data;
+                    subst_img.insert(current2.data);
+                }
+            }
+        }
 
         if (current1.children.size() != current2.children.size()) {
             return false;
