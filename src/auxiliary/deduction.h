@@ -25,13 +25,15 @@ vector<vector<int>> get_all_arranges(int branch_size, int premisses_size);
 
 vector<int> increment_arrange_repitition_mask(vector<int> arrange_mask, int base);
 
+vector<int> increment_arrange_repitition_mask(vector<int> arrange_mask, vector<int> base);
+
 vector<vector<int>> get_all_arranges_repetition(int terms_tbl_amt, int parameters_conclustion_amt);
 
 vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule); // One expansion rule may be applied in a tableau in several ways. That's why the output is a vector of tableaux
 
 vector<Tableau> apply_rule_no_premisse(Tableau tbl, TblRule expansion_rule, vector<TblRule> er);
 
-vector<Tableau> apply_cut(Tableau tbl, Fmla cut_fmla, vector<TblRule> er);
+vector<Tableau> apply_cut(Tableau tbl, vector<TblRule> er);
 
 bool is_a_match(SignedFmla sf, SignedFmla premisse);
 
@@ -42,6 +44,8 @@ vector<int> get_tbl_leaves(Tableau tbl);
 vector< vector<int>> get_tbl_branches(Tableau tbl);
 
 int branch_leaf(Tableau tbl, vector<int> branch);
+
+vector<int> get_tbl_levels(Tableau tbl);
 
 bool opposite_polarity_nodes(TblNode node1, TblNode node2);
 
@@ -87,7 +91,13 @@ bool is_potential_premisse_nodes_branch(SignedFmla sf_input, Tableau tbl, vector
 
 vector<SignedFmla> potential_premisse_nodes_rule(SignedFmla sf, TblRule rule);
 
+bool fmla_in_vec_fmla(vector<Fmla> fmlas, Fmla fmla);
+
+bool fmla_in_vec_signed_fmla(vector<SignedFmla> signed_fmlas, Fmla fmla);
+
 bool node_in_tbl(SignedFmla sf, Tableau tbl);
+
+bool node_in_branch(SignedFmla sf, Tableau tbl, vector<int> branch);
 
 int get_fmla_max_size(Tableau tbl, vector<int> branch);
 

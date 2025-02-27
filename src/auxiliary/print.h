@@ -8,7 +8,7 @@
 #include <queue>
 
 #include "../definitions/definitions.h"
-// #include "tableaux.h"
+#include "deduction.h"
 
 using namespace std;
 

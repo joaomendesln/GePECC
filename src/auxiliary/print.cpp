@@ -18,8 +18,9 @@ void pretty_printing_fmla_aux(Fmla fmla, FmlaNode node, int binary_acestor_amt, 
         }
     }
     if (node.children.size() == 1) {
-        cout << node.data << " ";
+        cout << node.data << "(";
         pretty_printing_fmla_aux(fmla, fmla[node.children[0]], binary_acestor_amt, side::left);
+        cout << ")";
     }
     if (node.children.size() == 2) {
         pretty_printing_fmla_aux(fmla, fmla[node.children[0]], binary_acestor_amt + 1, side::left);
@@ -85,62 +86,66 @@ void print_term_prefix_aux(Term term, int idx) {
 
 }
 
-// void print_tableau(Tableau tbl) {
+void print_tableau(Tableau tbl) {
 
-//     vector< vector<int>> branches = get_tbl_branches(tbl);
+    vector< vector<int>> branches = get_tbl_branches(tbl);
 
-//     // for (vector<int> branch : branches) {
-//     //     cout << "branch: ";
-//     //     print_vec_int(branch);
-//     //     cout << "\n";
-//     // }
+    // for (vector<int> branch : branches) {
+    //     cout << "branch: ";
+    //     print_vec_int(branch);
+    //     cout << "\n";
+    // }
 
-//     // BFS: getting the level of the nodes in tableau tree
-//     vector<int> tbl_level = get_tbl_levels(tbl);
+    // BFS: getting the level of the nodes in tableau tree
+    vector<int> tbl_level = get_tbl_levels(tbl);
 
-//     // DFS: pritting the tree
-//     stack<int> s;
-//     s.push(0);
+    // DFS: pritting the tree
+    stack<int> s;
+    s.push(0);
 
-//     while (!s.empty()) {
-//         int current = s.top();
+    while (!s.empty()) {
+        int current = s.top();
 
-//         for (int i = 0; i < tbl_level[current] + 1; i++) cout << "=";
-//         cout << " " << current << ": ";
-//         TblNode node = tbl[current];
-//         if (node.sign == polarity::plus) cout << "+ ";
-//         if (node.sign == polarity::minus) cout << "- ";
-//         if (node.sign == polarity::plus || node.sign == polarity::minus) pretty_printing_fmla(node.fmla);
-//         else cout << node.fmla[0].data;
-//         cout << ", ";
-//         print_vec_int(node.proof_parents);
-//         cout << "\n";
+        for (int i = 0; i < tbl_level[current] + 1; i++) cout << "=";
+        cout << " " << current << ": ";
+        TblNode node = tbl[current];
+        polarity sign = node.signed_fmla.sign;
+        Fmla fmla = node.signed_fmla.fmla;
+        if (sign == polarity::plus) cout << "+ ";
+        if (sign == polarity::minus) cout << "- ";
+        if (sign == polarity::plus || sign == polarity::minus) pretty_printing_fmla(fmla);
+        else cout << fmla[0].data;
+        cout << ", ";
+        print_vec_int(node.justification_parents);
+        cout << "\n";
 
-//         s.pop();
-//         for (int child : tbl[current].tbl_children) {
-//             s.push(child);
-//         }
-//     }
+        s.pop();
+        for (int child : tbl[current].tbl_children) {
+            s.push(child);
+        }
+    }
 
+    // for (int i = 0; i < branches.size(); i++){
+    //     cout << "Branch " << i + 1 << "\n";
+    //     vector<int> branch = branches[i];
+    //     sort(branch.begin(), branch.end());
+    //     for (int j = 0; j < branch.size(); j++) {
+    //         TblNode node = tbl[branch[j]];
+    //         cout << i << ": ";
+    //         polarity sign = node.signed_fmla.sign;
+    //         Fmla fmla = node.signed_fmla.fmla;
+    //         if (sign == polarity::plus) cout << "+ ";
+    //         if (sign == polarity::minus) cout << "- ";
+    //         // if (node.sign == polarity::plus || node.sign == polarity::minus) pretty_printing_fmla(node.fmla);
+    //         if (sign == polarity::plus || sign == polarity::minus) print_fmla_prefix(fmla);
+    //         else cout << fmla[0].data;
+    //         cout << ", ";
+    //         print_vec_int(node.justification_parents);
+    //         cout << "\n";
 
-//     // for (int i = 0; i < branches.size(); i++){
-//     //     cout << "Branch " << i + 1 << "\n";
-//     //     vector<int> branch = branches[i];
-//     //     sort(branch.begin(), branch.end());
-//     //     for (int j = 0; j < branch.size(); j++) {
-//     //         TblNode node = tbl[branch[j]];
-//     //         cout << i << ": ";
-//     //         if (node.sign == polarity::plus) cout << "+ ";
-//     //         if (node.sign == polarity::minus) cout << "- ";
-//     //         if (node.sign == polarity::plus || node.sign == polarity::minus) pretty_printing_fmla(node.fmla);
-//     //         else cout << node.fmla[0].data;
-//     //         cout << ", ";
-//     //         print_vec_int(node.proof_parents);
-//     //         cout << "\n";
-
-//     //     }
-//     // }
-// }
+    //     }
+    // }
+}
 
 void print_tableau_as_list(Tableau tbl) {
     for (int i = 0; i < tbl.size(); i++){
