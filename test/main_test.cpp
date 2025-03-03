@@ -29,7 +29,8 @@ int main() {
     // test_get_cut_fmlas();
     // test_check_rule_application();
     // test_matching_premisses();
-    test_get_pattern_matching_premisse_symb();
+    // test_get_pattern_matching_premisse_symb();
+    test_get_ps_potential_symbols();
 
     // // ++ Syntax
     // test_get_term_of_fmla(); 

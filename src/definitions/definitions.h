@@ -56,6 +56,7 @@ struct TblNode {
     int tbl_parent;
     vector<int> tbl_children;
     int expansion_rule_idx;
+    int conclusion_idx;
 
     bool operator<(const TblNode& other) const {
         if (justification_parents.size() < other.justification_parents.size()) { // this is not correct actually, though it won't affect the procedure

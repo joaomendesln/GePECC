@@ -57,7 +57,7 @@ void test_apply_rule_with_premisse(){
 
     vector<TblRule> expansion_rules = pre_process_expansion_rules_input();
     
-    vector<Tableau> tableaux = apply_rule_with_premisse(tbl, expansion_rules[9]);
+    vector<Tableau> tableaux = apply_rule_with_premisse(tbl, expansion_rules[9], 9);
 
     int i = 0;
     for (Tableau tableau : tableaux) {
@@ -227,4 +227,24 @@ void test_get_pattern_matching_premisse_symb() {
     Fmla fmla1 = parse_fmla("∈(p1,∩(p2,∪(p3,p4)))");
     Fmla fmla2 = parse_fmla("∈(p1,-(p2,p3))");
     cout << get_pattern_matching_premisse_symb(fmla1, 4, fmla2) << "\n";
+}
+
+void test_get_ps_potential_symbols() {
+    cout << "===== Pre-processing signed formulas file\n";
+    vector<SignedFmla> sf = pre_process_signed_fmla_input();
+
+    cout << "===== Pre-processing expansion rules file\n";
+    vector<TblRule> er = pre_process_expansion_rules_input();
+
+    vector<Tableau> minimal_proofs = extract_minimal_proofs(sf, er);
+
+    cout << "\nResulting minimal proofs: \n";
+    int i = 1;
+    for (Tableau m : minimal_proofs) {
+        // print_tableau_as_list_fmla_prefix(m);
+        print_tableau(m);
+        get_ps_potential_symbols(m, er);
+        cout << "\n";
+
+    }
 }

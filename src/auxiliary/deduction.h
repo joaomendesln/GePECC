@@ -31,6 +31,8 @@ vector<vector<int>> get_all_arranges_repetition(int terms_tbl_amt, int parameter
 
 vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, int rule_idx); // One expansion rule may be applied in a tableau in several ways. That's why the output is a vector of tableaux
 
+map<pair<int,int>, set<string>> get_ps_potential_symbols(Tableau tbl, vector<TblRule> er);
+
 vector<Tableau> apply_rule_no_premisse(Tableau tbl, TblRule expansion_rule, vector<TblRule> er);
 
 vector<Tableau> apply_cut(Tableau tbl, vector<TblRule> er);

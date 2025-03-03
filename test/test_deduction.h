@@ -25,4 +25,6 @@ void test_matching_premisses();
 
 void test_get_pattern_matching_premisse_symb();
 
+void test_get_ps_potential_symbols();
+
 #endif // TEST_DEDUCTION_H

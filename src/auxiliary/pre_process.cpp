@@ -463,11 +463,11 @@ vector<SignedFmla> pre_process_signed_fmla_input() {
     //     "(-, ∈(p1, p2))"
     // };
 
-    // // p1 ∈ (p2 ∩ (p3 ∪ p4)) ⊢ p1 ∈ ((p2 ∩ p3) ∪ p4)
-    // vector<string> lines = {
-    //     "(+, ∈(p1, ∩(p2, ∪(p3, p4))))", 
-    //     "(-, ∈(p1, ∪(∩(p2, p3), p4)))"
-    // }; 
+    // p1 ∈ (p2 ∩ (p3 ∪ p4)) ⊢ p1 ∈ ((p2 ∩ p3) ∪ p4)
+    vector<string> lines = {
+        "(+, ∈(p1, ∩(p2, ∪(p3, p4))))", 
+        "(-, ∈(p1, ∪(∩(p2, p3), p4)))"
+    }; 
 
     // // ⊢ (p2 ∩ (p3 ∪ p4)) ⪥ ((p2 △ p3) - p4)
     // vector<string> lines = {
@@ -484,12 +484,12 @@ vector<SignedFmla> pre_process_signed_fmla_input() {
     //     "(-, ⊆(p1, p1))"
     // }; 
 
-    // p1 ⊆ p2, p2 ⊆ p3 ⊢ p1 ⊆ p3
-    vector<string> lines = {
-        "(+, ⊆(p1, p2))",
-        "(+, ⊆(p2, p3))",
-        "(-, ⊆(p1, p3))"
-    };
+    // // p1 ⊆ p2, p2 ⊆ p3 ⊢ p1 ⊆ p3
+    // vector<string> lines = {
+    //     "(+, ⊆(p1, p2))",
+    //     "(+, ⊆(p2, p3))",
+    //     "(-, ⊆(p1, p3))"
+    // };
 
     // // p1 ⪥ p2 ⊢ p2 ⪥ p1
     // vector<string> lines = {

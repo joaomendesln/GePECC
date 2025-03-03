@@ -24,6 +24,12 @@ bool is_language_symb(string symb, map<string, int> language_symbs) {
     return language_symbs.find(symb) != language_symbs.end();
 }
 
+bool is_no_skolem_symb(string symb) {
+    map<string, int> no_skolem_symb = pre_process_no_skolem_symbs();
+
+    return no_skolem_symb.find(symb) != no_skolem_symb.end();
+}
+
 bool is_a_parameter(FmlaNode fmla_node) {
     map<string, int> language_symbs = pre_process_language_symbs();
 

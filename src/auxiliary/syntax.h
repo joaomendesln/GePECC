@@ -26,6 +26,8 @@ bool is_predicate_symb(string symb);
 
 bool is_language_symb(string symb, map<string, int> language_symbs);
 
+bool is_no_skolem_symb(string symb);
+
 bool is_a_parameter(FmlaNode fmla_node);
 
 bool is_a_parameter(TermNode term_node);
