@@ -29,13 +29,15 @@ vector<int> increment_arrange_repitition_mask(vector<int> arrange_mask, vector<i
 
 vector<vector<int>> get_all_arranges_repetition(int terms_tbl_amt, int parameters_conclustion_amt);
 
-vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule); // One expansion rule may be applied in a tableau in several ways. That's why the output is a vector of tableaux
+vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, int rule_idx); // One expansion rule may be applied in a tableau in several ways. That's why the output is a vector of tableaux
 
 vector<Tableau> apply_rule_no_premisse(Tableau tbl, TblRule expansion_rule, vector<TblRule> er);
 
 vector<Tableau> apply_cut(Tableau tbl, vector<TblRule> er);
 
 bool is_a_match(SignedFmla sf, SignedFmla premisse);
+
+bool is_a_match(Fmla sf_tbl, Fmla premisse);
 
 Subst matching_parameters(SignedFmla sf_tbl, SignedFmla premisse);
 
@@ -126,5 +128,9 @@ vector<SignedFmla> get_initial_sf(Tableau tbl);
 // bool are_deductively_isomorphic(Tableau tbl1, Tableau tbl2);
 
 // vector<Tableau> remove_deductively_isomorphic_proof(vector<Tableau> tableaux);
+
+vector<SignedFmla> pattern_matching_premisses(vector<TblRule> er, TblRule rule, int prem_idx, int conc_idx);
+
+string get_pattern_matching_premisse_symb(Fmla fmla, int node_idx, Fmla matching_fmla);
 
 #endif // DEDUCTION_H

@@ -52,9 +52,10 @@ struct SignedFmla {
 
 struct TblNode {
     SignedFmla signed_fmla;
-    vector<int> justification_parents; // -1 for initial tableau, -2 for 0-premisse rules, -3 for cut formulas
+    vector<int> justification_parents; // -1 for initial tableau, -2 for cut formulas
     int tbl_parent;
     vector<int> tbl_children;
+    int expansion_rule_idx;
 
     bool operator<(const TblNode& other) const {
         if (justification_parents.size() < other.justification_parents.size()) { // this is not correct actually, though it won't affect the procedure

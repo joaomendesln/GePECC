@@ -21,6 +21,7 @@ Tableau get_initial_tableau(vector<SignedFmla> sf_input) {
             initial_tableau[idx - 1].tbl_children = {idx};
         }
         idx++;
+        tbl_node.expansion_rule_idx = -1;
 
         initial_tableau.push_back(tbl_node);
     }
@@ -129,16 +130,16 @@ vector<int> increment_arrange_repitition_mask(vector<int> arrange_mask, vector<i
     return arrange_mask;
 }
 
-vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule) {
+vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, int rule_idx) {
     vector<Tableau> resuling_tableaux;
     vector<SignedFmla> premisses = expansion_rule.premisses;
     vector<SignedFmla> conclusions = expansion_rule.conclusions;
 
-    vector<vector<int>> branches_idxs = get_tbl_open_branches(tbl);
+    vector<vector<int>> branches = get_tbl_open_branches(tbl);
 
-    for (vector<int> branch_idxs : branches_idxs) {
+    for (vector<int> branch : branches) {
         // int fmla_max_size = get_fmla_max_size(tbl, branch_idxs);
-        int branch_size = branch_idxs.size();
+        int branch_size = branch.size();
         int premisses_size = premisses.size();
         if (branch_size >= premisses_size) {
             vector<vector<int>> all_arranges = get_all_arranges(branch_size, premisses_size);
@@ -148,15 +149,8 @@ vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule) {
                 vector<int> justifications;
 
                 for (int j = 0; j < premisses.size(); j++) {
-                    justifications.push_back(branch_idxs[arrange[j]]);
+                    justifications.push_back(branch[arrange[j]]);
                 }
-
-                // if (justifications.size() == 2) {
-                //     if (justifications[0] == 7 && justifications[1] == 5 && expansion_rule.conclusions[0].sign == polarity::plus) {
-                //         2;
-                //         1;
-                //     }
-                // }
 
                 bool all_premisses_match = true;
                 for (int j = 0; j < premisses.size(); j++) {
@@ -194,7 +188,7 @@ vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule) {
 
                     // expand tableau
                     if (all_parameters_match) {
-                        int leaf = branch_leaf(tbl, branch_idxs);
+                        int leaf = branch_leaf(tbl, branch);
                         SignedFmla expansion_node;
                         Tableau new_tbl = tbl;
                         int nodes_added_amt = 0;
@@ -202,7 +196,7 @@ vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule) {
                             SignedFmla conclusion = conclusions[j];
                             expansion_node.sign = conclusion.sign;
                             expansion_node.fmla = subst_extension(conclusion.fmla, parameters_conclusion_subst);
-                            if (!node_in_branch(expansion_node, tbl, branch_idxs)){
+                            if (!node_in_branch(expansion_node, tbl, branch)){
                                 // it is not necessary that we add all conclusions
                                 if (nodes_added_amt > 0) {
                                     leaf = new_tbl.size() - 1;
@@ -215,9 +209,9 @@ vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule) {
 
                                 new_tbl_node.tbl_parent = leaf;
                                 new_tbl_node.justification_parents = justifications;
+                                new_tbl_node.expansion_rule_idx = rule_idx;
                                 
                                 new_tbl[leaf].tbl_children.push_back(new_tbl.size());
-
                                 // if (nodes_added_amt == 0) new_tbl[leaf].tbl_children.push_back(new_tbl.size());
                                 // else new_tbl[leaf].tbl_children.push_back(new_tbl.size() + 1);
 
@@ -327,11 +321,11 @@ bool is_potential_premisse_nodes_branch(SignedFmla sf_input, Tableau tbl, vector
 vector<Tableau> apply_cut(Tableau tbl, vector<TblRule> er) {
     vector<Tableau> resuling_tableaux;
 
-    vector<vector<int>> branches_idxs = get_tbl_open_branches(tbl);
+    vector<vector<int>> branches = get_tbl_open_branches(tbl);
 
-    for (vector<int> branch_idxs : branches_idxs) {
+    for (vector<int> branch : branches) {
 
-        vector<SignedFmla> potential_nodes = potential_premisse_nodes_branch(tbl, branch_idxs, er);
+        vector<SignedFmla> potential_nodes = potential_premisse_nodes_branch(tbl, branch, er);
         cout << "Potential nodes: \n";
         for (SignedFmla signed_fmla : potential_nodes) {
             print_fmla_prefix(signed_fmla.fmla);
@@ -359,21 +353,23 @@ vector<Tableau> apply_cut(Tableau tbl, vector<TblRule> er) {
                 expansion_node2.sign = polarity::minus;
                 expansion_node2.fmla = signed_fmla.fmla;
 
-                if (!node_in_branch(expansion_node1, tbl, branch_idxs) && !node_in_branch(expansion_node2, tbl, branch_idxs)){
+                if (!node_in_branch(expansion_node1, tbl, branch) && !node_in_branch(expansion_node2, tbl, branch)){
 
                     Tableau new_tbl = tbl;
 
-                    int leaf = branch_leaf(tbl, branch_idxs);
+                    int leaf = branch_leaf(tbl, branch);
                     TblNode new_tbl_node1, new_tbl_node2;
                     new_tbl_node1.signed_fmla = expansion_node1;
                     new_tbl_node1.tbl_children = {};
                     new_tbl_node1.tbl_parent = leaf;
-                    new_tbl_node1.justification_parents = {-3};
+                    new_tbl_node1.justification_parents = {-2};
+                    new_tbl_node1.expansion_rule_idx = -1;
 
                     new_tbl_node2.signed_fmla = expansion_node2;
                     new_tbl_node2.tbl_children = {};
                     new_tbl_node2.tbl_parent = leaf;
-                    new_tbl_node2.justification_parents = {-3};
+                    new_tbl_node2.justification_parents = {-2};
+                    new_tbl_node2.expansion_rule_idx = -1;
                     
                     new_tbl[leaf].tbl_children.push_back(tbl.size());
                     new_tbl[leaf].tbl_children.push_back(tbl.size() + 1);
@@ -826,9 +822,10 @@ vector<Tableau> get_tbl_successors(Tableau tbl, vector<TblRule> er) {
 
     // get tableau successors from linear rules
     int successors_amt = 0;
-    for (TblRule rule : er) {
+    for (int i = 0; i < er.size(); i++) {
+        TblRule rule = er[i];
         if (rule.premisses.size() > 0) {
-            vector<Tableau> tbl_successors_rule = apply_rule_with_premisse(tbl, rule);
+            vector<Tableau> tbl_successors_rule = apply_rule_with_premisse(tbl, rule, i);
             if (tbl_successors_rule.size() > 0) cout << "Application of rules with premisses\n";
             successors_amt += tbl_successors_rule.size();
             for (Tableau tbl_successor : tbl_successors_rule) {
@@ -1179,6 +1176,14 @@ bool fmla_in_vec_signed_fmla(vector<SignedFmla> signed_fmlas, Fmla fmla) {
     return fmla_in_vec_fmla(vec_fmla, fmla);
 }
 
+bool signed_fmla_in_vec_signed_fmla(vector<SignedFmla> signed_fmlas, SignedFmla sf) {
+
+    for (SignedFmla vec_sf : signed_fmlas) {
+        if (fmla_equality(vec_sf.fmla, sf.fmla) && vec_sf.sign == sf.sign) return true;
+    }
+    return false;
+}
+
 vector<SignedFmla> potential_premisse_nodes_rule(SignedFmla sf, TblRule rule) {
     vector<SignedFmla> resulting_potential_nodes;
     
@@ -1465,149 +1470,206 @@ vector<vector<SignedFmla>> proof_isomorphic_sf_sets(Tableau tbl, vector<TblRule>
         // }
         // cout << "\n";
 
-        if (is_proof_isomorphic_sf_set(tbl, er, sf_candidate)) {
-            cout << "\nis proof isomorphic!\n";
-            // is_proof_isomorphic_sf_set(tbl, er, sf_candidate);
-            print_tableau_as_list_fmla_prefix(proof_isomorphic_sf_set(tbl, er, sf_candidate));
-            resulting_sf_sets.push_back(sf_candidate);
-            cout << "\n";
-        }
-        else {
-            // cout << "is not proof isomorphic!\n";
-        }
+        // if (is_proof_isomorphic_sf_set(tbl, er, sf_candidate)) {
+        //     cout << "\nis proof isomorphic!\n";
+        //     // is_proof_isomorphic_sf_set(tbl, er, sf_candidate);
+        //     print_tableau_as_list_fmla_prefix(proof_isomorphic_sf_set(tbl, er, sf_candidate));
+        //     resulting_sf_sets.push_back(sf_candidate);
+        //     cout << "\n";
+        // }
+        // else {
+        //     cout << "is not proof isomorphic!\n";
+        // }
     }
     return resulting_sf_sets;
 }
 
-vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf) {
+map<pair<int,int>, set<string>> get_ps_potential_symbols(Tableau tbl) {
+    map<pair<int,int>, set<string>> potential_symbs;
 
-    vector<vector<SignedFmla>> sf_candidates;
+    queue<pair<int, vector<tuple<int, pair<int, int>>>>> q;
+    // n := q.first
+    // vec := q.second
+    // p := vec[i].first
+    // (x,y) := vec[i].second
+    // the p-th symbol of the n-th node in tbl is a root of a subterm of the initial tableau of tbl. (x,y) is the reference for the symbol in the initial tableau
 
-    map<int, int> pred_symbs_amt; // arity |-> amt of symbols
-    map<int, vector<string>> pred_symbs_arity; // arity |-> symbols
-    map<string, int> pred_symbs = pre_process_predicate_symbs();
-    for (const auto& pair : pred_symbs) {
-        string symb = pair.first;
-        int arity = pair.second;
-        if (pred_symbs_amt.find(arity) == pred_symbs_amt.end()) {
-            pred_symbs_arity[arity] = {symb};
-            pred_symbs_amt[arity] = 1;
-        }
-        else {
-            pred_symbs_arity[arity].push_back(symb);
-            pred_symbs_amt[arity] += 1;
-        }
-    }
-
-    map<int, int> func_symbs_amt; // arity |-> amt of symbols
-    map<int, vector<string>> func_symbs_arity; // arity |-> symbols
-    map<string, int> func_symbs = pre_process_function_symbs();
-    set<string> skolem_symbs = pre_process_skolem_symbs();
-    for (const auto& pair : func_symbs) {
-        string symb = pair.first;
-        int arity = pair.second;
-        if (skolem_symbs.find(symb) == skolem_symbs.end()) {
-            if (func_symbs_amt.find(arity) == func_symbs_amt.end()) {
-                func_symbs_arity[arity] = {symb};
-                func_symbs_amt[arity] = 1;
-            }
-            else {
-                func_symbs_arity[arity].push_back(symb);
-                func_symbs_amt[arity] += 1;
-            }
-        }
-    }
-
-    vector<int> base_no_skolem_symbs;
-    int no_skolem_symbs_amt = 0;
-    map<int, pair<int, int>> map_no_skolem_symb; // map the position in the tableau and in the formula for each symbol in the filled proof-schema
-
-    for (int i = 0; i < initial_sf.size(); i++) {
-        Fmla fmla = initial_sf[i].fmla;
-        for (int j = 0; j < fmla.size(); j++) {
-            if (j == 0) { // predicate symbols
-                map_no_skolem_symb[no_skolem_symbs_amt] = make_pair(i,j);
-                int arity = fmla[j].children.size();
-                base_no_skolem_symbs.push_back(pred_symbs_amt[arity]);
-                no_skolem_symbs_amt += 1;
-
-            }
-            else { // function symbol or parameter
-                if (!is_a_parameter(fmla[j]) && skolem_symbs.find(fmla[j].data) == skolem_symbs.end()) {
-                    map_no_skolem_symb[no_skolem_symbs_amt] = make_pair(i,j);
-                    int arity = fmla[j].children.size();
-                    base_no_skolem_symbs.push_back(func_symbs_amt[arity]);
-                    no_skolem_symbs_amt += 1;
+    for(int i = 0; i < tbl.size(); i++) {
+        TblNode tbl_node = tbl[i];
+        if (tbl_node.justification_parents[0] = -1) {
+            Fmla fmla = tbl_node.signed_fmla.fmla;
+            vector<tuple<int, pair<int, int>>> vec;
+            for (int j = 0; j < fmla.size(); j++) {
+                FmlaNode fmla_node = fmla[j];
+                if (is_predicate_symb(fmla_node.data) || is_function_symb(fmla_node.data)) {
+                    vec.push_back(make_tuple(i, make_pair(i, j)));
                 }
             }
         }
     }
 
-    map<int, pair<string, int>> map_theory_symbs;
-    map<string, int> no_skolem = pre_process_no_skolem_symbs();
-    int theory_symbs_amt = no_skolem.size();
-    int count = 0;
-    for(const auto& pair : no_skolem) {
-        map_theory_symbs[count] = pair;
-        count += 1;
+    while(!q.empty()) {
+        pair<int, vector<tuple<int, pair<int, int>>>> current = q.front();
+        int node_idx = current.first;
+        vector<tuple<int, pair<int, int>>> vec = current.second;
+
+        q.pop();
+
+        vector<int> expansion_nodes;
+
+        for(int i = 0; i < tbl.size(); i++) {
+            TblNode tbl_node = tbl[i];
+            bool expansion_node_found = false;
+            for (int j : tbl_node.justification_parents) {
+                if (j == node_idx) {
+                    expansion_node_found = true;
+                }
+            }
+
+            if(expansion_node_found) {
+                expansion_nodes.push_back(i);
+            }
+        }
+
+        for (int exp_idx : expansion_nodes) {
+            
+        }
+
     }
 
-    // count amount of combinations
-    int signed_fmlas_amt = initial_sf.size();
-    int combinations_signs = pow(2, signed_fmlas_amt);
-
-    vector<int> signs_mask(signed_fmlas_amt, 1); // start with a vector of 1's so in 1st iteration, they are all set to 0
-
-    vector<vector<SignedFmla>> resulting_sf;
-
-    for (int i = 0; i < combinations_signs; i++) {
-        vector<SignedFmla> filled_cs = initial_sf;
-        signs_mask = increment_arrange_repitition_mask(signs_mask, 2);
-        for (int j = 0; j < filled_cs.size(); j++) {
-            SignedFmla sf = filled_cs[j];
-            if (signs_mask[j] == 0) {
-                sf.sign = polarity::minus;
-            }
-            else {
-                sf.sign = polarity::plus;
-            }
-            filled_cs[j] = sf;
-        }
-
-        vector<int> theory_symbs_mask;
-        long int combinations_symbs = 1;
-        for (int j = 0; j < base_no_skolem_symbs.size(); j++) {
-            combinations_symbs *= base_no_skolem_symbs[j];
-            theory_symbs_mask.push_back(base_no_skolem_symbs[j] - 1);
-        }
-
-        for (int j = 0; j < combinations_symbs; j++) {
-            theory_symbs_mask = increment_arrange_repitition_mask(theory_symbs_mask, base_no_skolem_symbs);
-            bool is_valid_sf = true;
-            for (int k = 0; k < no_skolem_symbs_amt; k++) {
-                int sf_node_idx = map_no_skolem_symb[k].first;
-                int fmla_node_idx = map_no_skolem_symb[k].second;
-                // getting the correspondent fmla_node we want to manipulate
-                SignedFmla sf = filled_cs[sf_node_idx];
-                FmlaNode fmla_node = sf.fmla[fmla_node_idx];
-
-                int arity = fmla_node.children.size();
-
-                if (fmla_node_idx == 0) { // is a predicate symbol
-                    fmla_node.data = pred_symbs_arity[arity][theory_symbs_mask[k]];
-                }
-                else { // is a function symbol
-                    fmla_node.data = func_symbs_arity[arity][theory_symbs_mask[k]];
-                }
-
-                sf.fmla[fmla_node_idx] = fmla_node;
-                filled_cs[sf_node_idx] = sf;
-            }
-            sf_candidates.push_back(filled_cs);
-        }
-    }
-    return sf_candidates;
+    return potential_symbs;
+    
 }
+
+// vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf) {
+
+//     vector<vector<SignedFmla>> sf_candidates;
+
+//     map<int, int> pred_symbs_amt; // arity |-> amt of symbols
+//     map<int, vector<string>> pred_symbs_arity; // arity |-> symbols
+//     map<string, int> pred_symbs = pre_process_predicate_symbs();
+//     for (const auto& pair : pred_symbs) {
+//         string symb = pair.first;
+//         int arity = pair.second;
+//         if (pred_symbs_amt.find(arity) == pred_symbs_amt.end()) {
+//             pred_symbs_arity[arity] = {symb};
+//             pred_symbs_amt[arity] = 1;
+//         }
+//         else {
+//             pred_symbs_arity[arity].push_back(symb);
+//             pred_symbs_amt[arity] += 1;
+//         }
+//     }
+
+//     map<int, int> func_symbs_amt; // arity |-> amt of symbols
+//     map<int, vector<string>> func_symbs_arity; // arity |-> symbols
+//     map<string, int> func_symbs = pre_process_function_symbs();
+//     set<string> skolem_symbs = pre_process_skolem_symbs();
+//     for (const auto& pair : func_symbs) {
+//         string symb = pair.first;
+//         int arity = pair.second;
+//         if (skolem_symbs.find(symb) == skolem_symbs.end()) {
+//             if (func_symbs_amt.find(arity) == func_symbs_amt.end()) {
+//                 func_symbs_arity[arity] = {symb};
+//                 func_symbs_amt[arity] = 1;
+//             }
+//             else {
+//                 func_symbs_arity[arity].push_back(symb);
+//                 func_symbs_amt[arity] += 1;
+//             }
+//         }
+//     }
+
+//     vector<int> base_no_skolem_symbs;
+//     int no_skolem_symbs_amt = 0;
+//     map<int, pair<int, int>> map_no_skolem_symb; // map the position in the tableau and in the formula for each symbol in the filled proof-schema
+
+//     for (int i = 0; i < initial_sf.size(); i++) {
+//         Fmla fmla = initial_sf[i].fmla;
+//         for (int j = 0; j < fmla.size(); j++) {
+//             if (j == 0) { // predicate symbols
+//                 map_no_skolem_symb[no_skolem_symbs_amt] = make_pair(i,j);
+//                 int arity = fmla[j].children.size();
+//                 base_no_skolem_symbs.push_back(pred_symbs_amt[arity]);
+//                 no_skolem_symbs_amt += 1;
+
+//             }
+//             else { // function symbol or parameter
+//                 if (!is_a_parameter(fmla[j]) && skolem_symbs.find(fmla[j].data) == skolem_symbs.end()) {
+//                     map_no_skolem_symb[no_skolem_symbs_amt] = make_pair(i,j);
+//                     int arity = fmla[j].children.size();
+//                     base_no_skolem_symbs.push_back(func_symbs_amt[arity]);
+//                     no_skolem_symbs_amt += 1;
+//                 }
+//             }
+//         }
+//     }
+
+//     map<int, pair<string, int>> map_theory_symbs;
+//     map<string, int> no_skolem = pre_process_no_skolem_symbs();
+//     int theory_symbs_amt = no_skolem.size();
+//     int count = 0;
+//     for(const auto& pair : no_skolem) {
+//         map_theory_symbs[count] = pair;
+//         count += 1;
+//     }
+
+//     // count amount of combinations
+//     int signed_fmlas_amt = initial_sf.size();
+//     int combinations_signs = pow(2, signed_fmlas_amt);
+
+//     vector<int> signs_mask(signed_fmlas_amt, 1); // start with a vector of 1's so in 1st iteration, they are all set to 0
+
+//     vector<vector<SignedFmla>> resulting_sf;
+
+//     for (int i = 0; i < combinations_signs; i++) {
+//         vector<SignedFmla> filled_cs = initial_sf;
+//         signs_mask = increment_arrange_repitition_mask(signs_mask, 2);
+//         for (int j = 0; j < filled_cs.size(); j++) {
+//             SignedFmla sf = filled_cs[j];
+//             if (signs_mask[j] == 0) {
+//                 sf.sign = polarity::minus;
+//             }
+//             else {
+//                 sf.sign = polarity::plus;
+//             }
+//             filled_cs[j] = sf;
+//         }
+
+//         vector<int> theory_symbs_mask;
+//         long int combinations_symbs = 1;
+//         for (int j = 0; j < base_no_skolem_symbs.size(); j++) {
+//             combinations_symbs *= base_no_skolem_symbs[j];
+//             theory_symbs_mask.push_back(base_no_skolem_symbs[j] - 1);
+//         }
+
+//         for (int j = 0; j < combinations_symbs; j++) {
+//             theory_symbs_mask = increment_arrange_repitition_mask(theory_symbs_mask, base_no_skolem_symbs);
+//             bool is_valid_sf = true;
+//             for (int k = 0; k < no_skolem_symbs_amt; k++) {
+//                 int sf_node_idx = map_no_skolem_symb[k].first;
+//                 int fmla_node_idx = map_no_skolem_symb[k].second;
+//                 // getting the correspondent fmla_node we want to manipulate
+//                 SignedFmla sf = filled_cs[sf_node_idx];
+//                 FmlaNode fmla_node = sf.fmla[fmla_node_idx];
+
+//                 int arity = fmla_node.children.size();
+
+//                 if (fmla_node_idx == 0) { // is a predicate symbol
+//                     fmla_node.data = pred_symbs_arity[arity][theory_symbs_mask[k]];
+//                 }
+//                 else { // is a function symbol
+//                     fmla_node.data = func_symbs_arity[arity][theory_symbs_mask[k]];
+//                 }
+
+//                 sf.fmla[fmla_node_idx] = fmla_node;
+//                 filled_cs[sf_node_idx] = sf;
+//             }
+//             sf_candidates.push_back(filled_cs);
+//         }
+//     }
+//     return sf_candidates;
+// }
 
 bool is_proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFmla> sf) {
     Tableau proof_isomorphic_tbl = get_initial_tableau(sf);
@@ -1830,7 +1892,7 @@ bool is_a_proof(Tableau filled_ps, vector<TblRule> er) {
         return false;
     }
     for (TblNode tbl_node : filled_ps) {
-        if (tbl_node.justification_parents[0] == -1 || tbl_node.justification_parents[0] == -3) {
+        if (tbl_node.justification_parents[0] == -1 || tbl_node.justification_parents[0] == -2) {
             continue;
         }
         else {
@@ -1848,7 +1910,6 @@ bool is_a_proof(Tableau filled_ps, vector<TblRule> er) {
 }
 
 bool check_rule_application(vector<SignedFmla> justifications, SignedFmla expansion, vector<TblRule> er) {
-    cout << "bbb\n";
     for (TblRule rule : er) {
         vector<SignedFmla> premisses = rule.premisses;
         vector<SignedFmla> conclusions = rule.conclusions;
@@ -1934,4 +1995,103 @@ vector<SignedFmla> get_initial_sf(Tableau tbl) {
     }
 
     return initial_sf;
+}
+
+vector<SignedFmla> pattern_matching_premisses(vector<TblRule> er, TblRule rule, int prem_idx, int conc_idx) {
+    vector<SignedFmla> result;
+
+    vector<SignedFmla> rule_premisses = rule.premisses;
+
+    if (prem_idx >= rule_premisses.size()) { // avoiding index out of range
+        return result;
+    }
+
+    for (TblRule exp_rule : er) {
+        vector<SignedFmla> premisses = exp_rule.premisses;
+        vector<SignedFmla> conclusions = exp_rule.conclusions;
+        if (premisses.size() == rule_premisses.size()) {
+            vector<vector<int>> all_arranges = get_all_arranges(rule_premisses.size(), premisses.size());
+            int arranges_amt = all_arranges.size();
+            for (int i = 0; i < arranges_amt; i++) {
+                vector<int> rule_premisses_idx = all_arranges[i];
+
+                bool all_premisses_match = true;
+                for (int j = 0; j < premisses.size(); j++) {
+                    if (!are_syntactically_isomorphic(rule_premisses[rule_premisses_idx[j]].fmla, premisses[j].fmla)) all_premisses_match = false;
+                }
+
+                if (all_premisses_match) {
+                    // check if all matching of premisses agree on substitution of parameters
+                    bool all_parameters_match = true;
+                    Subst parameters_conclusion_subst;
+                    
+                    vector<Fmla> premisses_fmlas;
+                    for (SignedFmla premisse : premisses) {
+                        premisses_fmlas.push_back(premisse.fmla);
+                    }
+                    set<string> premisses_parameters = get_all_parameters(premisses_fmlas);
+
+                    for (int j = 0; j < premisses.size(); j++) {
+                        Subst matching_parameters_map = matching_parameters(rule_premisses[rule_premisses_idx[j]], premisses[j]);
+                        for (FmlaNode fmla_node : premisses[j].fmla) {
+                            if (is_a_parameter(fmla_node)) {
+                                string parameter = fmla_node.data;
+                                if (parameters_conclusion_subst.find(parameter) != parameters_conclusion_subst.end()) {
+                                    if (matching_parameters_map.find(parameter) != matching_parameters_map.end()) {
+                                        if (!term_equality(parameters_conclusion_subst[parameter], matching_parameters_map[parameter])) all_parameters_match = false;
+                                    }
+                                }
+                                else {
+                                    parameters_conclusion_subst[parameter] = matching_parameters_map[parameter];
+                                }
+                            }
+                        }
+                    }
+
+                    if (all_parameters_match) {
+                        bool some_conclusion_matches = false;
+                        SignedFmla rule_conclusion = rule.conclusions[conc_idx];
+
+                        for (SignedFmla conclusion : conclusions) {
+                            if (are_syntactically_isomorphic(conclusion.fmla, rule_conclusion.fmla)) some_conclusion_matches = true;
+                        }
+                        if (some_conclusion_matches) {
+                            if (!signed_fmla_in_vec_signed_fmla(result, premisses[prem_idx])) {
+                                result.push_back(premisses[prem_idx]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return result;
+}
+
+string get_pattern_matching_premisse_symb(Fmla fmla, int node_idx, Fmla matching_fmla) {
+
+    queue<int> q1, q2;
+    q1.push(0);
+    q2.push(0);
+
+    while (!q2.empty()) {
+        int current1 = q1.front();
+        int current2 = q2.front();
+        q1.pop(); q2.pop();
+
+        
+        if (node_idx == current1) {
+            if (!is_a_parameter(matching_fmla[current2])) {
+                return matching_fmla[current2].data;
+            }
+        }
+       
+        for (int i = 0; i < matching_fmla[current1].children.size(); i++) {
+            q1.push(fmla[current1].children[i]);
+            q2.push(matching_fmla[current2].children[i]);
+        }
+        
+    }
+
+    return "";
 }

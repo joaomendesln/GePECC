@@ -21,4 +21,8 @@ void test_potential_premisse_nodes_rule();
 
 void test_check_rule_application();
 
+void test_matching_premisses();
+
+void test_get_pattern_matching_premisse_symb();
+
 #endif // TEST_DEDUCTION_H

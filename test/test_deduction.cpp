@@ -75,7 +75,7 @@ void test_apply_cut() {
     vector<TblRule> expansion_rules = pre_process_expansion_rules_input();
     Fmla cut_fmla = parse_fmla("∈(g(p1,p2),p1)");
 
-    vector<Tableau> tableaux = apply_cut(tbl, cut_fmla, expansion_rules);
+    vector<Tableau> tableaux = apply_cut(tbl, expansion_rules);
 
     int i = 0;
     for (Tableau tableau : tableaux) {
@@ -128,4 +128,103 @@ void test_check_rule_application() {
     cout << check_rule_application(justifictions, sf2, expansion_rules) << "\n";
 
 
+}
+
+void test_matching_premisses() {
+
+    cout << "Test 1\n";
+
+    vector<TblRule> expansion_rules = pre_process_expansion_rules_input();
+    TblRule rule = expansion_rules[0];
+    int prem_idx = 0;
+    int conc_idx = 1;
+    vector<SignedFmla> result = pattern_matching_premisses(expansion_rules, rule, prem_idx, conc_idx);
+    
+    for (SignedFmla sf : result) {
+        if (sf.sign == polarity::plus) cout << "+ ";
+        if (sf.sign == polarity::minus) cout << "- ";
+        pretty_printing_fmla(sf.fmla);
+        cout << "\n";
+    }
+
+    cout << "\nTest 2\n";
+
+    rule = expansion_rules[1];
+    prem_idx = 0;
+    conc_idx = 0;
+
+    result = pattern_matching_premisses(expansion_rules, rule, prem_idx, conc_idx);
+    
+    for (SignedFmla sf : result) {
+        if (sf.sign == polarity::plus) cout << "+ ";
+        if (sf.sign == polarity::minus) cout << "- ";
+        pretty_printing_fmla(sf.fmla);
+        cout << "\n";
+    }
+
+    cout << "\nTest 3\n";
+
+    rule = expansion_rules[1];
+    prem_idx = 1;
+    conc_idx = 0;
+
+    result = pattern_matching_premisses(expansion_rules, rule, prem_idx, conc_idx);
+    
+    for (SignedFmla sf : result) {
+        if (sf.sign == polarity::plus) cout << "+ ";
+        if (sf.sign == polarity::minus) cout << "- ";
+        pretty_printing_fmla(sf.fmla);
+        cout << "\n";
+    }
+
+    cout << "\nTest 4\n";
+
+    rule = expansion_rules[17];
+    prem_idx = 0;
+    conc_idx = 0;
+
+    result = pattern_matching_premisses(expansion_rules, rule, prem_idx, conc_idx);
+    
+    for (SignedFmla sf : result) {
+        if (sf.sign == polarity::plus) cout << "+ ";
+        if (sf.sign == polarity::minus) cout << "- ";
+        pretty_printing_fmla(sf.fmla);
+        cout << "\n";
+    }
+
+    cout << "\nTest 5\n";
+
+    rule = expansion_rules[22];
+    prem_idx = 0;
+    conc_idx = 0;
+
+    result = pattern_matching_premisses(expansion_rules, rule, prem_idx, conc_idx);
+    
+    for (SignedFmla sf : result) {
+        if (sf.sign == polarity::plus) cout << "+ ";
+        if (sf.sign == polarity::minus) cout << "- ";
+        pretty_printing_fmla(sf.fmla);
+        cout << "\n";
+    }
+
+    cout << "\nTest 6\n";
+
+    rule = expansion_rules[21];
+    prem_idx = 0;
+    conc_idx = 0;
+
+    result = pattern_matching_premisses(expansion_rules, rule, prem_idx, conc_idx);
+    
+    for (SignedFmla sf : result) {
+        if (sf.sign == polarity::plus) cout << "+ ";
+        if (sf.sign == polarity::minus) cout << "- ";
+        pretty_printing_fmla(sf.fmla);
+        cout << "\n";
+    }
+}
+
+void test_get_pattern_matching_premisse_symb() {
+    Fmla fmla1 = parse_fmla("∈(p1,∩(p2,∪(p3,p4)))");
+    Fmla fmla2 = parse_fmla("∈(p1,-(p2,p3))");
+    cout << get_pattern_matching_premisse_symb(fmla1, 4, fmla2) << "\n";
 }
