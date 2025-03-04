@@ -1537,9 +1537,7 @@ map<pair<int,int>, set<string>> get_ps_potential_symbols(Tableau tbl, vector<Tbl
         }
 
         for (int exp_idx : expansion_nodes) {
-            // step to nodes in q
-
-            // processing the expansion node
+            // getting the premisse idx of the expansion node in the rule
             int premisse_idx = -1;
             vector<int> justifications = tbl[exp_idx].justification_parents;
             for (int just_idx = 0; just_idx < justifications.size(); just_idx++) {
@@ -1547,18 +1545,19 @@ map<pair<int,int>, set<string>> get_ps_potential_symbols(Tableau tbl, vector<Tbl
                     premisse_idx = just_idx;
                 }
             }
-            
             TblRule rule = er[tbl[exp_idx].expansion_rule_idx];
+
+            // processing the expansion node
             int conc_idx = tbl[exp_idx].conclusion_idx;
             vector<SignedFmla> vec_matching_premisse = pattern_matching_premisses(er, rule, premisse_idx, conc_idx);
             Fmla current_fmla = tbl[node_idx].signed_fmla.fmla;
             for (int i = 0; i < current_vec.size(); i++) {
                 int symb_idx = get<0>(current_vec[i]);
                 string symb = current_fmla[symb_idx].data;
-                if (is_no_skolem_symb(symb)) {
+                if (is_not_skolem_symb(symb)) {
                     for (SignedFmla signed_fmla : vec_matching_premisse) {
                         string matching_symb = get_pattern_matching_premisse_symb(current_fmla, symb_idx, signed_fmla.fmla);
-                        if (!symb.empty()) {
+                        if (!matching_symb.empty()) {
                             int x = get<1>(current_vec[i]).first;
                             int y = get<1>(current_vec[i]).second;
 
@@ -1567,12 +1566,70 @@ map<pair<int,int>, set<string>> get_ps_potential_symbols(Tableau tbl, vector<Tbl
                     }
                 }
             }
+
+            // adding nodes in q
+            Fmla prem_fmla = rule.premisses[premisse_idx].fmla;
+            Fmla conc_fmla = rule.conclusions[tbl[exp_idx].conclusion_idx].fmla;
+            Fmla justf_fmla = tbl[node_idx].signed_fmla.fmla;
+            Fmla exp_fmla = tbl[exp_idx].signed_fmla.fmla;
+            vector<tuple<int, pair<int, int>>> vec_ps_symbs = get_vec_ps_symbs(prem_fmla, conc_fmla, justf_fmla, exp_fmla, current_vec);
+
+            if (vec_ps_symbs.size() > 0) {
+                q.push({exp_idx, vec_ps_symbs});
+            }
         }
 
     }
 
     return potential_symbs;
     
+}
+
+vector<tuple<int, pair<int, int>>> get_vec_ps_symbs(Fmla prem_fmla, Fmla conc_fmla, Fmla justf_fmla, Fmla exp_fmla, vector<tuple<int, pair<int, int>>> ps_symbs) {
+    vector<tuple<int, pair<int, int>>> result;
+
+    set<int> prem_param_idxs = get_parameters_idxs(prem_fmla);
+
+    for(int prem_param_idx : prem_param_idxs) {
+        if (!is_a_parameter(justf_fmla[prem_param_idx])) {
+            set<int> conc_param_idxs;
+            string curr_param = prem_fmla[prem_param_idx].data;
+            for (int i = 0; i < conc_fmla.size(); i++) {
+                if (conc_fmla[i].data == curr_param) {
+                    conc_param_idxs.insert(i);
+                }
+            }
+            for (int conc_param_idx : conc_param_idxs) {
+                queue<int> q_justf, q_exp;
+                q_justf.push(prem_param_idx);
+                q_exp.push(conc_param_idx);
+
+                while(!q_justf.empty()) {
+                    int curr_justf = q_justf.front();
+                    int curr_exp = q_exp.front();
+
+                    q_justf.pop();
+                    q_exp.pop();
+
+                    if (is_not_skolem_symb(justf_fmla[curr_justf].data)){
+                        pair<int, int> p;
+                        for (int i = 0; i < ps_symbs.size(); i++) {
+                            if (get<0>(ps_symbs[i]) == curr_justf) {
+                                p = get<1>(ps_symbs[i]);
+                            }
+                        }
+                        result.push_back({curr_exp, p});
+                    }
+                    for (int i = 0; i < justf_fmla[curr_justf].children.size(); i++) {
+                        q_justf.push(justf_fmla[curr_justf].children[i]);
+                        q_exp.push(exp_fmla[curr_exp].children[i]);
+                    }
+                }
+            }
+        }
+    }
+
+    return result;
 }
 
 vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf) {

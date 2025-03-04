@@ -33,6 +33,8 @@ vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, in
 
 map<pair<int,int>, set<string>> get_ps_potential_symbols(Tableau tbl, vector<TblRule> er);
 
+vector<tuple<int, pair<int, int>>> get_vec_ps_symbs(Fmla prem_fmla, Fmla conc_fmla, Fmla justf_fmla, Fmla exp_fmla, vector<tuple<int, pair<int, int>>> ps_symbs);
+
 vector<Tableau> apply_rule_no_premisse(Tableau tbl, TblRule expansion_rule, vector<TblRule> er);
 
 vector<Tableau> apply_cut(Tableau tbl, vector<TblRule> er);
