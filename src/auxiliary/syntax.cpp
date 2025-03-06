@@ -414,6 +414,31 @@ bool term_equality(Term term1, Term term2) {
     return true;
 }
 
+int get_term_idx_img_subst(Fmla fmla1, int parameter_idx, Fmla fmla2) {
+    // Assume subst(fmla1) = fmla2. We want to find where the parameter in the position of parameter_idx is substituted in fmla2 
+
+    queue<int> q1, q2;
+    q1.push(0);
+    q2.push(0);
+
+    while(!q1.empty()) {
+        int curr1 = q1.front();
+        int curr2 = q2.front();
+
+        q1.pop(); q2.pop();
+
+        if (curr1 == parameter_idx) {
+            return curr2;
+        }
+        for (int i = 0; i < fmla1[curr1].children.size(); i++) {
+            q1.push(fmla1[curr1].children[i]);
+            q2.push(fmla2[curr2].children[i]);
+        }
+    }
+
+    return -1;
+}
+
 // Fmla left_gen_subfmla(Fmla fmla) {
 //     Fmla subfmla1 = get_subfmla(fmla, fmla[0].children[0]);
 

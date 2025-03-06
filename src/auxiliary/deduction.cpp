@@ -1591,6 +1591,7 @@ vector<tuple<int, pair<int, int>>> get_vec_ps_symbs(Fmla prem_fmla, Fmla conc_fm
     set<int> prem_param_idxs = get_parameters_idxs(prem_fmla);
 
     for(int prem_param_idx : prem_param_idxs) {
+        int term_justf_idx = get_term_idx_img_subst(prem_fmla, prem_param_idx, justf_fmla);
         if (!is_a_parameter(justf_fmla[prem_param_idx])) {
             set<int> conc_param_idxs;
             string curr_param = prem_fmla[prem_param_idx].data;
@@ -1600,9 +1601,10 @@ vector<tuple<int, pair<int, int>>> get_vec_ps_symbs(Fmla prem_fmla, Fmla conc_fm
                 }
             }
             for (int conc_param_idx : conc_param_idxs) {
+                int term_conc_idx = get_term_idx_img_subst(conc_fmla, conc_param_idx, exp_fmla);
                 queue<int> q_justf, q_exp;
-                q_justf.push(prem_param_idx);
-                q_exp.push(conc_param_idx);
+                q_justf.push(term_justf_idx);
+                q_exp.push(term_conc_idx);
 
                 while(!q_justf.empty()) {
                     int curr_justf = q_justf.front();
@@ -2170,14 +2172,13 @@ string get_pattern_matching_premisse_symb(Fmla fmla, int node_idx, Fmla matching
         int current2 = q2.front();
         q1.pop(); q2.pop();
 
-        
         if (node_idx == current1) {
             if (!is_a_parameter(matching_fmla[current2])) {
                 return matching_fmla[current2].data;
             }
         }
        
-        for (int i = 0; i < matching_fmla[current1].children.size(); i++) {
+        for (int i = 0; i < matching_fmla[current2].children.size(); i++) {
             q1.push(fmla[current1].children[i]);
             q2.push(matching_fmla[current2].children[i]);
         }
