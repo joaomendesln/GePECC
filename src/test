@@ -29,15 +29,15 @@ Application of rules cut
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 
 = 0: + p1 ∈ (p2 ∩ p3), [-1]
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 
 +++++++++++++
 Level: 3
@@ -45,8 +45,8 @@ Level: 3
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 
 Children:
 Application of rules with premisses
@@ -54,8 +54,8 @@ Application of rules with premisses
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ (p3 ∪ p5), [1, 4]
 
 Application of rules with premisses
@@ -63,10 +63,10 @@ Application of rules with premisses
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ p2, [5]
 ======= 7: - p1 ∈ p4, [5]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 
 +++++++++++++
 Level: 3
@@ -74,8 +74,8 @@ Level: 3
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 
 Children:
 Application of rules with premisses
@@ -83,8 +83,8 @@ Application of rules with premisses
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ (p2 ∪ p4), [1, 4]
 
 Application of rules with premisses
@@ -92,10 +92,10 @@ Application of rules with premisses
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ p3, [5]
 ======= 7: - p1 ∈ p5, [5]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 
 +++++++++++++
 Level: 4
@@ -103,8 +103,8 @@ Level: 4
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ (p3 ∪ p5), [1, 4]
 
 Children:
@@ -113,18 +113,18 @@ Application of rules with premisses
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
 ====== 7: - p1 ∈ p2, [5]
 ======= 8: - p1 ∈ p4, [5]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ (p3 ∪ p5), [1, 4]
 
 = 0: + p1 ∈ (p2 ∩ p3), [-1]
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ (p3 ∪ p5), [1, 4]
 ======= 7: - p1 ∈ p3, [6]
 ======== 8: - p1 ∈ p5, [6]
@@ -135,10 +135,10 @@ Level: 4
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ p2, [5]
 ======= 7: - p1 ∈ p4, [5]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 
 Children:
 Application of rules with premisses
@@ -146,10 +146,10 @@ Application of rules with premisses
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ p2, [5]
 ======= 7: - p1 ∈ p4, [5]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 ====== 8: - p1 ∈ (p3 ∪ p5), [1, 4]
 
 +++++++++++++
@@ -158,8 +158,8 @@ Level: 4
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ (p2 ∪ p4), [1, 4]
 
 Children:
@@ -168,18 +168,18 @@ Application of rules with premisses
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
 ====== 7: - p1 ∈ p3, [5]
 ======= 8: - p1 ∈ p5, [5]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ (p2 ∪ p4), [1, 4]
 
 = 0: + p1 ∈ (p2 ∩ p3), [-1]
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ (p2 ∪ p4), [1, 4]
 ======= 7: - p1 ∈ p2, [6]
 ======== 8: - p1 ∈ p4, [6]
@@ -190,10 +190,10 @@ Level: 4
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ p3, [5]
 ======= 7: - p1 ∈ p5, [5]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 
 Children:
 Application of rules with premisses
@@ -201,10 +201,10 @@ Application of rules with premisses
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ p3, [5]
 ======= 7: - p1 ∈ p5, [5]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 ====== 8: - p1 ∈ (p2 ∪ p4), [1, 4]
 
 +++++++++++++
@@ -213,10 +213,10 @@ Level: 5
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
 ====== 7: - p1 ∈ p2, [5]
 ======= 8: - p1 ∈ p4, [5]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ (p3 ∪ p5), [1, 4]
 
 Children:
@@ -225,10 +225,10 @@ Application of rules with premisses
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
 ====== 7: - p1 ∈ p2, [5]
 ======= 8: - p1 ∈ p4, [5]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ (p3 ∪ p5), [1, 4]
 ======= 9: - p1 ∈ p3, [6]
 ======== 10: - p1 ∈ p5, [6]
@@ -239,8 +239,8 @@ Level: 5
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ (p3 ∪ p5), [1, 4]
 ======= 7: - p1 ∈ p3, [6]
 ======== 8: - p1 ∈ p5, [6]
@@ -251,10 +251,10 @@ Application of rules with premisses
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
 ====== 9: - p1 ∈ p2, [5]
 ======= 10: - p1 ∈ p4, [5]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ (p3 ∪ p5), [1, 4]
 ======= 7: - p1 ∈ p3, [6]
 ======== 8: - p1 ∈ p5, [6]
@@ -265,10 +265,10 @@ Level: 5
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ p2, [5]
 ======= 7: - p1 ∈ p4, [5]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 ====== 8: - p1 ∈ (p3 ∪ p5), [1, 4]
 
 Children:
@@ -277,10 +277,10 @@ Application of rules with premisses
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ p2, [5]
 ======= 7: - p1 ∈ p4, [5]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 ====== 8: - p1 ∈ (p3 ∪ p5), [1, 4]
 ======= 9: - p1 ∈ p3, [8]
 ======== 10: - p1 ∈ p5, [8]
@@ -291,10 +291,10 @@ Level: 5
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
 ====== 7: - p1 ∈ p3, [5]
 ======= 8: - p1 ∈ p5, [5]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ (p2 ∪ p4), [1, 4]
 
 Children:
@@ -303,10 +303,10 @@ Application of rules with premisses
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
 ====== 7: - p1 ∈ p3, [5]
 ======= 8: - p1 ∈ p5, [5]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ (p2 ∪ p4), [1, 4]
 ======= 9: - p1 ∈ p2, [6]
 ======== 10: - p1 ∈ p4, [6]
@@ -317,8 +317,8 @@ Level: 5
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ (p2 ∪ p4), [1, 4]
 ======= 7: - p1 ∈ p2, [6]
 ======== 8: - p1 ∈ p4, [6]
@@ -329,10 +329,10 @@ Application of rules with premisses
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
 ====== 9: - p1 ∈ p3, [5]
 ======= 10: - p1 ∈ p5, [5]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ (p2 ∪ p4), [1, 4]
 ======= 7: - p1 ∈ p2, [6]
 ======== 8: - p1 ∈ p4, [6]
@@ -343,10 +343,10 @@ Level: 5
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ p3, [5]
 ======= 7: - p1 ∈ p5, [5]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 ====== 8: - p1 ∈ (p2 ∪ p4), [1, 4]
 
 Children:
@@ -355,10 +355,10 @@ Application of rules with premisses
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ p3, [5]
 ======= 7: - p1 ∈ p5, [5]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 ====== 8: - p1 ∈ (p2 ∪ p4), [1, 4]
 ======= 9: - p1 ∈ p2, [8]
 ======== 10: - p1 ∈ p4, [8]
@@ -368,10 +368,10 @@ Solution found!
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
 ====== 7: - p1 ∈ p2, [5]
 ======= 8: - p1 ∈ p4, [5]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ (p3 ∪ p5), [1, 4]
 ======= 9: - p1 ∈ p3, [6]
 ======== 10: - p1 ∈ p5, [6]
@@ -380,10 +380,10 @@ Solution found!
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
 ====== 9: - p1 ∈ p2, [5]
 ======= 10: - p1 ∈ p4, [5]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ (p3 ∪ p5), [1, 4]
 ======= 7: - p1 ∈ p3, [6]
 ======== 8: - p1 ∈ p5, [6]
@@ -392,10 +392,10 @@ Solution found!
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ p2, [5]
 ======= 7: - p1 ∈ p4, [5]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 ====== 8: - p1 ∈ (p3 ∪ p5), [1, 4]
 ======= 9: - p1 ∈ p3, [8]
 ======== 10: - p1 ∈ p5, [8]
@@ -404,10 +404,10 @@ Solution found!
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
 ====== 7: - p1 ∈ p3, [5]
 ======= 8: - p1 ∈ p5, [5]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ (p2 ∪ p4), [1, 4]
 ======= 9: - p1 ∈ p2, [6]
 ======== 10: - p1 ∈ p4, [6]
@@ -416,10 +416,10 @@ Solution found!
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
 ====== 9: - p1 ∈ p3, [5]
 ======= 10: - p1 ∈ p5, [5]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ (p2 ∪ p4), [1, 4]
 ======= 7: - p1 ∈ p2, [6]
 ======== 8: - p1 ∈ p4, [6]
@@ -428,10 +428,10 @@ Solution found!
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ p3, [5]
 ======= 7: - p1 ∈ p5, [5]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 ====== 8: - p1 ∈ (p2 ∪ p4), [1, 4]
 ======= 9: - p1 ∈ p2, [8]
 ======== 10: - p1 ∈ p4, [8]
@@ -442,71 +442,4517 @@ Size: 12
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
 ====== 7: - p1 ∈ p2, [5]
 ======= 8: - p1 ∈ p4, [5]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ (p3 ∪ p5), [1, 4]
 ======= 9: - p1 ∈ p3, [6]
 ======== 10: - p1 ∈ p5, [6]
 
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+
+Amount of proof-isomorphic sets:
+6
+>>>>>>>>>>>>>>>>>>>>>>
+
+Set 1
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+Set 2
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+Set 3
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+Set 4
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+Set 5
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+Set 6
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
 = 0: + p1 ∈ (p2 ∩ p3), [-1]
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
 ====== 9: - p1 ∈ p2, [5]
 ======= 10: - p1 ∈ p4, [5]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ (p3 ∪ p5), [1, 4]
 ======= 7: - p1 ∈ p3, [6]
 ======== 8: - p1 ∈ p5, [6]
 
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+
+Amount of proof-isomorphic sets:
+6
+>>>>>>>>>>>>>>>>>>>>>>
+
+Set 7
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+Set 8
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+Set 9
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+Set 10
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+Set 11
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+Set 12
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
 = 0: + p1 ∈ (p2 ∩ p3), [-1]
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p2 ∪ p4), [-3]
+===== 5: - p1 ∈ (p2 ∪ p4), [-2]
 ====== 6: - p1 ∈ p2, [5]
 ======= 7: - p1 ∈ p4, [5]
-===== 4: + p1 ∈ (p2 ∪ p4), [-3]
+===== 4: + p1 ∈ (p2 ∪ p4), [-2]
 ====== 8: - p1 ∈ (p3 ∪ p5), [1, 4]
 ======= 9: - p1 ∈ p3, [8]
 ======== 10: - p1 ∈ p5, [8]
 
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+
+Amount of proof-isomorphic sets:
+6
+>>>>>>>>>>>>>>>>>>>>>>
+
+Set 13
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),-(p3,p5)))
+
+Set 14
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∩(p3,p5)))
+
+Set 15
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),-(p3,p5)))
+
+Set 16
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∩(p3,p5)))
+
+Set 17
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+Set 18
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
 = 0: + p1 ∈ (p2 ∩ p3), [-1]
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
 ====== 7: - p1 ∈ p3, [5]
 ======= 8: - p1 ∈ p5, [5]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ (p2 ∪ p4), [1, 4]
 ======= 9: - p1 ∈ p2, [6]
 ======== 10: - p1 ∈ p4, [6]
 
-= 0: + p1 ∈ (p2 ∩ p3), [-1]
-== 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
-=== 2: + p1 ∈ p2, [0]
-==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
-====== 9: - p1 ∈ p3, [5]
-======= 10: - p1 ∈ p5, [5]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
-====== 6: - p1 ∈ (p2 ∪ p4), [1, 4]
-======= 7: - p1 ∈ p2, [6]
-======== 8: - p1 ∈ p4, [6]
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+
+Amount of proof-isomorphic sets:
+2
+>>>>>>>>>>>>>>>>>>>>>>
+
+Set 19
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+Set 20
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
 
 = 0: + p1 ∈ (p2 ∩ p3), [-1]
 == 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
 === 2: + p1 ∈ p2, [0]
 ==== 3: + p1 ∈ p3, [0]
-===== 5: - p1 ∈ (p3 ∪ p5), [-3]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
+====== 9: - p1 ∈ p3, [5]
+======= 10: - p1 ∈ p5, [5]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
+====== 6: - p1 ∈ (p2 ∪ p4), [1, 4]
+======= 7: - p1 ∈ p2, [6]
+======== 8: - p1 ∈ p4, [6]
+
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+
+Amount of proof-isomorphic sets:
+2
+>>>>>>>>>>>>>>>>>>>>>>
+
+Set 21
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+Set 22
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+= 0: + p1 ∈ (p2 ∩ p3), [-1]
+== 1: - p1 ∈ ((p2 ∪ p4)) ∩ ((p3 ∪ p5)), [-1]
+=== 2: + p1 ∈ p2, [0]
+==== 3: + p1 ∈ p3, [0]
+===== 5: - p1 ∈ (p3 ∪ p5), [-2]
 ====== 6: - p1 ∈ p3, [5]
 ======= 7: - p1 ∈ p5, [5]
-===== 4: + p1 ∈ (p3 ∪ p5), [-3]
+===== 4: + p1 ∈ (p3 ∪ p5), [-2]
 ====== 8: - p1 ∈ (p2 ∪ p4), [1, 4]
 ======= 9: - p1 ∈ p2, [8]
 ======== 10: - p1 ∈ p4, [8]
+
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
+- ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
+- ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,-(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,-(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,∪(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(-(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(∩(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+--------
++ ∈(p1,∪(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
+
+is not proof isomorphic!
+
+Amount of proof-isomorphic sets:
+2
+>>>>>>>>>>>>>>>>>>>>>>
+
+Set 23
++ ∈(p1,∩(p2,p3))
+- ∈(p1,∩(∪(p2,p4),∪(p3,p5)))
+
+Set 24
++ ∈(p1,∩(p2,p3))
++ ∈(p1,△(∪(p2,p4),∪(p3,p5)))
 

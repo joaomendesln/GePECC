@@ -64,6 +64,8 @@ bool fmla_equality_under_subst(Fmla fmla1, Fmla fmla2);
 
 bool are_syntactically_isomorphic(Fmla fmla1, Fmla fmla2);
 
+bool are_isomorphic_with_equal_parameters(Fmla fmla1, Fmla fmla2);
+
 bool term_equality(Term term1, Term term2);
 
 int get_term_idx_img_subst(Fmla fmla1, int parameter_idx, Fmla fmla2);

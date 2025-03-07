@@ -49,6 +49,8 @@ vector<int> get_tbl_leaves(Tableau tbl);
 
 vector< vector<int>> get_tbl_branches(Tableau tbl);
 
+vector<int> get_tbl_branch_by_node(Tableau tbl, int node_idx);
+
 int branch_leaf(Tableau tbl, vector<int> branch);
 
 vector<int> get_tbl_levels(Tableau tbl);
@@ -113,11 +115,13 @@ vector<vector<SignedFmla>> proof_isomorphic_sf_sets(Tableau tbl, vector<TblRule>
 
 vector<SignedFmla> get_conclusions_from_justifications(vector<SignedFmla> justifications, vector<TblRule> er);
 
+int get_cut_sibling_node(Tableau tbl, int cut_node_idx);
+
 bool is_proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFmla> sf);
 
 Tableau proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFmla> sf);
 
-vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf);
+vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf, map<pair<int,int>, set<string>> get_ps_potential_symbols);
 
 bool is_valid_filled_ps(Tableau filled_ps, vector<pair<symbType, int>> proof_schema);
 
