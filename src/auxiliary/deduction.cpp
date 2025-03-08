@@ -333,20 +333,17 @@ vector<Tableau> apply_cut(Tableau tbl, vector<TblRule> er) {
             cout << "\n";
         }
 
-        for (SignedFmla signed_fmla : potential_nodes) {
+        int cuts_amt = 0;
 
-            // if there are no parameters with no mapping, then expand it
-            // set<string> parameters_not_mapped = get_parameters(signed_fmla.fmla);
+        for (int branch_node_idx : branch) {
+            TblNode branch_node = tbl[branch_node_idx];
+            if (branch_node.justification_parents[0] == -2) {
+                cuts_amt += 1;
+            }
+        }
 
-            // for (int node_idx : branch_idxs) {
-            //     set<string> parameters_branch_fmla = get_parameters(tbl[node_idx].signed_fmla.fmla);
-
-            //     for (string parameter : parameters_branch_fmla) {
-            //         parameters_not_mapped.erase(parameter);
-            //     }
-            // }
-
-            // if (parameters_not_mapped.size() == 0) {
+        if (cuts_amt < 1) {
+            for (SignedFmla signed_fmla : potential_nodes) {
                 SignedFmla expansion_node1, expansion_node2;
                 expansion_node1.sign = polarity::plus;
                 expansion_node1.fmla = signed_fmla.fmla;
@@ -381,57 +378,7 @@ vector<Tableau> apply_cut(Tableau tbl, vector<TblRule> er) {
                     new_tbl.push_back(new_tbl_node2);
                     resuling_tableaux.push_back(new_tbl);
                 }
-            // }
-            // else {
-            //     vector<Term> branch_terms = get_all_terms_of_branch(tbl, branch_idxs);
-
-            //     vector<string> parameters; // parameters_not_mapped as a vector
-            //     parameters.assign(parameters_not_mapped.begin(), parameters_not_mapped.end());
-
-            //     vector<vector<int>> all_arranges_repitition = get_all_arranges_repetition(branch_terms.size(), parameters.size());
-            //     int arranges_repitition_amt = all_arranges_repitition.size();
-
-            //     for (int j = 0; j < arranges_repitition_amt; j++) {
-            //         Subst parameters_conclusion_subst;    
-            //         vector<int> arrange = all_arranges_repitition[j];
-
-            //         for (int k = 0; k < arrange.size(); k++) {
-            //             parameters_conclusion_subst[parameters[k]] = branch_terms[arrange[k]];
-            //         }
-
-            //         // int leaf = branch_leaf(tbl, branch_idxs);
-            //         SignedFmla expansion_node1, expansion_node2;
-            //         Tableau new_tbl = tbl;
-
-            //         expansion_node1.sign = polarity::plus;
-            //         expansion_node1.fmla = subst_extension(signed_fmla.fmla, parameters_conclusion_subst);
-
-            //         expansion_node2.sign = polarity::minus;
-            //         expansion_node2.fmla = subst_extension(signed_fmla.fmla, parameters_conclusion_subst);
-
-            //         if (!node_in_tbl(expansion_node1, tbl) && !node_in_tbl(expansion_node2, tbl)){
-            //             int leaf = branch_leaf(tbl, branch_idxs);
-
-            //             TblNode new_tbl_node1, new_tbl_node2;
-            //             new_tbl_node1.signed_fmla = expansion_node1;
-            //             new_tbl_node1.tbl_children = {};
-            //             new_tbl_node1.tbl_parent = leaf;
-            //             new_tbl_node1.justification_parents = {-3};
-
-            //             new_tbl_node2.signed_fmla = expansion_node2;
-            //             new_tbl_node2.tbl_children = {};
-            //             new_tbl_node2.tbl_parent = leaf;
-            //             new_tbl_node2.justification_parents = {-3};
-                        
-            //             new_tbl[leaf].tbl_children.push_back(tbl.size());
-            //             new_tbl[leaf].tbl_children.push_back(tbl.size() + 1);
-
-            //             new_tbl.push_back(new_tbl_node1);
-            //             new_tbl.push_back(new_tbl_node2);
-            //             resuling_tableaux.push_back(new_tbl);
-            //         }
-            //     }
-            // }
+            }
         }
     }
 
@@ -1483,7 +1430,9 @@ vector<vector<SignedFmla>> proof_isomorphic_sf_sets(Tableau tbl, vector<TblRule>
             cout << "is proof isomorphic!\n";
             // is_proof_isomorphic_sf_set(tbl, er, sf_candidate);
             // print_tableau_as_list_fmla_prefix(proof_isomorphic_sf_set(tbl, er, sf_candidate));
-            resulting_sf_sets.push_back(sf_candidate);
+            if (!vec_sf_in_vec_vec_sf(resulting_sf_sets, sf_candidate)) {
+                resulting_sf_sets.push_back(sf_candidate);
+            }
             // cout << "\n";
         }
         else {
@@ -1705,6 +1654,25 @@ vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf, map<
         }
     }
     return sf_candidates;
+}
+
+bool vec_sf_equality(vector<SignedFmla> vec_sf1, vector<SignedFmla> vec_sf2) {
+    if (vec_sf1.size() != vec_sf2.size()) return false;
+
+    for (int i = 0; i < vec_sf1.size(); i++) {
+        SignedFmla sf1 = vec_sf1[i];
+        SignedFmla sf2 = vec_sf2[i];
+        if (sf1.sign != sf2.sign || !fmla_equality(sf1.fmla, sf2.fmla)) return false;
+    }
+    return true;
+}
+
+bool vec_sf_in_vec_vec_sf(vector<vector<SignedFmla>> vec_vec_sf, vector<SignedFmla> vec_sf) {
+    for (vector<SignedFmla> vec_sf2 : vec_vec_sf) {
+        if (vec_sf_equality(vec_sf, vec_sf2)) return true;
+    }
+
+    return false;
 }
 
 int get_cut_sibling_node(Tableau tbl, int cut_node_idx) {

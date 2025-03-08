@@ -123,6 +123,10 @@ Tableau proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFm
 
 vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf, map<pair<int,int>, set<string>> get_ps_potential_symbols);
 
+bool vec_sf_equality(vector<SignedFmla> vec_sf1, vector<SignedFmla> vec_sf2);
+
+bool vec_sf_in_vec_vec_sf(vector<vector<SignedFmla>> vec_vec_sf, vector<SignedFmla> vec_sf);
+
 bool is_valid_filled_ps(Tableau filled_ps, vector<pair<symbType, int>> proof_schema);
 
 bool is_a_proof(Tableau filled_ps, vector<TblRule> er);
