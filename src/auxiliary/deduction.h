@@ -29,7 +29,7 @@ vector<int> increment_arrange_repitition_mask(vector<int> arrange_mask, vector<i
 
 vector<vector<int>> get_all_arranges_repetition(int terms_tbl_amt, int parameters_conclustion_amt);
 
-vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, int rule_idx); // One expansion rule may be applied in a tableau in several ways. That's why the output is a vector of tableaux
+Tableau apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, int rule_idx);
 
 map<pair<int,int>, set<string>> get_ps_potential_symbols(Tableau tbl, vector<TblRule> er);
 
@@ -70,6 +70,10 @@ bool is_a_term_in_branch(Tableau tbl, vector<int> branch, Term term);
 vector<Fmla> get_cut_fmlas(vector<TblRule> er);
 
 vector<TblRule> add_cut_rule(vector<TblRule> er);
+
+bool has_single_justification_nodes(Tableau tbl, vector<TblRule> er);
+
+Tableau saturate_single_justification_nodes(Tableau tbl, vector<TblRule> er);
 
 vector<Tableau> get_tbl_successors(Tableau tbl, vector<TblRule> er);
 

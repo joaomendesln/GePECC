@@ -131,14 +131,17 @@ vector<int> increment_arrange_repitition_mask(vector<int> arrange_mask, vector<i
     return arrange_mask;
 }
 
-vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, int rule_idx) {
+Tableau apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, int rule_idx) {
     vector<Tableau> resuling_tableaux;
     vector<SignedFmla> premisses = expansion_rule.premisses;
     vector<SignedFmla> conclusions = expansion_rule.conclusions;
 
     vector<vector<int>> branches = get_tbl_open_branches(tbl);
 
+    Tableau new_tbl = tbl;
+
     for (vector<int> branch : branches) {
+        int nodes_added_amt = 0;
         // int fmla_max_size = get_fmla_max_size(tbl, branch_idxs);
         int branch_size = branch.size();
         int premisses_size = premisses.size();
@@ -189,10 +192,8 @@ vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, in
 
                     // expand tableau
                     if (all_parameters_match) {
-                        int leaf = branch_leaf(tbl, branch);
+                        int leaf = branch_leaf(new_tbl, branch);
                         SignedFmla expansion_node;
-                        Tableau new_tbl = tbl;
-                        int nodes_added_amt = 0;
                         for (int j = 0; j < conclusions.size(); j++) {
                             SignedFmla conclusion = conclusions[j];
                             expansion_node.sign = conclusion.sign;
@@ -221,15 +222,15 @@ vector<Tableau> apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, in
                                 new_tbl.push_back(new_tbl_node);
                             }
                         }
-                        if (new_tbl.size() > tbl.size()) { // if a node was added, then this is a successor tableau
-                            resuling_tableaux.push_back(new_tbl);
-                        } 
+                        // if (new_tbl.size() > tbl.size()) { // if a node was added, then this is a successor tableau
+                        //     resuling_tableaux.push_back(new_tbl);
+                        // } 
                     }
                 }
             }
         }
     }
-    return resuling_tableaux;
+    return new_tbl;
 }
 
 vector<Tableau> apply_rule_no_premisse(Tableau tbl, TblRule expansion_rule, vector<TblRule> er) {
@@ -781,6 +782,30 @@ vector<TblRule> add_cut_rule(vector<TblRule> er) {
     return er;
 }
 
+bool has_single_justification_nodes(Tableau tbl, vector<TblRule> er) {
+    for (int i = 0; i < er.size(); i++) {
+        TblRule rule = er[i];
+        if (rule.premisses.size() == 1) {
+            Tableau tbl_successor_rule = apply_rule_with_premisse(tbl, rule, i);
+            if (tbl_successor_rule.size() > tbl.size()) return true;
+        }
+    }
+    return false;
+}
+
+Tableau saturate_single_justification_nodes(Tableau tbl, vector<TblRule> er) {
+    for (int i = 0; i < er.size(); i++) {
+        TblRule rule = er[i];
+        if (rule.premisses.size() == 1) {
+            tbl = apply_rule_with_premisse(tbl, rule, i);
+        }
+    }
+    cout << "Application of rules with 1 premise\n";
+    print_tableau(tbl);
+    cout << "\n";
+    return tbl;
+}
+
 vector<Tableau> get_tbl_successors(Tableau tbl, vector<TblRule> er) {
     vector<Tableau> tableau_successors;
 
@@ -788,15 +813,15 @@ vector<Tableau> get_tbl_successors(Tableau tbl, vector<TblRule> er) {
     int successors_amt = 0;
     for (int i = 0; i < er.size(); i++) {
         TblRule rule = er[i];
-        if (rule.premisses.size() > 0) {
-            vector<Tableau> tbl_successors_rule = apply_rule_with_premisse(tbl, rule, i);
-            if (tbl_successors_rule.size() > 0) cout << "Application of rules with premisses\n";
-            successors_amt += tbl_successors_rule.size();
-            for (Tableau tbl_successor : tbl_successors_rule) {
-                // print_tableau_as_list_fmla_prefix(tbl_successor);
-                print_tableau(tbl_successor);
+        if (rule.premisses.size() > 1) {
+            // cout << i << "\n";
+            Tableau tbl_successor_rule = apply_rule_with_premisse(tbl, rule, i);
+            if (tbl_successor_rule.size() > tbl.size()) {
+                cout << "Application of rules with 2 or more premises\n";
+                successors_amt += 1;
+                print_tableau(tbl_successor_rule);
                 cout << "\n";
-                tableau_successors.push_back(tbl_successor);
+                tableau_successors.push_back(tbl_successor_rule);
             }
         }
     }
@@ -1056,17 +1081,23 @@ vector<Tableau> extract_minimal_proofs(vector<SignedFmla> sf, vector<TblRule> er
             print_tableau(tbl);
             cout << "\nChildren:\n";
             if (minimal_proofs.size() == 0 || level < minimal_proof_size + 1) {
-                vector<Tableau> tbl_children = get_tbl_successors(tbl, er);
-                for (Tableau tbl_child : tbl_children) {
-                    // print_tableau_as_list_fmla_prefix(tbl_child);
-                    // cout << "\n";
-                    // if (is_closed(tbl_child) && is_clean(tbl_child)) {
-                    //     cout << "Size: " << get_size(tbl_child) << "\n";
-                    // }
-                    // else {
-                    //     cout << "Not closed neither clean\n";
-                    // }
+                if (has_single_justification_nodes(tbl, er)) {
+                    Tableau tbl_child = saturate_single_justification_nodes(tbl, er);
                     aux_queue.push(make_tuple(tbl_child, level + 1));
+                }
+                else {
+                    vector<Tableau> tbl_children = get_tbl_successors(tbl, er);
+                    for (Tableau tbl_child : tbl_children) {
+                        // print_tableau_as_list_fmla_prefix(tbl_child);
+                        // cout << "\n";
+                        // if (is_closed(tbl_child) && is_clean(tbl_child)) {
+                        //     cout << "Size: " << get_size(tbl_child) << "\n";
+                        // }
+                        // else {
+                        //     cout << "Not closed neither clean\n";
+                        // }
+                        aux_queue.push(make_tuple(tbl_child, level + 1));
+                    }
                 }
             }
         }
