@@ -131,18 +131,17 @@ vector<int> increment_arrange_repitition_mask(vector<int> arrange_mask, vector<i
     return arrange_mask;
 }
 
-Tableau apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, int rule_idx) {
+Tableau apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, int rule_idx, vector<TblRule> er) {
     vector<Tableau> resuling_tableaux;
     vector<SignedFmla> premisses = expansion_rule.premisses;
     vector<SignedFmla> conclusions = expansion_rule.conclusions;
 
-    vector<vector<int>> branches = get_tbl_open_branches(tbl);
+    vector<vector<int>> branches = get_tbl_open_branches(tbl, er);
 
     Tableau new_tbl = tbl;
 
     for (vector<int> branch : branches) {
         int nodes_added_amt = 0;
-        // int fmla_max_size = get_fmla_max_size(tbl, branch_idxs);
         int branch_size = branch.size();
         int premisses_size = premisses.size();
         if (branch_size >= premisses_size) {
@@ -179,7 +178,6 @@ Tableau apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, int rule_i
                                 string parameter = fmla_node.data;
                                 if (parameters_conclusion_subst.find(parameter) != parameters_conclusion_subst.end()) {
                                     if (matching_parameters_map.find(parameter) != matching_parameters_map.end()) {
-                                        // if (parameters_conclusion_subst[parameter].size() > 0)
                                         if (!term_equality(parameters_conclusion_subst[parameter], matching_parameters_map[parameter])) all_parameters_match = false;
                                     }
                                 }
@@ -203,7 +201,6 @@ Tableau apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, int rule_i
                                 if (nodes_added_amt > 0) {
                                     leaf = new_tbl.size() - 1;
                                 }
-                                // if (j > 0) leaf = tbl.size() - 1 + j;
 
                                 TblNode new_tbl_node;
                                 new_tbl_node.signed_fmla = expansion_node;
@@ -215,16 +212,11 @@ Tableau apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, int rule_i
                                 new_tbl_node.conclusion_idx = j;
                                 
                                 new_tbl[leaf].tbl_children.push_back(new_tbl.size());
-                                // if (nodes_added_amt == 0) new_tbl[leaf].tbl_children.push_back(new_tbl.size());
-                                // else new_tbl[leaf].tbl_children.push_back(new_tbl.size() + 1);
 
                                 nodes_added_amt += 1;
                                 new_tbl.push_back(new_tbl_node);
                             }
                         }
-                        // if (new_tbl.size() > tbl.size()) { // if a node was added, then this is a successor tableau
-                        //     resuling_tableaux.push_back(new_tbl);
-                        // } 
                     }
                 }
             }
@@ -233,75 +225,138 @@ Tableau apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, int rule_i
     return new_tbl;
 }
 
-vector<Tableau> apply_rule_no_premisse(Tableau tbl, TblRule expansion_rule, vector<TblRule> er) {
+bool try_apply_closure_rule(Tableau tbl, TblRule expansion_rule, vector<TblRule> er) {
     vector<Tableau> resuling_tableaux;
-    vector<SignedFmla> conclusions = expansion_rule.conclusions;
+    vector<SignedFmla> premisses = expansion_rule.premisses;
 
-    vector<vector<int>> branches_idxs = get_tbl_open_branches(tbl);
+    // vector<vector<int>> branches = get_tbl_open_branches(tbl, er);
+    vector<vector<int>> branches = get_tbl_branches(tbl);
 
-    for (vector<int> branch_idxs : branches_idxs) {
-        // int fmla_max_size = get_fmla_max_size(tbl, branch_idxs);
-        set<string> parameters_set;
-        for (SignedFmla conclusion : conclusions) {
-            set<string> parameters_conclusion = get_all_parameters_of_fmla(conclusion.fmla);
-            for (string parameter : parameters_set) {
-                parameters_conclusion.insert(parameter);
-            }
-        }
-        vector<string> parameters;
-        parameters.assign(parameters_set.begin(), parameters_set.end());
+    Tableau new_tbl = tbl;
 
-        vector<Term> branch_terms = get_all_terms_of_branch(tbl, branch_idxs);
+    for (vector<int> branch : branches) {
+        int nodes_added_amt = 0;
+        int branch_size = branch.size();
+        int premisses_size = premisses.size();
+        if (branch_size >= premisses_size) {
+            vector<vector<int>> all_arranges = get_all_arranges(branch_size, premisses_size);
+            int arranges_amt = all_arranges.size();
+            for (int i = 0; i < arranges_amt; i++) {
+                vector<int> arrange = all_arranges[i];
+                vector<int> justifications;
 
-        vector<vector<int>> all_arranges_repitition = get_all_arranges_repetition(branch_terms.size(), parameters.size());
-        int arranges_repitition_amt = all_arranges_repitition.size();
+                for (int j = 0; j < premisses.size(); j++) {
+                    justifications.push_back(branch[arrange[j]]);
+                }
 
-        for (int i = 0; i < arranges_repitition_amt; i++) {
+                bool all_premisses_match = true;
+                for (int j = 0; j < premisses.size(); j++) {
+                    if (!is_a_match(tbl[justifications[j]].signed_fmla, premisses[j])) all_premisses_match = false;
+                }
 
-            vector<int> arrange = all_arranges_repitition[i];
+                if (all_premisses_match) {
+                    // check if all matching of premisses agree on substitution of parameters
+                    bool all_parameters_match = true;
+                    Subst parameters_conclusion_subst;
+                    
+                    vector<Fmla> premisses_fmlas;
+                    for (SignedFmla premisse : premisses) {
+                        premisses_fmlas.push_back(premisse.fmla);
+                    }
+                    set<string> premisses_parameters = get_all_parameters(premisses_fmlas);
 
-            Subst conclusion_subst;
+                    for (int j = 0; j < premisses.size(); j++) {
+                        Subst matching_parameters_map = matching_parameters(tbl[justifications[j]].signed_fmla, premisses[j]);
+                        for (FmlaNode fmla_node : premisses[j].fmla) {
+                            if (is_a_parameter(fmla_node)) {
+                                string parameter = fmla_node.data;
+                                if (parameters_conclusion_subst.find(parameter) != parameters_conclusion_subst.end()) {
+                                    if (matching_parameters_map.find(parameter) != matching_parameters_map.end()) {
+                                        if (!term_equality(parameters_conclusion_subst[parameter], matching_parameters_map[parameter])) all_parameters_match = false;
+                                    }
+                                }
+                                else {
+                                    parameters_conclusion_subst[parameter] = matching_parameters_map[parameter];
+                                }
+                            }
+                        }
+                    }
 
-            for (int j = 0; j < arrange.size(); j++) {
-                conclusion_subst[parameters[j]] = branch_terms[arrange[j]];
-            }
-
-            int leaf = branch_leaf(tbl, branch_idxs);
-            SignedFmla expansion_node;
-            Tableau new_tbl = tbl;
-            for (int j = 0; j < conclusions.size(); j++) {
-                SignedFmla conclusion = conclusions[j];
-                expansion_node.sign = conclusion.sign;
-                expansion_node.fmla = subst_extension(conclusion.fmla, conclusion_subst);
-
-                vector <Term> terms_of_fmla = get_all_terms_of_fmla(expansion_node.fmla);
-
-                bool all_fmla_terms_in_branch = true;
-                for (Term t : terms_of_fmla) {
-                    if (!term_in_vector_of_terms(t, branch_terms)) {
-                        all_fmla_terms_in_branch &= false;
+                    if (all_parameters_match) {
+                        return true;
                     }
                 }
-
-                if (!node_in_tbl(expansion_node, tbl) && all_fmla_terms_in_branch && is_potential_premisse_nodes_branch(expansion_node, tbl, branch_idxs, er)){
-
-                    TblNode new_tbl_node;
-                    new_tbl_node.signed_fmla = expansion_node;
-                    new_tbl_node.tbl_children = {};
-                    if (j > 0) leaf = tbl.size() - 1 + j;
-                    new_tbl_node.tbl_parent = leaf;
-                    new_tbl_node.justification_parents = {-2};
-
-                    if (j == 0) new_tbl[leaf].tbl_children.push_back(tbl.size());
-                    else new_tbl[leaf].tbl_children.push_back(tbl.size() + 1);
-
-                    new_tbl.push_back(new_tbl_node);
-                }
             }
-            if(new_tbl.size() > tbl.size()) resuling_tableaux.push_back(new_tbl); // if a node was added, then this is a successor tableau 
         }
     }
-    return resuling_tableaux;
+    return false;
+}
+
+vector<int> get_premisses_closure_rule(Tableau tbl, TblRule expansion_rule, vector<TblRule> er) {
+    vector<Tableau> resuling_tableaux;
+    vector<SignedFmla> premisses = expansion_rule.premisses;
+
+    // vector<vector<int>> branches = get_tbl_open_branches(tbl, er);
+    vector<vector<int>> branches = get_tbl_branches(tbl);
+
+    Tableau new_tbl = tbl;
+
+    for (vector<int> branch : branches) {
+        int nodes_added_amt = 0;
+        int branch_size = branch.size();
+        int premisses_size = premisses.size();
+        if (branch_size >= premisses_size) {
+            vector<vector<int>> all_arranges = get_all_arranges(branch_size, premisses_size);
+            int arranges_amt = all_arranges.size();
+            for (int i = 0; i < arranges_amt; i++) {
+                vector<int> arrange = all_arranges[i];
+                vector<int> justifications;
+
+                for (int j = 0; j < premisses.size(); j++) {
+                    justifications.push_back(branch[arrange[j]]);
+                }
+
+                bool all_premisses_match = true;
+                for (int j = 0; j < premisses.size(); j++) {
+                    if (!is_a_match(tbl[justifications[j]].signed_fmla, premisses[j])) all_premisses_match = false;
+                }
+
+                if (all_premisses_match) {
+                    // check if all matching of premisses agree on substitution of parameters
+                    bool all_parameters_match = true;
+                    Subst parameters_conclusion_subst;
+                    
+                    vector<Fmla> premisses_fmlas;
+                    for (SignedFmla premisse : premisses) {
+                        premisses_fmlas.push_back(premisse.fmla);
+                    }
+                    set<string> premisses_parameters = get_all_parameters(premisses_fmlas);
+
+                    for (int j = 0; j < premisses.size(); j++) {
+                        Subst matching_parameters_map = matching_parameters(tbl[justifications[j]].signed_fmla, premisses[j]);
+                        for (FmlaNode fmla_node : premisses[j].fmla) {
+                            if (is_a_parameter(fmla_node)) {
+                                string parameter = fmla_node.data;
+                                if (parameters_conclusion_subst.find(parameter) != parameters_conclusion_subst.end()) {
+                                    if (matching_parameters_map.find(parameter) != matching_parameters_map.end()) {
+                                        if (!term_equality(parameters_conclusion_subst[parameter], matching_parameters_map[parameter])) all_parameters_match = false;
+                                    }
+                                }
+                                else {
+                                    parameters_conclusion_subst[parameter] = matching_parameters_map[parameter];
+                                }
+                            }
+                        }
+                    }
+
+                    if (all_parameters_match) {
+                        return justifications;
+                    }
+                }
+            }
+        }
+    }
+    return {};
 }
 
 bool is_potential_premisse_nodes_branch(SignedFmla sf_input, Tableau tbl, vector<int> branch, vector<TblRule> er) {
@@ -323,7 +378,7 @@ bool is_potential_premisse_nodes_branch(SignedFmla sf_input, Tableau tbl, vector
 vector<Tableau> apply_cut(Tableau tbl, vector<TblRule> er) {
     vector<Tableau> resuling_tableaux;
 
-    vector<vector<int>> branches = get_tbl_open_branches(tbl);
+    vector<vector<int>> branches = get_tbl_open_branches(tbl, er);
 
     for (vector<int> branch : branches) {
 
@@ -385,93 +440,6 @@ vector<Tableau> apply_cut(Tableau tbl, vector<TblRule> er) {
 
     return resuling_tableaux;
 }
-
-// vector<Tableau> apply_cut(Tableau tbl, Fmla cut_fmla, vector<TblRule> er) {
-//     vector<Tableau> resuling_tableaux;
-
-//     vector<vector<int>> branches_idxs = get_tbl_open_branches(tbl);
-
-//     for (vector<int> branch_idxs : branches_idxs) {
-
-//         vector<SignedFmla> potential_nodes = potential_premisse_nodes_branch(tbl, branch_idxs, er);
-        
-//         int fmla_max_size = get_fmla_max_size(tbl, branch_idxs); // !! THIS SHALL BE REMOVED !!
-//         set<string> parameters_set = get_all_parameters_of_fmla(cut_fmla);
-//         vector<string> parameters;
-//         parameters.assign(parameters_set.begin(), parameters_set.end());
-
-//         vector<Term> initial_branch_terms = get_all_terms_of_branch(tbl, branch_idxs);
-
-//         // remove terms that will make the cut formula be greater than any previous formula in the tableau
-//         vector<Term> branch_terms;
-//         for (Term term : initial_branch_terms) {
-//             int term_size = term.size();
-//             int cut_fmla_size = cut_fmla.size();
-//             if (term_size + cut_fmla_size - 1 <= fmla_max_size) {
-//                 branch_terms.push_back(term);
-//             }
-//         }
-
-//         vector<vector<int>> all_arranges_repitition = get_all_arranges_repetition(branch_terms.size(), parameters.size());
-//         int arranges_repitition_amt = all_arranges_repitition.size();
-
-//         cout << "Amt cut applications: " << arranges_repitition_amt << "\n";
-
-//         for (int i = 0; i < arranges_repitition_amt; i++) {
-
-//             vector<int> arrange = all_arranges_repitition[i];
-
-//             Subst conclusion_subst;
-
-//             for (int j = 0; j < arrange.size(); j++) {
-//                 conclusion_subst[parameters[j]] = branch_terms[arrange[j]];
-//             }
-
-//             SignedFmla expansion_node1, expansion_node2;
-//             expansion_node1.sign = polarity::plus;
-//             expansion_node1.fmla = subst_extension(cut_fmla, conclusion_subst);
-
-//             expansion_node2.sign = polarity::minus;
-//             expansion_node2.fmla = subst_extension(cut_fmla, conclusion_subst);
-
-//             vector <Term> terms_of_fmla = get_all_terms_of_fmla(expansion_node1.fmla);
-
-//             bool all_fmla_terms_in_branch = true;
-//             for (Term t : terms_of_fmla) {
-//                 if (!term_in_vector_of_terms(t, branch_terms)) {
-//                     all_fmla_terms_in_branch &= false;
-//                 }
-//             }
-
-//             // if (!node_in_tbl(expansion_node1, tbl) && !node_in_tbl(expansion_node2, tbl) && expansion_node1.fmla.size() <= fmla_max_size && expansion_node2.fmla.size() <= fmla_max_size && all_fmla_terms_in_branch && (is_potential_premisse_nodes_branch(expansion_node1, tbl, branch_idxs, er) || is_potential_premisse_nodes_branch(expansion_node2, tbl, branch_idxs, er))){
-//             if (!node_in_tbl(expansion_node1, tbl) && !node_in_tbl(expansion_node2, tbl) && all_fmla_terms_in_branch && (is_potential_premisse_nodes_branch(expansion_node1, tbl, branch_idxs, er) || is_potential_premisse_nodes_branch(expansion_node2, tbl, branch_idxs, er))){
-
-//                 Tableau new_tbl = tbl;
-
-//                 int leaf = branch_leaf(tbl, branch_idxs);
-//                 TblNode new_tbl_node1, new_tbl_node2;
-//                 new_tbl_node1.signed_fmla = expansion_node1;
-//                 new_tbl_node1.tbl_children = {};
-//                 new_tbl_node1.tbl_parent = leaf;
-//                 new_tbl_node1.justification_parents = {-3};
-
-//                 new_tbl_node2.signed_fmla = expansion_node2;
-//                 new_tbl_node2.tbl_children = {};
-//                 new_tbl_node2.tbl_parent = leaf;
-//                 new_tbl_node2.justification_parents = {-3};
-                
-//                 new_tbl[leaf].tbl_children.push_back(tbl.size());
-//                 new_tbl[leaf].tbl_children.push_back(tbl.size() + 1);
-
-//                 new_tbl.push_back(new_tbl_node1);
-//                 new_tbl.push_back(new_tbl_node2);
-//                 resuling_tableaux.push_back(new_tbl);
-//             }
-//         }
-//     }
-
-//     return resuling_tableaux;
-// }
 
 bool is_a_match(SignedFmla sf_tbl, SignedFmla premisse) {
     if (sf_tbl.sign != premisse.sign) {
@@ -651,7 +619,7 @@ bool opposite_polarity_nodes(TblNode node1, TblNode node2) {
     return false;
 }
 
-bool branch_is_closed(vector<int> branch, Tableau tbl) {
+bool branch_is_closed(vector<int> branch, Tableau tbl, vector<TblRule> er) {
     for (int i = 0; i < branch.size(); i++) {
         for (int j = 0; j < branch.size(); j++) {
             int node1 = branch[i];
@@ -661,29 +629,47 @@ bool branch_is_closed(vector<int> branch, Tableau tbl) {
             }
         }
     }
-    // TODO Implement closure for 0-conclusion rules
+
+    vector<TblRule> closure_rules = get_closure_rules(er);
+    for (TblRule closure_rule : closure_rules) {
+        if (try_apply_closure_rule(tbl, closure_rule, er)) {
+            return true;
+        }
+    }
 
     return false;
 }
 
-vector< vector<int>> get_tbl_open_branches(Tableau tbl) {
+vector<TblRule> get_closure_rules(vector<TblRule> er) {
+    vector<TblRule> closure_rules;
+
+    for (TblRule rule : er) {
+        if (rule.conclusions.size() == 0) {
+            closure_rules.push_back(rule);
+        }
+    }
+
+    return closure_rules;
+}
+
+vector< vector<int>> get_tbl_open_branches(Tableau tbl, vector<TblRule> er) {
 
     vector<vector<int>> open_branches;
     vector<vector<int>> all_branches = get_tbl_branches(tbl);
 
     for (vector<int> branch : all_branches) {
-        if (!branch_is_closed(branch, tbl)) open_branches.push_back(branch);
+        if (!branch_is_closed(branch, tbl, er)) open_branches.push_back(branch);
     }
 
     return open_branches;
 }
 
-bool tbl_is_closed(Tableau tbl) {
+bool tbl_is_closed(Tableau tbl, vector<TblRule> er) {
     vector< vector<int>> branches = get_tbl_branches(tbl);
 
     bool is_closed = true;
     for (int i = 0; i < branches.size(); i++){
-        is_closed = is_closed && branch_is_closed(branches[i], tbl); 
+        is_closed = is_closed && branch_is_closed(branches[i], tbl, er); 
     }
 
     return is_closed;
@@ -786,7 +772,7 @@ bool has_single_justification_nodes(Tableau tbl, vector<TblRule> er) {
     for (int i = 0; i < er.size(); i++) {
         TblRule rule = er[i];
         if (rule.premisses.size() == 1) {
-            Tableau tbl_successor_rule = apply_rule_with_premisse(tbl, rule, i);
+            Tableau tbl_successor_rule = apply_rule_with_premisse(tbl, rule, i, er);
             if (tbl_successor_rule.size() > tbl.size()) return true;
         }
     }
@@ -797,7 +783,7 @@ Tableau saturate_single_justification_nodes(Tableau tbl, vector<TblRule> er) {
     for (int i = 0; i < er.size(); i++) {
         TblRule rule = er[i];
         if (rule.premisses.size() == 1) {
-            tbl = apply_rule_with_premisse(tbl, rule, i);
+            tbl = apply_rule_with_premisse(tbl, rule, i, er);
         }
     }
     cout << "Application of rules with 1 premise\n";
@@ -815,7 +801,7 @@ vector<Tableau> get_tbl_successors(Tableau tbl, vector<TblRule> er) {
         TblRule rule = er[i];
         if (rule.premisses.size() > 1) {
             // cout << i << "\n";
-            Tableau tbl_successor_rule = apply_rule_with_premisse(tbl, rule, i);
+            Tableau tbl_successor_rule = apply_rule_with_premisse(tbl, rule, i, er);
             if (tbl_successor_rule.size() > tbl.size()) {
                 cout << "Application of rules with 2 or more premises\n";
                 successors_amt += 1;
@@ -865,20 +851,7 @@ vector<Tableau> get_tbl_successors(Tableau tbl, vector<TblRule> er) {
 
 }
 
-bool is_closed(Tableau tbl) {
-    vector<int> leaves = get_tbl_leaves(tbl);
-
-    vector< vector<int>> branches = get_tbl_branches(tbl);
-
-    bool is_closed = true;
-    for (int i = 0; i < branches.size(); i++){
-        is_closed = is_closed && branch_is_closed(branches[i], tbl); 
-    }
-
-    return is_closed;
-}
-
-vector<int> branch_closure_nodes(vector<int> branch, Tableau tbl) {
+vector<int> branch_closure_nodes(vector<int> branch, Tableau tbl, vector<TblRule> er) {
     for (int i = 0; i < branch.size(); i++) {
         for (int j = 0; j < branch.size(); j++) {
             int node1 = branch[i];
@@ -888,51 +861,20 @@ vector<int> branch_closure_nodes(vector<int> branch, Tableau tbl) {
             }
         }
     }
+
+    vector<TblRule> closure_rules = get_closure_rules(er);
+    for (TblRule closure_rule : closure_rules) {
+        if (try_apply_closure_rule(tbl, closure_rule, er)) {
+            return get_premisses_closure_rule(tbl, closure_rule, er);
+        }
+    }
+
     return {};
 }
 
-bool is_clean(Tableau tbl) {
-    map<int, bool> is_dispensable;
-
-    for (int i = 0; i < tbl.size(); i++){
-        is_dispensable[i] = true;
-    }
-
-    vector<vector<int>> branches = get_tbl_branches(tbl);
-
-    for (vector<int> branch : branches) {
-        vector<int> closure_nodes = branch_closure_nodes(branch, tbl);
-
-        for (int node : closure_nodes) {
-            queue<int> q;
-            q.push(node);
-
-            while (!q.empty()) {
-                int current = q.front();
-                q.pop();
-
-                is_dispensable[current] = false;
-
-                for (int justification : tbl[current].justification_parents) {
-                    if (justification > 0) q.push(justification);
-                }
-            }
-        }
-    }
-
-    for (int i = 0; i < tbl.size(); i++){
-        if (tbl[i].justification_parents.size() > 0) {
-            if (tbl[i].justification_parents[0] != -1 && is_dispensable[i])
-                return false;
-        }
-    }
-
-    return true;
-}
-
-int get_branch_size(Tableau tbl, vector<int> branch) {
+int get_branch_size(Tableau tbl, vector<int> branch, vector<TblRule> er) {
     int branch_size = 0;
-    vector<int> closure_nodes = branch_closure_nodes(branch, tbl);
+    vector<int> closure_nodes = branch_closure_nodes(branch, tbl, er);
 
     for (int node : closure_nodes) {
         queue<int> q;
@@ -955,12 +897,12 @@ int get_branch_size(Tableau tbl, vector<int> branch) {
     return branch_size + 1; // '+ 1' so we count the closure
 }
 
-int get_size(Tableau tbl) {
+int get_size(Tableau tbl, vector<TblRule> er) {
     int size = 0;
     vector<vector<int>> branches = get_tbl_branches(tbl);
 
     for (vector<int> branch : branches) {
-        size += get_branch_size(tbl, branch);
+        size += get_branch_size(tbl, branch, er);
     }
 
     return size;
@@ -1053,24 +995,25 @@ vector<Tableau> extract_minimal_proofs(vector<SignedFmla> sf, vector<TblRule> er
         // print_tableau_as_list_fmla_prefix(tbl);
         // cout << "\n";
         // if (is_closed(tbl) && is_clean(tbl)) {
-        if (is_closed(tbl)) {
+        if (tbl_is_closed(tbl, er)) {
             cout << "Solution found!\n";
             // print_tableau_as_list_fmla_prefix(tbl);
             print_tableau(tbl);
-            int size = get_size(tbl);
+            Tableau tbl_clean = clean_tbl(tbl, er);
+            int size = get_size(tbl_clean, er);
             if (minimal_proofs.size() == 0) {
                 minimal_proof_size = size;
-                minimal_proofs.push_back(tbl);
+                minimal_proofs.push_back(tbl_clean);
             }
             else {
                 if (size == minimal_proof_size) {
                     // avoid addition of deductively-isomorphic proofs
-                    minimal_proofs.push_back(tbl);
+                    minimal_proofs.push_back(tbl_clean);
                 }
                 if (size < minimal_proof_size) {
                     minimal_proof_size = size;
                     minimal_proofs.clear();
-                    minimal_proofs.push_back(tbl);
+                    minimal_proofs.push_back(tbl_clean);
                 }
             }
         }
@@ -1106,6 +1049,89 @@ vector<Tableau> extract_minimal_proofs(vector<SignedFmla> sf, vector<TblRule> er
     return minimal_proofs;
 }
 
+Tableau clean_tbl(Tableau tbl, vector<TblRule> er) {
+    map<int, bool> is_dispensable;
+
+    for (int i = 0; i < tbl.size(); i++){
+        is_dispensable[i] = true;
+    }
+
+    vector<vector<int>> branches = get_tbl_branches(tbl);
+
+    for (vector<int> branch : branches) {
+        vector<int> closure_nodes = branch_closure_nodes(branch, tbl, er);
+
+        for (int node : closure_nodes) {
+            queue<int> q;
+            q.push(node);
+
+            while (!q.empty()) {
+                int current = q.front();
+                q.pop();
+
+                is_dispensable[current] = false;
+
+                for (int justification : tbl[current].justification_parents) {
+                    if (justification > 0) q.push(justification);
+                }
+            }
+        }
+    }
+
+    Tableau resulting_tbl = tbl;
+    for (int i = resulting_tbl.size() - 1; i > 0; i--){
+        if (resulting_tbl[i].justification_parents.size() > 0) {
+            if (resulting_tbl[i].justification_parents[0] != -1 && is_dispensable[i]) {
+                resulting_tbl = remove_node(resulting_tbl, i);
+            }
+        }
+    }
+
+    return resulting_tbl;
+}
+
+Tableau remove_node(Tableau tbl, int idx) {
+    vector<int> tbl_children_idx = tbl[idx].tbl_children;
+    int tbl_parent_idx = tbl[idx].tbl_parent;
+
+    tbl[tbl_parent_idx].tbl_children = tbl_children_idx;
+    for (int child : tbl_children_idx) {
+        tbl[child].tbl_parent = tbl_parent_idx;
+    }
+
+    tbl.erase(tbl.begin() + idx);
+
+    for (int i = 0; i < tbl.size(); i++) {
+        TblNode tbl_node = tbl[i];
+
+        vector<int> justification_parents = tbl_node.justification_parents;
+        for (int j = 0; j < justification_parents.size(); j++) {
+            if (justification_parents[j] >= idx) {
+                justification_parents[j] = justification_parents[j] - 1;
+            }
+
+        }
+        tbl_node.justification_parents = justification_parents;
+
+        if (tbl_node.tbl_parent >= idx) {
+            tbl_node.tbl_parent = tbl_node.tbl_parent - 1;
+        }
+
+        vector<int> tbl_children = tbl_node.tbl_children;
+        for (int j = 0; j < tbl_children.size(); j++) {
+            if (tbl_children[j] >= idx) {
+                tbl_children[j] = tbl_children[j] - 1;
+            }
+
+        }
+        tbl_node.tbl_children = tbl_children;
+
+        tbl[i] = tbl_node;
+    }
+
+    return tbl;
+}
+
 vector<SignedFmla> potential_premisse_nodes_branch(Tableau tbl, vector<int> branch, vector<TblRule> er) {
     vector<SignedFmla> resulting_nodes; 
 
@@ -1125,7 +1151,7 @@ vector<SignedFmla> potential_premisse_nodes_branch(Tableau tbl, vector<int> bran
         for (TblRule rule : er) {
             int premisse_size = rule.premisses.size();
             if (premisse_size > 1) {
-                vector<SignedFmla> potential_premisses =  potential_premisse_nodes_rule(signed_fmla, rule);
+                vector<SignedFmla> potential_premisses = potential_premisse_nodes_rule(signed_fmla, rule);
                 
                 for (SignedFmla potential_premisse : potential_premisses) {
                     vector<Term> premisse_terms = get_all_terms_of_fmla(potential_premisse.fmla);
@@ -1186,28 +1212,22 @@ vector<SignedFmla> potential_premisse_nodes_rule(SignedFmla sf, TblRule rule) {
         SignedFmla premisse = rule.premisses[i];
         if (is_a_match(sf, premisse) && sf.sign == premisse.sign) {
             Subst matching_parameters_map = matching_parameters(sf, premisse);
-
-            // std::set<std::string> domain;
-            // for (const auto& [key, _] : matching_parameters_map) {
-            //     domain.insert(key);
-            // }
-
-            // for (const auto& pair: matching_parameters_map) {
-            //     cout << pair.first << ": ";
-            //     print_term_prefix(pair.second);
-            //     cout << "\n";
-            // }
             for (int j = 0; j < rule.premisses.size(); j++) {
                 if (i != j) {
-                    // print_fmla_prefix(premisse.fmla);
-                    // cout << "\n";
-                    // print_fmla_prefix(rule.premisses[j].fmla);
-                    // cout << "\n";
-                    Fmla fmla = subst_extension_potential(rule.premisses[j].fmla, matching_parameters_map);
-                    SignedFmla sf;
-                    sf.sign = rule.premisses[j].sign;
-                    sf.fmla = fmla;
-                    resulting_potential_nodes.push_back(sf);
+                    set<string> prem_parameters = get_all_parameters_of_fmla(rule.premisses[j].fmla);
+
+                    bool parameters_are_in_subst = true;
+                    for (string prem_param : prem_parameters) {
+                        if (matching_parameters_map.find(prem_param) == matching_parameters_map.end()) parameters_are_in_subst = false;
+                    }
+                    
+                    if (parameters_are_in_subst) {
+                        Fmla fmla = subst_extension_potential(rule.premisses[j].fmla, matching_parameters_map);
+                        SignedFmla sf;
+                        sf.sign = rule.premisses[j].sign;
+                        sf.fmla = fmla;
+                        resulting_potential_nodes.push_back(sf);
+                    }
                 }
             }
         }
@@ -1448,17 +1468,17 @@ vector<vector<SignedFmla>> proof_isomorphic_sf_sets(Tableau tbl, vector<TblRule>
     vector<vector<SignedFmla>> sf_candidates = get_sf_candidates(initial_sf, ps_potential_symbols);
 
     for (vector<SignedFmla> sf_candidate : sf_candidates) {
-        cout << "--------\n";
-        for (SignedFmla sf : sf_candidate) {
-            if (sf.sign == polarity::plus) cout << "+ ";
-            if (sf.sign == polarity::minus) cout << "- ";
-            print_fmla_prefix(sf.fmla);
-            cout << "\n";
-        }
-        cout << "\n";
+        // cout << "--------\n";
+        // for (SignedFmla sf : sf_candidate) {
+        //     if (sf.sign == polarity::plus) cout << "+ ";
+        //     if (sf.sign == polarity::minus) cout << "- ";
+        //     print_fmla_prefix(sf.fmla);
+        //     cout << "\n";
+        // }
+        // cout << "\n";
 
         if (is_proof_isomorphic_sf_set(tbl, er, sf_candidate)) {
-            cout << "is proof isomorphic!\n";
+            // cout << "is proof isomorphic!\n";
             // is_proof_isomorphic_sf_set(tbl, er, sf_candidate);
             // print_tableau_as_list_fmla_prefix(proof_isomorphic_sf_set(tbl, er, sf_candidate));
             if (!vec_sf_in_vec_vec_sf(resulting_sf_sets, sf_candidate)) {
@@ -1467,7 +1487,7 @@ vector<vector<SignedFmla>> proof_isomorphic_sf_sets(Tableau tbl, vector<TblRule>
             // cout << "\n";
         }
         else {
-            cout << "is not proof isomorphic!\n";
+            // cout << "is not proof isomorphic!\n";
         }
     }
     return resulting_sf_sets;
@@ -1642,23 +1662,21 @@ vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf, map<
         }
     }
     int no_skolem_symbs_amt = ps_potential_symbols.size();
-    for (int i = 0; i < combinations_signs; i++) {
-        vector<SignedFmla> filled_cs = initial_sf;
-        signs_mask = increment_arrange_repitition_mask(signs_mask, 2);
-        for (int j = 0; j < filled_cs.size(); j++) {
-            SignedFmla sf = filled_cs[j];
-            if (signs_mask[j] == 0) {
-                sf.sign = polarity::minus;
-            }
-            else {
-                sf.sign = polarity::plus;
-            }
-            filled_cs[j] = sf;
-        }
+    // for (int i = 0; i < combinations_signs; i++) {
+    //     signs_mask = increment_arrange_repitition_mask(signs_mask, 2);
+    //     for (int j = 0; j < filled_cs.size(); j++) {
+    //         SignedFmla sf = filled_cs[j];
+    //         if (signs_mask[j] == 0) {
+    //             sf.sign = polarity::minus;
+    //         }
+    //         else {
+    //             sf.sign = polarity::plus;
+    //         }
+    //         filled_cs[j] = sf;
+    //     }
 
         vector<int> theory_symbs_mask;
         long int combinations_symbs = 1;
-
 
         for (int j = 0; j < base_no_skolem_symbs.size(); j++) {
             combinations_symbs *= base_no_skolem_symbs[j];
@@ -1666,6 +1684,7 @@ vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf, map<
         }
 
         for (int j = 0; j < combinations_symbs; j++) {
+            vector<SignedFmla> filled_cs = initial_sf;
             theory_symbs_mask = increment_arrange_repitition_mask(theory_symbs_mask, base_no_skolem_symbs);
             bool is_valid_sf = true;
             for (int k = 0; k < no_skolem_symbs_amt; k++) {
@@ -1683,7 +1702,7 @@ vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf, map<
             }
             sf_candidates.push_back(filled_cs);
         }
-    }
+    // }
     return sf_candidates;
 }
 
@@ -1805,7 +1824,7 @@ bool is_proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFm
             }
         }
     }
-    if (is_closure_isomorphic(tbl, proof_isomorphic_tbl)) {
+    if (is_closure_isomorphic(tbl, proof_isomorphic_tbl, er)) {
         return true;
     }
     else {
@@ -1851,7 +1870,7 @@ Tableau proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFm
             }
         }
     }
-    if (is_closure_isomorphic(tbl, proof_isomorphic_tbl)) {
+    if (is_closure_isomorphic(tbl, proof_isomorphic_tbl, er)) {
         return proof_isomorphic_tbl;
     }
     else {
@@ -1859,12 +1878,12 @@ Tableau proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFm
     }
 }
 
-bool is_closure_isomorphic(Tableau tbl, Tableau proof_isomorphic_tbl) {
+bool is_closure_isomorphic(Tableau tbl, Tableau proof_isomorphic_tbl, vector<TblRule> er) {
     // tbl is the tableau that is closed
     vector< vector<int>> branches = get_tbl_branches(tbl);
 
     for (int i = 0; i < branches.size(); i++){
-        vector<int> closure_nodes = branch_closure_nodes(branches[i], tbl);
+        vector<int> closure_nodes = branch_closure_nodes(branches[i], tbl, er);
 
         if (!are_closure_nodes(proof_isomorphic_tbl, closure_nodes)) {
             return false;
@@ -1974,31 +1993,6 @@ bool is_valid_filled_ps(Tableau filled_ps, vector<pair<symbType, int>> proof_sch
                     }
                     proof_schema_counter += 1;
                 }
-            }
-        }
-    }
-    return true;
-}
-
-bool is_a_proof(Tableau filled_ps, vector<TblRule> er) {
-    if (check_cuts(filled_ps) == false) {
-        return false;
-    }
-    if (tbl_is_closed(filled_ps) == false) {
-        return false;
-    }
-    for (TblNode tbl_node : filled_ps) {
-        if (tbl_node.justification_parents[0] == -1 || tbl_node.justification_parents[0] == -2) {
-            continue;
-        }
-        else {
-            vector<SignedFmla> justifications;
-            for (int i : tbl_node.justification_parents) {
-                justifications.push_back(filled_ps[i].signed_fmla);
-            }
-            SignedFmla expansion = tbl_node.signed_fmla;
-            if (check_rule_application(justifications, expansion, er) == false) {
-                return false;
             }
         }
     }

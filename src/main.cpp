@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
 
     if (minimal_proofs.size() > 0) {
         cout << "\nResulting minimal proofs: \n";
-        cout << "Size: " << get_size(minimal_proofs[0]) << "\n";
+        cout << "Size: " << get_size(minimal_proofs[0], er) << "\n";
         int i = 1;
         cout << "Amount of proofs: \n";
         cout << minimal_proofs.size() << "\n";
@@ -71,29 +71,29 @@ int main(int argc, char* argv[]) {
         cout << "No proof has been found\n";
     }
     
+    int i = 0;
+    cout << "======\nPART 2\n\n";
+    for (Tableau m : minimal_proofs) {
 
-    // cout << "======\nPART 2\n\n";
-    // for (Tableau m : minimal_proofs) {
+        // print_tableau_as_list_fmla_prefix(m);
+        print_tableau(m);
+        cout << "\n";
 
-    //     // print_tableau_as_list_fmla_prefix(m);
-    //     print_tableau(m);
-    //     cout << "\n";
-
-    //     vector<vector<SignedFmla>> isomorphic_sets = proof_isomorphic_sf_sets(m, er);
-    //     cout << "\nAmount of proof-isomorphic sets:\n";
-    //     cout << isomorphic_sets.size() << "\n";
-    //     cout << ">>>>>>>>>>>>>>>>>>>>>>\n\n";
-    //     for (vector<SignedFmla> set_sf : isomorphic_sets) {
-    //         cout << "Set " << i << "\n";
-    //         i += 1;
-    //         for (SignedFmla sf : set_sf) {
-    //             if (sf.sign == polarity::plus) cout << "+ ";
-    //             if (sf.sign == polarity::minus) cout << "- ";
-    //             print_fmla_prefix(sf.fmla);
-    //             cout << "\n";
-    //         }
-    //         cout << "\n";
-    //     }
-    // }
+        vector<vector<SignedFmla>> isomorphic_sets = proof_isomorphic_sf_sets(m, er);
+        cout << "\nAmount of proof-isomorphic sets:\n";
+        cout << isomorphic_sets.size() << "\n";
+        cout << ">>>>>>>>>>>>>>>>>>>>>>\n\n";
+        for (vector<SignedFmla> set_sf : isomorphic_sets) {
+            cout << "Set " << i << "\n";
+            i += 1;
+            for (SignedFmla sf : set_sf) {
+                if (sf.sign == polarity::plus) cout << "+ ";
+                if (sf.sign == polarity::minus) cout << "- ";
+                print_fmla_prefix(sf.fmla);
+                cout << "\n";
+            }
+            cout << "\n";
+        }
+    }
     return 0;
 }

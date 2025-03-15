@@ -29,13 +29,15 @@ vector<int> increment_arrange_repitition_mask(vector<int> arrange_mask, vector<i
 
 vector<vector<int>> get_all_arranges_repetition(int terms_tbl_amt, int parameters_conclustion_amt);
 
-Tableau apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, int rule_idx);
+Tableau apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, int rule_idx, vector<TblRule> er);
+
+bool try_apply_closure_rule(Tableau tbl, TblRule expansion_rule, vector<TblRule> er);
+
+vector<int> get_premisses_closure_rule(Tableau tbl, TblRule expansion_rule, vector<TblRule> er);
 
 map<pair<int,int>, set<string>> get_ps_potential_symbols(Tableau tbl, vector<TblRule> er);
 
 vector<tuple<int, pair<int, int>>> get_vec_ps_symbs(Fmla prem_fmla, Fmla conc_fmla, Fmla justf_fmla, Fmla exp_fmla, vector<tuple<int, pair<int, int>>> ps_symbs);
-
-vector<Tableau> apply_rule_no_premisse(Tableau tbl, TblRule expansion_rule, vector<TblRule> er);
 
 vector<Tableau> apply_cut(Tableau tbl, vector<TblRule> er);
 
@@ -57,11 +59,13 @@ vector<int> get_tbl_levels(Tableau tbl);
 
 bool opposite_polarity_nodes(TblNode node1, TblNode node2);
 
-bool branch_is_closed(vector<int> branch, Tableau tbl);
+bool branch_is_closed(vector<int> branch, Tableau tbl, vector<TblRule> er);
 
-vector< vector<int>> get_tbl_open_branches(Tableau tbl);
+vector<TblRule> get_closure_rules(vector<TblRule> er);
 
-bool tbl_is_closed(Tableau tbl);
+vector<vector<int>> get_tbl_open_branches(Tableau tbl, vector<TblRule> er);
+
+bool tbl_is_closed(Tableau tbl, vector<TblRule> er);
 
 vector<Term> get_all_terms_of_branch(Tableau tbl, vector<int> branch);
 
@@ -77,25 +81,27 @@ Tableau saturate_single_justification_nodes(Tableau tbl, vector<TblRule> er);
 
 vector<Tableau> get_tbl_successors(Tableau tbl, vector<TblRule> er);
 
-bool is_closed(Tableau tbl);
+vector<int> branch_closure_nodes(vector<int> branch, Tableau tbl, vector<TblRule> er);
 
-vector<int> branch_closure_nodes(vector<int> branch, Tableau tbl);
-
-bool is_closure_isomorphic(Tableau tbl, Tableau proof_isomorphic_tbl);
+bool is_closure_isomorphic(Tableau tbl, Tableau proof_isomorphic_tbl, vector<TblRule> er);
 
 bool are_closure_nodes(Tableau tbl, vector<int> closure_nodes);
 
 bool is_clean(Tableau tbl);
 
-int get_branch_size(Tableau tbl, vector<int> branch);
+int get_branch_size(Tableau tbl, vector<int> branch, vector<TblRule> er);
 
-int get_size(Tableau tbl);
+int get_size(Tableau tbl, vector<TblRule> er);
 
-int get_branch_size2(Tableau tbl, vector<int> branch);
+// int get_branch_size2(Tableau tbl, vector<int> branch);
 
-int get_size2(Tableau tbl);
+// int get_size2(Tableau tbl);
 
 vector<Tableau> extract_minimal_proofs(vector<SignedFmla> sf, vector<TblRule> er);
+
+Tableau clean_tbl(Tableau tbl, vector<TblRule> er);
+
+Tableau remove_node(Tableau tbl, int idx);
 
 vector<SignedFmla> potential_premisse_nodes_branch(Tableau tbl, vector<int> branch, vector<TblRule> er);
 

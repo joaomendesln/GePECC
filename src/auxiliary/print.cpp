@@ -115,8 +115,10 @@ void print_tableau(Tableau tbl) {
         if (sign == polarity::minus) cout << "- ";
         if (sign == polarity::plus || sign == polarity::minus) pretty_printing_fmla(fmla);
         else cout << fmla[0].data;
-        cout << ", ";
-        print_vec_int(node.justification_parents);
+        if (node.justification_parents[0] != -1 && node.justification_parents[0] != -2) {
+            cout << ", ";
+            print_vec_int(node.justification_parents);
+        }
         cout << "\n";
 
         s.pop();
