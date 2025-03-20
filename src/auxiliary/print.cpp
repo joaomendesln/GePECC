@@ -2,35 +2,54 @@
 
 using namespace std;
 
-void pretty_printing_fmla_aux(Fmla fmla, FmlaNode node, int binary_acestor_amt, side side) {
+void pretty_printing_fmla_aux(Fmla fmla, FmlaNode node, int level) {
     if (node.children.size() == 0) {
-        if (side == side::left) {
-            for (int i = 0; i < binary_acestor_amt; i++) {
-                cout << "(";
-            }
-            cout << node.data;
+        cout << node.data;
+    }
+    set<string> skolem_symbs = pre_process_skolem_symbs();
+
+    if (skolem_symbs.find(node.data) == skolem_symbs.end() && (node.children.size() == 1 || node.children.size() == 2) ) {
+        if (node.children.size() == 1) {
+            cout << "(";
+            pretty_printing_fmla_aux(fmla, fmla[node.children[0]], level + 1);
+            cout << ")";
         }
-        if (side == side::right) {
-            cout << node.data;
-            for (int i = 0; i < binary_acestor_amt; i++) {
+        if (node.children.size() == 2) {
+            if (level == 0) {
+                pretty_printing_fmla_aux(fmla, fmla[node.children[0]], level + 1);
+                cout << " " << node.data << " ";
+                pretty_printing_fmla_aux(fmla, fmla[node.children[1]], level + 1);
+            }
+            else {
+                cout << "(";
+                pretty_printing_fmla_aux(fmla, fmla[node.children[0]], level + 1);
+                cout << " " << node.data << " ";
+                pretty_printing_fmla_aux(fmla, fmla[node.children[1]], level + 1);
                 cout << ")";
             }
         }
     }
-    if (node.children.size() == 1) {
-        cout << node.data << "(";
-        pretty_printing_fmla_aux(fmla, fmla[node.children[0]], binary_acestor_amt, side::left);
-        cout << ")";
+    else {
+        if (node.children.size() > 0) {
+            cout << "" << node.data << "";
+            cout << "(";
+            for (int i = 0; i < node.children.size(); i++) {
+                if (i < node.children.size() - 1) {
+                    pretty_printing_fmla_aux(fmla, fmla[node.children[i]], level + 1);
+                    cout << ", ";
+                }
+                else {
+                    pretty_printing_fmla_aux(fmla, fmla[node.children[i]], level + 1);
+                }
+            }
+            cout << ")";
+        }
     }
-    if (node.children.size() == 2) {
-        pretty_printing_fmla_aux(fmla, fmla[node.children[0]], binary_acestor_amt + 1, side::left);
-        cout << " " << node.data << " ";
-        pretty_printing_fmla_aux(fmla, fmla[node.children[1]], binary_acestor_amt + 1, side::right);
-    }
+    
 }
 
 void pretty_printing_fmla(Fmla fmla) {
-    pretty_printing_fmla_aux(fmla, fmla[0], -1, side::left);
+    pretty_printing_fmla_aux(fmla, fmla[0], 0);
 }
 
 void print_vec_int(vector<int> vec) {
@@ -122,7 +141,8 @@ void print_tableau(Tableau tbl) {
         cout << "\n";
 
         s.pop();
-        for (int child : tbl[current].tbl_children) {
+        for (int i = tbl[current].tbl_children.size() - 1; i >= 0; i--) {
+            int child = tbl[current].tbl_children[i]; 
             s.push(child);
         }
     }

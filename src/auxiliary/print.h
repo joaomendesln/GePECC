@@ -12,7 +12,7 @@
 
 using namespace std;
 
-void pretty_printing_fmla_aux(Fmla fmla, FmlaNode node, int binary_acestor_amt, side side);
+void pretty_printing_fmla_aux(Fmla fmla, FmlaNode node, int level);
 
 void pretty_printing_fmla(Fmla fmla);
 

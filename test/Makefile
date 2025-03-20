@@ -2,7 +2,7 @@
 CXX = g++
 
 # Compiler flags
-CXXFLAGS = -std=c++11 -Wall -g
+CXXFLAGS = -std=c++17 -Wall -g
 
 # Source files
 SRCS = main_test.cpp test_pre_process.cpp test_parser.cpp test_deduction.cpp test_syntax.cpp ../src/auxiliary/print.cpp ../src/auxiliary/syntax.cpp ../src/auxiliary/parser.cpp ../src/auxiliary/pre_process.cpp ../src/auxiliary/deduction.cpp 

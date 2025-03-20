@@ -8,31 +8,32 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
     cout << "===== Pre-processing signed formulas file\n";
-    vector<SignedFmla> sf = pre_process_signed_fmla_input();
+    vector<SignedFmla> input_sf = pre_process_signed_fmla_input();
+    for (SignedFmla signed_fmla : input_sf) {
+        if (signed_fmla.sign == polarity::plus) cout << "+ ";
+        if (signed_fmla.sign == polarity::minus) cout << "- ";
+        pretty_printing_fmla(signed_fmla.fmla);
+        cout << "\n";
+    }
 
-    cout << "===== Pre-processing expansion rules file\n";
+    cout << "\n===== Pre-processing expansion rules file\n";
     vector<TblRule> er = pre_process_expansion_rules_input();
 
-    // cout << "ER size before: " << er.size() << "\n";
-    // er = add_cut_rule(er);
-    // cout << "ER size after cut: " << er.size() << "\n";
-
-    // er = remove_unnecessary_rules(sf, er);
-
-    vector<Tableau> minimal_proofs = extract_minimal_proofs(sf, er);
+    vector<Tableau> minimal_proofs = extract_minimal_proofs(input_sf, er);
 
     if (minimal_proofs.size() > 0) {
-        cout << "\nResulting minimal proofs: \n";
-        cout << "Size: " << get_size(minimal_proofs[0], er) << "\n";
+        cout << "\n===== Resulting minimal proofs: \n";
+        cout << "Amount of proofs: " << minimal_proofs.size() << "\n";
+        cout << "Size of proofs: " << get_size(minimal_proofs[0], er) << "\n";
         int i = 1;
-        cout << "Amount of proofs: \n";
-        cout << minimal_proofs.size() << "\n";
-        vector<vector<SignedFmla>> isomorphic_sets;
+        vector<vector<SignedFmla> > isomorphic_sets;
         for (Tableau m : minimal_proofs) {
 
             // print_tableau_as_list_fmla_prefix(m);
+            cout << "\n>> Proof " << i << "\n";
             print_tableau(m);
-            cout << "\n";
+
+            i += 1;
 
             // vector<vector<SignedFmla>> isomorphic_sets_to_m = proof_isomorphic_sf_sets(m, er);
             // cout << "\nAmount of proof-isomorphic sets:\n";
@@ -71,29 +72,45 @@ int main(int argc, char* argv[]) {
         cout << "No proof has been found\n";
     }
     
-    int i = 0;
-    cout << "======\nPART 2\n\n";
+    int i = 1;
+    cout << "\n===== Proof-isomorphic sets of signed formulas\n";
+    vector<vector<SignedFmla> > resulting_isomorphic_sets;
     for (Tableau m : minimal_proofs) {
 
         // print_tableau_as_list_fmla_prefix(m);
-        print_tableau(m);
-        cout << "\n";
+        // print_tableau(m);
+        // cout << "\n";
 
-        vector<vector<SignedFmla>> isomorphic_sets = proof_isomorphic_sf_sets(m, er);
-        cout << "\nAmount of proof-isomorphic sets:\n";
-        cout << isomorphic_sets.size() << "\n";
-        cout << ">>>>>>>>>>>>>>>>>>>>>>\n\n";
+        vector<vector<SignedFmla> > isomorphic_sets = proof_isomorphic_sf_sets(m, er);
+        // cout << "\nAmount of proof-isomorphic sets:\n";
+        // cout << isomorphic_sets.size() << "\n";
+        // cout << ">>>>>>>>>>>>>>>>>>>>>>\n\n";
         for (vector<SignedFmla> set_sf : isomorphic_sets) {
-            cout << "Set " << i << "\n";
-            i += 1;
-            for (SignedFmla sf : set_sf) {
-                if (sf.sign == polarity::plus) cout << "+ ";
-                if (sf.sign == polarity::minus) cout << "- ";
-                print_fmla_prefix(sf.fmla);
-                cout << "\n";
+            if (!vec_sf_in_vec_vec_sf(resulting_isomorphic_sets, set_sf)) {
+                resulting_isomorphic_sets.push_back(set_sf);
             }
+            // cout << "Set " << i << "\n";
+            // i += 1;
+            // for (SignedFmla sf : set_sf) {
+            //     if (sf.sign == polarity::plus) cout << "+ ";
+            //     if (sf.sign == polarity::minus) cout << "- ";
+            //     print_fmla_prefix(sf.fmla);
+            //     cout << "\n";
+            // }
+            // cout << "\n";
+        }
+    }
+
+    for (vector<SignedFmla> set_sf : resulting_isomorphic_sets) {
+        cout << ">> Set " << i << "\n";
+        i += 1;
+        for (SignedFmla sf : set_sf) {
+            if (sf.sign == polarity::plus) cout << "+ ";
+            if (sf.sign == polarity::minus) cout << "- ";
+            pretty_printing_fmla(sf.fmla);
             cout << "\n";
         }
+        cout << "\n";
     }
     return 0;
 }

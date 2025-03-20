@@ -8,6 +8,8 @@
 #include <filesystem>
 #include <fstream>
 #include <sstream>
+#include <chrono>
+#include <ctime>
 
 #include "../definitions/definitions.h"
 #include "parser.h"

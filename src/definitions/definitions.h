@@ -16,10 +16,6 @@ enum class symbType {
     func, pred
 };
 
-enum class side { // TODO: delete this class if it is not necessary
-    left, right
-};
-
 struct FmlaNode {
     string data;
     int parent;
