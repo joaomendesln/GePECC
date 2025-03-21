@@ -24,16 +24,22 @@ The format the input files should have are described below.
 
 The symbols file is constituted by _m_ lines in the following format: 
 
-```
 1st line: function
+
 2nd line: `symbols_line`
+
 ...
-n-th line: `symbols_line`
-(n+1)-th line: predicate
-(n+2)-th line: `symbols_line`
+
+_n_-th line: `symbols_line`
+
+(_n_+1)-th line: predicate
+
+(_n_+2)-th line: `symbols_line`
+
 ...
-m-th line: `symbols_line`
-```
+
+_m_-th line: `symbols_line`
+
  
 `symbols_line` has the format "`arity`: `list_of_symbols`", where `arity` is a numeral and `list_of_symbols` is a list of symbols of that arity splitted by commas.
 
