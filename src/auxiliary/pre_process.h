@@ -20,6 +20,8 @@ vector<string> open_file(string file_path);
 
 map<string, int> pre_process_symb_line(string symb_line);
 
+pair<map<string, int>, map<string, int>> pre_process_symbols();
+
 map<string, int> pre_process_function_symbs();
 
 map<string, int> pre_process_predicate_symbs();
@@ -34,9 +36,9 @@ vector<SignedFmla> pre_process_signed_fmla_list(string list);
 
 TblRule pre_process_single_expansion_rule(string line);
 
-vector<TblRule> pre_process_expansion_rules_input();
+vector<TblRule> pre_process_expansion_rules_input(string file_name);
 
-vector<SignedFmla> pre_process_signed_fmla_input();
+vector<SignedFmla> pre_process_signed_fmla_input(string file_name);
 
 set<string> pre_process_skolem_symbs();
 

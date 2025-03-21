@@ -7,17 +7,34 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    cout << "===== Pre-processing signed formulas file\n";
-    vector<SignedFmla> input_sf = pre_process_signed_fmla_input();
-    for (SignedFmla signed_fmla : input_sf) {
-        if (signed_fmla.sign == polarity::plus) cout << "+ ";
-        if (signed_fmla.sign == polarity::minus) cout << "- ";
-        pretty_printing_fmla(signed_fmla.fmla);
-        cout << "\n";
-    }
+    vector<SignedFmla> input_sf;
+    vector<TblRule> er;
+    if (argc > 1) {
+        cout << "===== Pre-processing signed formulas file\n";
+        input_sf = pre_process_signed_fmla_input(argv[2]);
+        for (SignedFmla signed_fmla : input_sf) {
+            if (signed_fmla.sign == polarity::plus) cout << "+ ";
+            if (signed_fmla.sign == polarity::minus) cout << "- ";
+            pretty_printing_fmla(signed_fmla.fmla);
+            cout << "\n";
+        }
 
-    cout << "\n===== Pre-processing expansion rules file\n";
-    vector<TblRule> er = pre_process_expansion_rules_input();
+        cout << "\n===== Pre-processing expansion rules file\n";
+        er = pre_process_expansion_rules_input(argv[1]);
+    }
+    else {
+        cout << "===== Pre-processing signed formulas file\n";
+        input_sf = pre_process_signed_fmla_input("");
+        for (SignedFmla signed_fmla : input_sf) {
+            if (signed_fmla.sign == polarity::plus) cout << "+ ";
+            if (signed_fmla.sign == polarity::minus) cout << "- ";
+            pretty_printing_fmla(signed_fmla.fmla);
+            cout << "\n";
+        }
+
+        cout << "\n===== Pre-processing expansion rules file\n";
+        er = pre_process_expansion_rules_input("");
+    }
 
     vector<Tableau> minimal_proofs = extract_minimal_proofs(input_sf, er);
 

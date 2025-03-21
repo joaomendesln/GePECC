@@ -47,6 +47,8 @@ bool is_a_match(Fmla sf_tbl, Fmla premisse);
 
 Subst matching_parameters(SignedFmla sf_tbl, SignedFmla premisse);
 
+Subst matching_parameters(Fmla sf_tbl, Fmla premisse);
+
 vector<int> get_tbl_leaves(Tableau tbl);
 
 vector< vector<int>> get_tbl_branches(Tableau tbl);

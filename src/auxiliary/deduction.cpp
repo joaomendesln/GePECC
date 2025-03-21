@@ -496,6 +496,60 @@ bool is_a_match(SignedFmla sf_tbl, SignedFmla premisse) {
     return true;
 }
 
+bool is_a_match(Fmla sf_tbl, Fmla premisse) {
+
+    if (sf_tbl.size() < premisse.size()) {
+        return false;
+    }
+
+    map<string, int> function_symbs = pre_process_function_symbs();
+    map<string, int> predicate_symbs = pre_process_predicate_symbs();
+
+    Subst subst;
+
+    queue<int> sf_tbl_queue;
+    queue<int> premisse_queue;
+
+    sf_tbl_queue.push(0);
+    premisse_queue.push(0);
+
+    if (premisse[0].data != sf_tbl[0].data) return false; // if the predicate symbols are different
+
+    while (!premisse_queue.empty()) {
+        int premisse_node_idx = premisse_queue.front();
+        int sf_tbl_node_idx = sf_tbl_queue.front();
+
+        FmlaNode premisse_node = premisse[premisse_node_idx];
+        FmlaNode sf_tbl_node = sf_tbl[sf_tbl_node_idx];
+
+        premisse_queue.pop();
+        sf_tbl_queue.pop();
+
+        if (!is_a_parameter(premisse_node)) {
+            if (premisse_node.children.size() != sf_tbl_node.children.size()) return false;
+        }
+        else { // is a parameter
+            string parameter = premisse_node.data;
+            if (subst.find(parameter) == subst.end()) {
+                subst[parameter] = get_term_of_fmla(sf_tbl, sf_tbl_node_idx);
+            }
+            else {
+                if (!term_equality(subst[parameter], get_term_of_fmla(sf_tbl, sf_tbl_node_idx))) return false;
+            }
+        }
+
+        for (int i = 0; i < premisse_node.children.size(); i++) {
+            premisse_queue.push(premisse_node.children[i]);
+            sf_tbl_queue.push(sf_tbl_node.children[i]);
+        }
+
+        if (is_function_symb(premisse_node.data, function_symbs) || is_predicate_symb(premisse_node.data, predicate_symbs)) {
+            if (premisse_node.data != sf_tbl_node.data) return false;
+        }
+    }
+    return true;
+}
+
 Subst matching_parameters(SignedFmla sf_tbl, SignedFmla premisse) {
     Subst matching_parameters_map;
 
@@ -527,6 +581,42 @@ Subst matching_parameters(SignedFmla sf_tbl, SignedFmla premisse) {
 
         if (is_a_parameter(premisse_node)) {
             matching_parameters_map[premisse_node.data] = get_term_of_fmla(sf_tbl.fmla, sf_tbl_node_idx);
+        }
+    }
+    return matching_parameters_map;
+}
+
+Subst matching_parameters(Fmla sf_tbl, Fmla premisse) {
+    Subst matching_parameters_map;
+
+    if (!are_syntactically_isomorphic(sf_tbl, premisse)) return matching_parameters_map;
+
+    queue<int> sf_tbl_queue;
+    queue<int> premisse_queue;
+
+    map<string, int> predicate_symbs = pre_process_predicate_symbs();
+    map<string, int> function_symbs = pre_process_function_symbs();
+
+    sf_tbl_queue.push(0);
+    premisse_queue.push(0);
+
+    while (!premisse_queue.empty()) {
+        int premisse_node_idx = premisse_queue.front();
+        int sf_tbl_node_idx = sf_tbl_queue.front();
+
+        FmlaNode premisse_node = premisse[premisse_node_idx];
+        FmlaNode sf_tbl_node = sf_tbl[sf_tbl_node_idx];
+
+        sf_tbl_queue.pop();
+        premisse_queue.pop();
+
+        for (int i = 0; i < premisse_node.children.size(); i++) {
+            premisse_queue.push(premisse_node.children[i]);
+            sf_tbl_queue.push(sf_tbl_node.children[i]);
+        }
+
+        if (is_a_parameter(premisse_node)) {
+            matching_parameters_map[premisse_node.data] = get_term_of_fmla(sf_tbl, sf_tbl_node_idx);
         }
     }
     return matching_parameters_map;
@@ -1226,15 +1316,16 @@ vector<vector<SignedFmla>> proof_isomorphic_sf_sets(Tableau tbl, vector<TblRule>
 
     for (vector<SignedFmla> sf_candidate : sf_candidates) {
         // cout << "--------\n";
-        // for (SignedFmla sf : sf_candidate) {
-        //     if (sf.sign == polarity::plus) cout << "+ ";
-        //     if (sf.sign == polarity::minus) cout << "- ";
-        //     print_fmla_prefix(sf.fmla);
-        //     cout << "\n";
-        // }
-        // cout << "\n";
 
         if (is_proof_isomorphic_sf_set(tbl, er, sf_candidate)) {
+            // for (SignedFmla sf : sf_candidate) {
+            //     if (sf.sign == polarity::plus) cout << "+ ";
+            //     if (sf.sign == polarity::minus) cout << "- ";
+            //     print_fmla_prefix(sf.fmla);
+            //     cout << "\n";
+            // }
+            // cout << "\n";
+            // is_proof_isomorphic_sf_set(tbl, er, sf_candidate);
             // cout << "is proof isomorphic!\n";
             // is_proof_isomorphic_sf_set(tbl, er, sf_candidate);
             // print_tableau_as_list_fmla_prefix(proof_isomorphic_sf_set(tbl, er, sf_candidate));
@@ -1678,12 +1769,12 @@ bool is_closure_isomorphic(Tableau tbl, Tableau proof_isomorphic_tbl, vector<Tbl
         if (conjugate_nodes.size() == 2) {
             int node1 = conjugate_nodes[0];
             int node2 = conjugate_nodes[1];
-            if (fmla_equality(tbl[node1].signed_fmla.fmla, tbl[node2].signed_fmla.fmla) == true && opposite_polarity_nodes(tbl[node1], tbl[node2]) == true) {
+            if (fmla_equality(proof_isomorphic_tbl[node1].signed_fmla.fmla, proof_isomorphic_tbl[node2].signed_fmla.fmla) == true && opposite_polarity_nodes(proof_isomorphic_tbl[node1], proof_isomorphic_tbl[node2]) == true) {
                 return true;
             }
         }
     }
-    return true; 
+    return false; 
 }
 
 vector<SignedFmla> get_conclusions_from_justifications(vector<SignedFmla> justifications, vector<TblRule> er) {
@@ -1904,7 +1995,7 @@ vector<SignedFmla> pattern_matching_premisses(vector<TblRule> er, TblRule rule, 
                     set<string> premisses_parameters = get_all_parameters(premisses_fmlas);
 
                     for (int j = 0; j < premisses.size(); j++) {
-                        Subst matching_parameters_map = matching_parameters(rule_premisses[rule_premisses_idx[j]], premisses[j]);
+                        Subst matching_parameters_map = matching_parameters(rule_premisses[rule_premisses_idx[j]].fmla, premisses[j].fmla);
                         for (FmlaNode fmla_node : premisses[j].fmla) {
                             if (is_a_parameter(fmla_node)) {
                                 string parameter = fmla_node.data;
