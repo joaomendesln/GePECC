@@ -69,14 +69,25 @@ map<string, int> pre_process_symb_line(string symb_line) {
 }
 
 set<string> pre_process_skolem_symbs() {
-    string line = "";
-    // line = "f, g";
-    // line = "f";
+    vector<string> lines = {};
+    // lines = {"f"};
 
-    if (line.size() == 0){
-        string file_path = "../src/inputs/skolem_symbols";
-        line = open_file(file_path)[0];
+    if (lines.size() == 0){
+        string file_path = "../src/inputs/symbols";
+        lines = open_file(file_path);
     }
+
+    int skolem_line = 0;
+
+    for (int i = 0; i < lines.size(); i++) {
+        if (lines[i] == "skolem") {
+            skolem_line = i + 1;
+            break;
+        }
+
+    }
+
+    string line = lines[skolem_line];
 
     string skolem_symbs_no_space = "";
 
@@ -108,8 +119,6 @@ pair<map<string, int>, map<string, int>> pre_process_symbols() {
     map <string, int> resulting_predicate_symbs;
 
     vector<string> lines = {};
-    // lines = {"function", "0: ∅", "1: fst, snd", "2: f, g, ∩, ∪, ×, △, -", "predicate", "2: ∈, ⊆, ⪥"};
-    // lines = {"function", "2: f, +, ·", "predicate", "2: ≈, |, ≤"};
     
     if (lines.size() == 0){
         string file_path = "../src/inputs/symbols";
@@ -142,6 +151,7 @@ pair<map<string, int>, map<string, int>> pre_process_symbols() {
     }
 
     for (int i = predicate_lines_init + 1; i < lines.size(); i++) {
+        if (lines[i] == "skolem") break;
         map<string, int> line_map = pre_process_symb_line(lines[i]);
         for (const auto& pair : line_map) {
             resulting_predicate_symbs[pair.first] = pair.second;
@@ -194,10 +204,10 @@ map<string, int> pre_process_no_skolem_symbs() {
     return no_skolem_symbs;
 }
 
-TblRule pre_process_single_expansion_rule(string line) {
+TblRule pre_process_single_expansion_rule(string line, int line_idx) {
 
-    string str_premisses;
-    string str_conclusions;
+    string str_premisses = "";
+    string str_conclusions = "";
     bool premisses_finished = false;
     for (int i = 0; i < line.size(); i++) {
         char c = line[i];
@@ -211,9 +221,17 @@ TblRule pre_process_single_expansion_rule(string line) {
             str_conclusions += c;
         }
     }
+    vector<SignedFmla> premisses = pre_process_signed_fmla_list(str_premisses, line_idx);
 
-    vector<SignedFmla> premisses = pre_process_signed_fmla_list(str_premisses);
-    vector<SignedFmla> conclusions = pre_process_signed_fmla_list(str_conclusions);
+    vector<SignedFmla> conclusions = {};
+    
+    bool has_only_white_spaces = true;
+    for (char c_conc : str_conclusions) {
+        if (!isspace(c_conc)) has_only_white_spaces = false;
+    }
+    if (has_only_white_spaces == false) {
+        conclusions = pre_process_signed_fmla_list(str_conclusions, line_idx);
+    }
 
     TblRule expansion_rule;
     expansion_rule.premisses = premisses;
@@ -223,8 +241,7 @@ TblRule pre_process_single_expansion_rule(string line) {
     return expansion_rule;
 }
 
-vector<SignedFmla> pre_process_signed_fmla_list(string list) {
-    // cout << list << "\n";
+vector<SignedFmla> pre_process_signed_fmla_list(string list, int line_idx) {
     if (list.size() == 0) return {};
 
     vector<SignedFmla> signed_fmla_vec;
@@ -245,7 +262,7 @@ vector<SignedFmla> pre_process_signed_fmla_list(string list) {
         }
         else {
             if (parentheses_counter == 0) {
-                signed_fmla_vec.push_back(pre_process_signed_fmla(signed_fmla_str));
+                signed_fmla_vec.push_back(pre_process_signed_fmla(signed_fmla_str, line_idx));
                 signed_fmla_str = "";
             }
             else {
@@ -255,14 +272,14 @@ vector<SignedFmla> pre_process_signed_fmla_list(string list) {
 
         // End of the string
         if (i == list.size() - 1) {
-            signed_fmla_vec.push_back(pre_process_signed_fmla(signed_fmla_str));
+            signed_fmla_vec.push_back(pre_process_signed_fmla(signed_fmla_str, line_idx));
         }
     }
 
     return signed_fmla_vec;
 }
 
-SignedFmla pre_process_signed_fmla(string signed_fmla_str) {
+SignedFmla pre_process_signed_fmla(string signed_fmla_str, int line_idx) {
     SignedFmla signed_fmla;
 
     string signed_fmla_str_no_space = "";
@@ -274,12 +291,12 @@ SignedFmla pre_process_signed_fmla(string signed_fmla_str) {
     }
 
     if (signed_fmla_str_no_space[0] != '(') {
-        cerr << "Error pre-processing the signed formula " << signed_fmla_str << "\n";
+        cerr << "Error pre-processing the signed formula " << signed_fmla_str << " at line " << line_idx << "\n";
         cerr << "Missing opening parenthesis\n";
         return signed_fmla;
     }
     if (signed_fmla_str_no_space[signed_fmla_str_no_space.size() - 1] != ')') {
-        cerr << "Error pre-processing the signed formula " << signed_fmla_str << "\n";
+        cerr << "Error pre-processing the signed formula " << signed_fmla_str << " at line " << line_idx << "\n";
         cerr << "Missing closing parenthesis\n";
         return signed_fmla;
     }
@@ -290,7 +307,7 @@ SignedFmla pre_process_signed_fmla(string signed_fmla_str) {
     else if (signed_fmla_str_no_space[1] == '-') signed_fmla.sign = polarity::minus;
     else if (signed_fmla_str_no_space[1] == '+') signed_fmla.sign = polarity::plus;
     else {
-        cerr << "Error pre-processing the signed formula " << signed_fmla_str << "\n";
+        cerr << "Error pre-processing the signed formula " << signed_fmla_str << " at line " << line_idx << "\n";
         cerr << "Wrong polarity\n";
         return signed_fmla;
     }
@@ -398,10 +415,53 @@ vector<TblRule> pre_process_expansion_rules_input(string file_name) {
     //     // "(+, ≈(p1, +(+(p2, p3), p4))); (+, ≈(p1, +(p2, +(p3, p4))))",
     //     // // comm +
     //     // "(+, ≈(p1, +(p2, p3))); (+, ≈(p1, +(p3, p2)))",
-    //     // replacement ·
-    //     "(+, ≈(p3,p4)), (-, ≈(·(p1, p3), ·(p2, p4))); (-, ≈(p1, p2))",
-    //     "(+, ≈(p1,p2)), (-, ≈(·(p1, p3), ·(p2, p4))); (-, ≈(p3, p4))",
+    //     // // [ax<]
+    //     // "(+ ,≤(p1, p2)); (+ ,≈(p2, +(f(p1,p2), p1)))",
+    //     // "(+ ,≈(p2, +(p3, p1))); (+ ,≤(p1, p2))",
+    //     // // replacement ·
+    //     // "(+, ≈(p3,p4)), (-, ≈(·(p1, p3), ·(p2, p4))); (-, ≈(p1, p2))",
+    //     // "(+, ≈(p1,p2)), (-, ≈(·(p1, p3), ·(p2, p4))); (-, ≈(p3, p4))",
     //     // "(+, ≈(p1,p2)), (+, ≈(p3, p4)); (+, ≈(·(p1, p3), ·(p2, p4)))",
+    //     // " (+, ≈(·(p1, p2), ·(p1, p3))); (+, ≈(p2, p3))",
+    //     // // assoc ·
+    //     // "(+, ≈(p1, ·(p2, ·(p3, p4)))); (+, ≈(p1, ·(·(p2, p3), p4)))",
+    //     // "(+, ≈(p1, ·(·(p2, p3), p4))); (+, ≈(p1, ·(p2, ·(p3, p4))))",
+    //     // // comm ·
+    //     // "(+, ≈(p1, ·(p2, p3))); (+, ≈(p1, ·(p3, p2)))",
+    //     // // [ax|]
+    //     // "(+ ,|(p1, p2)); (+ ,≈(p2, ·(f(p1,p2), p1)))",
+    //     // "(+ ,≈(p2, ·(p3, p1))), (- ,|(p1, p2));"
+    // };
+
+    // lines = 
+    // {
+    //     // // ref
+    //     // "(-, ≈(p1, p1));",
+    //     // // sym
+    //     // "(+, ≈(p1, p2)); (+, ≈(p2, p1))",
+    //     // "(-, ≈(p1, p2)); (-, ≈(p2, p1))",
+    //     // // trans
+    //     // "(+, ≈(p1, p2)), (+, ≈(p2, p3)); (+, ≈(p1, p3))",
+    //     // "(+, ≈(p1, p2)), (-, ≈(p1, p3)); (-, ≈(p2, p3))",
+    //     // "(+, ≈(p2, p3)), (-, ≈(p1, p3)); (-, ≈(p1, p2))",
+    //     // replacement +
+    //     // "(+, ≈(p3,p4)), (-, ≈(+(p1, p3), +(p2, p4))); (-, ≈(p1, p2))",
+    //     // "(+, ≈(p1,p2)), (-, ≈(+(p1, p3), +(p2, p4))); (-, ≈(p3, p4))",
+    //     "(+, ≈(p1,p2)), (+, ≈(p3, p4)); (+, ≈(+(p1, p3), +(p2, p4)))",
+    //     " (+, ≈(+(p1, p2), +(p1, p3))); (+, ≈(p2, p3))",
+    //     // "(+, ≈(p1,p2)); (+, ≈(+(p1, p3), +(p2, p3)))",
+    //     // assoc +
+    //     "(+, ≈(p1, +(p2, +(p3, p4)))); (+, ≈(p1, +(+(p2, p3), p4)))",
+    //     "(+, ≈(p1, +(+(p2, p3), p4))); (+, ≈(p1, +(p2, +(p3, p4))))",
+    //     // comm +
+    //     "(+, ≈(p1, +(p2, p3))); (+, ≈(p1, +(p3, p2)))",
+    //     // [ax<]
+    //     "(+ ,≤(p1, p2)); (+ ,≈(p2, +(f(p1,p2), p1)))",
+    //     "(+ ,≈(p2, +(p3, p1))), (- ,≤(p1, p2));",
+    //     // replacement ·
+    //     // "(+, ≈(p3,p4)), (-, ≈(·(p1, p3), ·(p2, p4))); (-, ≈(p1, p2))",
+    //     // "(+, ≈(p1,p2)), (-, ≈(·(p1, p3), ·(p2, p4))); (-, ≈(p3, p4))",
+    //     "(+, ≈(p1,p2)), (+, ≈(p3, p4)); (+, ≈(·(p1, p3), ·(p2, p4)))",
     //     " (+, ≈(·(p1, p2), ·(p1, p3))); (+, ≈(p2, p3))",
     //     // assoc ·
     //     "(+, ≈(p1, ·(p2, ·(p3, p4)))); (+, ≈(p1, ·(·(p2, p3), p4)))",
@@ -410,10 +470,7 @@ vector<TblRule> pre_process_expansion_rules_input(string file_name) {
     //     "(+, ≈(p1, ·(p2, p3))); (+, ≈(p1, ·(p3, p2)))",
     //     // [ax|]
     //     "(+ ,|(p1, p2)); (+ ,≈(p2, ·(f(p1,p2), p1)))",
-    //     "(+ ,≈(p2, ·(p3, p1))); (+ ,|(p1, p2))",
-    //     // // [ax<]
-    //     // "(+ ,≤(p1, p2)); (+ ,≈(p2, +(f(p1,p2), p1)))",
-    //     // "(+ ,≈(p2, +(p3, p1))); (+ ,≤(p1, p2))"
+    //     "(+ ,≈(p2, ·(p3, p1))), (- ,|(p1, p2));"
     // };
 
     if (lines.size() == 0){
@@ -425,7 +482,7 @@ vector<TblRule> pre_process_expansion_rules_input(string file_name) {
         string line = lines[i];
         if (line.size() > 0 && line[0] != '[') {
             // cout << line << "\n";
-            resulting_expansion_rules.push_back(pre_process_single_expansion_rule(lines[i]));
+            resulting_expansion_rules.push_back(pre_process_single_expansion_rule(lines[i], i));
         }
     }
 
@@ -540,13 +597,39 @@ vector<SignedFmla> pre_process_signed_fmla_input(string file_name) {
     //     "(-, |(p1, p3))"
     // };
 
+    // // p1 ≤ p2, p2 ≤ p3 ⊢ p1 ≤ p3
+    // lines = {
+    //     "(+, ≤(p1, p2))",
+    //     "(+, ≤(p2, p3))",
+    //     "(-, ≤(p1, p3))"
+    // };
+
+    // // p1 | p2, p2 | p3 ⊢ p1 | p3
+    // lines = {
+    //     "(+, |(p1, p2))",
+    //     "(+, |(p2, p3))",
+    //     "(-, |(p1, p3))"
+    // };
+
+    // // p1 ≤ p2 ⊢ p1 + p3 ≤ p2 + p3
+    // lines = {
+    //     "(+, ≤(p1, p2))",
+    //     "(-, ≤(+(p1, p3), +(p2, p3)))"
+    // };
+
+    // // p1 | p2 ⊢ p1 · p3 | p2 · p3
+    // lines = {
+    //     "(+, |(p1, p2))",
+    //     "(-, |(·(p1, p3), ·(p2, p3)))"
+    // };
+
     if (lines.size() == 0){
         string file_path = "../src/inputs/" + file_name;
         lines = open_file(file_path);
     }
 
     for (int i = 0; i < lines.size(); i++) {
-        SignedFmla sf = pre_process_signed_fmla(lines[i]);
+        SignedFmla sf = pre_process_signed_fmla(lines[i], i);
         resulting_signed_fmlas.push_back(sf);
     }
 

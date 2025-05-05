@@ -146,27 +146,63 @@ void print_tableau(Tableau tbl) {
             s.push(child);
         }
     }
+}
 
-    // for (int i = 0; i < branches.size(); i++){
-    //     cout << "Branch " << i + 1 << "\n";
-    //     vector<int> branch = branches[i];
-    //     sort(branch.begin(), branch.end());
-    //     for (int j = 0; j < branch.size(); j++) {
-    //         TblNode node = tbl[branch[j]];
-    //         cout << i << ": ";
-    //         polarity sign = node.signed_fmla.sign;
-    //         Fmla fmla = node.signed_fmla.fmla;
-    //         if (sign == polarity::plus) cout << "+ ";
-    //         if (sign == polarity::minus) cout << "- ";
-    //         // if (node.sign == polarity::plus || node.sign == polarity::minus) pretty_printing_fmla(node.fmla);
-    //         if (sign == polarity::plus || sign == polarity::minus) print_fmla_prefix(fmla);
-    //         else cout << fmla[0].data;
-    //         cout << ", ";
-    //         print_vec_int(node.justification_parents);
-    //         cout << "\n";
+void print_proof(Tableau tbl, vector<TblRule> er) {
 
-    //     }
-    // }
+    vector< vector<int>> branches = get_tbl_branches(tbl);
+
+    // BFS: getting the level of the nodes in tableau tree
+    vector<int> tbl_level = get_tbl_levels(tbl);
+
+    // DFS: pritting the tree
+    stack<int> s;
+    s.push(0);
+
+    while (!s.empty()) {
+        int current = s.top();
+
+        for (int i = 0; i < tbl_level[current] + 1; i++) cout << "=";
+        cout << " " << current << ": ";
+        TblNode node = tbl[current];
+        polarity sign = node.signed_fmla.sign;
+        Fmla fmla = node.signed_fmla.fmla;
+        if (sign == polarity::plus) cout << "+ ";
+        if (sign == polarity::minus) cout << "- ";
+        if (sign == polarity::plus || sign == polarity::minus) pretty_printing_fmla(fmla);
+        else cout << fmla[0].data;
+        if (node.justification_parents[0] != -1 && node.justification_parents[0] != -2) {
+            cout << ", ";
+            print_vec_int(node.justification_parents);
+        }
+        cout << "\n";
+
+        if (tbl[current].tbl_children.size() == 0) { // print the closure
+            // if the branch is closed
+            vector<int> resulting_branch = {};
+            for (vector<int> branch : branches) {
+                for (int node : branch) {
+                    if (node == current) {
+                        resulting_branch = branch;
+                    }
+                }
+            }
+
+            for (int i = 0; i < tbl_level[current] + 2; i++) cout << "=";
+            cout << " *: ";
+
+            vector<int> closure_nodes = branch_closure_nodes(resulting_branch, tbl, er);
+            print_vec_int(closure_nodes);
+            cout << "\n";
+
+        }
+
+        s.pop();
+        for (int i = tbl[current].tbl_children.size() - 1; i >= 0; i--) {
+            int child = tbl[current].tbl_children[i]; 
+            s.push(child);
+        }
+    }
 }
 
 void print_tableau_as_list(Tableau tbl) {
@@ -202,56 +238,3 @@ void print_tableau_as_list_fmla_prefix(Tableau tbl) {
         cout << "\n";
     }
 }
-
-// void print_tableau_with_closure(Tableau tbl) {
-//     vector< vector<int>> branches = get_tbl_branches(tbl);
-
-//     // get closure nodes
-//     map<int, pair<int, int>> closure_map;
-//     set<int> max_closure_nodes;
-
-//     for (vector<int> branch : branches) {
-//         vector<int> closure_nodes = branch_closure_nodes(branch, tbl);
-
-//         int max_closure_node = -1;
-
-//         if (closure_nodes.size() == 2) max_closure_node = max(closure_nodes[0], closure_nodes[1]);
-
-//         max_closure_nodes.insert(max_closure_node);
-//         closure_map[max_closure_node] = make_pair(closure_nodes[0], closure_nodes[1]);
-//     }
-
-//     vector<int> tbl_level = get_tbl_levels(tbl);
-
-//     // DFS: pritting the tree
-//     stack<int> s;
-//     s.push(0);
-
-//     while (!s.empty()) {
-//         int current = s.top();
-
-//         for (int i = 0; i < tbl_level[current] + 1; i++) cout << "=";
-//         cout << " " << current << ": ";
-//         TblNode node = tbl[current];
-//         if (node.sign == polarity::plus) cout << "+ ";
-//         if (node.sign == polarity::minus) cout << "- ";
-//         if (node.sign == polarity::plus || node.sign == polarity::minus) pretty_printing_fmla(node.fmla);
-//         else cout << node.fmla[0].data;
-//         cout << ", ";
-//         print_vec_int(node.proof_parents);
-//         cout << "\n";
-
-//         if (max_closure_nodes.find(current) != max_closure_nodes.end()) {
-//             int closure_node_1 = min(closure_map[current].first, closure_map[current].second);
-//             for (int i = 0; i < tbl_level[current] + 2; i++) cout << "=";
-//             cout << " * : ";
-//             cout << "[" << closure_node_1 << ", " << current << "]\n";
-//         }
-
-//         s.pop();
-//         for (int child : tbl[current].tbl_children) {
-//             s.push(child);
-//         }
-//     }
-
-// }

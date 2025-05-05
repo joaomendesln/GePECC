@@ -70,24 +70,8 @@ bool term_equality(Term term1, Term term2);
 
 int get_term_idx_img_subst(Fmla fmla1, int parameter_idx, Fmla fmla2);
 
-// Fmla left_gen_subfmla(Fmla fmla);
+int get_height(Fmla fmla);
 
-// Fmla right_gen_subfmla(Fmla fmla);
-
-// Fmla join_subfmla(Fmla fmla, int parent_node, int child_position, Fmla subfmla);
-
-// bool fmla_equality(Fmla fmla1, Fmla fmla2);
-
-// set<string> get_fmla_vars(Fmla fmla);
-
-// string get_new_var(set<string> vars);
-
-// bool is_predicate_symb(Fmla fmla);
-
-// bool is_function_symb(Fmla fmla);
-
-// bool is_unary_function_symb(Fmla fmla);
-
-// bool is_atomic(Fmla fmla);
+int get_height(vector<Fmla> fmlas);
 
 #endif // SYNTAX_H

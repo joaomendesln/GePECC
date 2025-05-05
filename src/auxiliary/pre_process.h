@@ -30,11 +30,11 @@ map<string, int> pre_process_language_symbs();
 
 map<string, int> pre_process_no_skolem_symbs();
 
-SignedFmla pre_process_signed_fmla(string signed_fmla_str);
+SignedFmla pre_process_signed_fmla(string signed_fmla_str, int line_idx);
 
-vector<SignedFmla> pre_process_signed_fmla_list(string list);
+vector<SignedFmla> pre_process_signed_fmla_list(string list, int line_idx);
 
-TblRule pre_process_single_expansion_rule(string line);
+TblRule pre_process_single_expansion_rule(string line, int line_idx);
 
 vector<TblRule> pre_process_expansion_rules_input(string file_name);
 

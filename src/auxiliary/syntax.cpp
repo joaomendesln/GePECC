@@ -472,155 +472,44 @@ int get_term_idx_img_subst(Fmla fmla1, int parameter_idx, Fmla fmla2) {
     return -1;
 }
 
-// Fmla left_gen_subfmla(Fmla fmla) {
-//     Fmla subfmla1 = get_subfmla(fmla, fmla[0].children[0]);
+int get_height(Fmla fmla) {
 
-//     int right_root = fmla[0].children[1];
-//     Fmla subfmla2 = get_subfmla(fmla, fmla[right_root].children[0]);
+    vector<int> fmla_level(fmla.size(), 0);
 
-//     Fmla resulting_fmla = {
-//         {"∈", 0, {}}
-//     };
-//     resulting_fmla = join_subfmla(resulting_fmla, 0, 1, subfmla1);
-//     resulting_fmla = join_subfmla(resulting_fmla, 0, 2, subfmla2);
+    queue<int> q;
+    q.push(0);
 
-//     return resulting_fmla;
-// }
+    while (!q.empty()) {
+        int current = q.front();
 
-// Fmla right_gen_subfmla(Fmla fmla) {
-//     Fmla subfmla1 = get_subfmla(fmla, fmla[0].children[0]);
+        if (current != 0) fmla_level[current] = fmla_level[fmla[current].parent] + 1;
 
-//     int right_root = fmla[0].children[1];
-//     Fmla subfmla2 = get_subfmla(fmla, fmla[right_root].children[1]);
+        q.pop();
+        for (int child : fmla[current].children) {
+            q.push(child);
+        }
+    }
 
-//     Fmla resulting_fmla = {
-//         {"∈", 0, {}}
-//     };
-//     resulting_fmla = join_subfmla(resulting_fmla, 0, 1, subfmla1);
-//     resulting_fmla = join_subfmla(resulting_fmla, 0, 2, subfmla2);
+    int height = -1;
 
-//     return resulting_fmla;
+    for (int i = 0; i < fmla_level.size(); i++) {
+        if (fmla_level[i] > height) {
+            height = fmla_level[i];
+        }
+    }
+    return height;
+    
+}
 
-// }
+int get_height(vector<Fmla> fmlas) {
 
-// Fmla join_subfmla(Fmla fmla, int parent_node, int child_position, Fmla subfmla) {
-//     Fmla resulting_fmla = fmla;
+    int height = -1;
 
-//     int size = resulting_fmla.size();
-
-//     // Add subfmla index in the children of the new parent node of submla
-//     resulting_fmla[parent_node].children.insert(resulting_fmla[parent_node].children.begin() + child_position - 1, size);
-
-//     // Join subfmla in fmla
-//     for(int i = 0; i < subfmla.size(); i++){
-//         FmlaNode fmla_node;
-
-//         fmla_node.data = subfmla[i].data;
-//         if (i == 0){
-//             fmla_node.parent = parent_node;
-//         }
-//         else {
-//             fmla_node.parent = subfmla[i].parent + size;
-//         }
-//         vector<int> children;
-//         for (auto child : subfmla[i].children){
-//             children.push_back(child + size);
-//         }
-//         fmla_node.children = children;
-
-//         resulting_fmla.push_back(fmla_node);
-//     }
-//     return resulting_fmla;
-// }
-
-// set<string> get_fmla_vars(Fmla fmla){
-//     set<string> vars;
-
-//     for (int i = 0; i < fmla.size(); i++) {
-//         if (fmla[i].children.size() == 0 && fmla[i].data != "∅") {
-//             vars.insert(fmla[i].data);
-//         }
-//     }
-
-//     return vars;
-// }
-
-// bool fmla_equality(Fmla fmla1, Fmla fmla2) {
-//     if (fmla1.size() != fmla2.size()) return false;
-
-//     queue<FmlaNode> q1, q2;
-//     q1.push(fmla1[0]);
-//     q2.push(fmla2[0]);
-
-//     while (!q1.empty()) {
-//         FmlaNode current1 = q1.front();
-//         FmlaNode current2 = q2.front();
-
-//         if (current1.data != current2.data) return false;
-
-//         q1.pop(); q2.pop();
-
-
-//         if (current1.children.size() != current2.children.size()) {
-//             return false;
-//         }
-//         else {
-//             for (int i = 0; i < current1.children.size(); i++) {
-//                 q1.push(fmla1[current1.children[i]]);
-//                 q2.push(fmla2[current2.children[i]]);
-//             }
-//         }
-//     }
-
-//     return true;
-// }
-
-// string get_new_var(set<string> vars) {
-//     int int_new_var = 97; // 97 corresponds to "a" in ascii table
-
-//     while (int_new_var <= 122) {
-//         char c = static_cast<char>(int_new_var);
-//         string string_c = string() + c;
-//         if (vars.find(string_c) == vars.end()) {
-//             return string_c;
-//         }
-//         int_new_var += 1;
-//     }
-//     return ""; // the case in which there are more variables in the tableau than letters in the alphabet is not covered
-// }
-
-// bool is_predicate_symb(Fmla fmla) {
-//     if (fmla[0].data == "⊆" || fmla[0].data == "≍"){
-//         return true;
-//     }
-//     return false;
-// }
-
-// bool is_function_symb(Fmla fmla) {
-//     if (fmla[0].data == "∈"){
-//         return true;
-//     }
-//     return false;
-// }
-
-// bool is_unary_function_symb(Fmla fmla) {
-//     if (fmla[0].data == "∈"){
-//         if (fmla[0].children.size() > 0){
-//             FmlaNode right_root = fmla[fmla[0].children[1]];
-//             if (right_root.data == "∁"){
-//                 return true;
-//             }
-//         }
-//     }
-//     return false;
-// }
-
-// bool is_atomic(Fmla fmla) {
-//     int right_root = fmla[0].children[1];
-//     if (fmla[right_root].children.size() == 0){
-//         return true;
-//     }
-//     else {
-//         return false;
-//     }
-// }
+    for (Fmla fmla : fmlas) {
+        if (get_height(fmla) > height) {
+            height = get_height(fmla);
+        }
+    }
+    return height;
+    
+}

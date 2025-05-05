@@ -26,12 +26,12 @@ void print_term_prefix(Term term);
 
 void print_term_prefix_aux(Term term, int idx);
 
-void print_tableau(Tableau tbl); // TODO
+void print_tableau(Tableau tbl);
+
+void print_proof(Tableau tbl, vector<TblRule> er);
 
 void print_tableau_as_list(Tableau tbl);
 
 void print_tableau_as_list_fmla_prefix(Tableau tbl);
-
-// void print_tableau_with_closure(Tableau tbl);
 
 #endif // PRINT_H

@@ -29,11 +29,13 @@ vector<int> increment_arrange_repitition_mask(vector<int> arrange_mask, vector<i
 
 vector<vector<int>> get_all_arranges_repetition(int terms_tbl_amt, int parameters_conclustion_amt);
 
+int get_height_initial_nodes(Tableau tbl);
+
 Tableau apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, int rule_idx, vector<TblRule> er);
 
-bool try_apply_closure_rule(Tableau tbl, TblRule expansion_rule, vector<TblRule> er);
+bool try_apply_closure_rule(Tableau tbl, vector<int> branch, TblRule expansion_rule, vector<TblRule> er);
 
-vector<int> get_premisses_closure_rule(Tableau tbl, TblRule expansion_rule, vector<TblRule> er);
+vector<int> get_premisses_closure_rule(Tableau tbl, vector<int> branch, TblRule expansion_rule, vector<TblRule> er);
 
 map<pair<int,int>, set<string>> get_ps_potential_symbols(Tableau tbl, vector<TblRule> er);
 
@@ -141,17 +143,11 @@ bool vec_sf_in_vec_vec_sf(vector<vector<SignedFmla>> vec_vec_sf, vector<SignedFm
 
 bool is_valid_filled_ps(Tableau filled_ps, vector<pair<symbType, int>> proof_schema);
 
-bool is_a_proof(Tableau filled_ps, vector<TblRule> er);
-
 bool check_rule_application(vector<SignedFmla> justifications, SignedFmla expansion, vector<TblRule> er);
 
 bool check_cuts(Tableau filled_ps);
 
 vector<SignedFmla> get_initial_sf(Tableau tbl);
-
-// bool are_deductively_isomorphic(Tableau tbl1, Tableau tbl2);
-
-// vector<Tableau> remove_deductively_isomorphic_proof(vector<Tableau> tableaux);
 
 vector<SignedFmla> pattern_matching_premisses(vector<TblRule> er, TblRule rule, int prem_idx, int conc_idx);
 

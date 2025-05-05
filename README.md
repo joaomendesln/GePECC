@@ -63,5 +63,5 @@ In the `src` folder, run `make`. Then, run `./main expansion_rules signed_fmlas`
 
 ## Requirements
 
-- C++20
+- C++17
 - make
