@@ -4,7 +4,7 @@ Implementation of a method for generation of proof exercises with comparable lev
 
 ## Big picture of the method
 
-The exercises targetted to [check if it is correct] this method are exercises that can be described by sequents of atomic first-order formulas. For example, an exercise such as “For any sets a, b and c, prove that a ⊆ c given that a ⊆ b and b ⊆ c” is under this scope as it can be described as "a ⊆ b, b ⊆ c ⊢ a ⊆ c".
+The exercises targetted to this method are exercises that can be described by sequents of atomic first-order formulas. For example, an exercise such as “For any sets a, b and c, prove that a ⊆ c given that a ⊆ b and b ⊆ c” is under this scope as it can be described as "a ⊆ b, b ⊆ c ⊢ a ⊆ c".
 
 In few words, the user should pass as the input of the method an exercise and, after executing it, receive a set of execises of comparable complexity to the input.
 
