@@ -1,0 +1,122 @@
+\doxysection{deduction.\+h}
+\hypertarget{deduction_8h_source}{}\label{deduction_8h_source}\index{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/test/GePECC/src/auxiliary/deduction.h@{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/test/GePECC/src/auxiliary/deduction.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DEDUCTION\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DEDUCTION\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}../definitions/definitions.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}syntax.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}print.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}pre\_process.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}combinatorics.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ Tableau\ \mbox{\hyperlink{deduction_8cpp_ae15f4480a3477bc1656e711ae4fb050f}{get\_initial\_tableau}}(vector<SignedFmla>\ sf\_input);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{deduction_8cpp_adb38e1ec80817d7513b098ef43df970c}{get\_height\_initial\_nodes}}(Tableau\ tbl);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ Tableau\ \mbox{\hyperlink{deduction_8cpp_a834553900f93aac028eca97dc2bb38ec}{apply\_rule\_with\_premisse}}(Tableau\ tbl,\ \mbox{\hyperlink{struct_tbl_rule}{TblRule}}\ expansion\_rule,\ \textcolor{keywordtype}{int}\ rule\_idx,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{deduction_8cpp_a1d93a4477c3a73d7b8e15cafb4604b57}{try\_apply\_closure\_rule}}(Tableau\ tbl,\ vector<int>\ branch,\ \mbox{\hyperlink{struct_tbl_rule}{TblRule}}\ expansion\_rule,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ vector<int>\ get\_premises\_closure\_rule(Tableau\ tbl,\ vector<int>\ branch,\ \mbox{\hyperlink{struct_tbl_rule}{TblRule}}\ expansion\_rule,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ map<pair<int,int>,\ set<string>>\ get\_ps\_potential\_symbols(Tableau\ tbl,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ vector<tuple<int,\ pair<int,\ int>>>\ get\_vec\_ps\_symbs(Fmla\ prem\_fmla,\ Fmla\ conc\_fmla,\ Fmla\ justf\_fmla,\ Fmla\ exp\_fmla,\ vector<tuple<\textcolor{keywordtype}{int},\ pair<int,\ int>>>\ ps\_symbs);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ vector<Tableau>\ apply\_cut(Tableau\ tbl,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{bool}\ is\_a\_match(\mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ sf,\ \mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ premisse);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{bool}\ is\_a\_match(Fmla\ sf\_tbl,\ Fmla\ premisse);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ Subst\ matching\_parameters(\mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ sf\_tbl,\ \mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ premisse);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ Subst\ matching\_parameters(Fmla\ sf\_tbl,\ Fmla\ premisse);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ vector<int>\ get\_tbl\_leaves(Tableau\ tbl);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ vector<\ vector<int>>\ get\_tbl\_branches(Tableau\ tbl);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{int}\ branch\_leaf(Tableau\ tbl,\ vector<int>\ branch);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ vector<int>\ get\_tbl\_levels(Tableau\ tbl);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{bool}\ opposite\_polarity\_nodes(\mbox{\hyperlink{struct_tbl_node}{TblNode}}\ node1,\ \mbox{\hyperlink{struct_tbl_node}{TblNode}}\ node2);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{bool}\ branch\_is\_closed(vector<int>\ branch,\ Tableau\ tbl,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ vector<TblRule>\ get\_closure\_rules(vector<TblRule>\ er);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ vector<vector<int>>\ get\_tbl\_open\_branches(Tableau\ tbl,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{bool}\ tbl\_is\_closed(Tableau\ tbl,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ vector<Term>\ get\_all\_terms\_of\_branch(Tableau\ tbl,\ vector<int>\ branch);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{bool}\ has\_single\_justification\_nodes(Tableau\ tbl,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ Tableau\ saturate\_single\_justification\_nodes(Tableau\ tbl,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ vector<Tableau>\ get\_tbl\_successors(Tableau\ tbl,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ vector<int>\ branch\_closure\_nodes(vector<int>\ branch,\ Tableau\ tbl,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{bool}\ is\_closure\_isomorphic(Tableau\ tbl,\ Tableau\ proof\_isomorphic\_tbl,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{int}\ get\_branch\_size(Tableau\ tbl,\ vector<int>\ branch,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{keywordtype}{int}\ get\_size(Tableau\ tbl,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ vector<Tableau>\ extract\_minimal\_proofs(vector<SignedFmla>\ sf,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ Tableau\ clean\_tbl(Tableau\ tbl,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ Tableau\ remove\_node(Tableau\ tbl,\ \textcolor{keywordtype}{int}\ idx);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ vector<SignedFmla>\ potential\_premisse\_nodes\_branch(Tableau\ tbl,\ vector<int>\ branch,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ vector<SignedFmla>\ potential\_premisse\_nodes\_rule(\mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ sf,\ \mbox{\hyperlink{struct_tbl_rule}{TblRule}}\ rule);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{keywordtype}{bool}\ fmla\_in\_vec\_fmla(vector<Fmla>\ fmlas,\ Fmla\ fmla);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{keywordtype}{bool}\ fmla\_in\_vec\_signed\_fmla(vector<SignedFmla>\ signed\_fmlas,\ Fmla\ fmla);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keywordtype}{bool}\ node\_in\_branch(\mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ sf,\ Tableau\ tbl,\ vector<int>\ branch);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ vector<vector<SignedFmla>>\ proof\_isomorphic\_sf\_sets(Tableau\ tbl,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ vector<SignedFmla>\ get\_conclusions\_from\_justifications(vector<SignedFmla>\ justifications,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{int}\ get\_cut\_sibling\_node(Tableau\ tbl,\ \textcolor{keywordtype}{int}\ cut\_node\_idx);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{keywordtype}{bool}\ is\_proof\_isomorphic\_sf\_set(Tableau\ tbl,\ vector<TblRule>\ er,\ vector<SignedFmla>\ sf);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ Tableau\ proof\_isomorphic\_sf\_set(Tableau\ tbl,\ vector<TblRule>\ er,\ vector<SignedFmla>\ sf);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ vector<vector<SignedFmla>>\ get\_sf\_candidates(vector<SignedFmla>\ initial\_sf,\ map<pair<int,int>,\ set<string>>\ get\_ps\_potential\_symbols);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{keywordtype}{bool}\ vec\_sf\_equality(vector<SignedFmla>\ vec\_sf1,\ vector<SignedFmla>\ vec\_sf2);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{keywordtype}{bool}\ vec\_sf\_in\_vec\_vec\_sf(vector<vector<SignedFmla>>\ vec\_vec\_sf,\ vector<SignedFmla>\ vec\_sf);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{keywordtype}{bool}\ check\_rule\_application(vector<SignedFmla>\ justifications,\ \mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ expansion,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ vector<SignedFmla>\ get\_initial\_sf(Tableau\ tbl);}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ vector<SignedFmla>\ pattern\_matching\_premises(vector<TblRule>\ er,\ \mbox{\hyperlink{struct_tbl_rule}{TblRule}}\ rule,\ \textcolor{keywordtype}{int}\ prem\_idx,\ \textcolor{keywordtype}{int}\ conc\_idx);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{keywordtype}{string}\ get\_pattern\_matching\_premisse\_symb(Fmla\ fmla,\ \textcolor{keywordtype}{int}\ node\_idx,\ Fmla\ matching\_fmla);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DEDUCTION\_H}}
+
+\end{DoxyCode}

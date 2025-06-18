@@ -205,22 +205,22 @@ map<string, int> pre_process_no_skolem_symbs() {
 
 TblRule pre_process_single_expansion_rule(string line, int line_idx) {
 
-    string str_premisses = "";
+    string str_premises = "";
     string str_conclusions = "";
-    bool premisses_finished = false;
+    bool premises_finished = false;
     for (int i = 0; i < line.size(); i++) {
         char c = line[i];
 
-        if (c == ';') premisses_finished = true;
+        if (c == ';') premises_finished = true;
 
-        if (premisses_finished == false) {
-            str_premisses += c;
+        if (premises_finished == false) {
+            str_premises += c;
         }
-        if (premisses_finished == true && c != ';') {
+        if (premises_finished == true && c != ';') {
             str_conclusions += c;
         }
     }
-    vector<SignedFmla> premisses = pre_process_signed_fmla_list(str_premisses, line_idx);
+    vector<SignedFmla> premises = pre_process_signed_fmla_list(str_premises, line_idx);
 
     vector<SignedFmla> conclusions = {};
     
@@ -232,10 +232,7 @@ TblRule pre_process_single_expansion_rule(string line, int line_idx) {
         conclusions = pre_process_signed_fmla_list(str_conclusions, line_idx);
     }
 
-    TblRule expansion_rule;
-    expansion_rule.premisses = premisses;
-    expansion_rule.conclusions = conclusions;
-    expansion_rule.is_cut = false;
+    TblRule expansion_rule(premises, conclusions);
 
     return expansion_rule;
 }

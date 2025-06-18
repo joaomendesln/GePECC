@@ -130,7 +130,7 @@ void test_check_rule_application() {
 
 }
 
-void test_matching_premisses() {
+void test_matching_premises() {
 
     cout << "Test 1\n";
 
@@ -138,7 +138,7 @@ void test_matching_premisses() {
     TblRule rule = expansion_rules[0];
     int prem_idx = 0;
     int conc_idx = 1;
-    vector<SignedFmla> result = pattern_matching_premisses(expansion_rules, rule, prem_idx, conc_idx);
+    vector<SignedFmla> result = pattern_matching_premises(expansion_rules, rule, prem_idx, conc_idx);
     
     for (SignedFmla sf : result) {
         if (sf.sign == polarity::plus) cout << "+ ";
@@ -153,7 +153,7 @@ void test_matching_premisses() {
     prem_idx = 0;
     conc_idx = 0;
 
-    result = pattern_matching_premisses(expansion_rules, rule, prem_idx, conc_idx);
+    result = pattern_matching_premises(expansion_rules, rule, prem_idx, conc_idx);
     
     for (SignedFmla sf : result) {
         if (sf.sign == polarity::plus) cout << "+ ";
@@ -168,7 +168,7 @@ void test_matching_premisses() {
     prem_idx = 1;
     conc_idx = 0;
 
-    result = pattern_matching_premisses(expansion_rules, rule, prem_idx, conc_idx);
+    result = pattern_matching_premises(expansion_rules, rule, prem_idx, conc_idx);
     
     for (SignedFmla sf : result) {
         if (sf.sign == polarity::plus) cout << "+ ";
@@ -183,7 +183,7 @@ void test_matching_premisses() {
     prem_idx = 0;
     conc_idx = 0;
 
-    result = pattern_matching_premisses(expansion_rules, rule, prem_idx, conc_idx);
+    result = pattern_matching_premises(expansion_rules, rule, prem_idx, conc_idx);
     
     for (SignedFmla sf : result) {
         if (sf.sign == polarity::plus) cout << "+ ";
@@ -198,7 +198,7 @@ void test_matching_premisses() {
     prem_idx = 0;
     conc_idx = 0;
 
-    result = pattern_matching_premisses(expansion_rules, rule, prem_idx, conc_idx);
+    result = pattern_matching_premises(expansion_rules, rule, prem_idx, conc_idx);
     
     for (SignedFmla sf : result) {
         if (sf.sign == polarity::plus) cout << "+ ";
@@ -213,7 +213,7 @@ void test_matching_premisses() {
     prem_idx = 0;
     conc_idx = 0;
 
-    result = pattern_matching_premisses(expansion_rules, rule, prem_idx, conc_idx);
+    result = pattern_matching_premises(expansion_rules, rule, prem_idx, conc_idx);
     
     for (SignedFmla sf : result) {
         if (sf.sign == polarity::plus) cout << "+ ";

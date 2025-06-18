@@ -44,11 +44,7 @@ Fmla parse_fmla(string fmla_str) {
         }
 
         // add symbol in the formula
-        FmlaNode fmla_node;
-
-        fmla_node.data = main_symb;
-        fmla_node.parent = current_parent;
-        fmla_node.children = {};
+        FmlaNode fmla_node(main_symb, current_parent, {});
 
         resulting_fmla.push_back(fmla_node);
 

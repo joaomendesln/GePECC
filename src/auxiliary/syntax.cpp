@@ -193,10 +193,7 @@ Fmla subst_extension_potential(Fmla fmla, Subst subs) {
 
             fmla_parameters_set.insert(new_parameter);
 
-            TermNode term_node;
-            term_node.data = new_parameter;
-            term_node.parent = 0;
-            term_node.children = {};
+            TermNode term_node(new_parameter, 0, {});
 
             subs[parameter_str] = {term_node};
             parameters_subs.insert(new_parameter);

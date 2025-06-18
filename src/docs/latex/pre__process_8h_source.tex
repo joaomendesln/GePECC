@@ -1,0 +1,51 @@
+\doxysection{pre\+\_\+process.\+h}
+\hypertarget{pre__process_8h_source}{}\label{pre__process_8h_source}\index{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/test/GePECC/src/auxiliary/pre\_process.h@{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/test/GePECC/src/auxiliary/pre\_process.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PRE\_PROCESS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PRE\_PROCESS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}../definitions/definitions.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}parser.h"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ vector<string>\ open\_file(\textcolor{keywordtype}{string}\ file\_path);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ map<string,\ int>\ pre\_process\_symb\_line(\textcolor{keywordtype}{string}\ symb\_line);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ pair<map<string,\ int>,\ map<string,\ int>>\ pre\_process\_symbols();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ map<string,\ int>\ pre\_process\_function\_symbs();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ map<string,\ int>\ pre\_process\_predicate\_symbs();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ map<string,\ int>\ pre\_process\_language\_symbs();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ map<string,\ int>\ pre\_process\_no\_skolem\_symbs();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ pre\_process\_signed\_fmla(\textcolor{keywordtype}{string}\ signed\_fmla\_str,\ \textcolor{keywordtype}{int}\ line\_idx);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ vector<SignedFmla>\ pre\_process\_signed\_fmla\_list(\textcolor{keywordtype}{string}\ list,\ \textcolor{keywordtype}{int}\ line\_idx);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \mbox{\hyperlink{struct_tbl_rule}{TblRule}}\ pre\_process\_single\_expansion\_rule(\textcolor{keywordtype}{string}\ line,\ \textcolor{keywordtype}{int}\ line\_idx);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ vector<TblRule>\ pre\_process\_expansion\_rules\_input(\textcolor{keywordtype}{string}\ file\_name);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ vector<SignedFmla>\ pre\_process\_signed\_fmla\_input(\textcolor{keywordtype}{string}\ file\_name);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ set<string>\ pre\_process\_skolem\_symbs();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PRE\_PROCESS\_H}}
+
+\end{DoxyCode}

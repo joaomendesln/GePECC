@@ -1,0 +1,89 @@
+\doxysection{definitions.\+h}
+\hypertarget{definitions_8h_source}{}\label{definitions_8h_source}\index{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/test/GePECC/src/definitions/definitions.h@{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/test/GePECC/src/definitions/definitions.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DEFINITIONS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DEFINITIONS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{enum\ class}\ polarity\ \{\ \textcolor{comment}{//\ TODO:\ check\ if\ "{}class"{}\ is\ necessary}}
+\DoxyCodeLine{00012\ \ \ \ \ plus,\ minus,\ none}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{enum\ class}\ symbType\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ func,\ pred}
+\DoxyCodeLine{00018\ \};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{struct\ }FmlaNode\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{string}\ data;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ parent;}
+\DoxyCodeLine{00024\ \ \ \ \ vector<int>\ children;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ FmlaNode()\ \{\}}
+\DoxyCodeLine{00027\ \ \ \ \ FmlaNode(\textcolor{keywordtype}{string}\ data,\ \textcolor{keywordtype}{int}\ parent,\ vector<int>\ children)\ :\ data(data),\ parent(parent),\ children(children)\ \{\}}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{typedef}\ vector<FmlaNode>\ Fmla;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{struct\ }TermNode\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{string}\ data;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ parent;}
+\DoxyCodeLine{00037\ \ \ \ \ vector<int>\ children;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ TermNode()\ \{\}}
+\DoxyCodeLine{00040\ \ \ \ \ TermNode(\textcolor{keywordtype}{string}\ data,\ \textcolor{keywordtype}{int}\ parent,\ vector<int>\ children)\ :\ data(data),\ parent(parent),\ children(children)\ \{\}}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{typedef}\ vector<TermNode>\ Term;}
+\DoxyCodeLine{00045\ \textcolor{keyword}{typedef}\ map<string,\ Term>\ Subst;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{struct\ }SignedFmla\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ polarity\ sign;}
+\DoxyCodeLine{00050\ \ \ \ \ Fmla\ fmla;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ SignedFmla()\ \{\}}
+\DoxyCodeLine{00053\ \ \ \ \ SignedFmla(polarity\ sign,\ Fmla\ fmla)\ :\ sign(sign),\ fmla(fmla)\ \{\}}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{struct\ }TblNode\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ signed\_fmla;}
+\DoxyCodeLine{00059\ \ \ \ \ vector<int>\ justification\_parents;\ \textcolor{comment}{//\ -\/1\ for\ initial\ tableau,\ -\/2\ for\ cut\ formulas}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ tbl\_parent;}
+\DoxyCodeLine{00061\ \ \ \ \ vector<int>\ tbl\_children;}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ expansion\_rule\_idx;}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{int}\ conclusion\_idx;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ TblNode()\ \{\}}
+\DoxyCodeLine{00066\ \ \ \ \ TblNode(\mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ signed\_fmla,\ vector<int>\ justification\_parents,\ \textcolor{keywordtype}{int}\ tbl\_parent,\ vector<int>\ tbl\_children,\ \textcolor{keywordtype}{int}\ expansion\_rule\_idx,\ \textcolor{keywordtype}{int}\ conclusion\_idx)\ :\ signed\_fmla(signed\_fmla),\ justification\_parents(justification\_parents),\ tbl\_parent(tbl\_parent),\ tbl\_children(tbl\_children),\ expansion\_rule\_idx(expansion\_rule\_idx),\ conclusion\_idx(conclusion\_idx)\ \{\}}
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{typedef}\ vector<TblNode>\ Tableau;}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{struct\ }TblRule\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ vector<SignedFmla>\ premises;}
+\DoxyCodeLine{00075\ \ \ \ \ vector<SignedFmla>\ conclusions;}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ TblRule()\ \{\}}
+\DoxyCodeLine{00078\ \ \ \ \ TblRule(vector<SignedFmla>\ premises,\ vector<SignedFmla>\ conclusions)\ :\ premises(premises),\ conclusions(conclusions)\ \{\}}
+\DoxyCodeLine{00079\ \};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DEFINITIONS\_H}}
+\DoxyCodeLine{00083\ }
+
+\end{DoxyCode}

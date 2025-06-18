@@ -1,0 +1,83 @@
+\doxysection{syntax.\+h}
+\hypertarget{syntax_8h_source}{}\label{syntax_8h_source}\index{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/test/GePECC/src/auxiliary/syntax.h@{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/test/GePECC/src/auxiliary/syntax.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SYNTAX\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SYNTAX\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}../definitions/definitions.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}pre\_process.h"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{bool}\ is\_function\_symb(\textcolor{keywordtype}{string}\ symb,\ map<string,\ int>\ function\_symbs);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{bool}\ is\_function\_symb(\textcolor{keywordtype}{string}\ symb);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{bool}\ is\_predicate\_symb(\textcolor{keywordtype}{string}\ symb,\ map<string,\ int>\ predicate\_symbs);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{bool}\ is\_predicate\_symb(\textcolor{keywordtype}{string}\ symb);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{bool}\ is\_language\_symb(\textcolor{keywordtype}{string}\ symb,\ map<string,\ int>\ language\_symbs);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{bool}\ is\_not\_skolem\_symb(\textcolor{keywordtype}{string}\ symb);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{bool}\ is\_a\_parameter(\mbox{\hyperlink{struct_fmla_node}{FmlaNode}}\ fmla\_node);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{bool}\ is\_a\_parameter(\mbox{\hyperlink{struct_term_node}{TermNode}}\ term\_node);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{bool}\ parameter\_in\_fmla(Fmla\ fmla,\ \textcolor{keywordtype}{string}\ parameter);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ Term\ get\_term\_of\_fmla(Fmla\ fmla,\ \textcolor{keywordtype}{int}\ subfmla\_root);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ vector<Term>\ get\_all\_terms\_of\_fmla(Fmla\ fmla);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{bool}\ term\_in\_vector\_of\_terms(Term\ term,\ vector<Term>\ terms);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ Fmla\ subst\_parameter\_by\_term(Fmla\ fmla,\ \textcolor{keywordtype}{int}\ parameter\_idx,\ Term\ term);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ set<int>\ get\_parameters\_idxs(Fmla\ fmla);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ set<string>\ get\_parameters(Fmla\ fmla);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ Fmla\ subst\_extension(Fmla\ fmla,\ Subst\ subs);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ Fmla\ subst\_extension\_potential(Fmla\ fmla,\ Subst\ subs);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{string}\ get\_new\_parameter(set<string>\ parameters);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ set<string>\ get\_all\_parameters\_of\_fmla(Fmla\ fmla);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ vector<string>\ get\_all\_parameters\_of\_term(Term\ term);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ set<string>\ get\_all\_parameters(vector<Fmla>\ fmlas);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{bool}\ fmla\_equality(Fmla\ fmla1,\ Fmla\ fmla2);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{bool}\ fmla\_equality\_under\_subst(Fmla\ fmla1,\ Fmla\ fmla2);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{keywordtype}{bool}\ are\_syntactically\_isomorphic(Fmla\ fmla1,\ Fmla\ fmla2);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{keywordtype}{bool}\ are\_isomorphic\_with\_equal\_parameters(Fmla\ fmla1,\ Fmla\ fmla2);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{keywordtype}{bool}\ term\_equality(Term\ term1,\ Term\ term2);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{int}\ get\_term\_idx\_img\_subst(Fmla\ fmla1,\ \textcolor{keywordtype}{int}\ parameter\_idx,\ Fmla\ fmla2);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keywordtype}{int}\ get\_height(Fmla\ fmla);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{int}\ get\_height(vector<Fmla>\ fmlas);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SYNTAX\_H}}
+
+\end{DoxyCode}

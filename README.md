@@ -56,7 +56,7 @@ _(m +2)_-th line: `<list_of_symbols>`
 
 Before presenting the format of expansion rules file, we define the format of a `<signed_formula>`. A `<signed_formula>` is a string "(`<o>`, `<formula>`)", where `<o>` is either a "+" or a "-" and `<formula>` is an atomic formula written with prefixed symbols.
 
-Thus, the lines of expansions rules files have the format "`<premisses>`; `<conclusions>`", where both `<premises>` and `<conclusions>` are lists of `<signed_formulas>`'s splitted by commas. Between these lines, we can add comment lines by starting them with an opening square bracket, "[".  Moreover `<conclusions>` might be an empty list.
+Thus, the lines of expansions rules files have the format "`<premises>`; `<conclusions>`", where both `<premises>` and `<conclusions>` are lists of `<signed_formulas>`'s splitted by commas. Between these lines, we can add comment lines by starting them with an opening square bracket, "[".  Moreover `<conclusions>` might be an empty list.
 
 ### Signed formulas
 

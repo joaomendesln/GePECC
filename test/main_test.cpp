@@ -28,7 +28,7 @@ int main() {
     // test_apply_cut();
     // test_get_cut_fmlas();
     // test_check_rule_application();
-    // test_matching_premisses();
+    // test_matching_premises();
     // test_get_pattern_matching_premisse_symb();
     test_get_ps_potential_symbols();
 

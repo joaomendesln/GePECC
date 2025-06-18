@@ -32,12 +32,12 @@ void test_pre_process_expension_rules() {
 
         TblRule single_expansion_rule = expansion_rules[i];
 
-        vector<SignedFmla> premisses = single_expansion_rule.premisses;
+        vector<SignedFmla> premises = single_expansion_rule.premises;
         vector<SignedFmla> conclusions = single_expansion_rule.conclusions;
 
-        cout << ">>> Premisses\n";
-        for (int j = 0; j < premisses.size(); j++) {
-            SignedFmla premisse = premisses[j];
+        cout << ">>> premises\n";
+        for (int j = 0; j < premises.size(); j++) {
+            SignedFmla premisse = premises[j];
             string s = "";
             if (premisse.sign == polarity::minus) s = "- ";
             if (premisse.sign == polarity::plus) s = "+ ";
