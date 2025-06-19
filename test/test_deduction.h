@@ -11,19 +11,19 @@ void test_is_a_match();
 
 void test_matching_parameters();
 
-void test_apply_rule_with_premisse();
+void test_apply_rule_with_premise();
 
 void test_apply_cut();
 
 void test_get_cut_fmlas();
 
-void test_potential_premisse_nodes_rule();
+void test_potential_premise_nodes_rule();
 
 void test_check_rule_application();
 
 void test_matching_premises();
 
-void test_get_pattern_matching_premisse_symb();
+void test_get_pattern_matching_premise_symb();
 
 void test_get_ps_potential_symbols();
 

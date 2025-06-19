@@ -19,11 +19,11 @@ Tableau get_initial_tableau(vector<SignedFmla> sf_input);
 
 int get_height_initial_nodes(Tableau tbl);
 
-Tableau apply_rule_with_premisse(Tableau tbl, TblRule expansion_rule, int rule_idx, vector<TblRule> er);
+Tableau apply_rule_with_premise(Tableau tbl, TblRule expansion_rule, int rule_idx, vector<TblRule> er);
 
-bool try_apply_closure_rule(Tableau tbl, vector<int> branch, TblRule expansion_rule, vector<TblRule> er);
+bool try_apply_closure_rule(Tableau tbl, vector<int> branch, TblRule closure_rule);
 
-vector<int> get_premises_closure_rule(Tableau tbl, vector<int> branch, TblRule expansion_rule, vector<TblRule> er);
+vector<int> get_justifications_closure_rule(Tableau tbl, vector<int> branch, TblRule closure_rule);
 
 map<pair<int,int>, set<string>> get_ps_potential_symbols(Tableau tbl, vector<TblRule> er);
 
@@ -31,13 +31,13 @@ vector<tuple<int, pair<int, int>>> get_vec_ps_symbs(Fmla prem_fmla, Fmla conc_fm
 
 vector<Tableau> apply_cut(Tableau tbl, vector<TblRule> er);
 
-bool is_a_match(SignedFmla sf, SignedFmla premisse);
+bool is_a_match(SignedFmla sf, SignedFmla premise);
 
-bool is_a_match(Fmla sf_tbl, Fmla premisse);
+bool is_a_match(Fmla fmla_tbl, Fmla premise_fmla);
 
-Subst matching_parameters(SignedFmla sf_tbl, SignedFmla premisse);
+Subst matching_parameters(SignedFmla sf_tbl, SignedFmla premise);
 
-Subst matching_parameters(Fmla sf_tbl, Fmla premisse);
+Subst matching_parameters(Fmla sf_tbl, Fmla premise);
 
 vector<int> get_tbl_leaves(Tableau tbl);
 
@@ -61,7 +61,7 @@ vector<Term> get_all_terms_of_branch(Tableau tbl, vector<int> branch);
 
 bool has_single_justification_nodes(Tableau tbl, vector<TblRule> er);
 
-Tableau saturate_single_justification_nodes(Tableau tbl, vector<TblRule> er);
+Tableau apply_single_premise_rules(Tableau tbl, vector<TblRule> er);
 
 vector<Tableau> get_tbl_successors(Tableau tbl, vector<TblRule> er);
 
@@ -79,9 +79,9 @@ Tableau clean_tbl(Tableau tbl, vector<TblRule> er);
 
 Tableau remove_node(Tableau tbl, int idx);
 
-vector<SignedFmla> potential_premisse_nodes_branch(Tableau tbl, vector<int> branch, vector<TblRule> er);
+vector<SignedFmla> potential_premise_nodes_branch(Tableau tbl, vector<int> branch, vector<TblRule> er);
 
-vector<SignedFmla> potential_premisse_nodes_rule(SignedFmla sf, TblRule rule);
+vector<SignedFmla> potential_premise_nodes_rule(SignedFmla sf, TblRule rule);
 
 bool fmla_in_vec_fmla(vector<Fmla> fmlas, Fmla fmla);
 
@@ -111,6 +111,6 @@ vector<SignedFmla> get_initial_sf(Tableau tbl);
 
 vector<SignedFmla> pattern_matching_premises(vector<TblRule> er, TblRule rule, int prem_idx, int conc_idx);
 
-string get_pattern_matching_premisse_symb(Fmla fmla, int node_idx, Fmla matching_fmla);
+string get_pattern_matching_premise_symb(Fmla fmla, int node_idx, Fmla matching_fmla);
 
 #endif // DEDUCTION_H

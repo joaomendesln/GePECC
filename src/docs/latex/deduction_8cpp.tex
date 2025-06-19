@@ -1,47 +1,37 @@
-\doxysection{/\+Users/joaomendes\+\_\+ln/\+Documents/\+UFRN/\+Mestrado/5º semestre/\+Implementations/test/\+Ge\+PECC/src/auxiliary/deduction.cpp File Reference}
-\hypertarget{deduction_8cpp}{}\label{deduction_8cpp}\index{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/test/GePECC/src/auxiliary/deduction.cpp@{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/test/GePECC/src/auxiliary/deduction.cpp}}
+\doxysection{/\+Users/joaomendes\+\_\+ln/\+Documents/\+UFRN/\+Mestrado/5º semestre/\+Implementations/documentation/\+Ge\+PECC/src/auxiliary/deduction.cpp File Reference}
+\hypertarget{deduction_8cpp}{}\label{deduction_8cpp}\index{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/auxiliary/deduction.cpp@{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/auxiliary/deduction.cpp}}
 {\ttfamily \#include "{}deduction.\+h"{}}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 Tableau \mbox{\hyperlink{deduction_8cpp_ae15f4480a3477bc1656e711ae4fb050f}{get\+\_\+initial\+\_\+tableau}} (vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ sf\+\_\+input)
-\begin{DoxyCompactList}\small\item\em Get an initial tableau for a vector of signed formulas. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Gets an initial tableau for a vector of signed formulas. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{deduction_8cpp_adb38e1ec80817d7513b098ef43df970c}{get\+\_\+height\+\_\+initial\+\_\+nodes}} (Tableau tbl)
 \begin{DoxyCompactList}\small\item\em Get the height initial nodes object. \end{DoxyCompactList}\item 
-Tableau \mbox{\hyperlink{deduction_8cpp_a834553900f93aac028eca97dc2bb38ec}{apply\+\_\+rule\+\_\+with\+\_\+premisse}} (Tableau tbl, \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} expansion\+\_\+rule, int rule\+\_\+idx, vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ er)
-\begin{DoxyCompactList}\small\item\em Try to apply a rule in a tableau. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{deduction_8cpp_a1d93a4477c3a73d7b8e15cafb4604b57}{try\+\_\+apply\+\_\+closure\+\_\+rule}} (Tableau tbl, vector$<$ int $>$ branch, \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} expansion\+\_\+rule, vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ er)
+Tableau \mbox{\hyperlink{deduction_8cpp_a452ea475b0ea814d19e94ea4affdbc4b}{apply\+\_\+rule\+\_\+with\+\_\+premise}} (Tableau tbl, \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} expansion\+\_\+rule, int rule\+\_\+idx, vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ er)
+\begin{DoxyCompactList}\small\item\em Tries to apply a rule in a tableau. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{deduction_8cpp_ad63614957c8a03907439796dc2ad1eda}{try\+\_\+apply\+\_\+closure\+\_\+rule}} (Tableau tbl, vector$<$ int $>$ branch, \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} closure\+\_\+rule)
 \begin{DoxyCompactList}\small\item\em Checks if it is possible to apply a closure rule in a tableau. \end{DoxyCompactList}\item 
-\Hypertarget{deduction_8cpp_ad9cf49bc66d5eb5df978c313753d5aa1}\label{deduction_8cpp_ad9cf49bc66d5eb5df978c313753d5aa1} 
-vector$<$ int $>$ {\bfseries get\+\_\+premises\+\_\+closure\+\_\+rule} (Tableau tbl, vector$<$ int $>$ branch, \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} expansion\+\_\+rule, vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ er)
-\item 
-\Hypertarget{deduction_8cpp_af0d77366668d4f68f6d49f3bc627e33c}\label{deduction_8cpp_af0d77366668d4f68f6d49f3bc627e33c} 
-vector$<$ Tableau $>$ {\bfseries apply\+\_\+cut} (Tableau tbl, vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ er)
-\item 
-\Hypertarget{deduction_8cpp_a5d7ce59fe2a2380978a6bec916408f5e}\label{deduction_8cpp_a5d7ce59fe2a2380978a6bec916408f5e} 
-bool {\bfseries is\+\_\+a\+\_\+match} (\mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} sf\+\_\+tbl, \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} premisse)
-\item 
-\Hypertarget{deduction_8cpp_aaac20a25c8ce76b72ec2949ab68c414e}\label{deduction_8cpp_aaac20a25c8ce76b72ec2949ab68c414e} 
-bool {\bfseries is\+\_\+a\+\_\+match} (Fmla sf\+\_\+tbl, Fmla premisse)
-\item 
-\Hypertarget{deduction_8cpp_a1e6137449c45b86f9b5cd70c025608fd}\label{deduction_8cpp_a1e6137449c45b86f9b5cd70c025608fd} 
-Subst {\bfseries matching\+\_\+parameters} (\mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} sf\+\_\+tbl, \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} premisse)
-\item 
-\Hypertarget{deduction_8cpp_a565f40aa84d416d46bcf814c6a72e6b6}\label{deduction_8cpp_a565f40aa84d416d46bcf814c6a72e6b6} 
-Subst {\bfseries matching\+\_\+parameters} (Fmla sf\+\_\+tbl, Fmla premisse)
-\item 
-\Hypertarget{deduction_8cpp_a993987b53cbd096c74c074296d3a645e}\label{deduction_8cpp_a993987b53cbd096c74c074296d3a645e} 
-vector$<$ int $>$ {\bfseries get\+\_\+tbl\+\_\+leaves} (Tableau tbl)
-\item 
-\Hypertarget{deduction_8cpp_aa95bf1cf07d2e8bd20b729f1ce183f7a}\label{deduction_8cpp_aa95bf1cf07d2e8bd20b729f1ce183f7a} 
-vector$<$ vector$<$ int $>$ $>$ {\bfseries get\+\_\+tbl\+\_\+branches} (Tableau tbl)
-\item 
-\Hypertarget{deduction_8cpp_a3337a7c89376d12d006b09b7ce521e91}\label{deduction_8cpp_a3337a7c89376d12d006b09b7ce521e91} 
-int {\bfseries branch\+\_\+leaf} (Tableau tbl, vector$<$ int $>$ branch)
-\item 
-\Hypertarget{deduction_8cpp_a40da38b46d446103c728f229bf66d055}\label{deduction_8cpp_a40da38b46d446103c728f229bf66d055} 
-vector$<$ int $>$ {\bfseries get\+\_\+tbl\+\_\+levels} (Tableau tbl)
-\item 
+vector$<$ int $>$ \mbox{\hyperlink{deduction_8cpp_ab2a98e74d49e1a81442ebc31c409cb89}{get\+\_\+justifications\+\_\+closure\+\_\+rule}} (Tableau tbl, vector$<$ int $>$ branch, \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} closure\+\_\+rule)
+\begin{DoxyCompactList}\small\item\em Gets the index of the justifications for the application of a closure rule. \end{DoxyCompactList}\item 
+vector$<$ Tableau $>$ \mbox{\hyperlink{deduction_8cpp_af0d77366668d4f68f6d49f3bc627e33c}{apply\+\_\+cut}} (Tableau tbl, vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ er)
+\begin{DoxyCompactList}\small\item\em Applies a cut rule in a tableau. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{deduction_8cpp_ae56ccece472d94bba46a88fd370e060a}{is\+\_\+a\+\_\+match}} (\mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} sf\+\_\+tbl, \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} premise)
+\begin{DoxyCompactList}\small\item\em Checks if a signed formula and a premise of a rule are equal under substitution. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{deduction_8cpp_a75fdd656d225fe19a44c1068f922a294}{is\+\_\+a\+\_\+match}} (Fmla fmla\+\_\+tbl, Fmla premise\+\_\+fmla)
+\begin{DoxyCompactList}\small\item\em Checks if a formula and a formula of a premise of a rule are equal under substitution. \end{DoxyCompactList}\item 
+Subst \mbox{\hyperlink{deduction_8cpp_a1b3345a4ea57e092cb3483ce44ffcd5c}{matching\+\_\+parameters}} (\mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} sf\+\_\+tbl, \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} premise)
+\begin{DoxyCompactList}\small\item\em Constructs the substitution that allows two signed formulas to match, ie, to be equal under substitution. \end{DoxyCompactList}\item 
+Subst \mbox{\hyperlink{deduction_8cpp_a2de15931e8811a57ea9875d7e90bbd42}{matching\+\_\+parameters}} (Fmla fmla\+\_\+tbl, Fmla premise\+\_\+fmla)
+\begin{DoxyCompactList}\small\item\em Constructs the substitution that allows two formulas to match, ie, to be equal under substitution. \end{DoxyCompactList}\item 
+vector$<$ int $>$ \mbox{\hyperlink{deduction_8cpp_a993987b53cbd096c74c074296d3a645e}{get\+\_\+tbl\+\_\+leaves}} (Tableau tbl)
+\begin{DoxyCompactList}\small\item\em Gets the leaves of a tableau. \end{DoxyCompactList}\item 
+vector$<$ vector$<$ int $>$ $>$ \mbox{\hyperlink{deduction_8cpp_aa95bf1cf07d2e8bd20b729f1ce183f7a}{get\+\_\+tbl\+\_\+branches}} (Tableau tbl)
+\begin{DoxyCompactList}\small\item\em Gets the branches of a tableau. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{deduction_8cpp_a3337a7c89376d12d006b09b7ce521e91}{branch\+\_\+leaf}} (Tableau tbl, vector$<$ int $>$ branch)
+\begin{DoxyCompactList}\small\item\em Gets the index of leaf node of a tableau branch. \end{DoxyCompactList}\item 
+vector$<$ int $>$ \mbox{\hyperlink{deduction_8cpp_a40da38b46d446103c728f229bf66d055}{get\+\_\+tbl\+\_\+levels}} (Tableau tbl)
+\begin{DoxyCompactList}\small\item\em Gets the level of each node of a tableau tree. \end{DoxyCompactList}\item 
 \Hypertarget{deduction_8cpp_aa60b5a85ea642522097d0c999f366556}\label{deduction_8cpp_aa60b5a85ea642522097d0c999f366556} 
 bool {\bfseries opposite\+\_\+polarity\+\_\+nodes} (\mbox{\hyperlink{struct_tbl_node}{Tbl\+Node}} node1, \mbox{\hyperlink{struct_tbl_node}{Tbl\+Node}} node2)
 \item 
@@ -87,8 +77,8 @@ Tableau {\bfseries clean\+\_\+tbl} (Tableau tbl, vector$<$ \mbox{\hyperlink{stru
 \Hypertarget{deduction_8cpp_a0f9d37fd4ac7aaf088d4cdd9603bda48}\label{deduction_8cpp_a0f9d37fd4ac7aaf088d4cdd9603bda48} 
 Tableau {\bfseries remove\+\_\+node} (Tableau tbl, int idx)
 \item 
-\Hypertarget{deduction_8cpp_a687a2e1c5c7d68a0341466b2e074c0ab}\label{deduction_8cpp_a687a2e1c5c7d68a0341466b2e074c0ab} 
-vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ {\bfseries potential\+\_\+premisse\+\_\+nodes\+\_\+branch} (Tableau tbl, vector$<$ int $>$ branch, vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ er)
+\Hypertarget{deduction_8cpp_aba09cbc01c3ec45639dc8bebefa45150}\label{deduction_8cpp_aba09cbc01c3ec45639dc8bebefa45150} 
+vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ {\bfseries potential\+\_\+premise\+\_\+nodes\+\_\+branch} (Tableau tbl, vector$<$ int $>$ branch, vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ er)
 \item 
 \Hypertarget{deduction_8cpp_a17085875b5dbfcf98c31a5b185861758}\label{deduction_8cpp_a17085875b5dbfcf98c31a5b185861758} 
 bool {\bfseries fmla\+\_\+in\+\_\+vec\+\_\+fmla} (vector$<$ Fmla $>$ fmlas, Fmla fmla)
@@ -99,8 +89,8 @@ bool {\bfseries fmla\+\_\+in\+\_\+vec\+\_\+signed\+\_\+fmla} (vector$<$ \mbox{\h
 \Hypertarget{deduction_8cpp_a85d16094509275c2252b613f54a59f02}\label{deduction_8cpp_a85d16094509275c2252b613f54a59f02} 
 bool {\bfseries signed\+\_\+fmla\+\_\+in\+\_\+vec\+\_\+signed\+\_\+fmla} (vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ signed\+\_\+fmlas, \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} sf)
 \item 
-\Hypertarget{deduction_8cpp_a32c38627982b7d8d31c1733ccea172fa}\label{deduction_8cpp_a32c38627982b7d8d31c1733ccea172fa} 
-vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ {\bfseries potential\+\_\+premisse\+\_\+nodes\+\_\+rule} (\mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} sf, \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} rule)
+\Hypertarget{deduction_8cpp_a797bf8be7cf63689cddf08a5e253d8ae}\label{deduction_8cpp_a797bf8be7cf63689cddf08a5e253d8ae} 
+vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ {\bfseries potential\+\_\+premise\+\_\+nodes\+\_\+rule} (\mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} sf, \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} rule)
 \item 
 \Hypertarget{deduction_8cpp_a950be4cc2826d6216be6123f0b8611ed}\label{deduction_8cpp_a950be4cc2826d6216be6123f0b8611ed} 
 bool {\bfseries node\+\_\+in\+\_\+branch} (\mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} sf, Tableau tbl, vector$<$ int $>$ branch)
@@ -147,8 +137,8 @@ vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ {\bfseries get
 \Hypertarget{deduction_8cpp_a7c52c9b467b39e51845fb10305bfdaaf}\label{deduction_8cpp_a7c52c9b467b39e51845fb10305bfdaaf} 
 vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ {\bfseries pattern\+\_\+matching\+\_\+premises} (vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ er, \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} rule, int prem\+\_\+idx, int conc\+\_\+idx)
 \item 
-\Hypertarget{deduction_8cpp_ac7b1845bd6370ec9ab015f71725e7239}\label{deduction_8cpp_ac7b1845bd6370ec9ab015f71725e7239} 
-string {\bfseries get\+\_\+pattern\+\_\+matching\+\_\+premisse\+\_\+symb} (Fmla fmla, int node\+\_\+idx, Fmla matching\+\_\+fmla)
+\Hypertarget{deduction_8cpp_acfc6846ef7b0916f2efbbdecd7feef89}\label{deduction_8cpp_acfc6846ef7b0916f2efbbdecd7feef89} 
+string {\bfseries get\+\_\+pattern\+\_\+matching\+\_\+premise\+\_\+symb} (Fmla fmla, int node\+\_\+idx, Fmla matching\+\_\+fmla)
 \end{DoxyCompactItemize}
 
 
@@ -157,7 +147,7 @@ string {\bfseries get\+\_\+pattern\+\_\+matching\+\_\+premisse\+\_\+symb} (Fmla 
 João Mendes 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
-0.\+1 
+0.\+0.\+1 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
 2025-\/06-\/18
@@ -170,15 +160,35 @@ Copyright (c) 2025
 \label{doc-func-members}
 \Hypertarget{deduction_8cpp_doc-func-members}
 \doxysubsection{Function Documentation}
-\Hypertarget{deduction_8cpp_a834553900f93aac028eca97dc2bb38ec}\index{deduction.cpp@{deduction.cpp}!apply\_rule\_with\_premisse@{apply\_rule\_with\_premisse}}
-\index{apply\_rule\_with\_premisse@{apply\_rule\_with\_premisse}!deduction.cpp@{deduction.cpp}}
-\doxysubsubsection{\texorpdfstring{apply\_rule\_with\_premisse()}{apply\_rule\_with\_premisse()}}
-{\footnotesize\ttfamily \label{deduction_8cpp_a834553900f93aac028eca97dc2bb38ec} 
-Tableau apply\+\_\+rule\+\_\+with\+\_\+premisse (\begin{DoxyParamCaption}\item[{Tableau}]{tbl}{, }\item[{\mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}}}]{expansion\+\_\+rule}{, }\item[{int}]{rule\+\_\+idx}{, }\item[{vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$}]{er}{}\end{DoxyParamCaption})}
+\Hypertarget{deduction_8cpp_af0d77366668d4f68f6d49f3bc627e33c}\index{deduction.cpp@{deduction.cpp}!apply\_cut@{apply\_cut}}
+\index{apply\_cut@{apply\_cut}!deduction.cpp@{deduction.cpp}}
+\doxysubsubsection{\texorpdfstring{apply\_cut()}{apply\_cut()}}
+{\footnotesize\ttfamily \label{deduction_8cpp_af0d77366668d4f68f6d49f3bc627e33c} 
+vector$<$ Tableau $>$ apply\+\_\+cut (\begin{DoxyParamCaption}\item[{Tableau}]{tbl}{, }\item[{vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$}]{er}{}\end{DoxyParamCaption})}
 
 
 
-Try to apply a rule in a tableau. 
+Applies a cut rule in a tableau. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tbl} & Tableau \\
+\hline
+{\em er} & Vector of expansion rules \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of tableaux containing all possible application of cuts in tbl 
+\end{DoxyReturn}
+\Hypertarget{deduction_8cpp_a452ea475b0ea814d19e94ea4affdbc4b}\index{deduction.cpp@{deduction.cpp}!apply\_rule\_with\_premise@{apply\_rule\_with\_premise}}
+\index{apply\_rule\_with\_premise@{apply\_rule\_with\_premise}!deduction.cpp@{deduction.cpp}}
+\doxysubsubsection{\texorpdfstring{apply\_rule\_with\_premise()}{apply\_rule\_with\_premise()}}
+{\footnotesize\ttfamily \label{deduction_8cpp_a452ea475b0ea814d19e94ea4affdbc4b} 
+Tableau apply\+\_\+rule\+\_\+with\+\_\+premise (\begin{DoxyParamCaption}\item[{Tableau}]{tbl}{, }\item[{\mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}}}]{expansion\+\_\+rule}{, }\item[{int}]{rule\+\_\+idx}{, }\item[{vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$}]{er}{}\end{DoxyParamCaption})}
+
+
+
+Tries to apply a rule in a tableau. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -195,6 +205,26 @@ Try to apply a rule in a tableau.
 If it is possible to apply expansion\+\_\+rule in tbl, the tableau tbl after the application of rule 
 
 Otherwise, the tableau itself 
+\end{DoxyReturn}
+\Hypertarget{deduction_8cpp_a3337a7c89376d12d006b09b7ce521e91}\index{deduction.cpp@{deduction.cpp}!branch\_leaf@{branch\_leaf}}
+\index{branch\_leaf@{branch\_leaf}!deduction.cpp@{deduction.cpp}}
+\doxysubsubsection{\texorpdfstring{branch\_leaf()}{branch\_leaf()}}
+{\footnotesize\ttfamily \label{deduction_8cpp_a3337a7c89376d12d006b09b7ce521e91} 
+int branch\+\_\+leaf (\begin{DoxyParamCaption}\item[{Tableau}]{tbl}{, }\item[{vector$<$ int $>$}]{branch}{}\end{DoxyParamCaption})}
+
+
+
+Gets the index of leaf node of a tableau branch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tbl} & Tableau \\
+\hline
+{\em branch} & Branch of tbl \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of leaf of branch 
 \end{DoxyReturn}
 \Hypertarget{deduction_8cpp_adb38e1ec80817d7513b098ef43df970c}\index{deduction.cpp@{deduction.cpp}!get\_height\_initial\_nodes@{get\_height\_initial\_nodes}}
 \index{get\_height\_initial\_nodes@{get\_height\_initial\_nodes}!deduction.cpp@{deduction.cpp}}
@@ -222,7 +252,7 @@ Tableau get\+\_\+initial\+\_\+tableau (\begin{DoxyParamCaption}\item[{vector$<$ 
 
 
 
-Get an initial tableau for a vector of signed formulas. 
+Gets an initial tableau for a vector of signed formulas. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -232,11 +262,171 @@ Get an initial tableau for a vector of signed formulas.
 \begin{DoxyReturn}{Returns}
 An initial tableau for sf\+\_\+input 
 \end{DoxyReturn}
-\Hypertarget{deduction_8cpp_a1d93a4477c3a73d7b8e15cafb4604b57}\index{deduction.cpp@{deduction.cpp}!try\_apply\_closure\_rule@{try\_apply\_closure\_rule}}
+\Hypertarget{deduction_8cpp_ab2a98e74d49e1a81442ebc31c409cb89}\index{deduction.cpp@{deduction.cpp}!get\_justifications\_closure\_rule@{get\_justifications\_closure\_rule}}
+\index{get\_justifications\_closure\_rule@{get\_justifications\_closure\_rule}!deduction.cpp@{deduction.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_justifications\_closure\_rule()}{get\_justifications\_closure\_rule()}}
+{\footnotesize\ttfamily \label{deduction_8cpp_ab2a98e74d49e1a81442ebc31c409cb89} 
+vector$<$ int $>$ get\+\_\+justifications\+\_\+closure\+\_\+rule (\begin{DoxyParamCaption}\item[{Tableau}]{tbl}{, }\item[{vector$<$ int $>$}]{branch}{, }\item[{\mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}}}]{closure\+\_\+rule}{}\end{DoxyParamCaption})}
+
+
+
+Gets the index of the justifications for the application of a closure rule. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tbl} & Tableau \\
+\hline
+{\em branch} & Branch of tbl \\
+\hline
+{\em closure\+\_\+rule} & Expansion closure rule \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of integers indicating the index in tbl of the justification for the application of closure\+\_\+rule in tbl 
+\end{DoxyReturn}
+\Hypertarget{deduction_8cpp_aa95bf1cf07d2e8bd20b729f1ce183f7a}\index{deduction.cpp@{deduction.cpp}!get\_tbl\_branches@{get\_tbl\_branches}}
+\index{get\_tbl\_branches@{get\_tbl\_branches}!deduction.cpp@{deduction.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_tbl\_branches()}{get\_tbl\_branches()}}
+{\footnotesize\ttfamily \label{deduction_8cpp_aa95bf1cf07d2e8bd20b729f1ce183f7a} 
+vector$<$ vector$<$ int $>$ $>$ get\+\_\+tbl\+\_\+branches (\begin{DoxyParamCaption}\item[{Tableau}]{tbl}{}\end{DoxyParamCaption})}
+
+
+
+Gets the branches of a tableau. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tbl} & Tableau \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of vector of integers representing the branches of tbl in which each vector of intergers represents a single branch 
+\end{DoxyReturn}
+\Hypertarget{deduction_8cpp_a993987b53cbd096c74c074296d3a645e}\index{deduction.cpp@{deduction.cpp}!get\_tbl\_leaves@{get\_tbl\_leaves}}
+\index{get\_tbl\_leaves@{get\_tbl\_leaves}!deduction.cpp@{deduction.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_tbl\_leaves()}{get\_tbl\_leaves()}}
+{\footnotesize\ttfamily \label{deduction_8cpp_a993987b53cbd096c74c074296d3a645e} 
+vector$<$ int $>$ get\+\_\+tbl\+\_\+leaves (\begin{DoxyParamCaption}\item[{Tableau}]{tbl}{}\end{DoxyParamCaption})}
+
+
+
+Gets the leaves of a tableau. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tbl} & Tableau \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of integers indicating the leaves of tbl 
+\end{DoxyReturn}
+\Hypertarget{deduction_8cpp_a40da38b46d446103c728f229bf66d055}\index{deduction.cpp@{deduction.cpp}!get\_tbl\_levels@{get\_tbl\_levels}}
+\index{get\_tbl\_levels@{get\_tbl\_levels}!deduction.cpp@{deduction.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_tbl\_levels()}{get\_tbl\_levels()}}
+{\footnotesize\ttfamily \label{deduction_8cpp_a40da38b46d446103c728f229bf66d055} 
+vector$<$ int $>$ get\+\_\+tbl\+\_\+levels (\begin{DoxyParamCaption}\item[{Tableau}]{tbl}{}\end{DoxyParamCaption})}
+
+
+
+Gets the level of each node of a tableau tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tbl} & Tableau \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector indicating the level of each node of tbl in which the n-\/th element indicates the level of the n-\/th node of tbl\texorpdfstring{$>$}{>} 
+\end{DoxyReturn}
+\Hypertarget{deduction_8cpp_a75fdd656d225fe19a44c1068f922a294}\index{deduction.cpp@{deduction.cpp}!is\_a\_match@{is\_a\_match}}
+\index{is\_a\_match@{is\_a\_match}!deduction.cpp@{deduction.cpp}}
+\doxysubsubsection{\texorpdfstring{is\_a\_match()}{is\_a\_match()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{deduction_8cpp_a75fdd656d225fe19a44c1068f922a294} 
+bool is\+\_\+a\+\_\+match (\begin{DoxyParamCaption}\item[{Fmla}]{fmla\+\_\+tbl}{, }\item[{Fmla}]{premise\+\_\+fmla}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a formula and a formula of a premise of a rule are equal under substitution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmla\+\_\+tbl} & Formula of a signed formula of a tableau \\
+\hline
+{\em premise\+\_\+fmla} & Formula of signed formula of a premise of a rule \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if fmla\+\_\+tbl and premise\+\_\+fmla are equal under substitution 
+
+False otherwise 
+\end{DoxyReturn}
+\Hypertarget{deduction_8cpp_ae56ccece472d94bba46a88fd370e060a}\index{deduction.cpp@{deduction.cpp}!is\_a\_match@{is\_a\_match}}
+\index{is\_a\_match@{is\_a\_match}!deduction.cpp@{deduction.cpp}}
+\doxysubsubsection{\texorpdfstring{is\_a\_match()}{is\_a\_match()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{deduction_8cpp_ae56ccece472d94bba46a88fd370e060a} 
+bool is\+\_\+a\+\_\+match (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}}}]{sf\+\_\+tbl}{, }\item[{\mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}}}]{premise}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a signed formula and a premise of a rule are equal under substitution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sf\+\_\+tbl} & Signed formula of a tableau \\
+\hline
+{\em premise} & Signed formula of a premise of a rule \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if sf\+\_\+tbl and premise are equal under substitution 
+
+False otherwise 
+\end{DoxyReturn}
+\Hypertarget{deduction_8cpp_a2de15931e8811a57ea9875d7e90bbd42}\index{deduction.cpp@{deduction.cpp}!matching\_parameters@{matching\_parameters}}
+\index{matching\_parameters@{matching\_parameters}!deduction.cpp@{deduction.cpp}}
+\doxysubsubsection{\texorpdfstring{matching\_parameters()}{matching\_parameters()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{deduction_8cpp_a2de15931e8811a57ea9875d7e90bbd42} 
+Subst matching\+\_\+parameters (\begin{DoxyParamCaption}\item[{Fmla}]{fmla\+\_\+tbl}{, }\item[{Fmla}]{premise\+\_\+fmla}{}\end{DoxyParamCaption})}
+
+
+
+Constructs the substitution that allows two formulas to match, ie, to be equal under substitution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sf\+\_\+tbl} & Formula of a tableau \\
+\hline
+{\em premise} & Formula of a premise of a rule \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The substitution that make fmla\+\_\+tbl and premise\+\_\+fmla to be equal formulas 
+\end{DoxyReturn}
+\Hypertarget{deduction_8cpp_a1b3345a4ea57e092cb3483ce44ffcd5c}\index{deduction.cpp@{deduction.cpp}!matching\_parameters@{matching\_parameters}}
+\index{matching\_parameters@{matching\_parameters}!deduction.cpp@{deduction.cpp}}
+\doxysubsubsection{\texorpdfstring{matching\_parameters()}{matching\_parameters()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{deduction_8cpp_a1b3345a4ea57e092cb3483ce44ffcd5c} 
+Subst matching\+\_\+parameters (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}}}]{sf\+\_\+tbl}{, }\item[{\mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}}}]{premise}{}\end{DoxyParamCaption})}
+
+
+
+Constructs the substitution that allows two signed formulas to match, ie, to be equal under substitution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sf\+\_\+tbl} & Signed formula of a tableau \\
+\hline
+{\em premise} & Signed formula of a premise of a rule \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The substitution that make sf\+\_\+tbl and premise to be equal signed formulas 
+\end{DoxyReturn}
+\Hypertarget{deduction_8cpp_ad63614957c8a03907439796dc2ad1eda}\index{deduction.cpp@{deduction.cpp}!try\_apply\_closure\_rule@{try\_apply\_closure\_rule}}
 \index{try\_apply\_closure\_rule@{try\_apply\_closure\_rule}!deduction.cpp@{deduction.cpp}}
 \doxysubsubsection{\texorpdfstring{try\_apply\_closure\_rule()}{try\_apply\_closure\_rule()}}
-{\footnotesize\ttfamily \label{deduction_8cpp_a1d93a4477c3a73d7b8e15cafb4604b57} 
-bool try\+\_\+apply\+\_\+closure\+\_\+rule (\begin{DoxyParamCaption}\item[{Tableau}]{tbl}{, }\item[{vector$<$ int $>$}]{branch}{, }\item[{\mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}}}]{expansion\+\_\+rule}{, }\item[{vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$}]{er}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{deduction_8cpp_ad63614957c8a03907439796dc2ad1eda} 
+bool try\+\_\+apply\+\_\+closure\+\_\+rule (\begin{DoxyParamCaption}\item[{Tableau}]{tbl}{, }\item[{vector$<$ int $>$}]{branch}{, }\item[{\mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}}}]{closure\+\_\+rule}{}\end{DoxyParamCaption})}
 
 
 
@@ -248,9 +438,7 @@ Checks if it is possible to apply a closure rule in a tableau.
 \hline
 {\em branch} & Branch of tbl in which the closure is tried to be applied \\
 \hline
-{\em expansion\+\_\+rule} & Closure rule \\
-\hline
-{\em er} & Vector of expansion rules \\
+{\em closure\+\_\+rule} & Expansion closure rule \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

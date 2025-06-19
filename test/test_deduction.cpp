@@ -26,11 +26,11 @@ void test_is_a_match() {
     sf_tbl.sign = polarity::plus;
     sf_tbl.fmla = parse_fmla("∈(p1,∩(p2,p3))");
 
-    SignedFmla sf_premisse;
-    sf_premisse.sign = polarity::plus;
-    sf_premisse.fmla = parse_fmla("∈(p1,p2)");
+    SignedFmla sf_premise;
+    sf_premise.sign = polarity::plus;
+    sf_premise.fmla = parse_fmla("∈(p1,p2)");
 
-    cout << is_a_match(sf_tbl, sf_premisse) << "\n";
+    cout << is_a_match(sf_tbl, sf_premise) << "\n";
 }
 
 void test_matching_parameters() {
@@ -38,11 +38,11 @@ void test_matching_parameters() {
     sf_tbl.sign = polarity::plus;
     sf_tbl.fmla = parse_fmla("∈(p1,∩(p2,p3))");
 
-    SignedFmla sf_premisse;
-    sf_premisse.sign = polarity::plus;
-    sf_premisse.fmla = parse_fmla("∈(p1,p2)");
+    SignedFmla sf_premise;
+    sf_premise.sign = polarity::plus;
+    sf_premise.fmla = parse_fmla("∈(p1,p2)");
 
-    Subst matching_parameters_map = matching_parameters(sf_tbl, sf_premisse);
+    Subst matching_parameters_map = matching_parameters(sf_tbl, sf_premise);
 
     for (const auto& pair : matching_parameters_map) {
         cout << pair.first << ": ";
@@ -51,13 +51,13 @@ void test_matching_parameters() {
     }
 }
 
-void test_apply_rule_with_premisse(){
+void test_apply_rule_with_premise(){
     vector<SignedFmla> sf = pre_process_signed_fmla_input();
     Tableau tbl = get_initial_tableau(sf);
 
     vector<TblRule> expansion_rules = pre_process_expansion_rules_input();
     
-    vector<Tableau> tableaux = apply_rule_with_premisse(tbl, expansion_rules[9], 9);
+    vector<Tableau> tableaux = apply_rule_with_premise(tbl, expansion_rules[9], 9);
 
     int i = 0;
     for (Tableau tableau : tableaux) {
@@ -96,13 +96,13 @@ void test_get_cut_fmlas() {
     }
 }
 
-void test_potential_premisse_nodes_rule() {
+void test_potential_premise_nodes_rule() {
 
     vector<TblRule> expansion_rules = pre_process_expansion_rules_input();
 
     SignedFmla sf = pre_process_signed_fmla("(+, ∈(p1,∩(p2,p3)))");
     TblRule rule = expansion_rules[2];
-    vector<SignedFmla> potential_nodes = potential_premisse_nodes_rule(sf, rule);
+    vector<SignedFmla> potential_nodes = potential_premise_nodes_rule(sf, rule);
 
     for (SignedFmla node : potential_nodes) {
         if (node.sign == polarity::minus) cout << "- ";
@@ -223,10 +223,10 @@ void test_matching_premises() {
     }
 }
 
-void test_get_pattern_matching_premisse_symb() {
+void test_get_pattern_matching_premise_symb() {
     Fmla fmla1 = parse_fmla("∈(p1,∩(p2,∪(p3,p4)))");
     Fmla fmla2 = parse_fmla("∈(p1,-(p2,p3))");
-    cout << get_pattern_matching_premisse_symb(fmla1, 4, fmla2) << "\n";
+    cout << get_pattern_matching_premise_symb(fmla1, 4, fmla2) << "\n";
 }
 
 void test_get_ps_potential_symbols() {

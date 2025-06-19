@@ -37,12 +37,12 @@ void test_pre_process_expension_rules() {
 
         cout << ">>> premises\n";
         for (int j = 0; j < premises.size(); j++) {
-            SignedFmla premisse = premises[j];
+            SignedFmla premise = premises[j];
             string s = "";
-            if (premisse.sign == polarity::minus) s = "- ";
-            if (premisse.sign == polarity::plus) s = "+ ";
+            if (premise.sign == polarity::minus) s = "- ";
+            if (premise.sign == polarity::plus) s = "+ ";
             cout << s;
-            print_fmla_prefix(premisse.fmla);
+            print_fmla_prefix(premise.fmla);
             cout << "\n";
 
         }

@@ -1,5 +1,5 @@
 \doxysection{deduction.\+h}
-\hypertarget{deduction_8h_source}{}\label{deduction_8h_source}\index{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/test/GePECC/src/auxiliary/deduction.h@{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/test/GePECC/src/auxiliary/deduction.h}}
+\hypertarget{deduction_8h_source}{}\label{deduction_8h_source}\index{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/auxiliary/deduction.h@{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/auxiliary/deduction.h}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DEDUCTION\_H}}
@@ -23,33 +23,33 @@
 \DoxyCodeLine{00019\ }
 \DoxyCodeLine{00020\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{deduction_8cpp_adb38e1ec80817d7513b098ef43df970c}{get\_height\_initial\_nodes}}(Tableau\ tbl);}
 \DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ Tableau\ \mbox{\hyperlink{deduction_8cpp_a834553900f93aac028eca97dc2bb38ec}{apply\_rule\_with\_premisse}}(Tableau\ tbl,\ \mbox{\hyperlink{struct_tbl_rule}{TblRule}}\ expansion\_rule,\ \textcolor{keywordtype}{int}\ rule\_idx,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00022\ Tableau\ \mbox{\hyperlink{deduction_8cpp_a452ea475b0ea814d19e94ea4affdbc4b}{apply\_rule\_with\_premise}}(Tableau\ tbl,\ \mbox{\hyperlink{struct_tbl_rule}{TblRule}}\ expansion\_rule,\ \textcolor{keywordtype}{int}\ rule\_idx,\ vector<TblRule>\ er);}
 \DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{deduction_8cpp_a1d93a4477c3a73d7b8e15cafb4604b57}{try\_apply\_closure\_rule}}(Tableau\ tbl,\ vector<int>\ branch,\ \mbox{\hyperlink{struct_tbl_rule}{TblRule}}\ expansion\_rule,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{deduction_8cpp_ad63614957c8a03907439796dc2ad1eda}{try\_apply\_closure\_rule}}(Tableau\ tbl,\ vector<int>\ branch,\ \mbox{\hyperlink{struct_tbl_rule}{TblRule}}\ closure\_rule);}
 \DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ vector<int>\ get\_premises\_closure\_rule(Tableau\ tbl,\ vector<int>\ branch,\ \mbox{\hyperlink{struct_tbl_rule}{TblRule}}\ expansion\_rule,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00026\ vector<int>\ \mbox{\hyperlink{deduction_8cpp_ab2a98e74d49e1a81442ebc31c409cb89}{get\_justifications\_closure\_rule}}(Tableau\ tbl,\ vector<int>\ branch,\ \mbox{\hyperlink{struct_tbl_rule}{TblRule}}\ closure\_rule);}
 \DoxyCodeLine{00027\ }
 \DoxyCodeLine{00028\ map<pair<int,int>,\ set<string>>\ get\_ps\_potential\_symbols(Tableau\ tbl,\ vector<TblRule>\ er);}
 \DoxyCodeLine{00029\ }
 \DoxyCodeLine{00030\ vector<tuple<int,\ pair<int,\ int>>>\ get\_vec\_ps\_symbs(Fmla\ prem\_fmla,\ Fmla\ conc\_fmla,\ Fmla\ justf\_fmla,\ Fmla\ exp\_fmla,\ vector<tuple<\textcolor{keywordtype}{int},\ pair<int,\ int>>>\ ps\_symbs);}
 \DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ vector<Tableau>\ apply\_cut(Tableau\ tbl,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00032\ vector<Tableau>\ \mbox{\hyperlink{deduction_8cpp_af0d77366668d4f68f6d49f3bc627e33c}{apply\_cut}}(Tableau\ tbl,\ vector<TblRule>\ er);}
 \DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \textcolor{keywordtype}{bool}\ is\_a\_match(\mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ sf,\ \mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ premisse);}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{deduction_8cpp_ae56ccece472d94bba46a88fd370e060a}{is\_a\_match}}(\mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ sf,\ \mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ premise);}
 \DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \textcolor{keywordtype}{bool}\ is\_a\_match(Fmla\ sf\_tbl,\ Fmla\ premisse);}
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{deduction_8cpp_ae56ccece472d94bba46a88fd370e060a}{is\_a\_match}}(Fmla\ fmla\_tbl,\ Fmla\ premise\_fmla);}
 \DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ Subst\ matching\_parameters(\mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ sf\_tbl,\ \mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ premisse);}
+\DoxyCodeLine{00038\ Subst\ \mbox{\hyperlink{deduction_8cpp_a1b3345a4ea57e092cb3483ce44ffcd5c}{matching\_parameters}}(\mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ sf\_tbl,\ \mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ premise);}
 \DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ Subst\ matching\_parameters(Fmla\ sf\_tbl,\ Fmla\ premisse);}
+\DoxyCodeLine{00040\ Subst\ \mbox{\hyperlink{deduction_8cpp_a1b3345a4ea57e092cb3483ce44ffcd5c}{matching\_parameters}}(Fmla\ sf\_tbl,\ Fmla\ premise);}
 \DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ vector<int>\ get\_tbl\_leaves(Tableau\ tbl);}
+\DoxyCodeLine{00042\ vector<int>\ \mbox{\hyperlink{deduction_8cpp_a993987b53cbd096c74c074296d3a645e}{get\_tbl\_leaves}}(Tableau\ tbl);}
 \DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ vector<\ vector<int>>\ get\_tbl\_branches(Tableau\ tbl);}
+\DoxyCodeLine{00044\ vector<\ vector<int>>\ \mbox{\hyperlink{deduction_8cpp_aa95bf1cf07d2e8bd20b729f1ce183f7a}{get\_tbl\_branches}}(Tableau\ tbl);}
 \DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \textcolor{keywordtype}{int}\ branch\_leaf(Tableau\ tbl,\ vector<int>\ branch);}
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{deduction_8cpp_a3337a7c89376d12d006b09b7ce521e91}{branch\_leaf}}(Tableau\ tbl,\ vector<int>\ branch);}
 \DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ vector<int>\ get\_tbl\_levels(Tableau\ tbl);}
+\DoxyCodeLine{00048\ vector<int>\ \mbox{\hyperlink{deduction_8cpp_a40da38b46d446103c728f229bf66d055}{get\_tbl\_levels}}(Tableau\ tbl);}
 \DoxyCodeLine{00049\ }
 \DoxyCodeLine{00050\ \textcolor{keywordtype}{bool}\ opposite\_polarity\_nodes(\mbox{\hyperlink{struct_tbl_node}{TblNode}}\ node1,\ \mbox{\hyperlink{struct_tbl_node}{TblNode}}\ node2);}
 \DoxyCodeLine{00051\ }
@@ -83,9 +83,9 @@
 \DoxyCodeLine{00079\ }
 \DoxyCodeLine{00080\ Tableau\ remove\_node(Tableau\ tbl,\ \textcolor{keywordtype}{int}\ idx);}
 \DoxyCodeLine{00081\ }
-\DoxyCodeLine{00082\ vector<SignedFmla>\ potential\_premisse\_nodes\_branch(Tableau\ tbl,\ vector<int>\ branch,\ vector<TblRule>\ er);}
+\DoxyCodeLine{00082\ vector<SignedFmla>\ potential\_premise\_nodes\_branch(Tableau\ tbl,\ vector<int>\ branch,\ vector<TblRule>\ er);}
 \DoxyCodeLine{00083\ }
-\DoxyCodeLine{00084\ vector<SignedFmla>\ potential\_premisse\_nodes\_rule(\mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ sf,\ \mbox{\hyperlink{struct_tbl_rule}{TblRule}}\ rule);}
+\DoxyCodeLine{00084\ vector<SignedFmla>\ potential\_premise\_nodes\_rule(\mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ sf,\ \mbox{\hyperlink{struct_tbl_rule}{TblRule}}\ rule);}
 \DoxyCodeLine{00085\ }
 \DoxyCodeLine{00086\ \textcolor{keywordtype}{bool}\ fmla\_in\_vec\_fmla(vector<Fmla>\ fmlas,\ Fmla\ fmla);}
 \DoxyCodeLine{00087\ }
@@ -115,7 +115,7 @@
 \DoxyCodeLine{00111\ }
 \DoxyCodeLine{00112\ vector<SignedFmla>\ pattern\_matching\_premises(vector<TblRule>\ er,\ \mbox{\hyperlink{struct_tbl_rule}{TblRule}}\ rule,\ \textcolor{keywordtype}{int}\ prem\_idx,\ \textcolor{keywordtype}{int}\ conc\_idx);}
 \DoxyCodeLine{00113\ }
-\DoxyCodeLine{00114\ \textcolor{keywordtype}{string}\ get\_pattern\_matching\_premisse\_symb(Fmla\ fmla,\ \textcolor{keywordtype}{int}\ node\_idx,\ Fmla\ matching\_fmla);}
+\DoxyCodeLine{00114\ \textcolor{keywordtype}{string}\ get\_pattern\_matching\_premise\_symb(Fmla\ fmla,\ \textcolor{keywordtype}{int}\ node\_idx,\ Fmla\ matching\_fmla);}
 \DoxyCodeLine{00115\ }
 \DoxyCodeLine{00116\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DEDUCTION\_H}}
 

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['get_5fheight_5finitial_5fnodes_0',['get_height_initial_nodes',['../deduction_8cpp.html#adb38e1ec80817d7513b098ef43df970c',1,'deduction.cpp']]],
-  ['get_5finitial_5ftableau_1',['get_initial_tableau',['../deduction_8cpp.html#ae15f4480a3477bc1656e711ae4fb050f',1,'deduction.cpp']]]
+  ['branch_5fleaf_0',['branch_leaf',['../deduction_8cpp.html#a3337a7c89376d12d006b09b7ce521e91',1,'deduction.cpp']]]
 ];
