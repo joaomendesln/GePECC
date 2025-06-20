@@ -17,14 +17,14 @@ void test_apply_cut();
 
 void test_get_cut_fmlas();
 
-void test_potential_premise_nodes_rule();
+void test_minor_copremises_rule();
 
 void test_check_rule_application();
 
 void test_matching_premises();
 
-void test_get_pattern_matching_premise_symb();
+void test_get_syntactic_matching_symb();
 
-void test_get_ps_potential_symbols();
+void test_get_ps_candidate_symbols();
 
 #endif // TEST_DEDUCTION_H

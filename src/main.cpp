@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
     }
 
     cout << "\n===== Extracting minimal proofs\n";
-    vector<Tableau> minimal_proofs = extract_minimal_proofs(input_sf, er);
+    vector<Tableau> minimal_proofs = search_minimal_proofs(input_sf, er);
 
     if (minimal_proofs.size() > 0) {
         cout << "Amount of proofs: " << minimal_proofs.size() << "\n";
@@ -78,7 +78,7 @@ int main(int argc, char* argv[]) {
         // print_tableau(m);
         // cout << "\n";
 
-        vector<vector<SignedFmla> > isomorphic_sets = proof_isomorphic_sf_sets(m, er);
+        vector<vector<SignedFmla> > isomorphic_sets = search_proof_isomorphic_sf_sets(m, er);
         // cout << "\nAmount of proof-isomorphic sets:\n";
         // cout << isomorphic_sets.size() << "\n";
         // cout << ">>>>>>>>>>>>>>>>>>>>>>\n\n";

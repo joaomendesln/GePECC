@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['try_5fapply_5fclosure_5frule_0',['try_apply_closure_rule',['../deduction_8cpp.html#ad63614957c8a03907439796dc2ad1eda',1,'deduction.cpp']]]
+  ['has_5fsingle_5fjustification_5fnodes_0',['has_single_justification_nodes',['../deduction_8cpp.html#ad97b7dbd412643a54ac952f582da9e43',1,'deduction.cpp']]]
 ];

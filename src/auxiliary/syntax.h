@@ -48,7 +48,7 @@ set<string> get_parameters(Fmla fmla);
 
 Fmla subst_extension(Fmla fmla, Subst subs);
 
-Fmla subst_extension_potential(Fmla fmla, Subst subs);
+Fmla subst_extension_copremise(Fmla fmla, Subst subs);
 
 string get_new_parameter(set<string> parameters);
 

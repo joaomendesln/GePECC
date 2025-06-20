@@ -1,7 +1,24 @@
+/**
+ * @file pre_process.cpp
+ * @author João Mendes
+ * @brief Pre-process module of the input files
+ * @version 0.0.1
+ * @date 2025-06-20
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #include "pre_process.h"
 
 using namespace std;
 
+/**
+ * @brief Open a file and stores its content on a vector of strings
+ * 
+ * @param file_path Path of a file
+ * @return Vector of strings with the content of the file with the path of `file_path` 
+ */
 vector<string> open_file(string file_path) {
     vector<string> lines;
 
@@ -24,6 +41,12 @@ vector<string> open_file(string file_path) {
     return lines;
 }
 
+/**
+ * @brief Pre-processes a line of symbols
+ * 
+ * @param symb_line Symbol line content
+ * @return A map with symbols and their respective arities 
+ */
 map<string, int> pre_process_symb_line(string symb_line) {
     map<string, int> resulting_symbs_map;
 
@@ -68,6 +91,11 @@ map<string, int> pre_process_symb_line(string symb_line) {
     return resulting_symbs_map;
 }
 
+/**
+ * @brief Pre-processes skolemization symbols
+ * 
+ * @return Set of skolemization symbols 
+ */
 set<string> pre_process_skolem_symbs() {
     vector<string> lines = {};
 
@@ -113,6 +141,11 @@ set<string> pre_process_skolem_symbs() {
     return skolem_symbs;
 }
 
+/**
+ * @brief Pre-processes symbols files
+ * 
+ * @return A pair with a map with the function symbols and their respective arities and another map with the predicate symbols and their respective arities
+ */
 pair<map<string, int>, map<string, int>> pre_process_symbols() {
     map <string, int> resulting_function_symbs;
     map <string, int> resulting_predicate_symbs;
@@ -160,14 +193,30 @@ pair<map<string, int>, map<string, int>> pre_process_symbols() {
     return {resulting_function_symbs, resulting_predicate_symbs};
 }
 
+
+/**
+ * @brief Pre-processes the function symbols
+ * 
+ * @return A map with the function symbols and their respective arities
+ */
 map<string, int> pre_process_function_symbs() {
     return pre_process_symbols().first;
 }
 
+/**
+ * @brief Pre-processes the predicate symbols
+ * 
+ * @return A map with the predicate symbols and their respective arities 
+ */
 map<string, int> pre_process_predicate_symbs() {
     return pre_process_symbols().second;
 }
 
+/**
+ * @brief Joins the function and predicate symbols in a single map
+ * 
+ * @return A map with the function and predicate symbols and their respective arities
+ */
 map<string, int> pre_process_language_symbs() {
     map<string, int> function_symbs = pre_process_function_symbs();
     map<string, int> predicate_symbs = pre_process_predicate_symbs();
@@ -185,6 +234,11 @@ map<string, int> pre_process_language_symbs() {
     return language_symbs;
 }
 
+/**
+ * @brief Pre-processes the symbols that are not skolemization symbols
+ * 
+ * @return A map with the symbols that are not skolemization symbols and their respective arities
+ */
 map<string, int> pre_process_no_skolem_symbs() {
     map<string, int> function_symbs = pre_process_function_symbs();
     map<string, int> predicate_symbs = pre_process_predicate_symbs();
@@ -203,6 +257,13 @@ map<string, int> pre_process_no_skolem_symbs() {
     return no_skolem_symbs;
 }
 
+/**
+ * @brief Pre-processes a line of the file with the expansion rules
+ * 
+ * @param line Line of the file with the expansion rules
+ * @param line_idx Index of `line`
+ * @return Expansion rule described in `line` 
+ */
 TblRule pre_process_single_expansion_rule(string line, int line_idx) {
 
     string str_premises = "";

@@ -164,7 +164,7 @@ Fmla subst_extension(Fmla fmla, Subst subs) {
    return fmla;
 }
 
-Fmla subst_extension_potential(Fmla fmla, Subst subs) {
+Fmla subst_extension_copremise(Fmla fmla, Subst subs) {
 
     set<string> parameters_subs, parameters_subs_domain;
 

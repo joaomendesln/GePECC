@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['signed_20formulas_0',['Signed formulas',['../index.html#autotoc_md5',1,'']]],
-  ['signedfmla_1',['SignedFmla',['../struct_signed_fmla.html',1,'']]],
-  ['symbols_2',['Symbols',['../index.html#autotoc_md3',1,'']]]
+  ['of_20the_20method_0',['Big picture of the method',['../index.html#autotoc_md1',1,'']]],
+  ['opposite_5fpolarity_5fnodes_1',['opposite_polarity_nodes',['../deduction_8cpp.html#aa60b5a85ea642522097d0c999f366556',1,'deduction.cpp']]],
+  ['output_2',['Output',['../index.html#autotoc_md6',1,'']]]
 ];

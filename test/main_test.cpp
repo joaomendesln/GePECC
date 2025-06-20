@@ -13,7 +13,7 @@ int main() {
     // test_pre_process_expansion_rules();
     // test_pre_process_signed_fmlas_input();
     // test_pre_process_cut_fmlas();
-    // test_potential_premise_nodes_rule();
+    // test_minor_copremises_rule();
 
     // // ++ Parser
     // test_parser();
@@ -29,8 +29,8 @@ int main() {
     // test_get_cut_fmlas();
     // test_check_rule_application();
     // test_matching_premises();
-    // test_get_pattern_matching_premise_symb();
-    test_get_ps_potential_symbols();
+    // test_get_syntactic_matching_symb();
+    test_get_ps_candidate_symbols();
 
     // // ++ Syntax
     // test_get_term_of_fmla(); 

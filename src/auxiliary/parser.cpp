@@ -1,7 +1,24 @@
+/**
+ * @file parser.cpp
+ * @author João Mendes
+ * @brief Parser of formulas in prefixed notation
+ * @version 0.0.1
+ * @date 2025-06-20
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #include "parser.h"
 
 using namespace std;
 
+/**
+ * @brief Parses a formulas written in prefixed notation
+ * 
+ * @param fmla_str 
+ * @return Formula described `fmla_str` parsed 
+ */
 Fmla parse_fmla(string fmla_str) {
 
     map<string, int> function_symbs = pre_process_function_symbs();

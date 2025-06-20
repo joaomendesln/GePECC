@@ -25,9 +25,9 @@ bool try_apply_closure_rule(Tableau tbl, vector<int> branch, TblRule closure_rul
 
 vector<int> get_justifications_closure_rule(Tableau tbl, vector<int> branch, TblRule closure_rule);
 
-map<pair<int,int>, set<string>> get_ps_potential_symbols(Tableau tbl, vector<TblRule> er);
+map<pair<int,int>, set<string>> get_ps_candidate_symbols(Tableau tbl, vector<TblRule> er);
 
-vector<tuple<int, pair<int, int>>> get_vec_ps_symbs(Fmla prem_fmla, Fmla conc_fmla, Fmla justf_fmla, Fmla exp_fmla, vector<tuple<int, pair<int, int>>> ps_symbs);
+vector<tuple<int, pair<int, int>>> get_vec_symb_descendant_occurrences(Fmla prem_fmla, Fmla conc_fmla, Fmla justf_fmla, Fmla exp_fmla, vector<tuple<int, pair<int, int>>> ps_symbs);
 
 vector<Tableau> apply_cut(Tableau tbl, vector<TblRule> er);
 
@@ -73,15 +73,15 @@ int get_branch_size(Tableau tbl, vector<int> branch, vector<TblRule> er);
 
 int get_size(Tableau tbl, vector<TblRule> er);
 
-vector<Tableau> extract_minimal_proofs(vector<SignedFmla> sf, vector<TblRule> er);
+vector<Tableau> search_minimal_proofs(vector<SignedFmla> sf, vector<TblRule> er);
 
 Tableau clean_tbl(Tableau tbl, vector<TblRule> er);
 
 Tableau remove_node(Tableau tbl, int idx);
 
-vector<SignedFmla> potential_premise_nodes_branch(Tableau tbl, vector<int> branch, vector<TblRule> er);
+vector<SignedFmla> minor_copremises_branch(Tableau tbl, vector<int> branch, vector<TblRule> er);
 
-vector<SignedFmla> potential_premise_nodes_rule(SignedFmla sf, TblRule rule);
+vector<SignedFmla> minor_copremises_rule(SignedFmla sf, TblRule rule);
 
 bool fmla_in_vec_fmla(vector<Fmla> fmlas, Fmla fmla);
 
@@ -89,7 +89,7 @@ bool fmla_in_vec_signed_fmla(vector<SignedFmla> signed_fmlas, Fmla fmla);
 
 bool node_in_branch(SignedFmla sf, Tableau tbl, vector<int> branch);
 
-vector<vector<SignedFmla>> proof_isomorphic_sf_sets(Tableau tbl, vector<TblRule> er);
+vector<vector<SignedFmla>> search_proof_isomorphic_sf_sets(Tableau tbl, vector<TblRule> er);
 
 vector<SignedFmla> get_conclusions_from_justifications(vector<SignedFmla> justifications, vector<TblRule> er);
 
@@ -99,7 +99,7 @@ bool is_proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFm
 
 Tableau proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFmla> sf);
 
-vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf, map<pair<int,int>, set<string>> get_ps_potential_symbols);
+vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf, map<pair<int,int>, set<string>> ps_candidate_symbols);
 
 bool vec_sf_equality(vector<SignedFmla> vec_sf1, vector<SignedFmla> vec_sf2);
 
@@ -111,6 +111,6 @@ vector<SignedFmla> get_initial_sf(Tableau tbl);
 
 vector<SignedFmla> pattern_matching_premises(vector<TblRule> er, TblRule rule, int prem_idx, int conc_idx);
 
-string get_pattern_matching_premise_symb(Fmla fmla, int node_idx, Fmla matching_fmla);
+string get_syntactic_matching_symb(Fmla fmla, int node_idx, Fmla matching_fmla);
 
 #endif // DEDUCTION_H

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['of_20the_20method_0',['Big picture of the method',['../index.html#autotoc_md1',1,'']]],
-  ['output_1',['Output',['../index.html#autotoc_md6',1,'']]]
+  ['input_20files_0',['Input files',['../index.html#autotoc_md2',1,'']]],
+  ['is_5fa_5fmatch_1',['is_a_match',['../deduction_8cpp.html#ae56ccece472d94bba46a88fd370e060a',1,'is_a_match(SignedFmla sf_tbl, SignedFmla premise):&#160;deduction.cpp'],['../deduction_8cpp.html#a75fdd656d225fe19a44c1068f922a294',1,'is_a_match(Fmla fmla_tbl, Fmla premise_fmla):&#160;deduction.cpp']]],
+  ['is_5fproof_5fisomorphic_5fsf_5fset_2',['is_proof_isomorphic_sf_set',['../deduction_8cpp.html#aa2cc88d68a417e3bceeca54e244a0556',1,'deduction.cpp']]]
 ];
