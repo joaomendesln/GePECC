@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GePECC: /Users/joaomendes_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/auxiliary Directory Reference</title>
+<title>GePECC: /Users/joaomendes_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/auxiliary/parser.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('dir_71cfd0b311a1d3f4d13c43908edebbe5.html','',''); });
+$(function(){initNavTree('parser_8cpp.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -88,25 +88,52 @@ $(function(){initNavTree('dir_71cfd0b311a1d3f4d13c43908edebbe5.html','',''); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">auxiliary Directory Reference</div></div>
+  <div class="headertitle"><div class="title">parser.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-files" class="groupheader"><a id="files" name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:combinatorics_2Eh" id="r_combinatorics_2Eh"><td class="memItemLeft" align="right" valign="top"><a href="combinatorics_8h_source.html"><span class="icondoc"><div class="doc-icon"></div></span></a>&#160;</td><td class="memItemRight" valign="bottom"><b>combinatorics.h</b></td></tr>
-<tr class="memitem:deduction_2Ecpp" id="r_deduction_2Ecpp"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"><div class="doc-icon"></div></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deduction_8cpp.html">deduction.cpp</a></td></tr>
-<tr class="memdesc:deduction_8cpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deductive machinery for the generation of proof exercises of comparable complexity. <br /></td></tr>
-<tr class="memitem:deduction_2Eh" id="r_deduction_2Eh"><td class="memItemLeft" align="right" valign="top"><a href="deduction_8h_source.html"><span class="icondoc"><div class="doc-icon"></div></span></a>&#160;</td><td class="memItemRight" valign="bottom"><b>deduction.h</b></td></tr>
-<tr class="memitem:parser_2Ecpp" id="r_parser_2Ecpp"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"><div class="doc-icon"></div></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8cpp.html">parser.cpp</a></td></tr>
-<tr class="memdesc:parser_8cpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parser of formulas in prefixed notation. <br /></td></tr>
-<tr class="memitem:parser_2Eh" id="r_parser_2Eh"><td class="memItemLeft" align="right" valign="top"><a href="parser_8h_source.html"><span class="icondoc"><div class="doc-icon"></div></span></a>&#160;</td><td class="memItemRight" valign="bottom"><b>parser.h</b></td></tr>
-<tr class="memitem:pre_5Fprocess_2Ecpp" id="r_pre_5Fprocess_2Ecpp"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"><div class="doc-icon"></div></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pre__process_8cpp.html">pre_process.cpp</a></td></tr>
-<tr class="memdesc:pre__process_8cpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pre-process module of the input files. <br /></td></tr>
-<tr class="memitem:pre_5Fprocess_2Eh" id="r_pre_5Fprocess_2Eh"><td class="memItemLeft" align="right" valign="top"><a href="pre__process_8h_source.html"><span class="icondoc"><div class="doc-icon"></div></span></a>&#160;</td><td class="memItemRight" valign="bottom"><b>pre_process.h</b></td></tr>
-<tr class="memitem:print_2Eh" id="r_print_2Eh"><td class="memItemLeft" align="right" valign="top"><a href="print_8h_source.html"><span class="icondoc"><div class="doc-icon"></div></span></a>&#160;</td><td class="memItemRight" valign="bottom"><b>print.h</b></td></tr>
-<tr class="memitem:syntax_2Eh" id="r_syntax_2Eh"><td class="memItemLeft" align="right" valign="top"><a href="syntax_8h_source.html"><span class="icondoc"><div class="doc-icon"></div></span></a>&#160;</td><td class="memItemRight" valign="bottom"><b>syntax.h</b></td></tr>
+
+<p>Parser of formulas in prefixed notation.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;parser.h&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a21fa3ce29b78ece415374c6c5fa4b849" id="r_a21fa3ce29b78ece415374c6c5fa4b849"><td class="memItemLeft" align="right" valign="top">Fmla&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21fa3ce29b78ece415374c6c5fa4b849">parse_fmla</a> (string fmla_str)</td></tr>
+<tr class="memdesc:a21fa3ce29b78ece415374c6c5fa4b849"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses a formulas written in prefixed notation.  <br /></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Parser of formulas in prefixed notation. </p>
+<dl class="section author"><dt>Author</dt><dd>João Mendes </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025-06-20</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 </dd></dl>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="a21fa3ce29b78ece415374c6c5fa4b849" name="a21fa3ce29b78ece415374c6c5fa4b849"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21fa3ce29b78ece415374c6c5fa4b849">&#9670;&#160;</a></span>parse_fmla()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Fmla parse_fmla </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>fmla_str</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Parses a formulas written in prefixed notation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fmla_str</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Formula described <span class="tt">fmla_str</span> parsed </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
@@ -120,7 +147,7 @@ Files</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_71cfd0b311a1d3f4d13c43908edebbe5.html">auxiliary</a></li>
+    <li class="navelem"><a href="dir_71cfd0b311a1d3f4d13c43908edebbe5.html">auxiliary</a></li><li class="navelem"><a href="parser_8cpp.html">parser.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>

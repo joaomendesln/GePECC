@@ -184,10 +184,9 @@ Functions</h2></td></tr>
 <tr class="memdesc:a2583bf6896ef17972da115d7e34ae172"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the index of the sibling node of a cut node.  <br /></td></tr>
 <tr class="memitem:aa2cc88d68a417e3bceeca54e244a0556" id="r_aa2cc88d68a417e3bceeca54e244a0556"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2cc88d68a417e3bceeca54e244a0556">is_proof_isomorphic_sf_set</a> (Tableau tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er, vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; sf)</td></tr>
 <tr class="memdesc:aa2cc88d68a417e3bceeca54e244a0556"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if there is a proof for a vector of signed formulas that is proof-isomorphic to a tableau given as input.  <br /></td></tr>
-<tr class="memitem:af5f024cc68a211e8f7e0b7dc09769f5d" id="r_af5f024cc68a211e8f7e0b7dc09769f5d"><td class="memItemLeft" align="right" valign="top"><a id="af5f024cc68a211e8f7e0b7dc09769f5d" name="af5f024cc68a211e8f7e0b7dc09769f5d"></a>
-Tableau&#160;</td><td class="memItemRight" valign="bottom"><b>proof_isomorphic_sf_set</b> (Tableau tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er, vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; sf)</td></tr>
-<tr class="memitem:ab07401d8d951266d6d0ee1376af2b20c" id="r_ab07401d8d951266d6d0ee1376af2b20c"><td class="memItemLeft" align="right" valign="top"><a id="ab07401d8d951266d6d0ee1376af2b20c" name="ab07401d8d951266d6d0ee1376af2b20c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_closure_isomorphic</b> (Tableau tbl, Tableau proof_isomorphic_tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:a543450c99d92b6d13f3f6a08134e0fc3" id="r_a543450c99d92b6d13f3f6a08134e0fc3"><td class="memItemLeft" align="right" valign="top">Tableau&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a543450c99d92b6d13f3f6a08134e0fc3">search_proof_isomorphic_sf_set</a> (Tableau tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er, vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; sf)</td></tr>
+<tr class="memitem:ab07401d8d951266d6d0ee1376af2b20c" id="r_ab07401d8d951266d6d0ee1376af2b20c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab07401d8d951266d6d0ee1376af2b20c">is_closure_isomorphic</a> (Tableau tbl, Tableau proof_isomorphic_tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memdesc:ab07401d8d951266d6d0ee1376af2b20c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if two tableaux proofs are closure-isomorphic.  <br /></td></tr>
 <tr class="memitem:acdcc9309d1a9a33a529191255b27f4da" id="r_acdcc9309d1a9a33a529191255b27f4da"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdcc9309d1a9a33a529191255b27f4da">get_conclusions_from_justifications</a> (vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; justifications, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:acdcc9309d1a9a33a529191255b27f4da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the result of applying a rule having as justifications a vector of signed formula given as input.  <br /></td></tr>
 <tr class="memitem:a4af59d5f3487689c07e7b69543682b79" id="r_a4af59d5f3487689c07e7b69543682b79"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4af59d5f3487689c07e7b69543682b79">check_rule_application</a> (vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; justifications, <a class="el" href="struct_signed_fmla.html">SignedFmla</a> expansion, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
@@ -1245,6 +1244,45 @@ False otherwise </dd></dl>
 
 </div>
 </div>
+<a id="ab07401d8d951266d6d0ee1376af2b20c" name="ab07401d8d951266d6d0ee1376af2b20c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab07401d8d951266d6d0ee1376af2b20c">&#9670;&#160;</a></span>is_closure_isomorphic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool is_closure_isomorphic </td>
+          <td>(</td>
+          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>proof_isomorphic_tbl</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>er</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if two tableaux proofs are closure-isomorphic. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">proof_isomorphic_tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">er</td><td>Expansion rules </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if <span class="tt">tbl</span> and <span class="tt">proof_isomorphic_tbl</span> are closure-isomorphic </dd>
+<dd>
+False </dd></dl>
+
+</div>
+</div>
 <a id="aa2cc88d68a417e3bceeca54e244a0556" name="aa2cc88d68a417e3bceeca54e244a0556"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa2cc88d68a417e3bceeca54e244a0556">&#9670;&#160;</a></span>is_proof_isomorphic_sf_set()</h2>
 
@@ -1588,6 +1626,41 @@ False otherwise </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The minimal <span class="tt">er</span>-proofs for <span class="tt">sf</span> </dd></dl>
+
+</div>
+</div>
+<a id="a543450c99d92b6d13f3f6a08134e0fc3" name="a543450c99d92b6d13f3f6a08134e0fc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a543450c99d92b6d13f3f6a08134e0fc3">&#9670;&#160;</a></span>search_proof_isomorphic_sf_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Tableau search_proof_isomorphic_sf_set </td>
+          <td>(</td>
+          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>er</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>sf</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tbl</td><td></td></tr>
+    <tr><td class="paramname">er</td><td></td></tr>
+    <tr><td class="paramname">sf</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Tableau </dd></dl>
 
 </div>
 </div>

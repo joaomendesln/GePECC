@@ -95,12 +95,10 @@ int \mbox{\hyperlink{deduction_8cpp_a2583bf6896ef17972da115d7e34ae172}{get\+\_\+
 \begin{DoxyCompactList}\small\item\em Gets the index of the sibling node of a cut node. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{deduction_8cpp_aa2cc88d68a417e3bceeca54e244a0556}{is\+\_\+proof\+\_\+isomorphic\+\_\+sf\+\_\+set}} (Tableau tbl, vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ er, vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ sf)
 \begin{DoxyCompactList}\small\item\em Check if there is a proof for a vector of signed formulas that is proof-\/isomorphic to a tableau given as input. \end{DoxyCompactList}\item 
-\Hypertarget{deduction_8cpp_af5f024cc68a211e8f7e0b7dc09769f5d}\label{deduction_8cpp_af5f024cc68a211e8f7e0b7dc09769f5d} 
-Tableau {\bfseries proof\+\_\+isomorphic\+\_\+sf\+\_\+set} (Tableau tbl, vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ er, vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ sf)
+Tableau \mbox{\hyperlink{deduction_8cpp_a543450c99d92b6d13f3f6a08134e0fc3}{search\+\_\+proof\+\_\+isomorphic\+\_\+sf\+\_\+set}} (Tableau tbl, vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ er, vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ sf)
 \item 
-\Hypertarget{deduction_8cpp_ab07401d8d951266d6d0ee1376af2b20c}\label{deduction_8cpp_ab07401d8d951266d6d0ee1376af2b20c} 
-bool {\bfseries is\+\_\+closure\+\_\+isomorphic} (Tableau tbl, Tableau proof\+\_\+isomorphic\+\_\+tbl, vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ er)
-\item 
+bool \mbox{\hyperlink{deduction_8cpp_ab07401d8d951266d6d0ee1376af2b20c}{is\+\_\+closure\+\_\+isomorphic}} (Tableau tbl, Tableau proof\+\_\+isomorphic\+\_\+tbl, vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ er)
+\begin{DoxyCompactList}\small\item\em Checks if two tableaux proofs are closure-\/isomorphic. \end{DoxyCompactList}\item 
 vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ \mbox{\hyperlink{deduction_8cpp_acdcc9309d1a9a33a529191255b27f4da}{get\+\_\+conclusions\+\_\+from\+\_\+justifications}} (vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ justifications, vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ er)
 \begin{DoxyCompactList}\small\item\em Gets the result of applying a rule having as justifications a vector of signed formula given as input. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{deduction_8cpp_a4af59d5f3487689c07e7b69543682b79}{check\+\_\+rule\+\_\+application}} (vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ justifications, \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} expansion, vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ er)
@@ -797,6 +795,30 @@ True if {\ttfamily sf\+\_\+tbl} and {\ttfamily premise} are equal under substitu
 
 False otherwise 
 \end{DoxyReturn}
+\Hypertarget{deduction_8cpp_ab07401d8d951266d6d0ee1376af2b20c}\index{deduction.cpp@{deduction.cpp}!is\_closure\_isomorphic@{is\_closure\_isomorphic}}
+\index{is\_closure\_isomorphic@{is\_closure\_isomorphic}!deduction.cpp@{deduction.cpp}}
+\doxysubsubsection{\texorpdfstring{is\_closure\_isomorphic()}{is\_closure\_isomorphic()}}
+{\footnotesize\ttfamily \label{deduction_8cpp_ab07401d8d951266d6d0ee1376af2b20c} 
+bool is\+\_\+closure\+\_\+isomorphic (\begin{DoxyParamCaption}\item[{Tableau}]{tbl}{, }\item[{Tableau}]{proof\+\_\+isomorphic\+\_\+tbl}{, }\item[{vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$}]{er}{}\end{DoxyParamCaption})}
+
+
+
+Checks if two tableaux proofs are closure-\/isomorphic. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tbl} & Tableau \\
+\hline
+{\em proof\+\_\+isomorphic\+\_\+tbl} & Tableau \\
+\hline
+{\em er} & Expansion rules \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if {\ttfamily tbl} and {\ttfamily proof\+\_\+isomorphic\+\_\+tbl} are closure-\/isomorphic 
+
+False 
+\end{DoxyReturn}
 \Hypertarget{deduction_8cpp_aa2cc88d68a417e3bceeca54e244a0556}\index{deduction.cpp@{deduction.cpp}!is\_proof\_isomorphic\_sf\_set@{is\_proof\_isomorphic\_sf\_set}}
 \index{is\_proof\_isomorphic\_sf\_set@{is\_proof\_isomorphic\_sf\_set}!deduction.cpp@{deduction.cpp}}
 \doxysubsubsection{\texorpdfstring{is\_proof\_isomorphic\_sf\_set()}{is\_proof\_isomorphic\_sf\_set()}}
@@ -1012,6 +1034,24 @@ Searches for the minimal proofs for a set of signed formulas.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The minimal {\ttfamily er}-\/proofs for {\ttfamily sf} 
+\end{DoxyReturn}
+\Hypertarget{deduction_8cpp_a543450c99d92b6d13f3f6a08134e0fc3}\index{deduction.cpp@{deduction.cpp}!search\_proof\_isomorphic\_sf\_set@{search\_proof\_isomorphic\_sf\_set}}
+\index{search\_proof\_isomorphic\_sf\_set@{search\_proof\_isomorphic\_sf\_set}!deduction.cpp@{deduction.cpp}}
+\doxysubsubsection{\texorpdfstring{search\_proof\_isomorphic\_sf\_set()}{search\_proof\_isomorphic\_sf\_set()}}
+{\footnotesize\ttfamily \label{deduction_8cpp_a543450c99d92b6d13f3f6a08134e0fc3} 
+Tableau search\+\_\+proof\+\_\+isomorphic\+\_\+sf\+\_\+set (\begin{DoxyParamCaption}\item[{Tableau}]{tbl}{, }\item[{vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$}]{er}{, }\item[{vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$}]{sf}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em tbl} & \\
+\hline
+{\em er} & \\
+\hline
+{\em sf} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tableau 
 \end{DoxyReturn}
 \Hypertarget{deduction_8cpp_ae9f25c8776bba062396ba9df0cca7c26}\index{deduction.cpp@{deduction.cpp}!search\_proof\_isomorphic\_sf\_sets@{search\_proof\_isomorphic\_sf\_sets}}
 \index{search\_proof\_isomorphic\_sf\_sets@{search\_proof\_isomorphic\_sf\_sets}!deduction.cpp@{deduction.cpp}}
