@@ -1,34 +1,78 @@
 \doxysection{Tbl\+Node Struct Reference}
 \hypertarget{struct_tbl_node}{}\label{struct_tbl_node}\index{TblNode@{TblNode}}
+
+
+Node of a tableau tree.  
+
+
+
+
+{\ttfamily \#include $<$definitions.\+h$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{struct_tbl_node_ac17e847175ada8fdb2ed65eb23791bf5}\label{struct_tbl_node_ac17e847175ada8fdb2ed65eb23791bf5} 
-{\bfseries Tbl\+Node} (\mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} signed\+\_\+fmla, vector$<$ int $>$ justification\+\_\+parents, int tbl\+\_\+parent, vector$<$ int $>$ tbl\+\_\+children, int expansion\+\_\+rule\+\_\+idx, int conclusion\+\_\+idx)
-\end{DoxyCompactItemize}
+\Hypertarget{struct_tbl_node_a24b8c078fd0dd9df6613e532df69d5e9}\label{struct_tbl_node_a24b8c078fd0dd9df6613e532df69d5e9} 
+{\bfseries Tbl\+Node} ()
+\begin{DoxyCompactList}\small\item\em Constructor with no arguments. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_tbl_node_ac17e847175ada8fdb2ed65eb23791bf5}{Tbl\+Node}} (\mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} \mbox{\hyperlink{struct_tbl_node_ae8a55d31641172e1d379f12617b2e255}{signed\+\_\+fmla}}, vector$<$ int $>$ \mbox{\hyperlink{struct_tbl_node_a0444c7c7fb08c844ff1686a1e3cd9276}{justification\+\_\+parents}}, int \mbox{\hyperlink{struct_tbl_node_a6b61e28447e4e5d8cf0ef989aeaf3d2b}{tbl\+\_\+parent}}, vector$<$ int $>$ \mbox{\hyperlink{struct_tbl_node_ab0d9f890baa7dfbc8bb3246abe3139e3}{tbl\+\_\+children}}, int \mbox{\hyperlink{struct_tbl_node_ae0a91aa6853fecaa16a0950cac0893c6}{expansion\+\_\+rule\+\_\+idx}}, int \mbox{\hyperlink{struct_tbl_node_a053a62ae6424d56b5285d8cf43a156ec}{conclusion\+\_\+idx}})
+\begin{DoxyCompactList}\small\item\em Constructor with all arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{struct_tbl_node_ae8a55d31641172e1d379f12617b2e255}\label{struct_tbl_node_ae8a55d31641172e1d379f12617b2e255} 
 \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} {\bfseries signed\+\_\+fmla}
-\item 
+\begin{DoxyCompactList}\small\item\em Signed formula. \end{DoxyCompactList}\item 
 \Hypertarget{struct_tbl_node_a0444c7c7fb08c844ff1686a1e3cd9276}\label{struct_tbl_node_a0444c7c7fb08c844ff1686a1e3cd9276} 
 vector$<$ int $>$ {\bfseries justification\+\_\+parents}
-\item 
+\begin{DoxyCompactList}\small\item\em Indexes of the nodes that justify the addition of this node in the tableau -\/1 for nodes in the initial tableau segment -\/2 for nodes added by an application of cut. \end{DoxyCompactList}\item 
 \Hypertarget{struct_tbl_node_a6b61e28447e4e5d8cf0ef989aeaf3d2b}\label{struct_tbl_node_a6b61e28447e4e5d8cf0ef989aeaf3d2b} 
 int {\bfseries tbl\+\_\+parent}
-\item 
+\begin{DoxyCompactList}\small\item\em Index of the parent in the tableau tree. \end{DoxyCompactList}\item 
 \Hypertarget{struct_tbl_node_ab0d9f890baa7dfbc8bb3246abe3139e3}\label{struct_tbl_node_ab0d9f890baa7dfbc8bb3246abe3139e3} 
 vector$<$ int $>$ {\bfseries tbl\+\_\+children}
-\item 
+\begin{DoxyCompactList}\small\item\em Indexes of its children in the tableau tree. \end{DoxyCompactList}\item 
 \Hypertarget{struct_tbl_node_ae0a91aa6853fecaa16a0950cac0893c6}\label{struct_tbl_node_ae0a91aa6853fecaa16a0950cac0893c6} 
 int {\bfseries expansion\+\_\+rule\+\_\+idx}
-\item 
+\begin{DoxyCompactList}\small\item\em Index of the rule that justifies the addition of this node in the tableau. \end{DoxyCompactList}\item 
 \Hypertarget{struct_tbl_node_a053a62ae6424d56b5285d8cf43a156ec}\label{struct_tbl_node_a053a62ae6424d56b5285d8cf43a156ec} 
 int {\bfseries conclusion\+\_\+idx}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Index of the conclusion of rule {\ttfamily expansion\+\_\+rule\+\_\+idx} that is syntactically isomorphic to {\ttfamily signed\+\_\+fmla} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Node of a tableau tree. 
+
+\label{doc-constructors}
+\Hypertarget{struct_tbl_node_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_tbl_node_ac17e847175ada8fdb2ed65eb23791bf5}\index{TblNode@{TblNode}!TblNode@{TblNode}}
+\index{TblNode@{TblNode}!TblNode@{TblNode}}
+\doxysubsubsection{\texorpdfstring{TblNode()}{TblNode()}}
+{\footnotesize\ttfamily \label{struct_tbl_node_ac17e847175ada8fdb2ed65eb23791bf5} 
+Tbl\+Node\+::\+Tbl\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}}}]{signed\+\_\+fmla}{, }\item[{vector$<$ int $>$}]{justification\+\_\+parents}{, }\item[{int}]{tbl\+\_\+parent}{, }\item[{vector$<$ int $>$}]{tbl\+\_\+children}{, }\item[{int}]{expansion\+\_\+rule\+\_\+idx}{, }\item[{int}]{conclusion\+\_\+idx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor with all arguments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signed\+\_\+fmla} & \\
+\hline
+{\em justification\+\_\+parents} & \\
+\hline
+{\em tbl\+\_\+parent} & \\
+\hline
+{\em tbl\+\_\+children} & \\
+\hline
+{\em expansion\+\_\+rule\+\_\+idx} & \\
+\hline
+{\em conclusion\+\_\+idx} & \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/joaomendes\+\_\+ln/\+Documents/\+UFRN/\+Mestrado/5º semestre/\+Implementations/documentation/\+Ge\+PECC/src/definitions/definitions.\+h\end{DoxyCompactItemize}
+/\+Users/joaomendes\+\_\+ln/\+Documents/\+UFRN/\+Mestrado/5º semestre/\+Implementations/documentation/\+Ge\+PECC/src/definitions/\mbox{\hyperlink{definitions_8h}{definitions.\+h}}\end{DoxyCompactItemize}

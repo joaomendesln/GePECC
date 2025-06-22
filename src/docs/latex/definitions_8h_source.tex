@@ -1,89 +1,94 @@
 \doxysection{definitions.\+h}
 \hypertarget{definitions_8h_source}{}\label{definitions_8h_source}\index{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/definitions/definitions.h@{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/definitions/definitions.h}}
-
+\mbox{\hyperlink{definitions_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DEFINITIONS\_H}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DEFINITIONS\_H}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{keyword}{using\ namespace\ }std;}
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{keyword}{enum\ class}\ polarity\ \{\ \textcolor{comment}{//\ TODO:\ check\ if\ "{}class"{}\ is\ necessary}}
-\DoxyCodeLine{00012\ \ \ \ \ plus,\ minus,\ none}
-\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ DEFINITIONS\_H}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ DEFINITIONS\_H}}
 \DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{enum\ class}\ symbType\ \{}
-\DoxyCodeLine{00017\ \ \ \ \ func,\ pred}
-\DoxyCodeLine{00018\ \};}
-\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{using\ namespace\ }std;}
 \DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \textcolor{keyword}{struct\ }FmlaNode\ \{}
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{string}\ data;}
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ parent;}
-\DoxyCodeLine{00024\ \ \ \ \ vector<int>\ children;}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ FmlaNode()\ \{\}}
-\DoxyCodeLine{00027\ \ \ \ \ FmlaNode(\textcolor{keywordtype}{string}\ data,\ \textcolor{keywordtype}{int}\ parent,\ vector<int>\ children)\ :\ data(data),\ parent(parent),\ children(children)\ \{\}}
-\DoxyCodeLine{00028\ \};}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \textcolor{keyword}{typedef}\ vector<FmlaNode>\ Fmla;}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \textcolor{keyword}{struct\ }TermNode\ \{}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{string}\ data;}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ parent;}
-\DoxyCodeLine{00037\ \ \ \ \ vector<int>\ children;}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ TermNode()\ \{\}}
-\DoxyCodeLine{00040\ \ \ \ \ TermNode(\textcolor{keywordtype}{string}\ data,\ \textcolor{keywordtype}{int}\ parent,\ vector<int>\ children)\ :\ data(data),\ parent(parent),\ children(children)\ \{\}}
-\DoxyCodeLine{00041\ \};}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \textcolor{keyword}{typedef}\ vector<TermNode>\ Term;}
-\DoxyCodeLine{00045\ \textcolor{keyword}{typedef}\ map<string,\ Term>\ Subst;}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \textcolor{keyword}{struct\ }SignedFmla\ \{}
-\DoxyCodeLine{00049\ \ \ \ \ polarity\ sign;}
-\DoxyCodeLine{00050\ \ \ \ \ Fmla\ fmla;}
+\DoxyCodeLine{00025\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{definitions_8h_a1f4e8d6416fa361d4a5c4c8c8c3254f5}{polarity}}\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ plus,\ minus,\ none}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_fmla_node_a0cd8241235e0a1af8fb43b453814a51b}{FmlaNode}}\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{struct_fmla_node_a341b8710b3e55be72efdc5bbbe4adf4e}{data}};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_fmla_node_a8af60344d81283c5adb4aa18d7a52eb3}{parent}};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00050\ \ \ \ \ vector<int>\ \mbox{\hyperlink{struct_fmla_node_a8ce0235cbb78a449049de3464f7833de}{children}};}
 \DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ \ \ \ \ SignedFmla()\ \{\}}
-\DoxyCodeLine{00053\ \ \ \ \ SignedFmla(polarity\ sign,\ Fmla\ fmla)\ :\ sign(sign),\ fmla(fmla)\ \{\}}
-\DoxyCodeLine{00054\ \};}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \textcolor{keyword}{struct\ }TblNode\ \{}
-\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ signed\_fmla;}
-\DoxyCodeLine{00059\ \ \ \ \ vector<int>\ justification\_parents;\ \textcolor{comment}{//\ -\/1\ for\ initial\ tableau,\ -\/2\ for\ cut\ formulas}}
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ tbl\_parent;}
-\DoxyCodeLine{00061\ \ \ \ \ vector<int>\ tbl\_children;}
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ expansion\_rule\_idx;}
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{int}\ conclusion\_idx;}
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00065\ \ \ \ \ TblNode()\ \{\}}
-\DoxyCodeLine{00066\ \ \ \ \ TblNode(\mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ signed\_fmla,\ vector<int>\ justification\_parents,\ \textcolor{keywordtype}{int}\ tbl\_parent,\ vector<int>\ tbl\_children,\ \textcolor{keywordtype}{int}\ expansion\_rule\_idx,\ \textcolor{keywordtype}{int}\ conclusion\_idx)\ :\ signed\_fmla(signed\_fmla),\ justification\_parents(justification\_parents),\ tbl\_parent(tbl\_parent),\ tbl\_children(tbl\_children),\ expansion\_rule\_idx(expansion\_rule\_idx),\ conclusion\_idx(conclusion\_idx)\ \{\}}
-\DoxyCodeLine{00067\ \};}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \textcolor{keyword}{typedef}\ vector<TblNode>\ Tableau;}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \textcolor{keyword}{struct\ }TblRule\ \{}
-\DoxyCodeLine{00074\ \ \ \ \ vector<SignedFmla>\ premises;}
-\DoxyCodeLine{00075\ \ \ \ \ vector<SignedFmla>\ conclusions;}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \ \ \ \ TblRule()\ \{\}}
-\DoxyCodeLine{00078\ \ \ \ \ TblRule(vector<SignedFmla>\ premises,\ vector<SignedFmla>\ conclusions)\ :\ premises(premises),\ conclusions(conclusions)\ \{\}}
-\DoxyCodeLine{00079\ \};}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ }
-\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DEFINITIONS\_H}}
-\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{struct_fmla_node_a0cd8241235e0a1af8fb43b453814a51b}{FmlaNode}}()\ \{\}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{struct_fmla_node_af61ed31569306458d9113da2ea3e8543}{FmlaNode}}(\textcolor{keywordtype}{string}\ \mbox{\hyperlink{struct_fmla_node_a341b8710b3e55be72efdc5bbbe4adf4e}{data}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_fmla_node_a8af60344d81283c5adb4aa18d7a52eb3}{parent}},\ vector<int>\ \mbox{\hyperlink{struct_fmla_node_a8ce0235cbb78a449049de3464f7833de}{children}})\ :\ \mbox{\hyperlink{struct_fmla_node_a341b8710b3e55be72efdc5bbbe4adf4e}{data}}(\mbox{\hyperlink{struct_fmla_node_a341b8710b3e55be72efdc5bbbe4adf4e}{data}}),\ \mbox{\hyperlink{struct_fmla_node_a8af60344d81283c5adb4aa18d7a52eb3}{parent}}(\mbox{\hyperlink{struct_fmla_node_a8af60344d81283c5adb4aa18d7a52eb3}{parent}}),\ \mbox{\hyperlink{struct_fmla_node_a8ce0235cbb78a449049de3464f7833de}{children}}(\mbox{\hyperlink{struct_fmla_node_a8ce0235cbb78a449049de3464f7833de}{children}})\ \{\}}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{typedef}\ vector<FmlaNode>\ \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_term_node_aed683f82a87e54dab1dca3f84665fe9e}{TermNode}}\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{struct_term_node_a74a4dc7ac13037fbb776c03f246d0d8d}{data}};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_term_node_ab86df8ab522639c2d164642a84bb929d}{parent}};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00095\ \ \ \ \ vector<int>\ \mbox{\hyperlink{struct_term_node_a2fbd3c88cd0b43064fcb575d6fbd1193}{children}};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{struct_term_node_aed683f82a87e54dab1dca3f84665fe9e}{TermNode}}()\ \{\}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00107\ \ \ \ \ \mbox{\hyperlink{struct_term_node_a2c3964599dd387c287529833544a2aaa}{TermNode}}(\textcolor{keywordtype}{string}\ \mbox{\hyperlink{struct_term_node_a74a4dc7ac13037fbb776c03f246d0d8d}{data}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_term_node_ab86df8ab522639c2d164642a84bb929d}{parent}},\ vector<int>\ \mbox{\hyperlink{struct_term_node_a2fbd3c88cd0b43064fcb575d6fbd1193}{children}})\ :\ \mbox{\hyperlink{struct_term_node_a74a4dc7ac13037fbb776c03f246d0d8d}{data}}(\mbox{\hyperlink{struct_term_node_a74a4dc7ac13037fbb776c03f246d0d8d}{data}}),\ \mbox{\hyperlink{struct_term_node_ab86df8ab522639c2d164642a84bb929d}{parent}}(\mbox{\hyperlink{struct_term_node_ab86df8ab522639c2d164642a84bb929d}{parent}}),\ \mbox{\hyperlink{struct_term_node_a2fbd3c88cd0b43064fcb575d6fbd1193}{children}}(\mbox{\hyperlink{struct_term_node_a2fbd3c88cd0b43064fcb575d6fbd1193}{children}})\ \{\}}
+\DoxyCodeLine{00108\ \};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00114\ \textcolor{keyword}{typedef}\ vector<TermNode>\ \mbox{\hyperlink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term}};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00120\ \textcolor{keyword}{typedef}\ map<string,\ Term>\ \mbox{\hyperlink{definitions_8h_aab3e9a4d220294e96fdc69686b8a56bc}{Subst}};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00126\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_signed_fmla_a759a9190a464e5a8ee48e53e5e30faac}{SignedFmla}}\ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \mbox{\hyperlink{definitions_8h_a1f4e8d6416fa361d4a5c4c8c8c3254f5}{polarity}}\ \mbox{\hyperlink{struct_signed_fmla_ac9072c65f773e7af6e63e4ab7dab7756}{sign}};}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00137\ \ \ \ \ \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ \mbox{\hyperlink{struct_signed_fmla_a51a03093239a7dcc198cac26624084a3}{fmla}};}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00143\ \ \ \ \ \mbox{\hyperlink{struct_signed_fmla_a759a9190a464e5a8ee48e53e5e30faac}{SignedFmla}}()\ \{\}}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{struct_signed_fmla_a69a199cbd3a4d023be6541565929145f}{SignedFmla}}(\mbox{\hyperlink{definitions_8h_a1f4e8d6416fa361d4a5c4c8c8c3254f5}{polarity}}\ \mbox{\hyperlink{struct_signed_fmla_ac9072c65f773e7af6e63e4ab7dab7756}{sign}},\ \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ \mbox{\hyperlink{struct_signed_fmla_a51a03093239a7dcc198cac26624084a3}{fmla}})\ :\ \mbox{\hyperlink{struct_signed_fmla_ac9072c65f773e7af6e63e4ab7dab7756}{sign}}(\mbox{\hyperlink{struct_signed_fmla_ac9072c65f773e7af6e63e4ab7dab7756}{sign}}),\ \mbox{\hyperlink{struct_signed_fmla_a51a03093239a7dcc198cac26624084a3}{fmla}}(\mbox{\hyperlink{struct_signed_fmla_a51a03093239a7dcc198cac26624084a3}{fmla}})\ \{\}}
+\DoxyCodeLine{00150\ \};}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00156\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_tbl_rule_ab70428ab8fb2afc82554298e608964c8}{TblRule}}\ \{}
+\DoxyCodeLine{00161\ \ \ \ \ vector<SignedFmla>\ \mbox{\hyperlink{struct_tbl_rule_ab9ac9e82f494c0c8be070dd6bb7fc9c2}{premises}};}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00167\ \ \ \ \ vector<SignedFmla>\ \mbox{\hyperlink{struct_tbl_rule_aa8a4809c9daa2b30649df2b880739e69}{conclusions}};}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00173\ \ \ \ \ \mbox{\hyperlink{struct_tbl_rule_ab70428ab8fb2afc82554298e608964c8}{TblRule}}()\ \{\}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00181\ \ \ \ \ \mbox{\hyperlink{struct_tbl_rule_a9c8bdefcb94b986d3408dd5ec728fabb}{TblRule}}(vector<SignedFmla>\ \mbox{\hyperlink{struct_tbl_rule_ab9ac9e82f494c0c8be070dd6bb7fc9c2}{premises}},\ vector<SignedFmla>\ \mbox{\hyperlink{struct_tbl_rule_aa8a4809c9daa2b30649df2b880739e69}{conclusions}})\ :\ \mbox{\hyperlink{struct_tbl_rule_ab9ac9e82f494c0c8be070dd6bb7fc9c2}{premises}}(\mbox{\hyperlink{struct_tbl_rule_ab9ac9e82f494c0c8be070dd6bb7fc9c2}{premises}}),\ \mbox{\hyperlink{struct_tbl_rule_aa8a4809c9daa2b30649df2b880739e69}{conclusions}}(\mbox{\hyperlink{struct_tbl_rule_aa8a4809c9daa2b30649df2b880739e69}{conclusions}})\ \{\}}
+\DoxyCodeLine{00182\ \};}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00188\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_tbl_node_a24b8c078fd0dd9df6613e532df69d5e9}{TblNode}}\ \{}
+\DoxyCodeLine{00193\ \ \ \ \ \mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ \mbox{\hyperlink{struct_tbl_node_ae8a55d31641172e1d379f12617b2e255}{signed\_fmla}};}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00201\ \ \ \ \ vector<int>\ \mbox{\hyperlink{struct_tbl_node_a0444c7c7fb08c844ff1686a1e3cd9276}{justification\_parents}};}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_tbl_node_a6b61e28447e4e5d8cf0ef989aeaf3d2b}{tbl\_parent}};}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00213\ \ \ \ \ vector<int>\ \mbox{\hyperlink{struct_tbl_node_ab0d9f890baa7dfbc8bb3246abe3139e3}{tbl\_children}};}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_tbl_node_ae0a91aa6853fecaa16a0950cac0893c6}{expansion\_rule\_idx}};}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_tbl_node_a053a62ae6424d56b5285d8cf43a156ec}{conclusion\_idx}};}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00231\ \ \ \ \ \mbox{\hyperlink{struct_tbl_node_a24b8c078fd0dd9df6613e532df69d5e9}{TblNode}}()\ \{\}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00243\ \ \ \ \ \mbox{\hyperlink{struct_tbl_node_ac17e847175ada8fdb2ed65eb23791bf5}{TblNode}}(\mbox{\hyperlink{struct_signed_fmla}{SignedFmla}}\ \mbox{\hyperlink{struct_tbl_node_ae8a55d31641172e1d379f12617b2e255}{signed\_fmla}},\ vector<int>\ \mbox{\hyperlink{struct_tbl_node_a0444c7c7fb08c844ff1686a1e3cd9276}{justification\_parents}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_tbl_node_a6b61e28447e4e5d8cf0ef989aeaf3d2b}{tbl\_parent}},\ vector<int>\ \mbox{\hyperlink{struct_tbl_node_ab0d9f890baa7dfbc8bb3246abe3139e3}{tbl\_children}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_tbl_node_ae0a91aa6853fecaa16a0950cac0893c6}{expansion\_rule\_idx}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_tbl_node_a053a62ae6424d56b5285d8cf43a156ec}{conclusion\_idx}})\ :\ \mbox{\hyperlink{struct_tbl_node_ae8a55d31641172e1d379f12617b2e255}{signed\_fmla}}(\mbox{\hyperlink{struct_tbl_node_ae8a55d31641172e1d379f12617b2e255}{signed\_fmla}}),\ \mbox{\hyperlink{struct_tbl_node_a0444c7c7fb08c844ff1686a1e3cd9276}{justification\_parents}}(\mbox{\hyperlink{struct_tbl_node_a0444c7c7fb08c844ff1686a1e3cd9276}{justification\_parents}}),\ \mbox{\hyperlink{struct_tbl_node_a6b61e28447e4e5d8cf0ef989aeaf3d2b}{tbl\_parent}}(\mbox{\hyperlink{struct_tbl_node_a6b61e28447e4e5d8cf0ef989aeaf3d2b}{tbl\_parent}}),\ \mbox{\hyperlink{struct_tbl_node_ab0d9f890baa7dfbc8bb3246abe3139e3}{tbl\_children}}(\mbox{\hyperlink{struct_tbl_node_ab0d9f890baa7dfbc8bb3246abe3139e3}{tbl\_children}}),\ \mbox{\hyperlink{struct_tbl_node_ae0a91aa6853fecaa16a0950cac0893c6}{expansion\_rule\_idx}}(\mbox{\hyperlink{struct_tbl_node_ae0a91aa6853fecaa16a0950cac0893c6}{expansion\_rule\_idx}}),\ \mbox{\hyperlink{struct_tbl_node_a053a62ae6424d56b5285d8cf43a156ec}{conclusion\_idx}}(\mbox{\hyperlink{struct_tbl_node_a053a62ae6424d56b5285d8cf43a156ec}{conclusion\_idx}})\ \{\}}
+\DoxyCodeLine{00244\ \};}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00250\ \textcolor{keyword}{typedef}\ vector<TblNode>\ \mbox{\hyperlink{definitions_8h_af846c8f1ad9462c2a3054fe98a04709f}{Tableau}};}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DEFINITIONS\_H}}
+\DoxyCodeLine{00254\ }
 
 \end{DoxyCode}

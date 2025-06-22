@@ -36,7 +36,7 @@ int main(int argc, char* argv[]) {
         er = pre_process_expansion_rules_input("");
     }
 
-    cout << "\n===== Extracting minimal proofs\n";
+    cout << "\n===== Searching for minimal proofs\n";
     vector<Tableau> minimal_proofs = search_minimal_proofs(input_sf, er);
 
     if (minimal_proofs.size() > 0) {

@@ -91,27 +91,106 @@ $(function(){initNavTree('struct_tbl_node.html','','struct_tbl_node-members'); }
   <div class="headertitle"><div class="title">TblNode Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Node of a tableau tree.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="definitions_8h_source.html">definitions.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac17e847175ada8fdb2ed65eb23791bf5" id="r_ac17e847175ada8fdb2ed65eb23791bf5"><td class="memItemLeft" align="right" valign="top"><a id="ac17e847175ada8fdb2ed65eb23791bf5" name="ac17e847175ada8fdb2ed65eb23791bf5"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>TblNode</b> (<a class="el" href="struct_signed_fmla.html">SignedFmla</a> signed_fmla, vector&lt; int &gt; justification_parents, int tbl_parent, vector&lt; int &gt; tbl_children, int expansion_rule_idx, int conclusion_idx)</td></tr>
+<tr class="memitem:a24b8c078fd0dd9df6613e532df69d5e9" id="r_a24b8c078fd0dd9df6613e532df69d5e9"><td class="memItemLeft" align="right" valign="top"><a id="a24b8c078fd0dd9df6613e532df69d5e9" name="a24b8c078fd0dd9df6613e532df69d5e9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TblNode</b> ()</td></tr>
+<tr class="memdesc:a24b8c078fd0dd9df6613e532df69d5e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with no arguments. <br /></td></tr>
+<tr class="memitem:ac17e847175ada8fdb2ed65eb23791bf5" id="r_ac17e847175ada8fdb2ed65eb23791bf5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac17e847175ada8fdb2ed65eb23791bf5">TblNode</a> (<a class="el" href="struct_signed_fmla.html">SignedFmla</a> <a class="el" href="#ae8a55d31641172e1d379f12617b2e255">signed_fmla</a>, vector&lt; int &gt; <a class="el" href="#a0444c7c7fb08c844ff1686a1e3cd9276">justification_parents</a>, int <a class="el" href="#a6b61e28447e4e5d8cf0ef989aeaf3d2b">tbl_parent</a>, vector&lt; int &gt; <a class="el" href="#ab0d9f890baa7dfbc8bb3246abe3139e3">tbl_children</a>, int <a class="el" href="#ae0a91aa6853fecaa16a0950cac0893c6">expansion_rule_idx</a>, int <a class="el" href="#a053a62ae6424d56b5285d8cf43a156ec">conclusion_idx</a>)</td></tr>
+<tr class="memdesc:ac17e847175ada8fdb2ed65eb23791bf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with all arguments.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ae8a55d31641172e1d379f12617b2e255" id="r_ae8a55d31641172e1d379f12617b2e255"><td class="memItemLeft" align="right" valign="top"><a id="ae8a55d31641172e1d379f12617b2e255" name="ae8a55d31641172e1d379f12617b2e255"></a>
 <a class="el" href="struct_signed_fmla.html">SignedFmla</a>&#160;</td><td class="memItemRight" valign="bottom"><b>signed_fmla</b></td></tr>
+<tr class="memdesc:ae8a55d31641172e1d379f12617b2e255"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signed formula. <br /></td></tr>
 <tr class="memitem:a0444c7c7fb08c844ff1686a1e3cd9276" id="r_a0444c7c7fb08c844ff1686a1e3cd9276"><td class="memItemLeft" align="right" valign="top"><a id="a0444c7c7fb08c844ff1686a1e3cd9276" name="a0444c7c7fb08c844ff1686a1e3cd9276"></a>
 vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>justification_parents</b></td></tr>
+<tr class="memdesc:a0444c7c7fb08c844ff1686a1e3cd9276"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indexes of the nodes that justify the addition of this node in the tableau -1 for nodes in the initial tableau segment -2 for nodes added by an application of cut. <br /></td></tr>
 <tr class="memitem:a6b61e28447e4e5d8cf0ef989aeaf3d2b" id="r_a6b61e28447e4e5d8cf0ef989aeaf3d2b"><td class="memItemLeft" align="right" valign="top"><a id="a6b61e28447e4e5d8cf0ef989aeaf3d2b" name="a6b61e28447e4e5d8cf0ef989aeaf3d2b"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>tbl_parent</b></td></tr>
+<tr class="memdesc:a6b61e28447e4e5d8cf0ef989aeaf3d2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index of the parent in the tableau tree. <br /></td></tr>
 <tr class="memitem:ab0d9f890baa7dfbc8bb3246abe3139e3" id="r_ab0d9f890baa7dfbc8bb3246abe3139e3"><td class="memItemLeft" align="right" valign="top"><a id="ab0d9f890baa7dfbc8bb3246abe3139e3" name="ab0d9f890baa7dfbc8bb3246abe3139e3"></a>
 vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>tbl_children</b></td></tr>
+<tr class="memdesc:ab0d9f890baa7dfbc8bb3246abe3139e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indexes of its children in the tableau tree. <br /></td></tr>
 <tr class="memitem:ae0a91aa6853fecaa16a0950cac0893c6" id="r_ae0a91aa6853fecaa16a0950cac0893c6"><td class="memItemLeft" align="right" valign="top"><a id="ae0a91aa6853fecaa16a0950cac0893c6" name="ae0a91aa6853fecaa16a0950cac0893c6"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>expansion_rule_idx</b></td></tr>
+<tr class="memdesc:ae0a91aa6853fecaa16a0950cac0893c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index of the rule that justifies the addition of this node in the tableau. <br /></td></tr>
 <tr class="memitem:a053a62ae6424d56b5285d8cf43a156ec" id="r_a053a62ae6424d56b5285d8cf43a156ec"><td class="memItemLeft" align="right" valign="top"><a id="a053a62ae6424d56b5285d8cf43a156ec" name="a053a62ae6424d56b5285d8cf43a156ec"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>conclusion_idx</b></td></tr>
+<tr class="memdesc:a053a62ae6424d56b5285d8cf43a156ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index of the conclusion of rule <span class="tt">expansion_rule_idx</span> that is syntactically isomorphic to <span class="tt">signed_fmla</span> <br /></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Node of a tableau tree. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ac17e847175ada8fdb2ed65eb23791bf5" name="ac17e847175ada8fdb2ed65eb23791bf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac17e847175ada8fdb2ed65eb23791bf5">&#9670;&#160;</a></span>TblNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TblNode::TblNode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_signed_fmla.html">SignedFmla</a></td>          <td class="paramname"><span class="paramname"><em>signed_fmla</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; int &gt;</td>          <td class="paramname"><span class="paramname"><em>justification_parents</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>tbl_parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; int &gt;</td>          <td class="paramname"><span class="paramname"><em>tbl_children</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>expansion_rule_idx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>conclusion_idx</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor with all arguments. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">signed_fmla</td><td></td></tr>
+    <tr><td class="paramname">justification_parents</td><td></td></tr>
+    <tr><td class="paramname">tbl_parent</td><td></td></tr>
+    <tr><td class="paramname">tbl_children</td><td></td></tr>
+    <tr><td class="paramname">expansion_rule_idx</td><td></td></tr>
+    <tr><td class="paramname">conclusion_idx</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/Users/joaomendes_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/definitions/<a class="el" href="definitions_8h_source.html">definitions.h</a></li>
 </ul>

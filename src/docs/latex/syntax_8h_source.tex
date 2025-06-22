@@ -15,69 +15,55 @@
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <fstream>}}
 \DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <sstream>}}
 \DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}../definitions/definitions.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{definitions_8h}{../definitions/definitions.h}}"{}}}
 \DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}pre\_process.h"{}}}
 \DoxyCodeLine{00016\ }
 \DoxyCodeLine{00017\ \textcolor{keyword}{using\ namespace\ }std;}
 \DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{keywordtype}{bool}\ is\_function\_symb(\textcolor{keywordtype}{string}\ symb,\ map<string,\ int>\ function\_symbs);}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{syntax_8cpp_a383f6252f9a0eb18f70b238670ba3531}{is\_function\_symb}}(\textcolor{keywordtype}{string}\ symb);}
 \DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \textcolor{keywordtype}{bool}\ is\_function\_symb(\textcolor{keywordtype}{string}\ symb);}
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{syntax_8cpp_ab9905a31ecdecc332522e30c5560b7a1}{is\_predicate\_symb}}(\textcolor{keywordtype}{string}\ symb);}
 \DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \textcolor{keywordtype}{bool}\ is\_predicate\_symb(\textcolor{keywordtype}{string}\ symb,\ map<string,\ int>\ predicate\_symbs);}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{syntax_8cpp_a13899f73dee907be325cbc435e1b8077}{is\_language\_symb}}(\textcolor{keywordtype}{string}\ symb);}
 \DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \textcolor{keywordtype}{bool}\ is\_predicate\_symb(\textcolor{keywordtype}{string}\ symb);}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{syntax_8cpp_a4051d22addea7c5a8d6c69495ed64dd1}{is\_not\_skolem\_symb}}(\textcolor{keywordtype}{string}\ symb);}
 \DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \textcolor{keywordtype}{bool}\ is\_language\_symb(\textcolor{keywordtype}{string}\ symb,\ map<string,\ int>\ language\_symbs);}
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{syntax_8cpp_a68b5ea4be20523cfbf26c61fc79110e5}{is\_a\_parameter}}(\mbox{\hyperlink{struct_fmla_node}{FmlaNode}}\ fmla\_node);}
 \DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{keywordtype}{bool}\ is\_not\_skolem\_symb(\textcolor{keywordtype}{string}\ symb);}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{syntax_8cpp_a68b5ea4be20523cfbf26c61fc79110e5}{is\_a\_parameter}}(\mbox{\hyperlink{struct_term_node}{TermNode}}\ term\_node);}
 \DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \textcolor{keywordtype}{bool}\ is\_a\_parameter(\mbox{\hyperlink{struct_fmla_node}{FmlaNode}}\ fmla\_node);}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{syntax_8cpp_a57af133585e0cc7a464fac1e59f64c26}{parameter\_in\_fmla}}(\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla,\ \textcolor{keywordtype}{string}\ parameter);}
 \DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{keywordtype}{bool}\ is\_a\_parameter(\mbox{\hyperlink{struct_term_node}{TermNode}}\ term\_node);}
+\DoxyCodeLine{00033\ \mbox{\hyperlink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term}}\ \mbox{\hyperlink{syntax_8cpp_a0f1236bcd79971d22c00c81928dc54ed}{get\_term\_of\_fmla}}(\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla,\ \textcolor{keywordtype}{int}\ subfmla\_root);}
 \DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \textcolor{keywordtype}{bool}\ parameter\_in\_fmla(Fmla\ fmla,\ \textcolor{keywordtype}{string}\ parameter);}
+\DoxyCodeLine{00035\ vector<Term>\ \mbox{\hyperlink{syntax_8cpp_a87a962ad0c7602ca3c7f42344ed517cf}{get\_all\_terms\_of\_fmla}}(\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla);}
 \DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ Term\ get\_term\_of\_fmla(Fmla\ fmla,\ \textcolor{keywordtype}{int}\ subfmla\_root);}
+\DoxyCodeLine{00037\ \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ \mbox{\hyperlink{syntax_8cpp_a12a343976ceb13bffd2c7442c0b1d8cc}{subst\_parameter\_by\_term}}(\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla,\ \textcolor{keywordtype}{int}\ parameter\_idx,\ \mbox{\hyperlink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term}}\ term);}
 \DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ vector<Term>\ get\_all\_terms\_of\_fmla(Fmla\ fmla);}
+\DoxyCodeLine{00039\ set<int>\ \mbox{\hyperlink{syntax_8cpp_ae8927609885e5caf995a2a8d9679efc2}{get\_parameters\_idxs}}(\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla);}
 \DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \textcolor{keywordtype}{bool}\ term\_in\_vector\_of\_terms(Term\ term,\ vector<Term>\ terms);}
+\DoxyCodeLine{00041\ set<string>\ \mbox{\hyperlink{syntax_8cpp_a90180fff69b56ec0d603c2c0cba502e9}{get\_parameters}}(\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla);}
 \DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ Fmla\ subst\_parameter\_by\_term(Fmla\ fmla,\ \textcolor{keywordtype}{int}\ parameter\_idx,\ Term\ term);}
+\DoxyCodeLine{00043\ set<string>\ \mbox{\hyperlink{syntax_8cpp_a90180fff69b56ec0d603c2c0cba502e9}{get\_parameters}}(vector<Fmla>\ fmla);}
 \DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ set<int>\ get\_parameters\_idxs(Fmla\ fmla);}
+\DoxyCodeLine{00045\ \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ \mbox{\hyperlink{syntax_8cpp_a816b400238a5b1daa42823e7b06e567c}{subst\_extension}}(\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla,\ \mbox{\hyperlink{definitions_8h_aab3e9a4d220294e96fdc69686b8a56bc}{Subst}}\ subs);}
 \DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ set<string>\ get\_parameters(Fmla\ fmla);}
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{syntax_8cpp_a1eca6991e59a7f93e0ad6856c616628b}{fmla\_equality}}(\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla1,\ \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla2);}
 \DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ Fmla\ subst\_extension(Fmla\ fmla,\ Subst\ subs);}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{syntax_8cpp_abb1684aeca0e03c1ed66df2137cdd8c1}{fmla\_equality\_under\_subst}}(\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla1,\ \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla2);}
 \DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ Fmla\ subst\_extension\_copremise(Fmla\ fmla,\ Subst\ subs);}
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{syntax_8cpp_af63e1202398c788554285b97d764abd7}{are\_syntactically\_isomorphic}}(\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla1,\ \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla2);}
 \DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \textcolor{keywordtype}{string}\ get\_new\_parameter(set<string>\ parameters);}
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{syntax_8cpp_a7754782b0e0c67ee09dab03aeeda3522}{are\_isomorphic\_with\_equal\_parameters}}(\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla1,\ \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla2);}
 \DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ set<string>\ get\_all\_parameters\_of\_fmla(Fmla\ fmla);}
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{syntax_8cpp_a264ca2b12ddc9d0c628b2262cb865aaa}{term\_equality}}(\mbox{\hyperlink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term}}\ term1,\ \mbox{\hyperlink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term}}\ term2);}
 \DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ vector<string>\ get\_all\_parameters\_of\_term(Term\ term);}
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{syntax_8cpp_abfb81da42b15a6d4fffca8e3121f01ff}{get\_term\_idx\_img\_subst}}(\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla1,\ \textcolor{keywordtype}{int}\ parameter\_idx,\ \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla2);}
 \DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ set<string>\ get\_all\_parameters(vector<Fmla>\ fmlas);}
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{syntax_8cpp_af85d85f4387a74792143777073c381ac}{get\_height}}(\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}\ fmla);}
 \DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \textcolor{keywordtype}{bool}\ fmla\_equality(Fmla\ fmla1,\ Fmla\ fmla2);}
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{syntax_8cpp_af85d85f4387a74792143777073c381ac}{get\_height}}(vector<Fmla>\ fmlas);}
 \DoxyCodeLine{00062\ }
-\DoxyCodeLine{00063\ \textcolor{keywordtype}{bool}\ fmla\_equality\_under\_subst(Fmla\ fmla1,\ Fmla\ fmla2);}
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00065\ \textcolor{keywordtype}{bool}\ are\_syntactically\_isomorphic(Fmla\ fmla1,\ Fmla\ fmla2);}
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00067\ \textcolor{keywordtype}{bool}\ are\_isomorphic\_with\_equal\_parameters(Fmla\ fmla1,\ Fmla\ fmla2);}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \textcolor{keywordtype}{bool}\ term\_equality(Term\ term1,\ Term\ term2);}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ \textcolor{keywordtype}{int}\ get\_term\_idx\_img\_subst(Fmla\ fmla1,\ \textcolor{keywordtype}{int}\ parameter\_idx,\ Fmla\ fmla2);}
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \textcolor{keywordtype}{int}\ get\_height(Fmla\ fmla);}
-\DoxyCodeLine{00074\ }
-\DoxyCodeLine{00075\ \textcolor{keywordtype}{int}\ get\_height(vector<Fmla>\ fmlas);}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SYNTAX\_H}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SYNTAX\_H}}
 
 \end{DoxyCode}

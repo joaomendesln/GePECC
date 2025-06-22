@@ -1,0 +1,521 @@
+\doxysection{/\+Users/joaomendes\+\_\+ln/\+Documents/\+UFRN/\+Mestrado/5º semestre/\+Implementations/documentation/\+Ge\+PECC/src/auxiliary/syntax.cpp File Reference}
+\hypertarget{syntax_8cpp}{}\label{syntax_8cpp}\index{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/auxiliary/syntax.cpp@{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/auxiliary/syntax.cpp}}
+
+
+Syntactic machinery for the generation of proof exercises.  
+
+
+{\ttfamily \#include "{}syntax.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{syntax_8cpp_a383f6252f9a0eb18f70b238670ba3531}{is\+\_\+function\+\_\+symb}} (string symb)
+\begin{DoxyCompactList}\small\item\em Checks if a string is a function symbol. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{syntax_8cpp_ab9905a31ecdecc332522e30c5560b7a1}{is\+\_\+predicate\+\_\+symb}} (string symb)
+\begin{DoxyCompactList}\small\item\em Checks if a string is a predicate symbol. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{syntax_8cpp_a13899f73dee907be325cbc435e1b8077}{is\+\_\+language\+\_\+symb}} (string symb)
+\begin{DoxyCompactList}\small\item\em Checks if a string is either a predicate of a function symbol. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{syntax_8cpp_a4051d22addea7c5a8d6c69495ed64dd1}{is\+\_\+not\+\_\+skolem\+\_\+symb}} (string symb)
+\begin{DoxyCompactList}\small\item\em Checks if a string is not a skolemization symbol. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{syntax_8cpp_a68b5ea4be20523cfbf26c61fc79110e5}{is\+\_\+a\+\_\+parameter}} (\mbox{\hyperlink{struct_fmla_node}{Fmla\+Node}} fmla\+\_\+node)
+\begin{DoxyCompactList}\small\item\em Checks if a node of a formula is a parameter. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{syntax_8cpp_a76903e8837f2604938412913be499e22}{is\+\_\+a\+\_\+parameter}} (\mbox{\hyperlink{struct_term_node}{Term\+Node}} term\+\_\+node)
+\begin{DoxyCompactList}\small\item\em Checks if a node of a term is a parameter. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{syntax_8cpp_a57af133585e0cc7a464fac1e59f64c26}{parameter\+\_\+in\+\_\+fmla}} (\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla, string parameter)
+\begin{DoxyCompactList}\small\item\em Checks if a parameter is in a formula. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term}} \mbox{\hyperlink{syntax_8cpp_a0f1236bcd79971d22c00c81928dc54ed}{get\+\_\+term\+\_\+of\+\_\+fmla}} (\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla, int term\+\_\+root)
+\begin{DoxyCompactList}\small\item\em Gets the term of a formula by the index of the root of the term. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term}} $>$ \mbox{\hyperlink{syntax_8cpp_a87a962ad0c7602ca3c7f42344ed517cf}{get\+\_\+all\+\_\+terms\+\_\+of\+\_\+fmla}} (\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla)
+\begin{DoxyCompactList}\small\item\em Get the all terms of a formula. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} \mbox{\hyperlink{syntax_8cpp_a12a343976ceb13bffd2c7442c0b1d8cc}{subst\+\_\+parameter\+\_\+by\+\_\+term}} (\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla, int parameter\+\_\+idx, \mbox{\hyperlink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term}} term)
+\begin{DoxyCompactList}\small\item\em Substitute a parameter by a term in a formula. \end{DoxyCompactList}\item 
+set$<$ int $>$ \mbox{\hyperlink{syntax_8cpp_ae8927609885e5caf995a2a8d9679efc2}{get\+\_\+parameters\+\_\+idxs}} (\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla)
+\begin{DoxyCompactList}\small\item\em Gets the indexes of the parameters of a formula. \end{DoxyCompactList}\item 
+set$<$ string $>$ \mbox{\hyperlink{syntax_8cpp_a90180fff69b56ec0d603c2c0cba502e9}{get\+\_\+parameters}} (\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla)
+\begin{DoxyCompactList}\small\item\em Get the parameters of a formula. \end{DoxyCompactList}\item 
+set$<$ string $>$ \mbox{\hyperlink{syntax_8cpp_a4e39fbc17d38e18ea900e1d2853912d7}{get\+\_\+parameters}} (vector$<$ \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} $>$ fmlas)
+\begin{DoxyCompactList}\small\item\em Get the parameters of a vector of formulas. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} \mbox{\hyperlink{syntax_8cpp_a816b400238a5b1daa42823e7b06e567c}{subst\+\_\+extension}} (\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla, \mbox{\hyperlink{definitions_8h_aab3e9a4d220294e96fdc69686b8a56bc}{Subst}} subs)
+\begin{DoxyCompactList}\small\item\em Substitutes parameters by term in a formula provided a substitution mapping. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{syntax_8cpp_a1eca6991e59a7f93e0ad6856c616628b}{fmla\+\_\+equality}} (\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla1, \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla2)
+\begin{DoxyCompactList}\small\item\em Checks if two formulas are equal. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{syntax_8cpp_abb1684aeca0e03c1ed66df2137cdd8c1}{fmla\+\_\+equality\+\_\+under\+\_\+subst}} (\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla1, \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla2)
+\begin{DoxyCompactList}\small\item\em Checks if two formulas are equal under substitution. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{syntax_8cpp_af63e1202398c788554285b97d764abd7}{are\+\_\+syntactically\+\_\+isomorphic}} (\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla1, \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla2)
+\begin{DoxyCompactList}\small\item\em Checks if two formulas are isomorphic. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{syntax_8cpp_a7754782b0e0c67ee09dab03aeeda3522}{are\+\_\+isomorphic\+\_\+with\+\_\+equal\+\_\+parameters}} (\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla1, \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla2)
+\begin{DoxyCompactList}\small\item\em Checks if two formulas are isomorphic and their parameters are equal. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{syntax_8cpp_a264ca2b12ddc9d0c628b2262cb865aaa}{term\+\_\+equality}} (\mbox{\hyperlink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term}} term1, \mbox{\hyperlink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term}} term2)
+\begin{DoxyCompactList}\small\item\em Checks if two terms are equal. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{syntax_8cpp_abfb81da42b15a6d4fffca8e3121f01ff}{get\+\_\+term\+\_\+idx\+\_\+img\+\_\+subst}} (\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla1, int parameter\+\_\+idx, \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla2)
+\begin{DoxyCompactList}\small\item\em For two isomorphic formulas fmla1 and fmla2, gets the node in fmla2 that is isomorphic to the node in fmla1. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{syntax_8cpp_af85d85f4387a74792143777073c381ac}{get\+\_\+height}} (\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} fmla)
+\begin{DoxyCompactList}\small\item\em Gets the height of a fomrula. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{syntax_8cpp_add997a22023032e9f25148b97568d292}{get\+\_\+height}} (vector$<$ \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} $>$ fmlas)
+\begin{DoxyCompactList}\small\item\em Gets the maximum height of a formula in a vector of formulas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Syntactic machinery for the generation of proof exercises. 
+
+\begin{DoxyAuthor}{Author}
+João Mendes 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/06-\/21
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+
+
+\label{doc-func-members}
+\Hypertarget{syntax_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{syntax_8cpp_a7754782b0e0c67ee09dab03aeeda3522}\index{syntax.cpp@{syntax.cpp}!are\_isomorphic\_with\_equal\_parameters@{are\_isomorphic\_with\_equal\_parameters}}
+\index{are\_isomorphic\_with\_equal\_parameters@{are\_isomorphic\_with\_equal\_parameters}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{are\_isomorphic\_with\_equal\_parameters()}{are\_isomorphic\_with\_equal\_parameters()}}
+{\footnotesize\ttfamily \label{syntax_8cpp_a7754782b0e0c67ee09dab03aeeda3522} 
+bool are\+\_\+isomorphic\+\_\+with\+\_\+equal\+\_\+parameters (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla1}{, }\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla2}{}\end{DoxyParamCaption})}
+
+
+
+Checks if two formulas are isomorphic and their parameters are equal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmla1} & Formula \\
+\hline
+{\em fmla2} & Formula \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if {\ttfamily fmla1} and {\ttfamily fmla2} are isomorphic and their parameters are equal 
+
+False otherwise 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_af63e1202398c788554285b97d764abd7}\index{syntax.cpp@{syntax.cpp}!are\_syntactically\_isomorphic@{are\_syntactically\_isomorphic}}
+\index{are\_syntactically\_isomorphic@{are\_syntactically\_isomorphic}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{are\_syntactically\_isomorphic()}{are\_syntactically\_isomorphic()}}
+{\footnotesize\ttfamily \label{syntax_8cpp_af63e1202398c788554285b97d764abd7} 
+bool are\+\_\+syntactically\+\_\+isomorphic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla1}{, }\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla2}{}\end{DoxyParamCaption})}
+
+
+
+Checks if two formulas are isomorphic. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmla1} & Formula \\
+\hline
+{\em fmla2} & Formula \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if {\ttfamily fmla1} and {\ttfamily fmla2} are isomorphic 
+
+False otherwise 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_a1eca6991e59a7f93e0ad6856c616628b}\index{syntax.cpp@{syntax.cpp}!fmla\_equality@{fmla\_equality}}
+\index{fmla\_equality@{fmla\_equality}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{fmla\_equality()}{fmla\_equality()}}
+{\footnotesize\ttfamily \label{syntax_8cpp_a1eca6991e59a7f93e0ad6856c616628b} 
+bool fmla\+\_\+equality (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla1}{, }\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla2}{}\end{DoxyParamCaption})}
+
+
+
+Checks if two formulas are equal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmla1} & Formula \\
+\hline
+{\em fmla2} & Formula \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if {\ttfamily fmla1} and {\ttfamily fmla2} are equal 
+
+False otherwise 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_abb1684aeca0e03c1ed66df2137cdd8c1}\index{syntax.cpp@{syntax.cpp}!fmla\_equality\_under\_subst@{fmla\_equality\_under\_subst}}
+\index{fmla\_equality\_under\_subst@{fmla\_equality\_under\_subst}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{fmla\_equality\_under\_subst()}{fmla\_equality\_under\_subst()}}
+{\footnotesize\ttfamily \label{syntax_8cpp_abb1684aeca0e03c1ed66df2137cdd8c1} 
+bool fmla\+\_\+equality\+\_\+under\+\_\+subst (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla1}{, }\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla2}{}\end{DoxyParamCaption})}
+
+
+
+Checks if two formulas are equal under substitution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmla1} & Formula \\
+\hline
+{\em fmla2} & Formula \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if {\ttfamily fmla1} and {\ttfamily fmla2} are equal under a substitution 
+
+False otherwise 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_a87a962ad0c7602ca3c7f42344ed517cf}\index{syntax.cpp@{syntax.cpp}!get\_all\_terms\_of\_fmla@{get\_all\_terms\_of\_fmla}}
+\index{get\_all\_terms\_of\_fmla@{get\_all\_terms\_of\_fmla}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_all\_terms\_of\_fmla()}{get\_all\_terms\_of\_fmla()}}
+{\footnotesize\ttfamily \label{syntax_8cpp_a87a962ad0c7602ca3c7f42344ed517cf} 
+vector$<$ \mbox{\hyperlink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term}} $>$ get\+\_\+all\+\_\+terms\+\_\+of\+\_\+fmla (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla}{}\end{DoxyParamCaption})}
+
+
+
+Get the all terms of a formula. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmla} & Formula \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of terms representing the terms of {\ttfamily fmla} 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_af85d85f4387a74792143777073c381ac}\index{syntax.cpp@{syntax.cpp}!get\_height@{get\_height}}
+\index{get\_height@{get\_height}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_height()}{get\_height()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{syntax_8cpp_af85d85f4387a74792143777073c381ac} 
+int get\+\_\+height (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla}{}\end{DoxyParamCaption})}
+
+
+
+Gets the height of a fomrula. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmla} & Formula \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Height of {\ttfamily fmla} 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_add997a22023032e9f25148b97568d292}\index{syntax.cpp@{syntax.cpp}!get\_height@{get\_height}}
+\index{get\_height@{get\_height}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_height()}{get\_height()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{syntax_8cpp_add997a22023032e9f25148b97568d292} 
+int get\+\_\+height (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} $>$}]{fmlas}{}\end{DoxyParamCaption})}
+
+
+
+Gets the maximum height of a formula in a vector of formulas. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmlas} & Vector of formulas \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Maximum height of a formula in {\ttfamily fmlas} 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_a90180fff69b56ec0d603c2c0cba502e9}\index{syntax.cpp@{syntax.cpp}!get\_parameters@{get\_parameters}}
+\index{get\_parameters@{get\_parameters}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_parameters()}{get\_parameters()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{syntax_8cpp_a90180fff69b56ec0d603c2c0cba502e9} 
+set$<$ string $>$ get\+\_\+parameters (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla}{}\end{DoxyParamCaption})}
+
+
+
+Get the parameters of a formula. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmla} & Formula \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Set string of the parameters of {\ttfamily fmla} 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_a4e39fbc17d38e18ea900e1d2853912d7}\index{syntax.cpp@{syntax.cpp}!get\_parameters@{get\_parameters}}
+\index{get\_parameters@{get\_parameters}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_parameters()}{get\_parameters()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{syntax_8cpp_a4e39fbc17d38e18ea900e1d2853912d7} 
+set$<$ string $>$ get\+\_\+parameters (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} $>$}]{fmlas}{}\end{DoxyParamCaption})}
+
+
+
+Get the parameters of a vector of formulas. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmlas} & Vector of formulas \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Set string of the parameters of {\ttfamily fmlas} 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_ae8927609885e5caf995a2a8d9679efc2}\index{syntax.cpp@{syntax.cpp}!get\_parameters\_idxs@{get\_parameters\_idxs}}
+\index{get\_parameters\_idxs@{get\_parameters\_idxs}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_parameters\_idxs()}{get\_parameters\_idxs()}}
+{\footnotesize\ttfamily \label{syntax_8cpp_ae8927609885e5caf995a2a8d9679efc2} 
+set$<$ int $>$ get\+\_\+parameters\+\_\+idxs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla}{}\end{DoxyParamCaption})}
+
+
+
+Gets the indexes of the parameters of a formula. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmla} & Formula \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Set of integers of the indexes of the parameters of {\ttfamily fmla} 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_abfb81da42b15a6d4fffca8e3121f01ff}\index{syntax.cpp@{syntax.cpp}!get\_term\_idx\_img\_subst@{get\_term\_idx\_img\_subst}}
+\index{get\_term\_idx\_img\_subst@{get\_term\_idx\_img\_subst}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_term\_idx\_img\_subst()}{get\_term\_idx\_img\_subst()}}
+{\footnotesize\ttfamily \label{syntax_8cpp_abfb81da42b15a6d4fffca8e3121f01ff} 
+int get\+\_\+term\+\_\+idx\+\_\+img\+\_\+subst (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla1}{, }\item[{int}]{parameter\+\_\+idx}{, }\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla2}{}\end{DoxyParamCaption})}
+
+
+
+For two isomorphic formulas fmla1 and fmla2, gets the node in fmla2 that is isomorphic to the node in fmla1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmla1} & Formula \\
+\hline
+{\em parameter\+\_\+idx} & Index of a node in {\ttfamily fmla1} \\
+\hline
+{\em fmla2} & Formula \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Integer representing the isomorphic node in {\ttfamily fmla2} of {\ttfamily parameter\+\_\+idx} in {\ttfamily fmla1} 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_a0f1236bcd79971d22c00c81928dc54ed}\index{syntax.cpp@{syntax.cpp}!get\_term\_of\_fmla@{get\_term\_of\_fmla}}
+\index{get\_term\_of\_fmla@{get\_term\_of\_fmla}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_term\_of\_fmla()}{get\_term\_of\_fmla()}}
+{\footnotesize\ttfamily \label{syntax_8cpp_a0f1236bcd79971d22c00c81928dc54ed} 
+\mbox{\hyperlink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term}} get\+\_\+term\+\_\+of\+\_\+fmla (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla}{, }\item[{int}]{term\+\_\+root}{}\end{DoxyParamCaption})}
+
+
+
+Gets the term of a formula by the index of the root of the term. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmla} & Formula \\
+\hline
+{\em term\+\_\+root} & Index of the root of the term \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The term that has as root the index {\ttfamily term\+\_\+root} 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_a68b5ea4be20523cfbf26c61fc79110e5}\index{syntax.cpp@{syntax.cpp}!is\_a\_parameter@{is\_a\_parameter}}
+\index{is\_a\_parameter@{is\_a\_parameter}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{is\_a\_parameter()}{is\_a\_parameter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{syntax_8cpp_a68b5ea4be20523cfbf26c61fc79110e5} 
+bool is\+\_\+a\+\_\+parameter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_fmla_node}{Fmla\+Node}}}]{fmla\+\_\+node}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a node of a formula is a parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmla\+\_\+node} & Node of a formula \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if {\ttfamily fmla\+\_\+node} is a parameter 
+
+False otherwise 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_a76903e8837f2604938412913be499e22}\index{syntax.cpp@{syntax.cpp}!is\_a\_parameter@{is\_a\_parameter}}
+\index{is\_a\_parameter@{is\_a\_parameter}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{is\_a\_parameter()}{is\_a\_parameter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{syntax_8cpp_a76903e8837f2604938412913be499e22} 
+bool is\+\_\+a\+\_\+parameter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_term_node}{Term\+Node}}}]{term\+\_\+node}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a node of a term is a parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em term\+\_\+node} & Node of a term \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if {\ttfamily term\+\_\+node} is a parameter 
+
+False otherwise 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_a383f6252f9a0eb18f70b238670ba3531}\index{syntax.cpp@{syntax.cpp}!is\_function\_symb@{is\_function\_symb}}
+\index{is\_function\_symb@{is\_function\_symb}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{is\_function\_symb()}{is\_function\_symb()}}
+{\footnotesize\ttfamily \label{syntax_8cpp_a383f6252f9a0eb18f70b238670ba3531} 
+bool is\+\_\+function\+\_\+symb (\begin{DoxyParamCaption}\item[{string}]{symb}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a string is a function symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symb} & String \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if {\ttfamily symb} is a function symbol 
+
+False otherwise 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_a13899f73dee907be325cbc435e1b8077}\index{syntax.cpp@{syntax.cpp}!is\_language\_symb@{is\_language\_symb}}
+\index{is\_language\_symb@{is\_language\_symb}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{is\_language\_symb()}{is\_language\_symb()}}
+{\footnotesize\ttfamily \label{syntax_8cpp_a13899f73dee907be325cbc435e1b8077} 
+bool is\+\_\+language\+\_\+symb (\begin{DoxyParamCaption}\item[{string}]{symb}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a string is either a predicate of a function symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symb} & String \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if {\ttfamily symb} is either a predicate or function symbol 
+
+False otherwise 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_a4051d22addea7c5a8d6c69495ed64dd1}\index{syntax.cpp@{syntax.cpp}!is\_not\_skolem\_symb@{is\_not\_skolem\_symb}}
+\index{is\_not\_skolem\_symb@{is\_not\_skolem\_symb}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{is\_not\_skolem\_symb()}{is\_not\_skolem\_symb()}}
+{\footnotesize\ttfamily \label{syntax_8cpp_a4051d22addea7c5a8d6c69495ed64dd1} 
+bool is\+\_\+not\+\_\+skolem\+\_\+symb (\begin{DoxyParamCaption}\item[{string}]{symb}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a string is not a skolemization symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symb} & String \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if {\ttfamily symb} is not a skolemization symbol 
+
+False otherwise 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_ab9905a31ecdecc332522e30c5560b7a1}\index{syntax.cpp@{syntax.cpp}!is\_predicate\_symb@{is\_predicate\_symb}}
+\index{is\_predicate\_symb@{is\_predicate\_symb}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{is\_predicate\_symb()}{is\_predicate\_symb()}}
+{\footnotesize\ttfamily \label{syntax_8cpp_ab9905a31ecdecc332522e30c5560b7a1} 
+bool is\+\_\+predicate\+\_\+symb (\begin{DoxyParamCaption}\item[{string}]{symb}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a string is a predicate symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symb} & String \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if {\ttfamily symb} is a predicate symbol 
+
+False otherwise 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_a57af133585e0cc7a464fac1e59f64c26}\index{syntax.cpp@{syntax.cpp}!parameter\_in\_fmla@{parameter\_in\_fmla}}
+\index{parameter\_in\_fmla@{parameter\_in\_fmla}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{parameter\_in\_fmla()}{parameter\_in\_fmla()}}
+{\footnotesize\ttfamily \label{syntax_8cpp_a57af133585e0cc7a464fac1e59f64c26} 
+bool parameter\+\_\+in\+\_\+fmla (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla}{, }\item[{string}]{parameter}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a parameter is in a formula. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmla} & Formula \\
+\hline
+{\em parameter} & String representing a parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if {\ttfamily parameter} is in {\ttfamily fmla} 
+
+False 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_a816b400238a5b1daa42823e7b06e567c}\index{syntax.cpp@{syntax.cpp}!subst\_extension@{subst\_extension}}
+\index{subst\_extension@{subst\_extension}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{subst\_extension()}{subst\_extension()}}
+{\footnotesize\ttfamily \label{syntax_8cpp_a816b400238a5b1daa42823e7b06e567c} 
+\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} subst\+\_\+extension (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla}{, }\item[{\mbox{\hyperlink{definitions_8h_aab3e9a4d220294e96fdc69686b8a56bc}{Subst}}}]{subs}{}\end{DoxyParamCaption})}
+
+
+
+Substitutes parameters by term in a formula provided a substitution mapping. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmla} & Formula \\
+\hline
+{\em subs} & Substitution mapping \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resulting of applying {\ttfamily subs} in {\ttfamily fmla} 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_a12a343976ceb13bffd2c7442c0b1d8cc}\index{syntax.cpp@{syntax.cpp}!subst\_parameter\_by\_term@{subst\_parameter\_by\_term}}
+\index{subst\_parameter\_by\_term@{subst\_parameter\_by\_term}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{subst\_parameter\_by\_term()}{subst\_parameter\_by\_term()}}
+{\footnotesize\ttfamily \label{syntax_8cpp_a12a343976ceb13bffd2c7442c0b1d8cc} 
+\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}} subst\+\_\+parameter\+\_\+by\+\_\+term (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}{Fmla}}}]{fmla}{, }\item[{int}]{parameter\+\_\+idx}{, }\item[{\mbox{\hyperlink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term}}}]{term}{}\end{DoxyParamCaption})}
+
+
+
+Substitute a parameter by a term in a formula. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmla} & Formula \\
+\hline
+{\em parameter\+\_\+idx} & Index of the parameter to be substituted \\
+\hline
+{\em term} & \doxylink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of substituting the parameter indexed by {\ttfamily parameter\+\_\+idx} by {\ttfamily term} in {\ttfamily fmla} 
+\end{DoxyReturn}
+\Hypertarget{syntax_8cpp_a264ca2b12ddc9d0c628b2262cb865aaa}\index{syntax.cpp@{syntax.cpp}!term\_equality@{term\_equality}}
+\index{term\_equality@{term\_equality}!syntax.cpp@{syntax.cpp}}
+\doxysubsubsection{\texorpdfstring{term\_equality()}{term\_equality()}}
+{\footnotesize\ttfamily \label{syntax_8cpp_a264ca2b12ddc9d0c628b2262cb865aaa} 
+bool term\+\_\+equality (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term}}}]{term1}{, }\item[{\mbox{\hyperlink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term}}}]{term2}{}\end{DoxyParamCaption})}
+
+
+
+Checks if two terms are equal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em term1} & \doxylink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term} \\
+\hline
+{\em term2} & \doxylink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if {\ttfamily term1} and {\ttfamily term2} are equal 
+
+False otherwise 
+\end{DoxyReturn}

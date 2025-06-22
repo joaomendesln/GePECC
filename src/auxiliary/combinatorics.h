@@ -7,16 +7,12 @@
 
 using namespace std;
 
-bool are_mask_digits_different(vector<int> arrange_mask);
+bool are_arrange_digits_different(vector<int> arrange);
 
-vector<int> increment_arrange_mask(vector<int> arrange_mask, int base);
+vector<int> increment_arrange(vector<int> arrange, int base);
 
 vector<vector<int>> get_all_arranges(int branch_size, int premises_size);
 
-vector<int> increment_arrange_repitition_mask(vector<int> arrange_mask, int base);
-
-vector<int> increment_arrange_repitition_mask(vector<int> arrange_mask, vector<int> base);
-
-vector<vector<int>> get_all_arranges_repetition(int terms_tbl_amt, int parameters_conclustion_amt);
+vector<int> increment_multibase_arrange_repitition(vector<int> arrange, vector<int> base);
 
 #endif // COMBINATORICS_H

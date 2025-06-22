@@ -8,7 +8,7 @@ The exercises targetted to this method are exercises that can be described by se
 
 In few words, the user should pass as the input of the method an exercise and, after executing it, receive a set of execises of comparable complexity to the input.
 
-The formalism employed to extract the proofs is signed cut-based tableaux [1]. So, the exercises are actually described as sets of signed formulas. The sequent "a ⊆ b, b ⊆ c ⊢ a ⊆ c" is represented by the set {+ a ⊆ b, + b ⊆ c, - a ⊆ c}.
+The formalism employed to search for the proofs is signed cut-based tableaux [1]. So, the exercises are actually described as sets of signed formulas. The sequent "a ⊆ b, b ⊆ c ⊢ a ⊆ c" is represented by the set {+ a ⊆ b, + b ⊆ c, - a ⊆ c}.
 
 ## Input files
 
@@ -64,7 +64,7 @@ The signed formulas file is constituted by `n` lines containing exactly one `<si
 
 ## Output
 
-The program outputs the signed formulas representing the exercises with comparable complexity to the one provided as input. The intermediate step regarding the extraction of minimal proofs is also outputed.
+The program outputs the signed formulas representing the exercises with comparable complexity to the one provided as input. The intermediate step regarding the search for minimal proofs is also outputed.
 
 ## Running the program
 

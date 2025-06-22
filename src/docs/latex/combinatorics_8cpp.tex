@@ -1,0 +1,121 @@
+\doxysection{/\+Users/joaomendes\+\_\+ln/\+Documents/\+UFRN/\+Mestrado/5º semestre/\+Implementations/documentation/\+Ge\+PECC/src/auxiliary/combinatorics.cpp File Reference}
+\hypertarget{combinatorics_8cpp}{}\label{combinatorics_8cpp}\index{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/auxiliary/combinatorics.cpp@{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/auxiliary/combinatorics.cpp}}
+
+
+Combinatorial machinery used in the application of the tableau expansion rules and in the search for proof-\/isomorphic sets of signed formulas.  
+
+
+{\ttfamily \#include "{}combinatorics.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{combinatorics_8cpp_a08d753767548dbb0fa256b0b0c24440c}{are\+\_\+arrange\+\_\+digits\+\_\+different}} (vector$<$ int $>$ arrange)
+\begin{DoxyCompactList}\small\item\em Cheks if all digits in an arrange are different. \end{DoxyCompactList}\item 
+vector$<$ int $>$ \mbox{\hyperlink{combinatorics_8cpp_a4eea61413b03a978882e206c586d9652}{increment\+\_\+arrange}} (vector$<$ int $>$ arrange, int base)
+\begin{DoxyCompactList}\small\item\em Increments one in an arrange. \end{DoxyCompactList}\item 
+vector$<$ vector$<$ int $>$ $>$ \mbox{\hyperlink{combinatorics_8cpp_a4e62731345aa770569c66afb7839e2c6}{get\+\_\+all\+\_\+arranges}} (int branch\+\_\+size, int premises\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Gets all arranges with {\ttfamily premises\+\_\+size} items from {\ttfamily branch\+\_\+size} \end{DoxyCompactList}\item 
+vector$<$ int $>$ \mbox{\hyperlink{combinatorics_8cpp_ab9c4fbac3adbaf1e2799225ea10d4a59}{increment\+\_\+multibase\+\_\+arrange\+\_\+repitition}} (vector$<$ int $>$ arrange, vector$<$ int $>$ base)
+\begin{DoxyCompactList}\small\item\em Increments one in a multibase arrange in which repetition is allowed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Combinatorial machinery used in the application of the tableau expansion rules and in the search for proof-\/isomorphic sets of signed formulas. 
+
+\begin{DoxyAuthor}{Author}
+João Mendes 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/06-\/22
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+
+
+\label{doc-func-members}
+\Hypertarget{combinatorics_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{combinatorics_8cpp_a08d753767548dbb0fa256b0b0c24440c}\index{combinatorics.cpp@{combinatorics.cpp}!are\_arrange\_digits\_different@{are\_arrange\_digits\_different}}
+\index{are\_arrange\_digits\_different@{are\_arrange\_digits\_different}!combinatorics.cpp@{combinatorics.cpp}}
+\doxysubsubsection{\texorpdfstring{are\_arrange\_digits\_different()}{are\_arrange\_digits\_different()}}
+{\footnotesize\ttfamily \label{combinatorics_8cpp_a08d753767548dbb0fa256b0b0c24440c} 
+bool are\+\_\+arrange\+\_\+digits\+\_\+different (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{arrange}{}\end{DoxyParamCaption})}
+
+
+
+Cheks if all digits in an arrange are different. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arrange} & Arrange \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if all digits of {\ttfamily arrange} are different 
+
+False otherwise 
+\end{DoxyReturn}
+\Hypertarget{combinatorics_8cpp_a4e62731345aa770569c66afb7839e2c6}\index{combinatorics.cpp@{combinatorics.cpp}!get\_all\_arranges@{get\_all\_arranges}}
+\index{get\_all\_arranges@{get\_all\_arranges}!combinatorics.cpp@{combinatorics.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_all\_arranges()}{get\_all\_arranges()}}
+{\footnotesize\ttfamily \label{combinatorics_8cpp_a4e62731345aa770569c66afb7839e2c6} 
+vector$<$ vector$<$ int $>$ $>$ get\+\_\+all\+\_\+arranges (\begin{DoxyParamCaption}\item[{int}]{branch\+\_\+size}{, }\item[{int}]{premises\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Gets all arranges with {\ttfamily premises\+\_\+size} items from {\ttfamily branch\+\_\+size} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em branch\+\_\+size} & Size of the branch \\
+\hline
+{\em premises\+\_\+size} & Amount of premises \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+All arranges with {\ttfamily premises\+\_\+size} items from {\ttfamily branch\+\_\+size} 
+\end{DoxyReturn}
+\Hypertarget{combinatorics_8cpp_a4eea61413b03a978882e206c586d9652}\index{combinatorics.cpp@{combinatorics.cpp}!increment\_arrange@{increment\_arrange}}
+\index{increment\_arrange@{increment\_arrange}!combinatorics.cpp@{combinatorics.cpp}}
+\doxysubsubsection{\texorpdfstring{increment\_arrange()}{increment\_arrange()}}
+{\footnotesize\ttfamily \label{combinatorics_8cpp_a4eea61413b03a978882e206c586d9652} 
+vector$<$ int $>$ increment\+\_\+arrange (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{arrange}{, }\item[{int}]{base}{}\end{DoxyParamCaption})}
+
+
+
+Increments one in an arrange. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arrange\+\_\+mask} & Arrange \\
+\hline
+{\em base} & The succesor of the maximum value a digit of {\ttfamily arrange} can be \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of incrementing one in {\ttfamily arrange} 
+\end{DoxyReturn}
+\Hypertarget{combinatorics_8cpp_ab9c4fbac3adbaf1e2799225ea10d4a59}\index{combinatorics.cpp@{combinatorics.cpp}!increment\_multibase\_arrange\_repitition@{increment\_multibase\_arrange\_repitition}}
+\index{increment\_multibase\_arrange\_repitition@{increment\_multibase\_arrange\_repitition}!combinatorics.cpp@{combinatorics.cpp}}
+\doxysubsubsection{\texorpdfstring{increment\_multibase\_arrange\_repitition()}{increment\_multibase\_arrange\_repitition()}}
+{\footnotesize\ttfamily \label{combinatorics_8cpp_ab9c4fbac3adbaf1e2799225ea10d4a59} 
+vector$<$ int $>$ increment\+\_\+multibase\+\_\+arrange\+\_\+repitition (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{arrange}{, }\item[{vector$<$ int $>$}]{base}{}\end{DoxyParamCaption})}
+
+
+
+Increments one in a multibase arrange in which repetition is allowed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arrange} & Arrange \\
+\hline
+{\em base} & Vector in which the n-\/th element indicates the successor of the maximum value of the n-\/th digit of {\ttfamily arrange} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of incrementing one in {\ttfamily arrange} 
+\end{DoxyReturn}

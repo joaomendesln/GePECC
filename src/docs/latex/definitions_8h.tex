@@ -1,0 +1,64 @@
+\doxysection{/\+Users/joaomendes\+\_\+ln/\+Documents/\+UFRN/\+Mestrado/5º semestre/\+Implementations/documentation/\+Ge\+PECC/src/definitions/definitions.h File Reference}
+\hypertarget{definitions_8h}{}\label{definitions_8h}\index{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/definitions/definitions.h@{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/definitions/definitions.h}}
+
+
+Definitions of enums and structs that are used in the project.  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_fmla_node}{Fmla\+Node}}
+\begin{DoxyCompactList}\small\item\em Node of the abstract representation of a formula. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_term_node}{Term\+Node}}
+\begin{DoxyCompactList}\small\item\em Node of the abstract representation of a term. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}}
+\begin{DoxyCompactList}\small\item\em Signed formula. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}}
+\begin{DoxyCompactList}\small\item\em \doxylink{definitions_8h_af846c8f1ad9462c2a3054fe98a04709f}{Tableau} expansion rule. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_tbl_node}{Tbl\+Node}}
+\begin{DoxyCompactList}\small\item\em Node of a tableau tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5}\label{definitions_8h_a3c9be0e0eaa893de8fd1b6734db927a5} 
+typedef vector$<$ \mbox{\hyperlink{struct_fmla_node}{Fmla\+Node}} $>$ {\bfseries Fmla}
+\begin{DoxyCompactList}\small\item\em A formula is implemented as a vector of {\ttfamily \doxylink{struct_fmla_node}{Fmla\+Node}} objects. \end{DoxyCompactList}\item 
+\Hypertarget{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}\label{definitions_8h_ae8397a28d7aa336d19e1570503bc686d} 
+typedef vector$<$ \mbox{\hyperlink{struct_term_node}{Term\+Node}} $>$ {\bfseries Term}
+\begin{DoxyCompactList}\small\item\em A term is implemented as a vector of {\ttfamily \doxylink{struct_term_node}{Term\+Node}} objects. \end{DoxyCompactList}\item 
+\Hypertarget{definitions_8h_aab3e9a4d220294e96fdc69686b8a56bc}\label{definitions_8h_aab3e9a4d220294e96fdc69686b8a56bc} 
+typedef map$<$ string, \mbox{\hyperlink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term}} $>$ {\bfseries Subst}
+\begin{DoxyCompactList}\small\item\em A substitution is implemented as map from string objects, representing the variable, to {\ttfamily \doxylink{definitions_8h_ae8397a28d7aa336d19e1570503bc686d}{Term}} objects. \end{DoxyCompactList}\item 
+\Hypertarget{definitions_8h_af846c8f1ad9462c2a3054fe98a04709f}\label{definitions_8h_af846c8f1ad9462c2a3054fe98a04709f} 
+typedef vector$<$ \mbox{\hyperlink{struct_tbl_node}{Tbl\+Node}} $>$ {\bfseries Tableau}
+\begin{DoxyCompactList}\small\item\em A tableau tree is implemented as a vector {\ttfamily \doxylink{struct_tbl_node}{Tbl\+Node}} objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{definitions_8h_a1f4e8d6416fa361d4a5c4c8c8c3254f5}\label{definitions_8h_a1f4e8d6416fa361d4a5c4c8c8c3254f5} 
+enum class \mbox{\hyperlink{definitions_8h_a1f4e8d6416fa361d4a5c4c8c8c3254f5}{polarity}} \{ {\bfseries plus}
+, {\bfseries minus}
+, {\bfseries none}
+ \}
+\begin{DoxyCompactList}\small\item\em Polarity of a signed formula. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Definitions of enums and structs that are used in the project. 
+
+\begin{DoxyAuthor}{Author}
+João Mendes 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/06-\/21
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}

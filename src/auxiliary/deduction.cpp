@@ -67,7 +67,7 @@ int get_height_initial_nodes(Tableau tbl) {
 /**
  * @brief Tries to apply a rule in a tableau
  * 
- * @param tbl Tableaux
+ * @param tbl Tableau
  * @param expansion_rule Expansion rule to be applied in the tableau
  * @param rule_idx Index of expansion_rule in er
  * @param er Vector of expansion rules
@@ -831,7 +831,7 @@ Tableau apply_single_premise_rules(Tableau tbl, vector<TblRule> er) {
 /**
  * @brief Gets the successor tableaux of a tableau
  * 
- * @param tbl Tableaux
+ * @param tbl Tableau
  * @param er Expansion rules
  * @return Vector of tableaux representing the successor tableaux of tbl 
  */
@@ -1391,14 +1391,14 @@ map<pair<int,int>, set<string>> get_ps_candidate_symbols(Tableau tbl, vector<Tbl
 }
 
 /**
- * @brief Gets the direct descendant occurrences of the occurrence of a symbol
+ * @brief For every symbol occurrence `o`, gets the occurrence of the symbol in the initial tableau segment for which `o` is a descendant occurrence
  * 
  * @param prem_fmla Formula
  * @param conc_fmla Formula
  * @param justf_fmla Formula
  * @param exp_fmla Formula
- * @param ps_symbs 
- * @return TODO
+ * @param ps_symbs Symbol occurrences `p` from `just_fmla` and the occurrence of the symbol in the initial tableau segment for which `p` is a descendant occurrence
+ * @return Symbol occurrences `p` from `exp_fmla` and the occurrence of the symbol in the initial tableau segment for which `p` is a descendant occurrence
  */
 vector<tuple<int, pair<int, int>>> get_vec_symb_descendant_occurrences(Fmla prem_fmla, Fmla conc_fmla, Fmla justf_fmla, Fmla exp_fmla, vector<tuple<int, pair<int, int>>> ps_symbs) {
     vector<tuple<int, pair<int, int>>> result;
@@ -1527,7 +1527,7 @@ vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf, map<
 
     for (int j = 0; j < combinations_symbs; j++) {
         vector<SignedFmla> filled_cs = initial_sf;
-        theory_symbs_mask = increment_arrange_repitition_mask(theory_symbs_mask, base_no_skolem_symbs);
+        theory_symbs_mask = increment_multibase_arrange_repitition(theory_symbs_mask, base_no_skolem_symbs);
         for (int k = 0; k < no_skolem_symbs_amt; k++) {
             int sf_node_idx = map_no_skolem_symb[k].first;
             int fmla_node_idx = map_no_skolem_symb[k].second;
@@ -1695,61 +1695,6 @@ bool is_proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFm
     }
 
     return false;
-}
-
-/**
- * @brief 
- * 
- * @param tbl 
- * @param er 
- * @param sf 
- * @return Tableau 
- */
-Tableau search_proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFmla> sf) {
-
-    Tableau proof_isomorphic_tbl = get_initial_tableau(sf);
-    for (int i = 0; i < tbl.size(); i++) {
-        TblNode tbl_node = tbl[i];
-        if (tbl_node.justification_parents[0] != -1) {
-
-            vector<SignedFmla> justifications;
-            for (int j : tbl_node.justification_parents) {
-                justifications.push_back(proof_isomorphic_tbl[j].signed_fmla);
-            }
-            
-            vector<SignedFmla> conclusions = get_conclusions_from_justifications(justifications, er);
-            if (conclusions.size() > 0) {
-                TblNode expansion_node;
-                bool has_expansion_node = false;
-                for (SignedFmla conclusion : conclusions) {
-                    if (are_isomorphic_with_equal_parameters(conclusion.fmla, tbl_node.signed_fmla.fmla)){
-                        expansion_node.justification_parents = tbl_node.justification_parents;
-                        expansion_node.tbl_parent = tbl_node.tbl_parent;
-                        expansion_node.tbl_children = tbl_node.tbl_children;
-                        expansion_node.signed_fmla = conclusion;
-
-                        has_expansion_node = true;
-                    }
-                }
-
-                if (has_expansion_node) {
-                    proof_isomorphic_tbl.push_back(expansion_node);
-                }
-                else {
-                    return {};
-                }
-            }
-            else {
-                return {};
-            }
-        }
-    }
-    if (is_closure_isomorphic(tbl, proof_isomorphic_tbl, er)) {
-        return proof_isomorphic_tbl;
-    }
-    else {
-        return {};
-    }
 }
 
 /**

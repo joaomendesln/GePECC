@@ -97,8 +97,6 @@ int get_cut_sibling_node(Tableau tbl, int cut_node_idx);
 
 bool is_proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFmla> sf);
 
-Tableau proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFmla> sf);
-
 vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf, map<pair<int,int>, set<string>> ps_candidate_symbols);
 
 bool vec_sf_equality(vector<SignedFmla> vec_sf1, vector<SignedFmla> vec_sf2);

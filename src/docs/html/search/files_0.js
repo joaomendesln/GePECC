@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['deduction_2ecpp_0',['deduction.cpp',['../deduction_8cpp.html',1,'']]]
+  ['combinatorics_2ecpp_0',['combinatorics.cpp',['../combinatorics_8cpp.html',1,'']]]
 ];

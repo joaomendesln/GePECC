@@ -1,25 +1,63 @@
 \doxysection{Fmla\+Node Struct Reference}
 \hypertarget{struct_fmla_node}{}\label{struct_fmla_node}\index{FmlaNode@{FmlaNode}}
+
+
+Node of the abstract representation of a formula.  
+
+
+
+
+{\ttfamily \#include $<$definitions.\+h$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{struct_fmla_node_af61ed31569306458d9113da2ea3e8543}\label{struct_fmla_node_af61ed31569306458d9113da2ea3e8543} 
-{\bfseries Fmla\+Node} (string data, int parent, vector$<$ int $>$ children)
-\end{DoxyCompactItemize}
+\Hypertarget{struct_fmla_node_a0cd8241235e0a1af8fb43b453814a51b}\label{struct_fmla_node_a0cd8241235e0a1af8fb43b453814a51b} 
+{\bfseries Fmla\+Node} ()
+\begin{DoxyCompactList}\small\item\em Construct with no arguments. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_fmla_node_af61ed31569306458d9113da2ea3e8543}{Fmla\+Node}} (string \mbox{\hyperlink{struct_fmla_node_a341b8710b3e55be72efdc5bbbe4adf4e}{data}}, int \mbox{\hyperlink{struct_fmla_node_a8af60344d81283c5adb4aa18d7a52eb3}{parent}}, vector$<$ int $>$ \mbox{\hyperlink{struct_fmla_node_a8ce0235cbb78a449049de3464f7833de}{children}})
+\begin{DoxyCompactList}\small\item\em Constructor with all arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{struct_fmla_node_a341b8710b3e55be72efdc5bbbe4adf4e}\label{struct_fmla_node_a341b8710b3e55be72efdc5bbbe4adf4e} 
 string {\bfseries data}
-\item 
+\begin{DoxyCompactList}\small\item\em Content of the node. \end{DoxyCompactList}\item 
 \Hypertarget{struct_fmla_node_a8af60344d81283c5adb4aa18d7a52eb3}\label{struct_fmla_node_a8af60344d81283c5adb4aa18d7a52eb3} 
 int {\bfseries parent}
-\item 
+\begin{DoxyCompactList}\small\item\em Index of the parent. If it is the root node, the parent is 0. \end{DoxyCompactList}\item 
 \Hypertarget{struct_fmla_node_a8ce0235cbb78a449049de3464f7833de}\label{struct_fmla_node_a8ce0235cbb78a449049de3464f7833de} 
 vector$<$ int $>$ {\bfseries children}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Indexes of its children. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Node of the abstract representation of a formula. 
+
+\label{doc-constructors}
+\Hypertarget{struct_fmla_node_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_fmla_node_af61ed31569306458d9113da2ea3e8543}\index{FmlaNode@{FmlaNode}!FmlaNode@{FmlaNode}}
+\index{FmlaNode@{FmlaNode}!FmlaNode@{FmlaNode}}
+\doxysubsubsection{\texorpdfstring{FmlaNode()}{FmlaNode()}}
+{\footnotesize\ttfamily \label{struct_fmla_node_af61ed31569306458d9113da2ea3e8543} 
+Fmla\+Node\+::\+Fmla\+Node (\begin{DoxyParamCaption}\item[{string}]{data}{, }\item[{int}]{parent}{, }\item[{vector$<$ int $>$}]{children}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor with all arguments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \\
+\hline
+{\em parent} & \\
+\hline
+{\em children} & \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/joaomendes\+\_\+ln/\+Documents/\+UFRN/\+Mestrado/5º semestre/\+Implementations/documentation/\+Ge\+PECC/src/definitions/definitions.\+h\end{DoxyCompactItemize}
+/\+Users/joaomendes\+\_\+ln/\+Documents/\+UFRN/\+Mestrado/5º semestre/\+Implementations/documentation/\+Ge\+PECC/src/definitions/\mbox{\hyperlink{definitions_8h}{definitions.\+h}}\end{DoxyCompactItemize}

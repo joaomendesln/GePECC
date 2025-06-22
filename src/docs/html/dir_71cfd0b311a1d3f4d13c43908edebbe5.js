@@ -1,5 +1,6 @@
 var dir_71cfd0b311a1d3f4d13c43908edebbe5 =
 [
+    [ "combinatorics.cpp", "combinatorics_8cpp.html", "combinatorics_8cpp" ],
     [ "combinatorics.h", "combinatorics_8h_source.html", null ],
     [ "deduction.cpp", "deduction_8cpp.html", "deduction_8cpp" ],
     [ "deduction.h", "deduction_8h_source.html", null ],
@@ -9,5 +10,6 @@ var dir_71cfd0b311a1d3f4d13c43908edebbe5 =
     [ "pre_process.h", "pre__process_8h_source.html", null ],
     [ "print.cpp", "print_8cpp.html", "print_8cpp" ],
     [ "print.h", "print_8h_source.html", null ],
+    [ "syntax.cpp", "syntax_8cpp.html", "syntax_8cpp" ],
     [ "syntax.h", "syntax_8h_source.html", null ]
 ];

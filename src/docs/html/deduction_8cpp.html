@@ -98,104 +98,103 @@ $(function(){initNavTree('deduction_8cpp.html','',''); });
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae15f4480a3477bc1656e711ae4fb050f" id="r_ae15f4480a3477bc1656e711ae4fb050f"><td class="memItemLeft" align="right" valign="top">Tableau&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae15f4480a3477bc1656e711ae4fb050f">get_initial_tableau</a> (vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; sf_input)</td></tr>
+<tr class="memitem:ae15f4480a3477bc1656e711ae4fb050f" id="r_ae15f4480a3477bc1656e711ae4fb050f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae15f4480a3477bc1656e711ae4fb050f">get_initial_tableau</a> (vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; sf_input)</td></tr>
 <tr class="memdesc:ae15f4480a3477bc1656e711ae4fb050f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an initial tableau for a vector of signed formulas.  <br /></td></tr>
-<tr class="memitem:adb38e1ec80817d7513b098ef43df970c" id="r_adb38e1ec80817d7513b098ef43df970c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb38e1ec80817d7513b098ef43df970c">get_height_initial_nodes</a> (Tableau tbl)</td></tr>
+<tr class="memitem:adb38e1ec80817d7513b098ef43df970c" id="r_adb38e1ec80817d7513b098ef43df970c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb38e1ec80817d7513b098ef43df970c">get_height_initial_nodes</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl)</td></tr>
 <tr class="memdesc:adb38e1ec80817d7513b098ef43df970c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the height initial nodes object.  <br /></td></tr>
-<tr class="memitem:a452ea475b0ea814d19e94ea4affdbc4b" id="r_a452ea475b0ea814d19e94ea4affdbc4b"><td class="memItemLeft" align="right" valign="top">Tableau&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a452ea475b0ea814d19e94ea4affdbc4b">apply_rule_with_premise</a> (Tableau tbl, <a class="el" href="struct_tbl_rule.html">TblRule</a> expansion_rule, int rule_idx, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:a452ea475b0ea814d19e94ea4affdbc4b" id="r_a452ea475b0ea814d19e94ea4affdbc4b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a452ea475b0ea814d19e94ea4affdbc4b">apply_rule_with_premise</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, <a class="el" href="struct_tbl_rule.html">TblRule</a> expansion_rule, int rule_idx, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:a452ea475b0ea814d19e94ea4affdbc4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to apply a rule in a tableau.  <br /></td></tr>
-<tr class="memitem:ad63614957c8a03907439796dc2ad1eda" id="r_ad63614957c8a03907439796dc2ad1eda"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad63614957c8a03907439796dc2ad1eda">try_apply_closure_rule</a> (Tableau tbl, vector&lt; int &gt; branch, <a class="el" href="struct_tbl_rule.html">TblRule</a> closure_rule)</td></tr>
+<tr class="memitem:ad63614957c8a03907439796dc2ad1eda" id="r_ad63614957c8a03907439796dc2ad1eda"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad63614957c8a03907439796dc2ad1eda">try_apply_closure_rule</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; int &gt; branch, <a class="el" href="struct_tbl_rule.html">TblRule</a> closure_rule)</td></tr>
 <tr class="memdesc:ad63614957c8a03907439796dc2ad1eda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if it is possible to apply a closure rule in a tableau.  <br /></td></tr>
-<tr class="memitem:ab2a98e74d49e1a81442ebc31c409cb89" id="r_ab2a98e74d49e1a81442ebc31c409cb89"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2a98e74d49e1a81442ebc31c409cb89">get_justifications_closure_rule</a> (Tableau tbl, vector&lt; int &gt; branch, <a class="el" href="struct_tbl_rule.html">TblRule</a> closure_rule)</td></tr>
+<tr class="memitem:ab2a98e74d49e1a81442ebc31c409cb89" id="r_ab2a98e74d49e1a81442ebc31c409cb89"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2a98e74d49e1a81442ebc31c409cb89">get_justifications_closure_rule</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; int &gt; branch, <a class="el" href="struct_tbl_rule.html">TblRule</a> closure_rule)</td></tr>
 <tr class="memdesc:ab2a98e74d49e1a81442ebc31c409cb89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the index of the justifications for the application of a closure rule.  <br /></td></tr>
-<tr class="memitem:af0d77366668d4f68f6d49f3bc627e33c" id="r_af0d77366668d4f68f6d49f3bc627e33c"><td class="memItemLeft" align="right" valign="top">vector&lt; Tableau &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0d77366668d4f68f6d49f3bc627e33c">apply_cut</a> (Tableau tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:af0d77366668d4f68f6d49f3bc627e33c" id="r_af0d77366668d4f68f6d49f3bc627e33c"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0d77366668d4f68f6d49f3bc627e33c">apply_cut</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:af0d77366668d4f68f6d49f3bc627e33c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a cut rule in a tableau.  <br /></td></tr>
 <tr class="memitem:ae56ccece472d94bba46a88fd370e060a" id="r_ae56ccece472d94bba46a88fd370e060a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae56ccece472d94bba46a88fd370e060a">is_a_match</a> (<a class="el" href="struct_signed_fmla.html">SignedFmla</a> sf_tbl, <a class="el" href="struct_signed_fmla.html">SignedFmla</a> premise)</td></tr>
 <tr class="memdesc:ae56ccece472d94bba46a88fd370e060a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a signed formula and a premise of a rule are equal under substitution.  <br /></td></tr>
-<tr class="memitem:a75fdd656d225fe19a44c1068f922a294" id="r_a75fdd656d225fe19a44c1068f922a294"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75fdd656d225fe19a44c1068f922a294">is_a_match</a> (Fmla fmla_tbl, Fmla premise_fmla)</td></tr>
+<tr class="memitem:a75fdd656d225fe19a44c1068f922a294" id="r_a75fdd656d225fe19a44c1068f922a294"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75fdd656d225fe19a44c1068f922a294">is_a_match</a> (<a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a> fmla_tbl, <a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a> premise_fmla)</td></tr>
 <tr class="memdesc:a75fdd656d225fe19a44c1068f922a294"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a formula and a formula of a premise of a rule are equal under substitution.  <br /></td></tr>
-<tr class="memitem:a1b3345a4ea57e092cb3483ce44ffcd5c" id="r_a1b3345a4ea57e092cb3483ce44ffcd5c"><td class="memItemLeft" align="right" valign="top">Subst&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b3345a4ea57e092cb3483ce44ffcd5c">matching_parameters</a> (<a class="el" href="struct_signed_fmla.html">SignedFmla</a> sf_tbl, <a class="el" href="struct_signed_fmla.html">SignedFmla</a> premise)</td></tr>
+<tr class="memitem:a1b3345a4ea57e092cb3483ce44ffcd5c" id="r_a1b3345a4ea57e092cb3483ce44ffcd5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="definitions_8h.html#aab3e9a4d220294e96fdc69686b8a56bc">Subst</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b3345a4ea57e092cb3483ce44ffcd5c">matching_parameters</a> (<a class="el" href="struct_signed_fmla.html">SignedFmla</a> sf_tbl, <a class="el" href="struct_signed_fmla.html">SignedFmla</a> premise)</td></tr>
 <tr class="memdesc:a1b3345a4ea57e092cb3483ce44ffcd5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the substitution that allows two signed formulas to match, ie, to be equal under substitution.  <br /></td></tr>
-<tr class="memitem:a2de15931e8811a57ea9875d7e90bbd42" id="r_a2de15931e8811a57ea9875d7e90bbd42"><td class="memItemLeft" align="right" valign="top">Subst&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2de15931e8811a57ea9875d7e90bbd42">matching_parameters</a> (Fmla fmla_tbl, Fmla premise_fmla)</td></tr>
+<tr class="memitem:a2de15931e8811a57ea9875d7e90bbd42" id="r_a2de15931e8811a57ea9875d7e90bbd42"><td class="memItemLeft" align="right" valign="top"><a class="el" href="definitions_8h.html#aab3e9a4d220294e96fdc69686b8a56bc">Subst</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2de15931e8811a57ea9875d7e90bbd42">matching_parameters</a> (<a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a> fmla_tbl, <a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a> premise_fmla)</td></tr>
 <tr class="memdesc:a2de15931e8811a57ea9875d7e90bbd42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the substitution that allows two formulas to match, ie, to be equal under substitution.  <br /></td></tr>
-<tr class="memitem:a993987b53cbd096c74c074296d3a645e" id="r_a993987b53cbd096c74c074296d3a645e"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a993987b53cbd096c74c074296d3a645e">get_tbl_leaves</a> (Tableau tbl)</td></tr>
+<tr class="memitem:a993987b53cbd096c74c074296d3a645e" id="r_a993987b53cbd096c74c074296d3a645e"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a993987b53cbd096c74c074296d3a645e">get_tbl_leaves</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl)</td></tr>
 <tr class="memdesc:a993987b53cbd096c74c074296d3a645e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the leaves of a tableau.  <br /></td></tr>
-<tr class="memitem:aa95bf1cf07d2e8bd20b729f1ce183f7a" id="r_aa95bf1cf07d2e8bd20b729f1ce183f7a"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa95bf1cf07d2e8bd20b729f1ce183f7a">get_tbl_branches</a> (Tableau tbl)</td></tr>
+<tr class="memitem:aa95bf1cf07d2e8bd20b729f1ce183f7a" id="r_aa95bf1cf07d2e8bd20b729f1ce183f7a"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa95bf1cf07d2e8bd20b729f1ce183f7a">get_tbl_branches</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl)</td></tr>
 <tr class="memdesc:aa95bf1cf07d2e8bd20b729f1ce183f7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the branches of a tableau.  <br /></td></tr>
-<tr class="memitem:a3337a7c89376d12d006b09b7ce521e91" id="r_a3337a7c89376d12d006b09b7ce521e91"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3337a7c89376d12d006b09b7ce521e91">branch_leaf</a> (Tableau tbl, vector&lt; int &gt; branch)</td></tr>
+<tr class="memitem:a3337a7c89376d12d006b09b7ce521e91" id="r_a3337a7c89376d12d006b09b7ce521e91"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3337a7c89376d12d006b09b7ce521e91">branch_leaf</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; int &gt; branch)</td></tr>
 <tr class="memdesc:a3337a7c89376d12d006b09b7ce521e91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the index of leaf node of a tableau branch.  <br /></td></tr>
-<tr class="memitem:a40da38b46d446103c728f229bf66d055" id="r_a40da38b46d446103c728f229bf66d055"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40da38b46d446103c728f229bf66d055">get_tbl_levels</a> (Tableau tbl)</td></tr>
+<tr class="memitem:a40da38b46d446103c728f229bf66d055" id="r_a40da38b46d446103c728f229bf66d055"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40da38b46d446103c728f229bf66d055">get_tbl_levels</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl)</td></tr>
 <tr class="memdesc:a40da38b46d446103c728f229bf66d055"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the level of each node of a tableau tree.  <br /></td></tr>
 <tr class="memitem:aa60b5a85ea642522097d0c999f366556" id="r_aa60b5a85ea642522097d0c999f366556"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa60b5a85ea642522097d0c999f366556">opposite_polarity_nodes</a> (<a class="el" href="struct_tbl_node.html">TblNode</a> node1, <a class="el" href="struct_tbl_node.html">TblNode</a> node2)</td></tr>
 <tr class="memdesc:aa60b5a85ea642522097d0c999f366556"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if two nodes of a tableau have opposite polarity.  <br /></td></tr>
-<tr class="memitem:ad6432810b78cb2209f33b7eb48d280ed" id="r_ad6432810b78cb2209f33b7eb48d280ed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6432810b78cb2209f33b7eb48d280ed">branch_is_closed</a> (vector&lt; int &gt; branch, Tableau tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:ad6432810b78cb2209f33b7eb48d280ed" id="r_ad6432810b78cb2209f33b7eb48d280ed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6432810b78cb2209f33b7eb48d280ed">branch_is_closed</a> (vector&lt; int &gt; branch, <a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:ad6432810b78cb2209f33b7eb48d280ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a branch is closed.  <br /></td></tr>
 <tr class="memitem:ae497d4bab462295078e831c860502608" id="r_ae497d4bab462295078e831c860502608"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae497d4bab462295078e831c860502608">get_closure_rules</a> (vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:ae497d4bab462295078e831c860502608"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the closure rules of a vector of expansion rules.  <br /></td></tr>
-<tr class="memitem:a0f21a53069dd30813044d9dd5b739cd2" id="r_a0f21a53069dd30813044d9dd5b739cd2"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f21a53069dd30813044d9dd5b739cd2">get_tbl_open_branches</a> (Tableau tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:a0f21a53069dd30813044d9dd5b739cd2" id="r_a0f21a53069dd30813044d9dd5b739cd2"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f21a53069dd30813044d9dd5b739cd2">get_tbl_open_branches</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:a0f21a53069dd30813044d9dd5b739cd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the open branches of a tableau.  <br /></td></tr>
-<tr class="memitem:ad194cbda2bd313b879a6edc086a74c91" id="r_ad194cbda2bd313b879a6edc086a74c91"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad194cbda2bd313b879a6edc086a74c91">tbl_is_closed</a> (Tableau tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:ad194cbda2bd313b879a6edc086a74c91" id="r_ad194cbda2bd313b879a6edc086a74c91"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad194cbda2bd313b879a6edc086a74c91">tbl_is_closed</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:ad194cbda2bd313b879a6edc086a74c91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a tableau is closed.  <br /></td></tr>
-<tr class="memitem:ac44437b40ef62e35c8d2d142dbb10dbb" id="r_ac44437b40ef62e35c8d2d142dbb10dbb"><td class="memItemLeft" align="right" valign="top">vector&lt; Term &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac44437b40ef62e35c8d2d142dbb10dbb">get_all_terms_of_branch</a> (Tableau tbl, vector&lt; int &gt; branch)</td></tr>
+<tr class="memitem:ac44437b40ef62e35c8d2d142dbb10dbb" id="r_ac44437b40ef62e35c8d2d142dbb10dbb"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="definitions_8h.html#ae8397a28d7aa336d19e1570503bc686d">Term</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac44437b40ef62e35c8d2d142dbb10dbb">get_all_terms_of_branch</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; int &gt; branch)</td></tr>
 <tr class="memdesc:ac44437b40ef62e35c8d2d142dbb10dbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets all terms of a tableau branch.  <br /></td></tr>
-<tr class="memitem:ad97b7dbd412643a54ac952f582da9e43" id="r_ad97b7dbd412643a54ac952f582da9e43"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad97b7dbd412643a54ac952f582da9e43">has_single_justification_nodes</a> (Tableau tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:ad97b7dbd412643a54ac952f582da9e43" id="r_ad97b7dbd412643a54ac952f582da9e43"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad97b7dbd412643a54ac952f582da9e43">has_single_justification_nodes</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:ad97b7dbd412643a54ac952f582da9e43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a tableau has a node that is a justification for a 1-premise rule.  <br /></td></tr>
-<tr class="memitem:a4b2937048ed3e25b66b9d7e79b106b67" id="r_a4b2937048ed3e25b66b9d7e79b106b67"><td class="memItemLeft" align="right" valign="top">Tableau&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b2937048ed3e25b66b9d7e79b106b67">apply_single_premise_rules</a> (Tableau tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:a4b2937048ed3e25b66b9d7e79b106b67" id="r_a4b2937048ed3e25b66b9d7e79b106b67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b2937048ed3e25b66b9d7e79b106b67">apply_single_premise_rules</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:a4b2937048ed3e25b66b9d7e79b106b67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies all possible single premise rules in a tableau.  <br /></td></tr>
-<tr class="memitem:ac0d3a75fef574df9bce8d720ab355810" id="r_ac0d3a75fef574df9bce8d720ab355810"><td class="memItemLeft" align="right" valign="top">vector&lt; Tableau &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0d3a75fef574df9bce8d720ab355810">get_tbl_successors</a> (Tableau tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:ac0d3a75fef574df9bce8d720ab355810" id="r_ac0d3a75fef574df9bce8d720ab355810"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0d3a75fef574df9bce8d720ab355810">get_tbl_successors</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:ac0d3a75fef574df9bce8d720ab355810"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the successor tableaux of a tableau.  <br /></td></tr>
-<tr class="memitem:a4ed9cd0982b39af333fc7341e5fda7a1" id="r_a4ed9cd0982b39af333fc7341e5fda7a1"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ed9cd0982b39af333fc7341e5fda7a1">branch_closure_nodes</a> (vector&lt; int &gt; branch, Tableau tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:a4ed9cd0982b39af333fc7341e5fda7a1" id="r_a4ed9cd0982b39af333fc7341e5fda7a1"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ed9cd0982b39af333fc7341e5fda7a1">branch_closure_nodes</a> (vector&lt; int &gt; branch, <a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:a4ed9cd0982b39af333fc7341e5fda7a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the indexes of the nodes that make a branch to close.  <br /></td></tr>
-<tr class="memitem:a51ecabe658830159df1198fd09ec2099" id="r_a51ecabe658830159df1198fd09ec2099"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51ecabe658830159df1198fd09ec2099">get_branch_size</a> (Tableau tbl, vector&lt; int &gt; branch, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:a51ecabe658830159df1198fd09ec2099" id="r_a51ecabe658830159df1198fd09ec2099"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51ecabe658830159df1198fd09ec2099">get_branch_size</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; int &gt; branch, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:a51ecabe658830159df1198fd09ec2099"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the size of a branch of a tableau.  <br /></td></tr>
-<tr class="memitem:a1dd3cd048a000a23ab068a50a00f3a91" id="r_a1dd3cd048a000a23ab068a50a00f3a91"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1dd3cd048a000a23ab068a50a00f3a91">get_size</a> (Tableau tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:a1dd3cd048a000a23ab068a50a00f3a91" id="r_a1dd3cd048a000a23ab068a50a00f3a91"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1dd3cd048a000a23ab068a50a00f3a91">get_size</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:a1dd3cd048a000a23ab068a50a00f3a91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the size of a tableau.  <br /></td></tr>
-<tr class="memitem:acce30c60d6fb40d70b2ebaeeed20da88" id="r_acce30c60d6fb40d70b2ebaeeed20da88"><td class="memItemLeft" align="right" valign="top">vector&lt; Tableau &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acce30c60d6fb40d70b2ebaeeed20da88">search_minimal_proofs</a> (vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; sf, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:acce30c60d6fb40d70b2ebaeeed20da88" id="r_acce30c60d6fb40d70b2ebaeeed20da88"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acce30c60d6fb40d70b2ebaeeed20da88">search_minimal_proofs</a> (vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; sf, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:acce30c60d6fb40d70b2ebaeeed20da88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches for the minimal proofs for a set of signed formulas.  <br /></td></tr>
-<tr class="memitem:a866a52ad5384b2c5a8370e671eb989e8" id="r_a866a52ad5384b2c5a8370e671eb989e8"><td class="memItemLeft" align="right" valign="top">Tableau&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a866a52ad5384b2c5a8370e671eb989e8">clean_tbl</a> (Tableau tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:a866a52ad5384b2c5a8370e671eb989e8" id="r_a866a52ad5384b2c5a8370e671eb989e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a866a52ad5384b2c5a8370e671eb989e8">clean_tbl</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:a866a52ad5384b2c5a8370e671eb989e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the clean proof for a proof.  <br /></td></tr>
-<tr class="memitem:a0f9d37fd4ac7aaf088d4cdd9603bda48" id="r_a0f9d37fd4ac7aaf088d4cdd9603bda48"><td class="memItemLeft" align="right" valign="top">Tableau&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f9d37fd4ac7aaf088d4cdd9603bda48">remove_node</a> (Tableau tbl, int idx)</td></tr>
+<tr class="memitem:a0f9d37fd4ac7aaf088d4cdd9603bda48" id="r_a0f9d37fd4ac7aaf088d4cdd9603bda48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f9d37fd4ac7aaf088d4cdd9603bda48">remove_node</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, int idx)</td></tr>
 <tr class="memdesc:a0f9d37fd4ac7aaf088d4cdd9603bda48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a node of a tableau.  <br /></td></tr>
-<tr class="memitem:af621607fd21ff1632ecea8417e709fb1" id="r_af621607fd21ff1632ecea8417e709fb1"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af621607fd21ff1632ecea8417e709fb1">minor_copremises_branch</a> (Tableau tbl, vector&lt; int &gt; branch, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:af621607fd21ff1632ecea8417e709fb1" id="r_af621607fd21ff1632ecea8417e709fb1"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af621607fd21ff1632ecea8417e709fb1">minor_copremises_branch</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; int &gt; branch, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:af621607fd21ff1632ecea8417e709fb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the minor co-premises of a branch.  <br /></td></tr>
 <tr class="memitem:af6c521d1fc942d77ac657819f0915fde" id="r_af6c521d1fc942d77ac657819f0915fde"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6c521d1fc942d77ac657819f0915fde">minor_copremises_rule</a> (<a class="el" href="struct_signed_fmla.html">SignedFmla</a> sf, <a class="el" href="struct_tbl_rule.html">TblRule</a> rule)</td></tr>
 <tr class="memdesc:af6c521d1fc942d77ac657819f0915fde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the minor co-premises of a rule.  <br /></td></tr>
-<tr class="memitem:a17085875b5dbfcf98c31a5b185861758" id="r_a17085875b5dbfcf98c31a5b185861758"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17085875b5dbfcf98c31a5b185861758">fmla_in_vec_fmla</a> (vector&lt; Fmla &gt; fmlas, Fmla fmla)</td></tr>
+<tr class="memitem:a17085875b5dbfcf98c31a5b185861758" id="r_a17085875b5dbfcf98c31a5b185861758"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17085875b5dbfcf98c31a5b185861758">fmla_in_vec_fmla</a> (vector&lt; <a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a> &gt; fmlas, <a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a> fmla)</td></tr>
 <tr class="memdesc:a17085875b5dbfcf98c31a5b185861758"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a formula is in a vector of formulas.  <br /></td></tr>
-<tr class="memitem:abd68e5d79a19a5d03b8d74f54b6e2340" id="r_abd68e5d79a19a5d03b8d74f54b6e2340"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd68e5d79a19a5d03b8d74f54b6e2340">fmla_in_vec_signed_fmla</a> (vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; signed_fmlas, Fmla fmla)</td></tr>
+<tr class="memitem:abd68e5d79a19a5d03b8d74f54b6e2340" id="r_abd68e5d79a19a5d03b8d74f54b6e2340"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd68e5d79a19a5d03b8d74f54b6e2340">fmla_in_vec_signed_fmla</a> (vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; signed_fmlas, <a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a> fmla)</td></tr>
 <tr class="memdesc:abd68e5d79a19a5d03b8d74f54b6e2340"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a formula is in a formula of a vector of signed formulas.  <br /></td></tr>
 <tr class="memitem:a85d16094509275c2252b613f54a59f02" id="r_a85d16094509275c2252b613f54a59f02"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85d16094509275c2252b613f54a59f02">signed_fmla_in_vec_signed_fmla</a> (vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; signed_fmlas, <a class="el" href="struct_signed_fmla.html">SignedFmla</a> sf)</td></tr>
 <tr class="memdesc:a85d16094509275c2252b613f54a59f02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a signed formula is in a vector of signed formula.  <br /></td></tr>
-<tr class="memitem:a950be4cc2826d6216be6123f0b8611ed" id="r_a950be4cc2826d6216be6123f0b8611ed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a950be4cc2826d6216be6123f0b8611ed">node_in_branch</a> (<a class="el" href="struct_signed_fmla.html">SignedFmla</a> sf, Tableau tbl, vector&lt; int &gt; branch)</td></tr>
+<tr class="memitem:a950be4cc2826d6216be6123f0b8611ed" id="r_a950be4cc2826d6216be6123f0b8611ed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a950be4cc2826d6216be6123f0b8611ed">node_in_branch</a> (<a class="el" href="struct_signed_fmla.html">SignedFmla</a> sf, <a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; int &gt; branch)</td></tr>
 <tr class="memdesc:a950be4cc2826d6216be6123f0b8611ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a signed formula is in a branch of a tableau.  <br /></td></tr>
-<tr class="memitem:ae9f25c8776bba062396ba9df0cca7c26" id="r_ae9f25c8776bba062396ba9df0cca7c26"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9f25c8776bba062396ba9df0cca7c26">search_proof_isomorphic_sf_sets</a> (Tableau tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:ae9f25c8776bba062396ba9df0cca7c26" id="r_ae9f25c8776bba062396ba9df0cca7c26"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9f25c8776bba062396ba9df0cca7c26">search_proof_isomorphic_sf_sets</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:ae9f25c8776bba062396ba9df0cca7c26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches for proof-isomorphic sets of signed formulas.  <br /></td></tr>
-<tr class="memitem:a0a8f96049f257030e75b3a989d9d7183" id="r_a0a8f96049f257030e75b3a989d9d7183"><td class="memItemLeft" align="right" valign="top">map&lt; pair&lt; int, int &gt;, set&lt; string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a8f96049f257030e75b3a989d9d7183">get_ps_candidate_symbols</a> (Tableau tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:a0a8f96049f257030e75b3a989d9d7183" id="r_a0a8f96049f257030e75b3a989d9d7183"><td class="memItemLeft" align="right" valign="top">map&lt; pair&lt; int, int &gt;, set&lt; string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a8f96049f257030e75b3a989d9d7183">get_ps_candidate_symbols</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:a0a8f96049f257030e75b3a989d9d7183"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the proof-isomorphic candidate symbols of the nodes in the initial segment of a tableau.  <br /></td></tr>
-<tr class="memitem:ad82e15b557fbf7c7c4d8d8583be69deb" id="r_ad82e15b557fbf7c7c4d8d8583be69deb"><td class="memItemLeft" align="right" valign="top">vector&lt; tuple&lt; int, pair&lt; int, int &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad82e15b557fbf7c7c4d8d8583be69deb">get_vec_symb_descendant_occurrences</a> (Fmla prem_fmla, Fmla conc_fmla, Fmla justf_fmla, Fmla exp_fmla, vector&lt; tuple&lt; int, pair&lt; int, int &gt; &gt; &gt; ps_symbs)</td></tr>
-<tr class="memdesc:ad82e15b557fbf7c7c4d8d8583be69deb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the direct descendant occurrences of the occurrence of a symbol.  <br /></td></tr>
+<tr class="memitem:ad82e15b557fbf7c7c4d8d8583be69deb" id="r_ad82e15b557fbf7c7c4d8d8583be69deb"><td class="memItemLeft" align="right" valign="top">vector&lt; tuple&lt; int, pair&lt; int, int &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad82e15b557fbf7c7c4d8d8583be69deb">get_vec_symb_descendant_occurrences</a> (<a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a> prem_fmla, <a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a> conc_fmla, <a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a> justf_fmla, <a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a> exp_fmla, vector&lt; tuple&lt; int, pair&lt; int, int &gt; &gt; &gt; ps_symbs)</td></tr>
+<tr class="memdesc:ad82e15b557fbf7c7c4d8d8583be69deb"><td class="mdescLeft">&#160;</td><td class="mdescRight">For every symbol occurrence <span class="tt">o</span>, gets the occurrence of the symbol in the initial tableau segment for which <span class="tt">o</span> is a descendant occurrence.  <br /></td></tr>
 <tr class="memitem:adc29e527dd4cefdaa6b666da31cd9706" id="r_adc29e527dd4cefdaa6b666da31cd9706"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc29e527dd4cefdaa6b666da31cd9706">get_sf_candidates</a> (vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; initial_sf, map&lt; pair&lt; int, int &gt;, set&lt; string &gt; &gt; ps_candidate_symbols)</td></tr>
 <tr class="memdesc:adc29e527dd4cefdaa6b666da31cd9706"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the proof-isomorphic candidates set of signed formulas.  <br /></td></tr>
 <tr class="memitem:ae47b8cfce9d1f75c0676a1083f5d653c" id="r_ae47b8cfce9d1f75c0676a1083f5d653c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae47b8cfce9d1f75c0676a1083f5d653c">vec_sf_equality</a> (vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; vec_sf1, vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; vec_sf2)</td></tr>
 <tr class="memdesc:ae47b8cfce9d1f75c0676a1083f5d653c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if two vector of signed formulas are.  <br /></td></tr>
 <tr class="memitem:a57f3fff79f7d63755d19829d0840304d" id="r_a57f3fff79f7d63755d19829d0840304d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57f3fff79f7d63755d19829d0840304d">vec_sf_in_vec_vec_sf</a> (vector&lt; vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; &gt; vec_vec_sf, vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; vec_sf)</td></tr>
 <tr class="memdesc:a57f3fff79f7d63755d19829d0840304d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a vector of signed formulas is in a vector of vector of signed formulas.  <br /></td></tr>
-<tr class="memitem:a2583bf6896ef17972da115d7e34ae172" id="r_a2583bf6896ef17972da115d7e34ae172"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2583bf6896ef17972da115d7e34ae172">get_cut_sibling_node</a> (Tableau tbl, int cut_node_idx)</td></tr>
+<tr class="memitem:a2583bf6896ef17972da115d7e34ae172" id="r_a2583bf6896ef17972da115d7e34ae172"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2583bf6896ef17972da115d7e34ae172">get_cut_sibling_node</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, int cut_node_idx)</td></tr>
 <tr class="memdesc:a2583bf6896ef17972da115d7e34ae172"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the index of the sibling node of a cut node.  <br /></td></tr>
-<tr class="memitem:aa2cc88d68a417e3bceeca54e244a0556" id="r_aa2cc88d68a417e3bceeca54e244a0556"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2cc88d68a417e3bceeca54e244a0556">is_proof_isomorphic_sf_set</a> (Tableau tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er, vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; sf)</td></tr>
+<tr class="memitem:aa2cc88d68a417e3bceeca54e244a0556" id="r_aa2cc88d68a417e3bceeca54e244a0556"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2cc88d68a417e3bceeca54e244a0556">is_proof_isomorphic_sf_set</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er, vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; sf)</td></tr>
 <tr class="memdesc:aa2cc88d68a417e3bceeca54e244a0556"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if there is a proof for a vector of signed formulas that is proof-isomorphic to a tableau given as input.  <br /></td></tr>
-<tr class="memitem:a543450c99d92b6d13f3f6a08134e0fc3" id="r_a543450c99d92b6d13f3f6a08134e0fc3"><td class="memItemLeft" align="right" valign="top">Tableau&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a543450c99d92b6d13f3f6a08134e0fc3">search_proof_isomorphic_sf_set</a> (Tableau tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er, vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; sf)</td></tr>
-<tr class="memitem:ab07401d8d951266d6d0ee1376af2b20c" id="r_ab07401d8d951266d6d0ee1376af2b20c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab07401d8d951266d6d0ee1376af2b20c">is_closure_isomorphic</a> (Tableau tbl, Tableau proof_isomorphic_tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
+<tr class="memitem:ab07401d8d951266d6d0ee1376af2b20c" id="r_ab07401d8d951266d6d0ee1376af2b20c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab07401d8d951266d6d0ee1376af2b20c">is_closure_isomorphic</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl, <a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> proof_isomorphic_tbl, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:ab07401d8d951266d6d0ee1376af2b20c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if two tableaux proofs are closure-isomorphic.  <br /></td></tr>
 <tr class="memitem:acdcc9309d1a9a33a529191255b27f4da" id="r_acdcc9309d1a9a33a529191255b27f4da"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdcc9309d1a9a33a529191255b27f4da">get_conclusions_from_justifications</a> (vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; justifications, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:acdcc9309d1a9a33a529191255b27f4da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the result of applying a rule having as justifications a vector of signed formula given as input.  <br /></td></tr>
 <tr class="memitem:a4af59d5f3487689c07e7b69543682b79" id="r_a4af59d5f3487689c07e7b69543682b79"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4af59d5f3487689c07e7b69543682b79">check_rule_application</a> (vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; justifications, <a class="el" href="struct_signed_fmla.html">SignedFmla</a> expansion, vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er)</td></tr>
 <tr class="memdesc:a4af59d5f3487689c07e7b69543682b79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a vector of signed formulas can be the justification of a rule and if a signed formula can be the result of applying such rule.  <br /></td></tr>
-<tr class="memitem:a0dc23069db3557b49e94ca0145eefa90" id="r_a0dc23069db3557b49e94ca0145eefa90"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0dc23069db3557b49e94ca0145eefa90">get_initial_sf</a> (Tableau tbl)</td></tr>
+<tr class="memitem:a0dc23069db3557b49e94ca0145eefa90" id="r_a0dc23069db3557b49e94ca0145eefa90"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0dc23069db3557b49e94ca0145eefa90">get_initial_sf</a> (<a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> tbl)</td></tr>
 <tr class="memdesc:a0dc23069db3557b49e94ca0145eefa90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the signed formulas of the initial segment of a tableau.  <br /></td></tr>
 <tr class="memitem:a7c52c9b467b39e51845fb10305bfdaaf" id="r_a7c52c9b467b39e51845fb10305bfdaaf"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c52c9b467b39e51845fb10305bfdaaf">pattern_matching_premises</a> (vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; er, <a class="el" href="struct_tbl_rule.html">TblRule</a> rule, int prem_idx, int conc_idx)</td></tr>
 <tr class="memdesc:a7c52c9b467b39e51845fb10305bfdaaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the premises of the rules that are syntatically isomorphic to the premises of a rule given as input.  <br /></td></tr>
-<tr class="memitem:a904390a6fa936a8d162565c55ce9c8ca" id="r_a904390a6fa936a8d162565c55ce9c8ca"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a904390a6fa936a8d162565c55ce9c8ca">get_syntactic_matching_symb</a> (Fmla fmla, int node_idx, Fmla matching_fmla)</td></tr>
+<tr class="memitem:a904390a6fa936a8d162565c55ce9c8ca" id="r_a904390a6fa936a8d162565c55ce9c8ca"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a904390a6fa936a8d162565c55ce9c8ca">get_syntactic_matching_symb</a> (<a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a> fmla, int node_idx, <a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a> matching_fmla)</td></tr>
 <tr class="memdesc:a904390a6fa936a8d162565c55ce9c8ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the syntactic matching symbol of the occurrence of a symbol given as input.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
@@ -212,9 +211,9 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt; Tableau &gt; apply_cut </td>
+          <td class="memname">vector&lt; <a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> &gt; apply_cut </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -227,7 +226,7 @@ Functions</h2></td></tr>
 <p>Applies a cut rule in a tableau. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">er</td><td>Vector of expansion rules </td></tr>
   </table>
   </dd>
@@ -243,9 +242,9 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Tableau apply_rule_with_premise </td>
+          <td class="memname"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> apply_rule_with_premise </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -268,7 +267,7 @@ Functions</h2></td></tr>
 <p>Tries to apply a rule in a tableau. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableaux </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">expansion_rule</td><td>Expansion rule to be applied in the tableau </td></tr>
     <tr><td class="paramname">rule_idx</td><td>Index of expansion_rule in er </td></tr>
     <tr><td class="paramname">er</td><td>Vector of expansion rules </td></tr>
@@ -288,9 +287,9 @@ Otherwise, the tableau itself </dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Tableau apply_single_premise_rules </td>
+          <td class="memname"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> apply_single_premise_rules </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -303,7 +302,7 @@ Otherwise, the tableau itself </dd></dl>
 <p>Applies all possible single premise rules in a tableau. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">er</td><td>Expansion rules </td></tr>
   </table>
   </dd>
@@ -326,7 +325,7 @@ Otherwise, the tableau itself </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -340,7 +339,7 @@ Otherwise, the tableau itself </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">branch</td><td>Branch of tbl </td></tr>
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">er</td><td>Expansion rules </td></tr>
   </table>
   </dd>
@@ -363,7 +362,7 @@ Otherwise, the tableau itself </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -377,7 +376,7 @@ Otherwise, the tableau itself </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">branch</td><td>Branch of tbl </td></tr>
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">er</td><td>Expansion rules </td></tr>
   </table>
   </dd>
@@ -397,7 +396,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">int branch_leaf </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -410,7 +409,7 @@ False otherwise </dd></dl>
 <p>Gets the index of leaf node of a tableau branch. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">branch</td><td>Branch of tbl </td></tr>
   </table>
   </dd>
@@ -465,9 +464,9 @@ False otherwise </dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Tableau clean_tbl </td>
+          <td class="memname"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> clean_tbl </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -480,7 +479,7 @@ False otherwise </dd></dl>
 <p>Gets the clean proof for a proof. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau proof </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> proof </td></tr>
     <tr><td class="paramname">er</td><td>Expansion rules </td></tr>
   </table>
   </dd>
@@ -498,12 +497,12 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">bool fmla_in_vec_fmla </td>
           <td>(</td>
-          <td class="paramtype">vector&lt; Fmla &gt;</td>          <td class="paramname"><span class="paramname"><em>fmlas</em></span>, </td>
+          <td class="paramtype">vector&lt; <a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>fmlas</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Fmla</td>          <td class="paramname"><span class="paramname"><em>fmla</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a></td>          <td class="paramname"><span class="paramname"><em>fmla</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -536,7 +535,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Fmla</td>          <td class="paramname"><span class="paramname"><em>fmla</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a></td>          <td class="paramname"><span class="paramname"><em>fmla</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -562,9 +561,9 @@ False otherwise </dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt; Term &gt; get_all_terms_of_branch </td>
+          <td class="memname">vector&lt; <a class="el" href="definitions_8h.html#ae8397a28d7aa336d19e1570503bc686d">Term</a> &gt; get_all_terms_of_branch </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -577,7 +576,7 @@ False otherwise </dd></dl>
 <p>Gets all terms of a tableau branch. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">branch</td><td>Branch of tbl </td></tr>
   </table>
   </dd>
@@ -595,7 +594,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">int get_branch_size </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -613,7 +612,7 @@ False otherwise </dd></dl>
 <p>Gets the size of a branch of a tableau. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">branch</td><td>Branch of tbl </td></tr>
     <tr><td class="paramname">er</td><td>Expansion rules </td></tr>
   </table>
@@ -689,7 +688,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">int get_cut_sibling_node </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -702,7 +701,7 @@ False otherwise </dd></dl>
 <p>Gets the index of the sibling node of a cut node. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">cut_node_idx</td><td>Index of cut node </td></tr>
   </table>
   </dd>
@@ -720,7 +719,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">int get_height_initial_nodes </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -729,7 +728,7 @@ False otherwise </dd></dl>
 <p>Get the height initial nodes object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -746,7 +745,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; get_initial_sf </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -755,7 +754,7 @@ False otherwise </dd></dl>
 <p>Gets the signed formulas of the initial segment of a tableau. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -770,7 +769,7 @@ False otherwise </dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Tableau get_initial_tableau </td>
+          <td class="memname"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> get_initial_tableau </td>
           <td>(</td>
           <td class="paramtype">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>sf_input</em></span></td><td>)</td>
           <td></td>
@@ -798,7 +797,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">vector&lt; int &gt; get_justifications_closure_rule </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -816,7 +815,7 @@ False otherwise </dd></dl>
 <p>Gets the index of the justifications for the application of a closure rule. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">branch</td><td>Branch of tbl </td></tr>
     <tr><td class="paramname">closure_rule</td><td>Expansion closure rule </td></tr>
   </table>
@@ -835,7 +834,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">map&lt; pair&lt; int, int &gt;, set&lt; string &gt; &gt; get_ps_candidate_symbols </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -848,7 +847,7 @@ False otherwise </dd></dl>
 <p>Gets the proof-isomorphic candidate symbols of the nodes in the initial segment of a tableau. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">er</td><td>Expansion rules </td></tr>
   </table>
   </dd>
@@ -897,7 +896,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">int get_size </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -910,7 +909,7 @@ False otherwise </dd></dl>
 <p>Gets the size of a tableau. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">er</td><td>Expansion rules </td></tr>
   </table>
   </dd>
@@ -928,7 +927,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">string get_syntactic_matching_symb </td>
           <td>(</td>
-          <td class="paramtype">Fmla</td>          <td class="paramname"><span class="paramname"><em>fmla</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a></td>          <td class="paramname"><span class="paramname"><em>fmla</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -938,7 +937,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Fmla</td>          <td class="paramname"><span class="paramname"><em>matching_fmla</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a></td>          <td class="paramname"><span class="paramname"><em>matching_fmla</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -965,7 +964,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">vector&lt; vector&lt; int &gt; &gt; get_tbl_branches </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -974,7 +973,7 @@ False otherwise </dd></dl>
 <p>Gets the branches of a tableau. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -991,7 +990,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">vector&lt; int &gt; get_tbl_leaves </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1000,7 +999,7 @@ False otherwise </dd></dl>
 <p>Gets the leaves of a tableau. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1017,7 +1016,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">vector&lt; int &gt; get_tbl_levels </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1026,7 +1025,7 @@ False otherwise </dd></dl>
 <p>Gets the level of each node of a tableau tree. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1043,7 +1042,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">vector&lt; vector&lt; int &gt; &gt; get_tbl_open_branches </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1056,7 +1055,7 @@ False otherwise </dd></dl>
 <p>Gets the open branches of a tableau. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">er</td><td>Expansion rules </td></tr>
   </table>
   </dd>
@@ -1072,9 +1071,9 @@ False otherwise </dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt; Tableau &gt; get_tbl_successors </td>
+          <td class="memname">vector&lt; <a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> &gt; get_tbl_successors </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1087,7 +1086,7 @@ False otherwise </dd></dl>
 <p>Gets the successor tableaux of a tableau. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableaux </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">er</td><td>Expansion rules </td></tr>
   </table>
   </dd>
@@ -1105,22 +1104,22 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">vector&lt; tuple&lt; int, pair&lt; int, int &gt; &gt; &gt; get_vec_symb_descendant_occurrences </td>
           <td>(</td>
-          <td class="paramtype">Fmla</td>          <td class="paramname"><span class="paramname"><em>prem_fmla</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a></td>          <td class="paramname"><span class="paramname"><em>prem_fmla</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Fmla</td>          <td class="paramname"><span class="paramname"><em>conc_fmla</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a></td>          <td class="paramname"><span class="paramname"><em>conc_fmla</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Fmla</td>          <td class="paramname"><span class="paramname"><em>justf_fmla</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a></td>          <td class="paramname"><span class="paramname"><em>justf_fmla</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Fmla</td>          <td class="paramname"><span class="paramname"><em>exp_fmla</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a></td>          <td class="paramname"><span class="paramname"><em>exp_fmla</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1130,18 +1129,18 @@ False otherwise </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Gets the direct descendant occurrences of the occurrence of a symbol. </p>
+<p>For every symbol occurrence <span class="tt">o</span>, gets the occurrence of the symbol in the initial tableau segment for which <span class="tt">o</span> is a descendant occurrence. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">prem_fmla</td><td>Formula </td></tr>
     <tr><td class="paramname">conc_fmla</td><td>Formula </td></tr>
     <tr><td class="paramname">justf_fmla</td><td>Formula </td></tr>
     <tr><td class="paramname">exp_fmla</td><td>Formula </td></tr>
-    <tr><td class="paramname">ps_symbs</td><td></td></tr>
+    <tr><td class="paramname">ps_symbs</td><td>Symbol occurrences <span class="tt">p</span> from <span class="tt">just_fmla</span> and the occurrence of the symbol in the initial tableau segment for which <span class="tt">p</span> is a descendant occurrence </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>TODO </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Symbol occurrences <span class="tt">p</span> from <span class="tt">exp_fmla</span> and the occurrence of the symbol in the initial tableau segment for which <span class="tt">p</span> is a descendant occurrence </dd></dl>
 
 </div>
 </div>
@@ -1154,7 +1153,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">bool has_single_justification_nodes </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1167,7 +1166,7 @@ False otherwise </dd></dl>
 <p>Checks if a tableau has a node that is a justification for a 1-premise rule. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">er</td><td>Expasnion rules </td></tr>
   </table>
   </dd>
@@ -1187,12 +1186,12 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">bool is_a_match </td>
           <td>(</td>
-          <td class="paramtype">Fmla</td>          <td class="paramname"><span class="paramname"><em>fmla_tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a></td>          <td class="paramname"><span class="paramname"><em>fmla_tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Fmla</td>          <td class="paramname"><span class="paramname"><em>premise_fmla</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a></td>          <td class="paramname"><span class="paramname"><em>premise_fmla</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1253,12 +1252,12 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">bool is_closure_isomorphic </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>proof_isomorphic_tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>proof_isomorphic_tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1271,8 +1270,8 @@ False otherwise </dd></dl>
 <p>Checks if two tableaux proofs are closure-isomorphic. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
-    <tr><td class="paramname">proof_isomorphic_tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
+    <tr><td class="paramname">proof_isomorphic_tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">er</td><td>Expansion rules </td></tr>
   </table>
   </dd>
@@ -1292,7 +1291,7 @@ False </dd></dl>
         <tr>
           <td class="memname">bool is_proof_isomorphic_sf_set </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1310,7 +1309,7 @@ False </dd></dl>
 <p>Check if there is a proof for a vector of signed formulas that is proof-isomorphic to a tableau given as input. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">er</td><td>Expansion rules </td></tr>
     <tr><td class="paramname">sf</td><td>Signed formulas </td></tr>
   </table>
@@ -1329,14 +1328,14 @@ False otherwise </dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Subst matching_parameters </td>
+          <td class="memname"><a class="el" href="definitions_8h.html#aab3e9a4d220294e96fdc69686b8a56bc">Subst</a> matching_parameters </td>
           <td>(</td>
-          <td class="paramtype">Fmla</td>          <td class="paramname"><span class="paramname"><em>fmla_tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a></td>          <td class="paramname"><span class="paramname"><em>fmla_tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Fmla</td>          <td class="paramname"><span class="paramname"><em>premise_fmla</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#a3c9be0e0eaa893de8fd1b6734db927a5">Fmla</a></td>          <td class="paramname"><span class="paramname"><em>premise_fmla</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1360,7 +1359,7 @@ False otherwise </dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Subst matching_parameters </td>
+          <td class="memname"><a class="el" href="definitions_8h.html#aab3e9a4d220294e96fdc69686b8a56bc">Subst</a> matching_parameters </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_signed_fmla.html">SignedFmla</a></td>          <td class="paramname"><span class="paramname"><em>sf_tbl</em></span>, </td>
         </tr>
@@ -1393,7 +1392,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; minor_copremises_branch </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1411,7 +1410,7 @@ False otherwise </dd></dl>
 <p>Gets the minor co-premises of a branch. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">branch</td><td>Branch of tbl </td></tr>
     <tr><td class="paramname">er</td><td>Expansion rules </td></tr>
   </table>
@@ -1466,7 +1465,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1480,7 +1479,7 @@ False otherwise </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sf</td><td>Signed formula </td></tr>
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">branch</td><td>Branch </td></tr>
   </table>
   </dd>
@@ -1574,9 +1573,9 @@ False otherwise </dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Tableau remove_node </td>
+          <td class="memname"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> remove_node </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1589,12 +1588,12 @@ False otherwise </dd></dl>
 <p>Removes a node of a tableau. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">idx</td><td>Index of the node to be removed </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Tableau with the node of index <span class="tt">idx</span> removed </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> with the node of index <span class="tt">idx</span> removed </dd></dl>
 
 </div>
 </div>
@@ -1605,7 +1604,7 @@ False otherwise </dd></dl>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt; Tableau &gt; search_minimal_proofs </td>
+          <td class="memname">vector&lt; <a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a> &gt; search_minimal_proofs </td>
           <td>(</td>
           <td class="paramtype">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>sf</em></span>, </td>
         </tr>
@@ -1629,41 +1628,6 @@ False otherwise </dd></dl>
 
 </div>
 </div>
-<a id="a543450c99d92b6d13f3f6a08134e0fc3" name="a543450c99d92b6d13f3f6a08134e0fc3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a543450c99d92b6d13f3f6a08134e0fc3">&#9670;&#160;</a></span>search_proof_isomorphic_sf_set()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Tableau search_proof_isomorphic_sf_set </td>
-          <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>er</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>sf</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">tbl</td><td></td></tr>
-    <tr><td class="paramname">er</td><td></td></tr>
-    <tr><td class="paramname">sf</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Tableau </dd></dl>
-
-</div>
-</div>
 <a id="ae9f25c8776bba062396ba9df0cca7c26" name="ae9f25c8776bba062396ba9df0cca7c26"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae9f25c8776bba062396ba9df0cca7c26">&#9670;&#160;</a></span>search_proof_isomorphic_sf_sets()</h2>
 
@@ -1673,7 +1637,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">vector&lt; vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; &gt; search_proof_isomorphic_sf_sets </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1686,7 +1650,7 @@ False otherwise </dd></dl>
 <p>Searches for proof-isomorphic sets of signed formulas. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">er</td><td>Expansion rules </td></tr>
   </table>
   </dd>
@@ -1737,7 +1701,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">bool tbl_is_closed </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1750,7 +1714,7 @@ False otherwise </dd></dl>
 <p>Checks if a tableau is closed. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">er</td><td>Expansion rules </td></tr>
   </table>
   </dd>
@@ -1770,7 +1734,7 @@ False otherwise </dd></dl>
         <tr>
           <td class="memname">bool try_apply_closure_rule </td>
           <td>(</td>
-          <td class="paramtype">Tableau</td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
+          <td class="paramtype"><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f">Tableau</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1788,7 +1752,7 @@ False otherwise </dd></dl>
 <p>Checks if it is possible to apply a closure rule in a tableau. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tbl</td><td>Tableau </td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="definitions_8h.html#af846c8f1ad9462c2a3054fe98a04709f" title="A tableau tree is implemented as a vector TblNode objects.">Tableau</a> </td></tr>
     <tr><td class="paramname">branch</td><td>Branch of tbl in which the closure is tried to be applied </td></tr>
     <tr><td class="paramname">closure_rule</td><td>Expansion closure rule </td></tr>
   </table>

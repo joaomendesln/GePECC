@@ -1,0 +1,25 @@
+var syntax_8cpp =
+[
+    [ "are_isomorphic_with_equal_parameters", "syntax_8cpp.html#a7754782b0e0c67ee09dab03aeeda3522", null ],
+    [ "are_syntactically_isomorphic", "syntax_8cpp.html#af63e1202398c788554285b97d764abd7", null ],
+    [ "fmla_equality", "syntax_8cpp.html#a1eca6991e59a7f93e0ad6856c616628b", null ],
+    [ "fmla_equality_under_subst", "syntax_8cpp.html#abb1684aeca0e03c1ed66df2137cdd8c1", null ],
+    [ "get_all_terms_of_fmla", "syntax_8cpp.html#a87a962ad0c7602ca3c7f42344ed517cf", null ],
+    [ "get_height", "syntax_8cpp.html#af85d85f4387a74792143777073c381ac", null ],
+    [ "get_height", "syntax_8cpp.html#add997a22023032e9f25148b97568d292", null ],
+    [ "get_parameters", "syntax_8cpp.html#a90180fff69b56ec0d603c2c0cba502e9", null ],
+    [ "get_parameters", "syntax_8cpp.html#a4e39fbc17d38e18ea900e1d2853912d7", null ],
+    [ "get_parameters_idxs", "syntax_8cpp.html#ae8927609885e5caf995a2a8d9679efc2", null ],
+    [ "get_term_idx_img_subst", "syntax_8cpp.html#abfb81da42b15a6d4fffca8e3121f01ff", null ],
+    [ "get_term_of_fmla", "syntax_8cpp.html#a0f1236bcd79971d22c00c81928dc54ed", null ],
+    [ "is_a_parameter", "syntax_8cpp.html#a68b5ea4be20523cfbf26c61fc79110e5", null ],
+    [ "is_a_parameter", "syntax_8cpp.html#a76903e8837f2604938412913be499e22", null ],
+    [ "is_function_symb", "syntax_8cpp.html#a383f6252f9a0eb18f70b238670ba3531", null ],
+    [ "is_language_symb", "syntax_8cpp.html#a13899f73dee907be325cbc435e1b8077", null ],
+    [ "is_not_skolem_symb", "syntax_8cpp.html#a4051d22addea7c5a8d6c69495ed64dd1", null ],
+    [ "is_predicate_symb", "syntax_8cpp.html#ab9905a31ecdecc332522e30c5560b7a1", null ],
+    [ "parameter_in_fmla", "syntax_8cpp.html#a57af133585e0cc7a464fac1e59f64c26", null ],
+    [ "subst_extension", "syntax_8cpp.html#a816b400238a5b1daa42823e7b06e567c", null ],
+    [ "subst_parameter_by_term", "syntax_8cpp.html#a12a343976ceb13bffd2c7442c0b1d8cc", null ],
+    [ "term_equality", "syntax_8cpp.html#a264ca2b12ddc9d0c628b2262cb865aaa", null ]
+];

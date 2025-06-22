@@ -91,21 +91,79 @@ $(function(){initNavTree('struct_fmla_node.html','','struct_fmla_node-members');
   <div class="headertitle"><div class="title">FmlaNode Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Node of the abstract representation of a formula.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="definitions_8h_source.html">definitions.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af61ed31569306458d9113da2ea3e8543" id="r_af61ed31569306458d9113da2ea3e8543"><td class="memItemLeft" align="right" valign="top"><a id="af61ed31569306458d9113da2ea3e8543" name="af61ed31569306458d9113da2ea3e8543"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>FmlaNode</b> (string data, int parent, vector&lt; int &gt; children)</td></tr>
+<tr class="memitem:a0cd8241235e0a1af8fb43b453814a51b" id="r_a0cd8241235e0a1af8fb43b453814a51b"><td class="memItemLeft" align="right" valign="top"><a id="a0cd8241235e0a1af8fb43b453814a51b" name="a0cd8241235e0a1af8fb43b453814a51b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>FmlaNode</b> ()</td></tr>
+<tr class="memdesc:a0cd8241235e0a1af8fb43b453814a51b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct with no arguments. <br /></td></tr>
+<tr class="memitem:af61ed31569306458d9113da2ea3e8543" id="r_af61ed31569306458d9113da2ea3e8543"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af61ed31569306458d9113da2ea3e8543">FmlaNode</a> (string <a class="el" href="#a341b8710b3e55be72efdc5bbbe4adf4e">data</a>, int <a class="el" href="#a8af60344d81283c5adb4aa18d7a52eb3">parent</a>, vector&lt; int &gt; <a class="el" href="#a8ce0235cbb78a449049de3464f7833de">children</a>)</td></tr>
+<tr class="memdesc:af61ed31569306458d9113da2ea3e8543"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with all arguments.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a341b8710b3e55be72efdc5bbbe4adf4e" id="r_a341b8710b3e55be72efdc5bbbe4adf4e"><td class="memItemLeft" align="right" valign="top"><a id="a341b8710b3e55be72efdc5bbbe4adf4e" name="a341b8710b3e55be72efdc5bbbe4adf4e"></a>
 string&#160;</td><td class="memItemRight" valign="bottom"><b>data</b></td></tr>
+<tr class="memdesc:a341b8710b3e55be72efdc5bbbe4adf4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Content of the node. <br /></td></tr>
 <tr class="memitem:a8af60344d81283c5adb4aa18d7a52eb3" id="r_a8af60344d81283c5adb4aa18d7a52eb3"><td class="memItemLeft" align="right" valign="top"><a id="a8af60344d81283c5adb4aa18d7a52eb3" name="a8af60344d81283c5adb4aa18d7a52eb3"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>parent</b></td></tr>
+<tr class="memdesc:a8af60344d81283c5adb4aa18d7a52eb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index of the parent. If it is the root node, the parent is 0. <br /></td></tr>
 <tr class="memitem:a8ce0235cbb78a449049de3464f7833de" id="r_a8ce0235cbb78a449049de3464f7833de"><td class="memItemLeft" align="right" valign="top"><a id="a8ce0235cbb78a449049de3464f7833de" name="a8ce0235cbb78a449049de3464f7833de"></a>
 vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>children</b></td></tr>
+<tr class="memdesc:a8ce0235cbb78a449049de3464f7833de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indexes of its children. <br /></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Node of the abstract representation of a formula. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="af61ed31569306458d9113da2ea3e8543" name="af61ed31569306458d9113da2ea3e8543"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af61ed31569306458d9113da2ea3e8543">&#9670;&#160;</a></span>FmlaNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FmlaNode::FmlaNode </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; int &gt;</td>          <td class="paramname"><span class="paramname"><em>children</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor with all arguments. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td></td></tr>
+    <tr><td class="paramname">parent</td><td></td></tr>
+    <tr><td class="paramname">children</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/Users/joaomendes_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/definitions/<a class="el" href="definitions_8h_source.html">definitions.h</a></li>
 </ul>

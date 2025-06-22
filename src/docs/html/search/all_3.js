@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['deduction_2ecpp_0',['deduction.cpp',['../deduction_8cpp.html',1,'']]]
+  ['data_0',['data',['../struct_fmla_node.html#a341b8710b3e55be72efdc5bbbe4adf4e',1,'FmlaNode::data'],['../struct_term_node.html#a74a4dc7ac13037fbb776c03f246d0d8d',1,'TermNode::data']]],
+  ['deduction_2ecpp_1',['deduction.cpp',['../deduction_8cpp.html',1,'']]],
+  ['definitions_2eh_2',['definitions.h',['../definitions_8h.html',1,'']]]
 ];

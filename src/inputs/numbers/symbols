@@ -1,6 +1,6 @@
 function
-2: f, +, ·
+2: f, g, +, ·
 predicate
 2: ≈, |, ≤
 skolem
-f
+f, g

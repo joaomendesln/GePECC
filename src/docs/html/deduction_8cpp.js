@@ -43,7 +43,6 @@ var deduction_8cpp =
     [ "pattern_matching_premises", "deduction_8cpp.html#a7c52c9b467b39e51845fb10305bfdaaf", null ],
     [ "remove_node", "deduction_8cpp.html#a0f9d37fd4ac7aaf088d4cdd9603bda48", null ],
     [ "search_minimal_proofs", "deduction_8cpp.html#acce30c60d6fb40d70b2ebaeeed20da88", null ],
-    [ "search_proof_isomorphic_sf_set", "deduction_8cpp.html#a543450c99d92b6d13f3f6a08134e0fc3", null ],
     [ "search_proof_isomorphic_sf_sets", "deduction_8cpp.html#ae9f25c8776bba062396ba9df0cca7c26", null ],
     [ "signed_fmla_in_vec_signed_fmla", "deduction_8cpp.html#a85d16094509275c2252b613f54a59f02", null ],
     [ "tbl_is_closed", "deduction_8cpp.html#ad194cbda2bd313b879a6edc086a74c91", null ],
