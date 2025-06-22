@@ -11,7 +11,7 @@ int main() {
     // test_pre_process_function_symbs();
     // test_pre_process_predicate_symbs();
     // test_pre_process_expansion_rules();
-    // test_pre_process_signed_fmlas_input();
+    // test_converts_str_to_signed_fmlas_input();
     // test_pre_process_cut_fmlas();
     // test_minor_copremises_rule();
 

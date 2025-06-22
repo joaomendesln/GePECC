@@ -1,0 +1,177 @@
+\doxysection{/\+Users/joaomendes\+\_\+ln/\+Documents/\+UFRN/\+Mestrado/5º semestre/\+Implementations/documentation/\+Ge\+PECC/src/auxiliary/print.cpp File Reference}
+\hypertarget{print_8cpp}{}\label{print_8cpp}\index{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/auxiliary/print.cpp@{/Users/joaomendes\_ln/Documents/UFRN/Mestrado/5º semestre/Implementations/documentation/GePECC/src/auxiliary/print.cpp}}
+
+
+Printing functions to output the result of the generation of proof exercises.  
+
+
+{\ttfamily \#include "{}print.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{print_8cpp_aae6accfc7789bc66b2d61eb6192a9777}{pretty\+\_\+printing\+\_\+fmla\+\_\+aux}} (Fmla fmla, \mbox{\hyperlink{struct_fmla_node}{Fmla\+Node}} node, int level)
+\begin{DoxyCompactList}\small\item\em Pretty-\/prints a node of formula. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{print_8cpp_aad28b289918cbe44e0ef7f3b61919b26}{pretty\+\_\+printing\+\_\+fmla}} (Fmla fmla)
+\begin{DoxyCompactList}\small\item\em Recursively pretty-\/prints a formula. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{print_8cpp_a6ede3e517056dcf12f2d70f6131ee76b}{print\+\_\+vec\+\_\+int}} (vector$<$ int $>$ vec)
+\begin{DoxyCompactList}\small\item\em Prints a vector of integers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{print_8cpp_a1bd2175509d9560a7704ec0bb7e321e1}{print\+\_\+term\+\_\+prefix\+\_\+aux}} (Term term, int idx)
+\begin{DoxyCompactList}\small\item\em Prints a node of a term using prefix notation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{print_8cpp_aa64a6969ccf5152959da94bb3f6c00d9}{print\+\_\+term\+\_\+prefix}} (Term term)
+\begin{DoxyCompactList}\small\item\em Recursively prints a term using prefix notation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{print_8cpp_a342e06f2c42b7ccad7aaeeae5c25df32}{print\+\_\+tableau}} (Tableau tbl)
+\begin{DoxyCompactList}\small\item\em Prints a tableau in tree-\/format. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{print_8cpp_a52d4813e81710f7359a6b4bd243f56e6}{print\+\_\+proof}} (Tableau tbl, vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ er)
+\begin{DoxyCompactList}\small\item\em Prints a tableau proof in tree-\/format. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{print_8cpp_a15ab2d796a289413470067049fa259f1}{print\+\_\+tableau\+\_\+as\+\_\+list}} (Tableau tbl)
+\begin{DoxyCompactList}\small\item\em Prints a tableau as a list of nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Printing functions to output the result of the generation of proof exercises. 
+
+\begin{DoxyAuthor}{Author}
+João Mendes 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/06-\/21
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+
+
+\label{doc-func-members}
+\Hypertarget{print_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{print_8cpp_aad28b289918cbe44e0ef7f3b61919b26}\index{print.cpp@{print.cpp}!pretty\_printing\_fmla@{pretty\_printing\_fmla}}
+\index{pretty\_printing\_fmla@{pretty\_printing\_fmla}!print.cpp@{print.cpp}}
+\doxysubsubsection{\texorpdfstring{pretty\_printing\_fmla()}{pretty\_printing\_fmla()}}
+{\footnotesize\ttfamily \label{print_8cpp_aad28b289918cbe44e0ef7f3b61919b26} 
+void pretty\+\_\+printing\+\_\+fmla (\begin{DoxyParamCaption}\item[{Fmla}]{fmla}{}\end{DoxyParamCaption})}
+
+
+
+Recursively pretty-\/prints a formula. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmla} & Formula do be printed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{print_8cpp_aae6accfc7789bc66b2d61eb6192a9777}\index{print.cpp@{print.cpp}!pretty\_printing\_fmla\_aux@{pretty\_printing\_fmla\_aux}}
+\index{pretty\_printing\_fmla\_aux@{pretty\_printing\_fmla\_aux}!print.cpp@{print.cpp}}
+\doxysubsubsection{\texorpdfstring{pretty\_printing\_fmla\_aux()}{pretty\_printing\_fmla\_aux()}}
+{\footnotesize\ttfamily \label{print_8cpp_aae6accfc7789bc66b2d61eb6192a9777} 
+void pretty\+\_\+printing\+\_\+fmla\+\_\+aux (\begin{DoxyParamCaption}\item[{Fmla}]{fmla}{, }\item[{\mbox{\hyperlink{struct_fmla_node}{Fmla\+Node}}}]{node}{, }\item[{int}]{level}{}\end{DoxyParamCaption})}
+
+
+
+Pretty-\/prints a node of formula. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fmla} & Formula \\
+\hline
+{\em node} & Node of the formula \\
+\hline
+{\em level} & Level in which {\ttfamily node} is in {\ttfamily fmla} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{print_8cpp_a52d4813e81710f7359a6b4bd243f56e6}\index{print.cpp@{print.cpp}!print\_proof@{print\_proof}}
+\index{print\_proof@{print\_proof}!print.cpp@{print.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_proof()}{print\_proof()}}
+{\footnotesize\ttfamily \label{print_8cpp_a52d4813e81710f7359a6b4bd243f56e6} 
+void print\+\_\+proof (\begin{DoxyParamCaption}\item[{Tableau}]{tbl}{, }\item[{vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$}]{er}{}\end{DoxyParamCaption})}
+
+
+
+Prints a tableau proof in tree-\/format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tbl} & Tableau proof \\
+\hline
+{\em er} & Expansion rules \\
+\hline
+\end{DoxyParams}
+\Hypertarget{print_8cpp_a342e06f2c42b7ccad7aaeeae5c25df32}\index{print.cpp@{print.cpp}!print\_tableau@{print\_tableau}}
+\index{print\_tableau@{print\_tableau}!print.cpp@{print.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_tableau()}{print\_tableau()}}
+{\footnotesize\ttfamily \label{print_8cpp_a342e06f2c42b7ccad7aaeeae5c25df32} 
+void print\+\_\+tableau (\begin{DoxyParamCaption}\item[{Tableau}]{tbl}{}\end{DoxyParamCaption})}
+
+
+
+Prints a tableau in tree-\/format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tbl} & Tableau \\
+\hline
+\end{DoxyParams}
+\Hypertarget{print_8cpp_a15ab2d796a289413470067049fa259f1}\index{print.cpp@{print.cpp}!print\_tableau\_as\_list@{print\_tableau\_as\_list}}
+\index{print\_tableau\_as\_list@{print\_tableau\_as\_list}!print.cpp@{print.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_tableau\_as\_list()}{print\_tableau\_as\_list()}}
+{\footnotesize\ttfamily \label{print_8cpp_a15ab2d796a289413470067049fa259f1} 
+void print\+\_\+tableau\+\_\+as\+\_\+list (\begin{DoxyParamCaption}\item[{Tableau}]{tbl}{}\end{DoxyParamCaption})}
+
+
+
+Prints a tableau as a list of nodes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tbl} & Tableau \\
+\hline
+\end{DoxyParams}
+\Hypertarget{print_8cpp_aa64a6969ccf5152959da94bb3f6c00d9}\index{print.cpp@{print.cpp}!print\_term\_prefix@{print\_term\_prefix}}
+\index{print\_term\_prefix@{print\_term\_prefix}!print.cpp@{print.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_term\_prefix()}{print\_term\_prefix()}}
+{\footnotesize\ttfamily \label{print_8cpp_aa64a6969ccf5152959da94bb3f6c00d9} 
+void print\+\_\+term\+\_\+prefix (\begin{DoxyParamCaption}\item[{Term}]{term}{}\end{DoxyParamCaption})}
+
+
+
+Recursively prints a term using prefix notation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em term} & Term to be printed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{print_8cpp_a1bd2175509d9560a7704ec0bb7e321e1}\index{print.cpp@{print.cpp}!print\_term\_prefix\_aux@{print\_term\_prefix\_aux}}
+\index{print\_term\_prefix\_aux@{print\_term\_prefix\_aux}!print.cpp@{print.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_term\_prefix\_aux()}{print\_term\_prefix\_aux()}}
+{\footnotesize\ttfamily \label{print_8cpp_a1bd2175509d9560a7704ec0bb7e321e1} 
+void print\+\_\+term\+\_\+prefix\+\_\+aux (\begin{DoxyParamCaption}\item[{Term}]{term}{, }\item[{int}]{idx}{}\end{DoxyParamCaption})}
+
+
+
+Prints a node of a term using prefix notation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em term} & Term \\
+\hline
+{\em idx} & Index of the node to be printed \\
+\hline
+\end{DoxyParams}
+\Hypertarget{print_8cpp_a6ede3e517056dcf12f2d70f6131ee76b}\index{print.cpp@{print.cpp}!print\_vec\_int@{print\_vec\_int}}
+\index{print\_vec\_int@{print\_vec\_int}!print.cpp@{print.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_vec\_int()}{print\_vec\_int()}}
+{\footnotesize\ttfamily \label{print_8cpp_a6ede3e517056dcf12f2d70f6131ee76b} 
+void print\+\_\+vec\+\_\+int (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{vec}{}\end{DoxyParamCaption})}
+
+
+
+Prints a vector of integers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & Vector of integers \\
+\hline
+\end{DoxyParams}

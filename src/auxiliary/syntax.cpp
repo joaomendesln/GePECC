@@ -1,48 +1,98 @@
+/**
+ * @file syntax.cpp
+ * @author João Mendes
+ * @brief Syntactic machinery for the generation of proof exercises
+ * @version 0.0.1
+ * @date 2025-06-21
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #include "syntax.h"
 
 using namespace std;
 
-bool is_function_symb(string symb, map<string, int> function_symbs) {
-    return function_symbs.find(symb) != function_symbs.end();
-}
-
+/**
+ * @brief Checks if a string is a function symbol 
+ * 
+ * @param symb String
+ * @return True if `symb` is a function symbol
+ * @return False otherwise
+ */
 bool is_function_symb(string symb) {
     map<string, int> function_symbs = pre_process_function_symbs();
     return function_symbs.find(symb) != function_symbs.end();
 }
 
-bool is_predicate_symb(string symb, map<string, int> predicate_symbs) {
-    return predicate_symbs.find(symb) != predicate_symbs.end();
-}
-
+/**
+ * @brief Checks if a string is a predicate symbol
+ * 
+ * @param symb String
+ * @return True if `symb` is a predicate symbol
+ * @return False otherwise
+ */
 bool is_predicate_symb(string symb) {
     map<string, int> predicate_symbs = pre_process_predicate_symbs();
     return predicate_symbs.find(symb) != predicate_symbs.end();
 }
 
-bool is_language_symb(string symb, map<string, int> language_symbs) {
+/**
+ * @brief Checks if a string is either a predicate of a function symbol
+ * 
+ * @param symb String
+ * @return True if `symb` is either a predicate or function symbol
+ * @return False otherwise
+ */
+bool is_language_symb(string symb) {
+    map<string, int> language_symbs = pre_process_language_symbs();
+
     return language_symbs.find(symb) != language_symbs.end();
 }
 
+/**
+ * @brief Checks if a string is not a skolemization symbol
+ * 
+ * @param symb String
+ * @return True if `symb` is not a skolemization symbol 
+ * @return False otherwise 
+ */
 bool is_not_skolem_symb(string symb) {
     map<string, int> no_skolem_symb = pre_process_no_skolem_symbs();
 
     return no_skolem_symb.find(symb) != no_skolem_symb.end();
 }
 
+/**
+ * @brief Checks if a node of a formula is a parameter
+ * 
+ * @param fmla_node Node of a formula
+ * @return True if `fmla_node` is a parameter 
+ * @return False otherwise 
+ */
 bool is_a_parameter(FmlaNode fmla_node) {
-    map<string, int> language_symbs = pre_process_language_symbs();
-
-    return fmla_node.children.size() == 0 && !is_language_symb(fmla_node.data, language_symbs);
+    return fmla_node.children.size() == 0 && !is_language_symb(fmla_node.data);
 }
 
+/**
+ * @brief Checks if a node of a term is a parameter
+ * 
+ * @param term_node Node of a term
+ * @return True if `term_node` is a parameter 
+ * @return False otherwise 
+ */
 bool is_a_parameter(TermNode term_node) {
-    map<string, int> language_symbs = pre_process_language_symbs();
-
-    return term_node.children.size() == 0 && !is_language_symb(term_node.data, language_symbs);
+    return term_node.children.size() == 0 && !is_language_symb(term_node.data);
 }
 
-
+/**
+ * @brief Checks if a parameter is in a formula
+ * 
+ * @param fmla Formula
+ * @param parameter String representing a parameter
+ * @return True if `parameter` is in `fmla` 
+ * @return False 
+ */
 bool parameter_in_fmla(Fmla fmla, string parameter) {
     for (FmlaNode fmla_node : fmla) {
         if (is_a_parameter(fmla_node) && fmla_node.data == parameter) return true;
@@ -50,6 +100,13 @@ bool parameter_in_fmla(Fmla fmla, string parameter) {
     return false;
 }
 
+/**
+ * @brief Gets the term of a formula by the index of the root of the term
+ * 
+ * @param fmla Formula
+ * @param term_root Index of the root of the term
+ * @return The term that has as root the index `term_root` 
+ */
 Term get_term_of_fmla(Fmla fmla, int term_root) {
     set<int> subfmla_nodes_idx;
     Term term;
@@ -89,13 +146,17 @@ Term get_term_of_fmla(Fmla fmla, int term_root) {
     return term;
 }
 
+/**
+ * @brief Get the all terms of a formula
+ * 
+ * @param fmla Formula
+ * @return Vector of terms representing the terms of `fmla` 
+ */
 vector<Term> get_all_terms_of_fmla(Fmla fmla) {
-    map<string, int> predicate_symbs = pre_process_predicate_symbs();
-
     vector<Term> all_terms;
 
     for (int i = 0; i < fmla.size(); i++) {
-        if (!is_predicate_symb(fmla[i].data, predicate_symbs)) {
+        if (!is_predicate_symb(fmla[i].data)) {
             all_terms.push_back(get_term_of_fmla(fmla, i));
         }
     }
@@ -103,6 +164,14 @@ vector<Term> get_all_terms_of_fmla(Fmla fmla) {
     return all_terms;
 }
 
+/**
+ * @brief Substitute a parameter by a term in a formula
+ * 
+ * @param fmla Formula
+ * @param parameter_idx Index of the parameter to be substituted 
+ * @param term Term
+ * @return Result of substituting the parameter indexed by `parameter_idx` by `term` in `fmla` 
+ */
 Fmla subst_parameter_by_term(Fmla fmla, int parameter_idx, Term term) {
     map<int, int> new_idx;
 
@@ -129,6 +198,12 @@ Fmla subst_parameter_by_term(Fmla fmla, int parameter_idx, Term term) {
     return fmla;
 }
 
+/**
+ * @brief Gets the indexes of the parameters of a formula
+ * 
+ * @param fmla Formula
+ * @return Set of integers of the indexes of the parameters of `fmla` 
+ */
 set<int> get_parameters_idxs(Fmla fmla) {
     set<int> parameters_idx;
 
@@ -139,6 +214,12 @@ set<int> get_parameters_idxs(Fmla fmla) {
     return parameters_idx;
 }
 
+/**
+ * @brief Get the parameters of a formula
+ * 
+ * @param fmla Formula
+ * @return Set string of the parameters of `fmla` 
+ */
 set<string> get_parameters(Fmla fmla) {
     set<string> parameters;
 
@@ -150,6 +231,33 @@ set<string> get_parameters(Fmla fmla) {
 
 }
 
+/**
+ * @brief Get the parameters of a vector of formulas
+ * 
+ * @param fmlas Vector of formulas
+ * @return Set string of the parameters of `fmlas` 
+ */
+set<string> get_parameters(vector<Fmla> fmlas) {
+    set<string> parameters;
+
+    for (Fmla fmla : fmlas){
+        for (int i = 0; i < fmla.size(); i++) {
+            FmlaNode fmla_node = fmla[i];
+            if (is_a_parameter(fmla_node)) parameters.insert(fmla_node.data);
+
+        }
+    }
+
+    return parameters;
+}
+
+/**
+ * @brief Substitutes parameters by term in a formula provided a substitution mapping
+ * 
+ * @param fmla Formula
+ * @param subs Substitution mapping
+ * @return Resulting of applying `subs` in `fmla` 
+ */
 Fmla subst_extension(Fmla fmla, Subst subs) {
     int fmla_initial_size = fmla.size();
 
@@ -164,107 +272,14 @@ Fmla subst_extension(Fmla fmla, Subst subs) {
    return fmla;
 }
 
-Fmla subst_extension_copremise(Fmla fmla, Subst subs) {
-
-    set<string> parameters_subs, parameters_subs_domain;
-
-    for (const auto& pair : subs) {
-        parameters_subs.insert(pair.first);
-        parameters_subs_domain.insert(pair.first);
-
-        vector<string> parameters = get_all_parameters_of_term(pair.second);
-
-        for (string parameter : parameters) {
-            parameters_subs.insert(parameter);
-        }
-
-    }
-
-    int fmla_initial_size = fmla.size();
-    
-    set<string> fmla_parameters_set = get_all_parameters_of_fmla(fmla);
-    
-    set<int> parameters_idxs = get_parameters_idxs(fmla);
-
-    for (int parameter_idx : parameters_idxs) {
-        string parameter_str = fmla[parameter_idx].data;
-        if (parameters_subs_domain.find(parameter_str) == parameters_subs_domain.end()) {
-            string new_parameter = get_new_parameter(parameters_subs);
-
-            fmla_parameters_set.insert(new_parameter);
-
-            TermNode term_node(new_parameter, 0, {});
-
-            subs[parameter_str] = {term_node};
-            parameters_subs.insert(new_parameter);
-        }
-    }
-
-    for (int i = 0; i < fmla_initial_size; i++) {
-        if (parameters_idxs.find(i) != parameters_idxs.end()) {
-            fmla = subst_parameter_by_term(fmla, i, subs[fmla[i].data]);
-        }
-    }
-
-   return fmla;
-}
-
-string get_new_parameter(set<string> parameters) {
-    for (int i = 1; i <= parameters.size(); i++) {
-        string parameter_test = "p" + to_string(i);
-        if (parameters.find(parameter_test) == parameters.end()) {
-            return parameter_test;
-        }
-    }
-    return "p" + to_string(parameters.size() + 1);
-}
-
-set<string> get_all_parameters_of_fmla(Fmla fmla) {
-    set<string> parameters;
-
-    for (int i = 0; i < fmla.size(); i++) {
-        FmlaNode fmla_node = fmla[i];
-        if (is_a_parameter(fmla_node)) parameters.insert(fmla_node.data);
-
-    }
-
-    return parameters;
-}
-
-bool term_in_vector_of_terms(Term term, vector<Term> terms) {
-    bool result = false;
-    for (Term t : terms) {
-        if (term_equality(term, t)) result = true;
-    }
-    return result;
-}
-
-vector<string> get_all_parameters_of_term(Term term) {
-    vector<string> parameters;
-
-    for (int i = 0; i < term.size(); i++) {
-        TermNode term_node = term[i];
-        if (is_a_parameter(term_node)) parameters.push_back(term_node.data);
-
-    }
-
-    return parameters;
-}
-
-set<string> get_all_parameters(vector<Fmla> fmlas) {
-    set<string> parameters;
-
-    for (Fmla fmla : fmlas){
-        for (int i = 0; i < fmla.size(); i++) {
-            FmlaNode fmla_node = fmla[i];
-            if (is_a_parameter(fmla_node)) parameters.insert(fmla_node.data);
-
-        }
-    }
-
-    return parameters;
-}
-
+/**
+ * @brief Checks if two formulas are equal
+ * 
+ * @param fmla1 Formula
+ * @param fmla2 Formula
+ * @return True if `fmla1` and `fmla2` are equal
+ * @return False otherwise 
+ */
 bool fmla_equality(Fmla fmla1, Fmla fmla2) {
     if (fmla1.size() != fmla2.size()) return false;
 
@@ -295,6 +310,14 @@ bool fmla_equality(Fmla fmla1, Fmla fmla2) {
     return true;
 }
 
+/**
+ * @brief Checks if two formulas are equal under substitution
+ * 
+ * @param fmla1 Formula
+ * @param fmla2 Formula
+ * @return True if `fmla1` and `fmla2` are equal under a substitution 
+ * @return False otherwise
+ */
 bool fmla_equality_under_subst(Fmla fmla1, Fmla fmla2) {
     if (fmla1.size() != fmla2.size()) return false;
 
@@ -339,6 +362,14 @@ bool fmla_equality_under_subst(Fmla fmla1, Fmla fmla2) {
 
 }
 
+/**
+ * @brief Checks if two formulas are isomorphic
+ * 
+ * @param fmla1 Formula
+ * @param fmla2 Formula
+ * @return True if `fmla1` and `fmla2` are isomorphic 
+ * @return False otherwise 
+ */
 bool are_syntactically_isomorphic(Fmla fmla1, Fmla fmla2) {
     if (fmla1.size() != fmla2.size()) return false;
 
@@ -382,6 +413,14 @@ bool are_syntactically_isomorphic(Fmla fmla1, Fmla fmla2) {
 
 }
 
+/**
+ * @brief Checks if two formulas are isomorphic and their parameters are equal
+ * 
+ * @param fmla1 Formula
+ * @param fmla2 Formula
+ * @return True if `fmla1` and `fmla2` are isomorphic and their parameters are equal
+ * @return False otherwise
+ */
 bool are_isomorphic_with_equal_parameters(Fmla fmla1, Fmla fmla2) {
     if (fmla1.size() != fmla2.size()) return false;
 
@@ -415,6 +454,14 @@ bool are_isomorphic_with_equal_parameters(Fmla fmla1, Fmla fmla2) {
 
 }
 
+/**
+ * @brief Checks if two terms are equal
+ * 
+ * @param term1 Term
+ * @param term2 Term
+ * @return True if `term1` and `term2` are equal
+ * @return False otherwise 
+ */
 bool term_equality(Term term1, Term term2) {
     if (term1.size() != term2.size()) return false;
 
@@ -444,6 +491,14 @@ bool term_equality(Term term1, Term term2) {
     return true;
 }
 
+/**
+ * @brief For two isomorphic formulas fmla1 and fmla2, gets the node in fmla2 that is isomorphic to the node in fmla1
+ * 
+ * @param fmla1 Formula
+ * @param parameter_idx Index of a node in `fmla1`
+ * @param fmla2 Formula
+ * @return Integer representing the isomorphic node in `fmla2` of `parameter_idx` in `fmla1`
+ */
 int get_term_idx_img_subst(Fmla fmla1, int parameter_idx, Fmla fmla2) {
     // Assume subst(fmla1) = fmla2. We want to find where the parameter in the position of parameter_idx is substituted in fmla2 
 
@@ -469,6 +524,12 @@ int get_term_idx_img_subst(Fmla fmla1, int parameter_idx, Fmla fmla2) {
     return -1;
 }
 
+/**
+ * @brief Gets the height of a fomrula
+ * 
+ * @param fmla Formula
+ * @return Height of `fmla`
+ */
 int get_height(Fmla fmla) {
 
     vector<int> fmla_level(fmla.size(), 0);
@@ -498,6 +559,12 @@ int get_height(Fmla fmla) {
     
 }
 
+/**
+ * @brief Gets the maximum height of a formula in a vector of formulas
+ * 
+ * @param fmlas Vector of formulas
+ * @return Maximum height of a formula in `fmlas`
+ */
 int get_height(vector<Fmla> fmlas) {
 
     int height = -1;

@@ -4,7 +4,7 @@
 using namespace std;
 
 void test_get_initial_tableau() {
-    vector<SignedFmla> sf = pre_process_signed_fmla_input();
+    vector<SignedFmla> sf = converts_str_to_signed_fmla_input();
     Tableau tbl = get_initial_tableau(sf);
 
     print_tableau_as_list(tbl);
@@ -52,7 +52,7 @@ void test_matching_parameters() {
 }
 
 void test_apply_rule_with_premise(){
-    vector<SignedFmla> sf = pre_process_signed_fmla_input();
+    vector<SignedFmla> sf = converts_str_to_signed_fmla_input();
     Tableau tbl = get_initial_tableau(sf);
 
     vector<TblRule> expansion_rules = pre_process_expansion_rules_input();
@@ -63,13 +63,13 @@ void test_apply_rule_with_premise(){
     for (Tableau tableau : tableaux) {
         cout << "Tableau " << i + 1 << ":\n";
         i++;
-        print_tableau_as_list_fmla_prefix(tableau);
+        print_tableau_as_list(tableau);
         cout << "\n";
     }
 }
 
 void test_apply_cut() {
-    vector<SignedFmla> sf = pre_process_signed_fmla_input();
+    vector<SignedFmla> sf = converts_str_to_signed_fmla_input();
     Tableau tbl = get_initial_tableau(sf);
 
     vector<TblRule> expansion_rules = pre_process_expansion_rules_input();
@@ -81,17 +81,7 @@ void test_apply_cut() {
     for (Tableau tableau : tableaux) {
         cout << "Tableau " << i + 1 << ":\n";
         i++;
-        print_tableau_as_list_fmla_prefix(tableau);
-        cout << "\n";
-    }
-}
-
-void test_get_cut_fmlas() {
-    vector<TblRule> expansion_rules = pre_process_expansion_rules_input();
-    vector<Fmla> cut_fmlas = get_cut_fmlas(expansion_rules);
-
-    for (Fmla fmla : cut_fmlas) {
-        print_fmla_prefix(fmla);
+        print_tableau_as_list(tableau);
         cout << "\n";
     }
 }
@@ -100,7 +90,7 @@ void test_minor_copremises_rule() {
 
     vector<TblRule> expansion_rules = pre_process_expansion_rules_input();
 
-    SignedFmla sf = pre_process_signed_fmla("(+, ∈(p1,∩(p2,p3)))");
+    SignedFmla sf = converts_str_to_signed_fmla("(+, ∈(p1,∩(p2,p3)))");
     TblRule rule = expansion_rules[2];
     vector<SignedFmla> potential_nodes = minor_copremises_rule(sf, rule);
 
@@ -108,7 +98,7 @@ void test_minor_copremises_rule() {
         if (node.sign == polarity::minus) cout << "- ";
         if (node.sign == polarity::plus) cout << "+ ";
 
-        print_fmla_prefix(node.fmla);
+        pretty_printing_fmla(node.fmla);
         cout << "\n";
     }
 }
@@ -117,8 +107,8 @@ void test_check_rule_application() {
 
     vector<TblRule> expansion_rules = pre_process_expansion_rules_input();
 
-    SignedFmla sf1 = pre_process_signed_fmla("(+, ∈(p1,∩(∩(p2,p4),p3)))");
-    SignedFmla sf2 = pre_process_signed_fmla("(+, ∈(p1,∩(p2,p4)))");
+    SignedFmla sf1 = converts_str_to_signed_fmla("(+, ∈(p1,∩(∩(p2,p4),p3)))");
+    SignedFmla sf2 = converts_str_to_signed_fmla("(+, ∈(p1,∩(p2,p4)))");
 
     vector<SignedFmla> justifictions = {sf1};
     // justifictions.push_back(sf1);
@@ -231,7 +221,7 @@ void test_get_syntactic_matching_symb() {
 
 void test_get_ps_candidate_symbols() {
     cout << "===== Pre-processing signed formulas file\n";
-    vector<SignedFmla> sf = pre_process_signed_fmla_input();
+    vector<SignedFmla> sf = converts_str_to_signed_fmla_input();
 
     cout << "===== Pre-processing expansion rules file\n";
     vector<TblRule> er = pre_process_expansion_rules_input();

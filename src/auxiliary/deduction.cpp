@@ -1,7 +1,7 @@
 /**
  * @file deduction.cpp
  * @author João Mendes
- * @brief Deductive machinery for the generation of proof exercises of comparable complexity
+ * @brief Deductive machinery for the generation of proof exercises
  * @version 0.0.1
  * @date 2025-06-18
  * 
@@ -114,7 +114,7 @@ Tableau apply_rule_with_premise(Tableau tbl, TblRule expansion_rule, int rule_id
                     for (SignedFmla premise : premises) {
                         premises_fmlas.push_back(premise.fmla);
                     }
-                    set<string> premises_parameters = get_all_parameters(premises_fmlas);
+                    set<string> premises_parameters = get_parameters(premises_fmlas);
 
                     for (int j = 0; j < premises.size(); j++) {
                         Subst matching_parameters_map = matching_parameters(tbl[justifications[j]].signed_fmla, premises[j]);
@@ -206,7 +206,7 @@ bool try_apply_closure_rule(Tableau tbl, vector<int> branch, TblRule closure_rul
                 for (SignedFmla premise : premises) {
                     premises_fmlas.push_back(premise.fmla);
                 }
-                set<string> premises_parameters = get_all_parameters(premises_fmlas);
+                set<string> premises_parameters = get_parameters(premises_fmlas);
 
                 for (int j = 0; j < premises.size(); j++) {
                     Subst matching_parameters_map = matching_parameters(tbl[justifications[j]].signed_fmla, premises[j]);
@@ -278,7 +278,7 @@ vector<int> get_justifications_closure_rule(Tableau tbl, vector<int> branch, Tbl
                     for (SignedFmla premise : premises) {
                         premises_fmlas.push_back(premise.fmla);
                     }
-                    set<string> premises_parameters = get_all_parameters(premises_fmlas);
+                    set<string> premises_parameters = get_parameters(premises_fmlas);
 
                     for (int j = 0; j < premises.size(); j++) {
                         Subst matching_parameters_map = matching_parameters(tbl[justifications[j]].signed_fmla, premises[j]);
@@ -417,7 +417,7 @@ bool is_a_match(SignedFmla sf_tbl, SignedFmla premise) {
             sf_tbl_queue.push(sf_tbl_node.children[i]);
         }
 
-        if (is_function_symb(premise_node.data, function_symbs) || is_predicate_symb(premise_node.data, predicate_symbs)) {
+        if (is_function_symb(premise_node.data) || is_predicate_symb(premise_node.data)) {
             if (premise_node.data != sf_tbl_node.data) return false;
         }
     }
@@ -437,9 +437,6 @@ bool is_a_match(Fmla fmla_tbl, Fmla premise_fmla) {
     if (fmla_tbl.size() < premise_fmla.size()) {
         return false;
     }
-
-    map<string, int> function_symbs = pre_process_function_symbs();
-    map<string, int> predicate_symbs = pre_process_predicate_symbs();
 
     Subst subst;
 
@@ -479,7 +476,7 @@ bool is_a_match(Fmla fmla_tbl, Fmla premise_fmla) {
             fmla_tbl_queue.push(fmla_tbl_node.children[i]);
         }
 
-        if (is_function_symb(premise_fmla_node.data, function_symbs) || is_predicate_symb(premise_fmla_node.data, predicate_symbs)) {
+        if (is_function_symb(premise_fmla_node.data) || is_predicate_symb(premise_fmla_node.data)) {
             if (premise_fmla_node.data != fmla_tbl_node.data) return false;
         }
     }
@@ -1177,7 +1174,7 @@ vector<SignedFmla> minor_copremises_rule(SignedFmla sf, TblRule rule) {
             Subst matching_parameters_map = matching_parameters(sf, premise);
             for (int j = 0; j < rule.premises.size(); j++) {
                 if (i != j) {
-                    set<string> prem_parameters = get_all_parameters_of_fmla(rule.premises[j].fmla);
+                    set<string> prem_parameters = get_parameters(rule.premises[j].fmla);
 
                     bool parameters_are_in_subst = true;
                     for (string prem_param : prem_parameters) {
@@ -1185,7 +1182,7 @@ vector<SignedFmla> minor_copremises_rule(SignedFmla sf, TblRule rule) {
                     }
                     
                     if (parameters_are_in_subst) {
-                        Fmla fmla = subst_extension_copremise(rule.premises[j].fmla, matching_parameters_map);
+                        Fmla fmla = subst_extension(rule.premises[j].fmla, matching_parameters_map);
                         SignedFmla sf(rule.premises[j].sign, fmla);
                         resulting_copremises.push_back(sf);
                     }
@@ -1845,7 +1842,7 @@ vector<SignedFmla> get_conclusions_from_justifications(vector<SignedFmla> justif
                     for (SignedFmla premise : premises) {
                         premises_fmlas.push_back(premise.fmla);
                     }
-                    set<string> premises_parameters = get_all_parameters(premises_fmlas);
+                    set<string> premises_parameters = get_parameters(premises_fmlas);
 
                     for (int j = 0; j < premises.size(); j++) {
                         set<string> premise_parameter = get_parameters(premises[j].fmla);
@@ -1909,7 +1906,7 @@ bool check_rule_application(vector<SignedFmla> justifications, SignedFmla expans
                     for (SignedFmla premise : premises) {
                         premises_fmlas.push_back(premise.fmla);
                     }
-                    set<string> premises_parameters = get_all_parameters(premises_fmlas);
+                    set<string> premises_parameters = get_parameters(premises_fmlas);
 
                     for (int j = 0; j < premises.size(); j++) {
                         set<string> premise_parameter = get_parameters(premises[j].fmla);
@@ -1999,7 +1996,7 @@ vector<SignedFmla> pattern_matching_premises(vector<TblRule> er, TblRule rule, i
                     for (SignedFmla premise : premises) {
                         premises_fmlas.push_back(premise.fmla);
                     }
-                    set<string> premises_parameters = get_all_parameters(premises_fmlas);
+                    set<string> premises_parameters = get_parameters(premises_fmlas);
 
                     for (int j = 0; j < premises.size(); j++) {
                         Subst matching_parameters_map = matching_parameters(rule_premises[rule_premises_idx[j]].fmla, premises[j].fmla);

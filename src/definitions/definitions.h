@@ -1,3 +1,14 @@
+/**
+ * @file definitions.h
+ * @author João Mendes
+ * @brief Definitions of enums and structs that are used in the project
+ * @version 0.0.1
+ * @date 2025-06-21
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #ifndef DEFINITIONS_H
 #define DEFINITIONS_H
 
@@ -7,17 +18,18 @@
 
 using namespace std;
 
-
+/**
+ * @brief Polarity of a signed formula
+ * 
+ */
 enum class polarity { // TODO: check if "class" is necessary
     plus, minus, none
 };
 
-
-enum class symbType {
-    func, pred
-};
-
-
+/**
+ * @brief Node of a formula
+ * 
+ */
 struct FmlaNode {
     string data;
     int parent;

@@ -42,7 +42,7 @@ void test_pre_process_expension_rules() {
             if (premise.sign == polarity::minus) s = "- ";
             if (premise.sign == polarity::plus) s = "+ ";
             cout << s;
-            print_fmla_prefix(premise.fmla);
+            pretty_printing_fmla(premise.fmla);
             cout << "\n";
 
         }
@@ -53,7 +53,7 @@ void test_pre_process_expension_rules() {
             if (conclusion.sign == polarity::minus) s = "- ";
             if (conclusion.sign == polarity::plus) s = "+ ";
             cout << s;
-            print_fmla_prefix(conclusion.fmla);
+            pretty_printing_fmla(conclusion.fmla);
             cout << "\n";
 
         }
@@ -61,15 +61,15 @@ void test_pre_process_expension_rules() {
 
 }
 
-void test_pre_process_signed_fmlas_input() {
-    vector<SignedFmla> sf_input = pre_process_signed_fmla_input();
+void test_converts_str_to_signed_fmlas_input() {
+    vector<SignedFmla> sf_input = converts_str_to_signed_fmla_input();
 
     for (SignedFmla sf : sf_input) {
         string s = "";
         if (sf.sign == polarity::minus) s = "- ";
         if (sf.sign == polarity::plus) s = "+ ";
         cout << s;
-        print_fmla_prefix(sf.fmla);
+        pretty_printing_fmla(sf.fmla);
         cout << "\n";
     }
 }

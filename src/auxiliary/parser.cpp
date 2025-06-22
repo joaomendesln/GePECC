@@ -70,12 +70,12 @@ Fmla parse_fmla(string fmla_str) {
             resulting_fmla[current_parent].children.push_back(current_fmla_size - 1);
         }
 
-        if (is_function_symb(main_symb, function_symbs) || is_predicate_symb(main_symb, predicate_symbs)) {
+        if (is_function_symb(main_symb) || is_predicate_symb(main_symb)) {
             int arity = -1;
-            if (is_function_symb(main_symb, function_symbs)) {
+            if (is_function_symb(main_symb)) {
                 arity = function_symbs[main_symb]; 
             }
-            if (is_predicate_symb(main_symb, predicate_symbs)) {
+            if (is_predicate_symb(main_symb)) {
                 arity = predicate_symbs[main_symb]; 
             }
 

@@ -11,12 +11,12 @@ Pre-\/process module of the input files.
 \item 
 vector$<$ string $>$ \mbox{\hyperlink{pre__process_8cpp_abbe0d587b4d958d5b3b7877a086c2cd8}{open\+\_\+file}} (string file\+\_\+path)
 \begin{DoxyCompactList}\small\item\em Open a file and stores its content on a vector of strings. \end{DoxyCompactList}\item 
-map$<$ string, int $>$ \mbox{\hyperlink{pre__process_8cpp_acba85bac143c9cd356144152ad33df1f}{pre\+\_\+process\+\_\+symb\+\_\+line}} (string symb\+\_\+line)
-\begin{DoxyCompactList}\small\item\em Pre-\/processes a line of symbols. \end{DoxyCompactList}\item 
+map$<$ string, int $>$ \mbox{\hyperlink{pre__process_8cpp_a22c469233974012919e18c070d300206}{converts\+\_\+str\+\_\+to\+\_\+symb\+\_\+map}} (string symb\+\_\+line)
+\begin{DoxyCompactList}\small\item\em Converts a string containing a line describing all symbols of certain arity to a map indexed by the symbols whose value is the arity. \end{DoxyCompactList}\item 
 set$<$ string $>$ \mbox{\hyperlink{pre__process_8cpp_afad5d42c52f8931020977bc3f6107f0e}{pre\+\_\+process\+\_\+skolem\+\_\+symbs}} ()
 \begin{DoxyCompactList}\small\item\em Pre-\/processes skolemization symbols. \end{DoxyCompactList}\item 
 pair$<$ map$<$ string, int $>$, map$<$ string, int $>$ $>$ \mbox{\hyperlink{pre__process_8cpp_a7796d8762c2336f3064d179efbcdc0b1}{pre\+\_\+process\+\_\+symbols}} ()
-\begin{DoxyCompactList}\small\item\em Pre-\/processes symbols files. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Pre-\/processes the file describing the symbols of the language. \end{DoxyCompactList}\item 
 map$<$ string, int $>$ \mbox{\hyperlink{pre__process_8cpp_a3df42a247ad9f849771e3542faceaac3}{pre\+\_\+process\+\_\+function\+\_\+symbs}} ()
 \begin{DoxyCompactList}\small\item\em Pre-\/processes the function symbols. \end{DoxyCompactList}\item 
 map$<$ string, int $>$ \mbox{\hyperlink{pre__process_8cpp_a95b2c1191cc395e04ff4b585af01383d}{pre\+\_\+process\+\_\+predicate\+\_\+symbs}} ()
@@ -25,20 +25,16 @@ map$<$ string, int $>$ \mbox{\hyperlink{pre__process_8cpp_a2292534298c3f8e923f08
 \begin{DoxyCompactList}\small\item\em Joins the function and predicate symbols in a single map. \end{DoxyCompactList}\item 
 map$<$ string, int $>$ \mbox{\hyperlink{pre__process_8cpp_a7b874cfcc07eabfc75a4275ee5661a98}{pre\+\_\+process\+\_\+no\+\_\+skolem\+\_\+symbs}} ()
 \begin{DoxyCompactList}\small\item\em Pre-\/processes the symbols that are not skolemization symbols. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} \mbox{\hyperlink{pre__process_8cpp_a8469d0c44b94b4f9418fbcdaf7e917ec}{pre\+\_\+process\+\_\+single\+\_\+expansion\+\_\+rule}} (string line, int line\+\_\+idx)
-\begin{DoxyCompactList}\small\item\em Pre-\/processes a line of the file with the expansion rules. \end{DoxyCompactList}\item 
-\Hypertarget{pre__process_8cpp_a051ce8b81697c80bed46b6400f24ebe9}\label{pre__process_8cpp_a051ce8b81697c80bed46b6400f24ebe9} 
-vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ {\bfseries pre\+\_\+process\+\_\+signed\+\_\+fmla\+\_\+list} (string list, int line\+\_\+idx)
-\item 
-\Hypertarget{pre__process_8cpp_a07133d4377f11189cc5b206b7171f227}\label{pre__process_8cpp_a07133d4377f11189cc5b206b7171f227} 
-\mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} {\bfseries pre\+\_\+process\+\_\+signed\+\_\+fmla} (string signed\+\_\+fmla\+\_\+str, int line\+\_\+idx)
-\item 
-\Hypertarget{pre__process_8cpp_ae368d9811f3892fc7cc31d422f8d62c1}\label{pre__process_8cpp_ae368d9811f3892fc7cc31d422f8d62c1} 
-vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ {\bfseries pre\+\_\+process\+\_\+expansion\+\_\+rules\+\_\+input} (string file\+\_\+name)
-\item 
-\Hypertarget{pre__process_8cpp_a4a22ca4bcbcc01fa1a2336c7e24fefc6}\label{pre__process_8cpp_a4a22ca4bcbcc01fa1a2336c7e24fefc6} 
-vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ {\bfseries pre\+\_\+process\+\_\+signed\+\_\+fmla\+\_\+input} (string file\+\_\+name)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} \mbox{\hyperlink{pre__process_8cpp_ab4e8654764ead3df37a3dc64fc563ee9}{converts\+\_\+str\+\_\+to\+\_\+single\+\_\+expansion\+\_\+rule}} (string line, int line\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em Converts a string containing an expansion rule into an expansion rule. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ \mbox{\hyperlink{pre__process_8cpp_aaf7aee0e91bb31bd773da521e7abed31}{converts\+\_\+str\+\_\+to\+\_\+signed\+\_\+fmla\+\_\+list}} (string list\+\_\+str, int line\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em Converts a string containing a list of signed formulas into a vector of signed formulas. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} \mbox{\hyperlink{pre__process_8cpp_aa51d9474eef76146135589d8a02933a4}{converts\+\_\+str\+\_\+to\+\_\+signed\+\_\+fmla}} (string signed\+\_\+fmla\+\_\+str, int line\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em Converts a string containing a signed formula into a signed formula. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ \mbox{\hyperlink{pre__process_8cpp_ae368d9811f3892fc7cc31d422f8d62c1}{pre\+\_\+process\+\_\+expansion\+\_\+rules\+\_\+input}} (string file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Pre-\/processes the file describing the expansion rules provided as the input of the genereation of exercises procedure. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ \mbox{\hyperlink{pre__process_8cpp_a3df7ea830d8a4e381bb4ec8c66958bdb}{converts\+\_\+str\+\_\+to\+\_\+signed\+\_\+fmla\+\_\+input}} (string file\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Pre-\/processes the file describing the signed formulas provided as the input of the genereation of exercises procedure. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -61,6 +57,102 @@ Copyright (c) 2025
 \label{doc-func-members}
 \Hypertarget{pre__process_8cpp_doc-func-members}
 \doxysubsection{Function Documentation}
+\Hypertarget{pre__process_8cpp_aa51d9474eef76146135589d8a02933a4}\index{pre\_process.cpp@{pre\_process.cpp}!converts\_str\_to\_signed\_fmla@{converts\_str\_to\_signed\_fmla}}
+\index{converts\_str\_to\_signed\_fmla@{converts\_str\_to\_signed\_fmla}!pre\_process.cpp@{pre\_process.cpp}}
+\doxysubsubsection{\texorpdfstring{converts\_str\_to\_signed\_fmla()}{converts\_str\_to\_signed\_fmla()}}
+{\footnotesize\ttfamily \label{pre__process_8cpp_aa51d9474eef76146135589d8a02933a4} 
+\mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} converts\+\_\+str\+\_\+to\+\_\+signed\+\_\+fmla (\begin{DoxyParamCaption}\item[{string}]{signed\+\_\+fmla\+\_\+str}{, }\item[{int}]{line\+\_\+idx}{}\end{DoxyParamCaption})}
+
+
+
+Converts a string containing a signed formula into a signed formula. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signed\+\_\+fmla\+\_\+str} & String containing a signed formula \\
+\hline
+{\em line\+\_\+idx} & Index of the line in the file in which {\ttfamily signed\+\_\+fmla\+\_\+str} is \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Signed formula in {\ttfamily signed\+\_\+fmla\+\_\+str} 
+\end{DoxyReturn}
+\Hypertarget{pre__process_8cpp_a3df7ea830d8a4e381bb4ec8c66958bdb}\index{pre\_process.cpp@{pre\_process.cpp}!converts\_str\_to\_signed\_fmla\_input@{converts\_str\_to\_signed\_fmla\_input}}
+\index{converts\_str\_to\_signed\_fmla\_input@{converts\_str\_to\_signed\_fmla\_input}!pre\_process.cpp@{pre\_process.cpp}}
+\doxysubsubsection{\texorpdfstring{converts\_str\_to\_signed\_fmla\_input()}{converts\_str\_to\_signed\_fmla\_input()}}
+{\footnotesize\ttfamily \label{pre__process_8cpp_a3df7ea830d8a4e381bb4ec8c66958bdb} 
+vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ converts\+\_\+str\+\_\+to\+\_\+signed\+\_\+fmla\+\_\+input (\begin{DoxyParamCaption}\item[{string}]{file\+\_\+name}{}\end{DoxyParamCaption})}
+
+
+
+Pre-\/processes the file describing the signed formulas provided as the input of the genereation of exercises procedure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+name} & Name of the file to be pre-\/processed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of signed formulas 
+\end{DoxyReturn}
+\Hypertarget{pre__process_8cpp_aaf7aee0e91bb31bd773da521e7abed31}\index{pre\_process.cpp@{pre\_process.cpp}!converts\_str\_to\_signed\_fmla\_list@{converts\_str\_to\_signed\_fmla\_list}}
+\index{converts\_str\_to\_signed\_fmla\_list@{converts\_str\_to\_signed\_fmla\_list}!pre\_process.cpp@{pre\_process.cpp}}
+\doxysubsubsection{\texorpdfstring{converts\_str\_to\_signed\_fmla\_list()}{converts\_str\_to\_signed\_fmla\_list()}}
+{\footnotesize\ttfamily \label{pre__process_8cpp_aaf7aee0e91bb31bd773da521e7abed31} 
+vector$<$ \mbox{\hyperlink{struct_signed_fmla}{Signed\+Fmla}} $>$ converts\+\_\+str\+\_\+to\+\_\+signed\+\_\+fmla\+\_\+list (\begin{DoxyParamCaption}\item[{string}]{list\+\_\+str}{, }\item[{int}]{line\+\_\+idx}{}\end{DoxyParamCaption})}
+
+
+
+Converts a string containing a list of signed formulas into a vector of signed formulas. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list\+\_\+str} & String containing a list of signed formulas \\
+\hline
+{\em line\+\_\+idx} & Index of the line in the file in which {\ttfamily list} is \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of the signed formulas of {\ttfamily list} 
+\end{DoxyReturn}
+\Hypertarget{pre__process_8cpp_ab4e8654764ead3df37a3dc64fc563ee9}\index{pre\_process.cpp@{pre\_process.cpp}!converts\_str\_to\_single\_expansion\_rule@{converts\_str\_to\_single\_expansion\_rule}}
+\index{converts\_str\_to\_single\_expansion\_rule@{converts\_str\_to\_single\_expansion\_rule}!pre\_process.cpp@{pre\_process.cpp}}
+\doxysubsubsection{\texorpdfstring{converts\_str\_to\_single\_expansion\_rule()}{converts\_str\_to\_single\_expansion\_rule()}}
+{\footnotesize\ttfamily \label{pre__process_8cpp_ab4e8654764ead3df37a3dc64fc563ee9} 
+\mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} converts\+\_\+str\+\_\+to\+\_\+single\+\_\+expansion\+\_\+rule (\begin{DoxyParamCaption}\item[{string}]{line}{, }\item[{int}]{line\+\_\+idx}{}\end{DoxyParamCaption})}
+
+
+
+Converts a string containing an expansion rule into an expansion rule. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & Line of the file with the expansion rules \\
+\hline
+{\em line\+\_\+idx} & Index of {\ttfamily line} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Expansion rule described in {\ttfamily line} 
+\end{DoxyReturn}
+\Hypertarget{pre__process_8cpp_a22c469233974012919e18c070d300206}\index{pre\_process.cpp@{pre\_process.cpp}!converts\_str\_to\_symb\_map@{converts\_str\_to\_symb\_map}}
+\index{converts\_str\_to\_symb\_map@{converts\_str\_to\_symb\_map}!pre\_process.cpp@{pre\_process.cpp}}
+\doxysubsubsection{\texorpdfstring{converts\_str\_to\_symb\_map()}{converts\_str\_to\_symb\_map()}}
+{\footnotesize\ttfamily \label{pre__process_8cpp_a22c469233974012919e18c070d300206} 
+map$<$ string, int $>$ converts\+\_\+str\+\_\+to\+\_\+symb\+\_\+map (\begin{DoxyParamCaption}\item[{string}]{symb\+\_\+line}{}\end{DoxyParamCaption})}
+
+
+
+Converts a string containing a line describing all symbols of certain arity to a map indexed by the symbols whose value is the arity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symb\+\_\+line} & Symbol line content \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A map with symbols and their respective arities 
+\end{DoxyReturn}
 \Hypertarget{pre__process_8cpp_abbe0d587b4d958d5b3b7877a086c2cd8}\index{pre\_process.cpp@{pre\_process.cpp}!open\_file@{open\_file}}
 \index{open\_file@{open\_file}!pre\_process.cpp@{pre\_process.cpp}}
 \doxysubsubsection{\texorpdfstring{open\_file()}{open\_file()}}
@@ -78,6 +170,24 @@ Open a file and stores its content on a vector of strings.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Vector of strings with the content of the file with the path of {\ttfamily file\+\_\+path} 
+\end{DoxyReturn}
+\Hypertarget{pre__process_8cpp_ae368d9811f3892fc7cc31d422f8d62c1}\index{pre\_process.cpp@{pre\_process.cpp}!pre\_process\_expansion\_rules\_input@{pre\_process\_expansion\_rules\_input}}
+\index{pre\_process\_expansion\_rules\_input@{pre\_process\_expansion\_rules\_input}!pre\_process.cpp@{pre\_process.cpp}}
+\doxysubsubsection{\texorpdfstring{pre\_process\_expansion\_rules\_input()}{pre\_process\_expansion\_rules\_input()}}
+{\footnotesize\ttfamily \label{pre__process_8cpp_ae368d9811f3892fc7cc31d422f8d62c1} 
+vector$<$ \mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} $>$ pre\+\_\+process\+\_\+expansion\+\_\+rules\+\_\+input (\begin{DoxyParamCaption}\item[{string}]{file\+\_\+name}{}\end{DoxyParamCaption})}
+
+
+
+Pre-\/processes the file describing the expansion rules provided as the input of the genereation of exercises procedure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+name} & Name of the file to be pre-\/processed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of expansion rules 
 \end{DoxyReturn}
 \Hypertarget{pre__process_8cpp_a3df42a247ad9f849771e3542faceaac3}\index{pre\_process.cpp@{pre\_process.cpp}!pre\_process\_function\_symbs@{pre\_process\_function\_symbs}}
 \index{pre\_process\_function\_symbs@{pre\_process\_function\_symbs}!pre\_process.cpp@{pre\_process.cpp}}
@@ -131,26 +241,6 @@ Pre-\/processes the predicate symbols.
 \begin{DoxyReturn}{Returns}
 A map with the predicate symbols and their respective arities 
 \end{DoxyReturn}
-\Hypertarget{pre__process_8cpp_a8469d0c44b94b4f9418fbcdaf7e917ec}\index{pre\_process.cpp@{pre\_process.cpp}!pre\_process\_single\_expansion\_rule@{pre\_process\_single\_expansion\_rule}}
-\index{pre\_process\_single\_expansion\_rule@{pre\_process\_single\_expansion\_rule}!pre\_process.cpp@{pre\_process.cpp}}
-\doxysubsubsection{\texorpdfstring{pre\_process\_single\_expansion\_rule()}{pre\_process\_single\_expansion\_rule()}}
-{\footnotesize\ttfamily \label{pre__process_8cpp_a8469d0c44b94b4f9418fbcdaf7e917ec} 
-\mbox{\hyperlink{struct_tbl_rule}{Tbl\+Rule}} pre\+\_\+process\+\_\+single\+\_\+expansion\+\_\+rule (\begin{DoxyParamCaption}\item[{string}]{line}{, }\item[{int}]{line\+\_\+idx}{}\end{DoxyParamCaption})}
-
-
-
-Pre-\/processes a line of the file with the expansion rules. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em line} & Line of the file with the expansion rules \\
-\hline
-{\em line\+\_\+idx} & Index of {\ttfamily line} \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Expansion rule described in {\ttfamily line} 
-\end{DoxyReturn}
 \Hypertarget{pre__process_8cpp_afad5d42c52f8931020977bc3f6107f0e}\index{pre\_process.cpp@{pre\_process.cpp}!pre\_process\_skolem\_symbs@{pre\_process\_skolem\_symbs}}
 \index{pre\_process\_skolem\_symbs@{pre\_process\_skolem\_symbs}!pre\_process.cpp@{pre\_process.cpp}}
 \doxysubsubsection{\texorpdfstring{pre\_process\_skolem\_symbs()}{pre\_process\_skolem\_symbs()}}
@@ -164,24 +254,6 @@ Pre-\/processes skolemization symbols.
 \begin{DoxyReturn}{Returns}
 Set of skolemization symbols 
 \end{DoxyReturn}
-\Hypertarget{pre__process_8cpp_acba85bac143c9cd356144152ad33df1f}\index{pre\_process.cpp@{pre\_process.cpp}!pre\_process\_symb\_line@{pre\_process\_symb\_line}}
-\index{pre\_process\_symb\_line@{pre\_process\_symb\_line}!pre\_process.cpp@{pre\_process.cpp}}
-\doxysubsubsection{\texorpdfstring{pre\_process\_symb\_line()}{pre\_process\_symb\_line()}}
-{\footnotesize\ttfamily \label{pre__process_8cpp_acba85bac143c9cd356144152ad33df1f} 
-map$<$ string, int $>$ pre\+\_\+process\+\_\+symb\+\_\+line (\begin{DoxyParamCaption}\item[{string}]{symb\+\_\+line}{}\end{DoxyParamCaption})}
-
-
-
-Pre-\/processes a line of symbols. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em symb\+\_\+line} & Symbol line content \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A map with symbols and their respective arities 
-\end{DoxyReturn}
 \Hypertarget{pre__process_8cpp_a7796d8762c2336f3064d179efbcdc0b1}\index{pre\_process.cpp@{pre\_process.cpp}!pre\_process\_symbols@{pre\_process\_symbols}}
 \index{pre\_process\_symbols@{pre\_process\_symbols}!pre\_process.cpp@{pre\_process.cpp}}
 \doxysubsubsection{\texorpdfstring{pre\_process\_symbols()}{pre\_process\_symbols()}}
@@ -190,7 +262,7 @@ pair$<$ map$<$ string, int $>$, map$<$ string, int $>$ $>$ pre\+\_\+process\+\_\
 
 
 
-Pre-\/processes symbols files. 
+Pre-\/processes the file describing the symbols of the language. 
 
 \begin{DoxyReturn}{Returns}
 A pair with a map with the function symbols and their respective arities and another map with the predicate symbols and their respective arities 

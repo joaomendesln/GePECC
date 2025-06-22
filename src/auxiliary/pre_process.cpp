@@ -42,12 +42,12 @@ vector<string> open_file(string file_path) {
 }
 
 /**
- * @brief Pre-processes a line of symbols
+ * @brief Converts a string containing a line describing all symbols of certain arity to a map indexed by the symbols whose value is the arity
  * 
  * @param symb_line Symbol line content
  * @return A map with symbols and their respective arities 
  */
-map<string, int> pre_process_symb_line(string symb_line) {
+map<string, int> converts_str_to_symb_map(string symb_line) {
     map<string, int> resulting_symbs_map;
 
     // get arity and symbols in this line
@@ -142,7 +142,7 @@ set<string> pre_process_skolem_symbs() {
 }
 
 /**
- * @brief Pre-processes symbols files
+ * @brief Pre-processes the file describing the symbols of the language
  * 
  * @return A pair with a map with the function symbols and their respective arities and another map with the predicate symbols and their respective arities
  */
@@ -165,7 +165,7 @@ pair<map<string, int>, map<string, int>> pre_process_symbols() {
     for (int i = 1; i < lines.size(); i++) {
         if (lines[i] == "predicate") break;
 
-        map<string, int> line_map = pre_process_symb_line(lines[i]);
+        map<string, int> line_map = converts_str_to_symb_map(lines[i]);
         for (const auto& pair : line_map) {
             resulting_function_symbs[pair.first] = pair.second;
         }
@@ -184,7 +184,7 @@ pair<map<string, int>, map<string, int>> pre_process_symbols() {
 
     for (int i = predicate_lines_init + 1; i < lines.size(); i++) {
         if (lines[i] == "skolem") break;
-        map<string, int> line_map = pre_process_symb_line(lines[i]);
+        map<string, int> line_map = converts_str_to_symb_map(lines[i]);
         for (const auto& pair : line_map) {
             resulting_predicate_symbs[pair.first] = pair.second;
         }
@@ -192,7 +192,6 @@ pair<map<string, int>, map<string, int>> pre_process_symbols() {
 
     return {resulting_function_symbs, resulting_predicate_symbs};
 }
-
 
 /**
  * @brief Pre-processes the function symbols
@@ -258,13 +257,13 @@ map<string, int> pre_process_no_skolem_symbs() {
 }
 
 /**
- * @brief Pre-processes a line of the file with the expansion rules
+ * @brief Converts a string containing an expansion rule into an expansion rule
  * 
  * @param line Line of the file with the expansion rules
  * @param line_idx Index of `line`
  * @return Expansion rule described in `line` 
  */
-TblRule pre_process_single_expansion_rule(string line, int line_idx) {
+TblRule converts_str_to_single_expansion_rule(string line, int line_idx) {
 
     string str_premises = "";
     string str_conclusions = "";
@@ -281,7 +280,7 @@ TblRule pre_process_single_expansion_rule(string line, int line_idx) {
             str_conclusions += c;
         }
     }
-    vector<SignedFmla> premises = pre_process_signed_fmla_list(str_premises, line_idx);
+    vector<SignedFmla> premises = converts_str_to_signed_fmla_list(str_premises, line_idx);
 
     vector<SignedFmla> conclusions = {};
     
@@ -290,7 +289,7 @@ TblRule pre_process_single_expansion_rule(string line, int line_idx) {
         if (!isspace(c_conc)) has_only_white_spaces = false;
     }
     if (has_only_white_spaces == false) {
-        conclusions = pre_process_signed_fmla_list(str_conclusions, line_idx);
+        conclusions = converts_str_to_signed_fmla_list(str_conclusions, line_idx);
     }
 
     TblRule expansion_rule(premises, conclusions);
@@ -298,16 +297,23 @@ TblRule pre_process_single_expansion_rule(string line, int line_idx) {
     return expansion_rule;
 }
 
-vector<SignedFmla> pre_process_signed_fmla_list(string list, int line_idx) {
-    if (list.size() == 0) return {};
+/**
+ * @brief Converts a string containing a list of signed formulas into a vector of signed formulas
+ * 
+ * @param list_str String containing a list of signed formulas
+ * @param line_idx Index of the line in the file in which `list` is
+ * @return Vector of the signed formulas of `list` 
+ */
+vector<SignedFmla> converts_str_to_signed_fmla_list(string list_str, int line_idx) {
+    if (list_str.size() == 0) return {};
 
     vector<SignedFmla> signed_fmla_vec;
     
     int parentheses_counter = 0;
     string signed_fmla_str = "";
 
-    for (int i = 0; i < list.size(); i++) {
-        char c = list[i];
+    for (int i = 0; i < list_str.size(); i++) {
+        char c = list_str[i];
 
         // Control opening/closing parenthesis
         if (c == '(') parentheses_counter++;
@@ -319,7 +325,7 @@ vector<SignedFmla> pre_process_signed_fmla_list(string list, int line_idx) {
         }
         else {
             if (parentheses_counter == 0) {
-                signed_fmla_vec.push_back(pre_process_signed_fmla(signed_fmla_str, line_idx));
+                signed_fmla_vec.push_back(converts_str_to_signed_fmla(signed_fmla_str, line_idx));
                 signed_fmla_str = "";
             }
             else {
@@ -328,15 +334,22 @@ vector<SignedFmla> pre_process_signed_fmla_list(string list, int line_idx) {
         }
 
         // End of the string
-        if (i == list.size() - 1) {
-            signed_fmla_vec.push_back(pre_process_signed_fmla(signed_fmla_str, line_idx));
+        if (i == list_str.size() - 1) {
+            signed_fmla_vec.push_back(converts_str_to_signed_fmla(signed_fmla_str, line_idx));
         }
     }
 
     return signed_fmla_vec;
 }
 
-SignedFmla pre_process_signed_fmla(string signed_fmla_str, int line_idx) {
+/**
+ * @brief Converts a string containing a signed formula into a signed formula
+ * 
+ * @param signed_fmla_str String containing a signed formula
+ * @param line_idx Index of the line in the file in which `signed_fmla_str` is
+ * @return Signed formula in `signed_fmla_str`
+ */
+SignedFmla converts_str_to_signed_fmla(string signed_fmla_str, int line_idx) {
     SignedFmla signed_fmla;
 
     string signed_fmla_str_no_space = "";
@@ -357,7 +370,6 @@ SignedFmla pre_process_signed_fmla(string signed_fmla_str, int line_idx) {
         cerr << "Missing closing parenthesis\n";
         return signed_fmla;
     }
-
 
     // set polarity
     if (signed_fmla_str_no_space[1] == ',') signed_fmla.sign = polarity::none;
@@ -388,6 +400,12 @@ SignedFmla pre_process_signed_fmla(string signed_fmla_str, int line_idx) {
     return signed_fmla;
 }
 
+/**
+ * @brief Pre-processes the file describing the expansion rules provided as the input of the genereation of exercises procedure
+ * 
+ * @param file_name Name of the file to be pre-processed
+ * @return Vector of expansion rules 
+ */
 vector<TblRule> pre_process_expansion_rules_input(string file_name) {
 
     vector<TblRule> resulting_expansion_rules;
@@ -402,7 +420,7 @@ vector<TblRule> pre_process_expansion_rules_input(string file_name) {
     for (int i = 0; i < lines.size(); i++) {
         string line = lines[i];
         if (line.size() > 0 && line[0] != '[') {
-            resulting_expansion_rules.push_back(pre_process_single_expansion_rule(lines[i], i));
+            resulting_expansion_rules.push_back(converts_str_to_single_expansion_rule(lines[i], i));
         }
     }
 
@@ -410,7 +428,14 @@ vector<TblRule> pre_process_expansion_rules_input(string file_name) {
 
 }
 
-vector<SignedFmla> pre_process_signed_fmla_input(string file_name) {
+
+/**
+ * @brief Pre-processes the file describing the signed formulas provided as the input of the genereation of exercises procedure
+ * 
+ * @param file_name Name of the file to be pre-processed
+ * @return Vector of signed formulas 
+ */
+vector<SignedFmla> converts_str_to_signed_fmla_input(string file_name) {
     vector<SignedFmla> resulting_signed_fmlas;
 
     vector<string> lines = {};
@@ -421,7 +446,7 @@ vector<SignedFmla> pre_process_signed_fmla_input(string file_name) {
     }
 
     for (int i = 0; i < lines.size(); i++) {
-        SignedFmla sf = pre_process_signed_fmla(lines[i], i);
+        SignedFmla sf = converts_str_to_signed_fmla(lines[i], i);
         resulting_signed_fmlas.push_back(sf);
     }
 

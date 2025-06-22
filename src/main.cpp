@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
     vector<TblRule> er;
     if (argc > 1) {
         cout << "===== Pre-processing signed formulas file\n";
-        input_sf = pre_process_signed_fmla_input(argv[2]);
+        input_sf = converts_str_to_signed_fmla_input(argv[2]);
         for (SignedFmla signed_fmla : input_sf) {
             if (signed_fmla.sign == polarity::plus) cout << "+ ";
             if (signed_fmla.sign == polarity::minus) cout << "- ";
@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
     }
     else {
         cout << "===== Pre-processing signed formulas file\n";
-        input_sf = pre_process_signed_fmla_input("");
+        input_sf = converts_str_to_signed_fmla_input("");
         for (SignedFmla signed_fmla : input_sf) {
             if (signed_fmla.sign == polarity::plus) cout << "+ ";
             if (signed_fmla.sign == polarity::minus) cout << "- ";
@@ -58,7 +58,7 @@ int main(int argc, char* argv[]) {
         //     for (SignedFmla sf : set_sf) {
         //         if (sf.sign == polarity::plus) cout << "+ ";
         //         if (sf.sign == polarity::minus) cout << "- ";
-        //         print_fmla_prefix(sf.fmla);
+        //         pretty_printing_fmla(sf.fmla);
         //         cout << "\n";
         //     }
         //     cout << "\n";
@@ -91,7 +91,7 @@ int main(int argc, char* argv[]) {
             // for (SignedFmla sf : set_sf) {
             //     if (sf.sign == polarity::plus) cout << "+ ";
             //     if (sf.sign == polarity::minus) cout << "- ";
-            //     print_fmla_prefix(sf.fmla);
+            //     pretty_printing_fmla(sf.fmla);
             //     cout << "\n";
             // }
             // cout << "\n";

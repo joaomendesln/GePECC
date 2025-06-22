@@ -18,10 +18,6 @@ void pretty_printing_fmla(Fmla fmla);
 
 void print_vec_int(vector<int> vec);
 
-void print_fmla_prefix(Fmla fmla);
-
-void print_fmla_prefix_aux(Fmla fmla, int idx);
-
 void print_term_prefix(Term term);
 
 void print_term_prefix_aux(Term term, int idx);
@@ -31,7 +27,5 @@ void print_tableau(Tableau tbl);
 void print_proof(Tableau tbl, vector<TblRule> er);
 
 void print_tableau_as_list(Tableau tbl);
-
-void print_tableau_as_list_fmla_prefix(Tableau tbl);
 
 #endif // PRINT_H

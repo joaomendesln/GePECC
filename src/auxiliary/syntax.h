@@ -16,15 +16,11 @@
 
 using namespace std;
 
-bool is_function_symb(string symb, map<string, int> function_symbs);
-
 bool is_function_symb(string symb);
-
-bool is_predicate_symb(string symb, map<string, int> predicate_symbs);
 
 bool is_predicate_symb(string symb);
 
-bool is_language_symb(string symb, map<string, int> language_symbs);
+bool is_language_symb(string symb);
 
 bool is_not_skolem_symb(string symb);
 
@@ -38,25 +34,15 @@ Term get_term_of_fmla(Fmla fmla, int subfmla_root);
 
 vector<Term> get_all_terms_of_fmla(Fmla fmla);
 
-bool term_in_vector_of_terms(Term term, vector<Term> terms);
-
 Fmla subst_parameter_by_term(Fmla fmla, int parameter_idx, Term term);
 
 set<int> get_parameters_idxs(Fmla fmla);
 
 set<string> get_parameters(Fmla fmla);
 
+set<string> get_parameters(vector<Fmla> fmla);
+
 Fmla subst_extension(Fmla fmla, Subst subs);
-
-Fmla subst_extension_copremise(Fmla fmla, Subst subs);
-
-string get_new_parameter(set<string> parameters);
-
-set<string> get_all_parameters_of_fmla(Fmla fmla);
-
-vector<string> get_all_parameters_of_term(Term term);
-
-set<string> get_all_parameters(vector<Fmla> fmlas);
 
 bool fmla_equality(Fmla fmla1, Fmla fmla2);
 

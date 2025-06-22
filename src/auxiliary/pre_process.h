@@ -18,7 +18,7 @@ using namespace std;
 
 vector<string> open_file(string file_path);
 
-map<string, int> pre_process_symb_line(string symb_line);
+map<string, int> converts_str_to_symb_map(string symb_line);
 
 pair<map<string, int>, map<string, int>> pre_process_symbols();
 
@@ -30,15 +30,15 @@ map<string, int> pre_process_language_symbs();
 
 map<string, int> pre_process_no_skolem_symbs();
 
-SignedFmla pre_process_signed_fmla(string signed_fmla_str, int line_idx);
+SignedFmla converts_str_to_signed_fmla(string signed_fmla_str, int line_idx);
 
-vector<SignedFmla> pre_process_signed_fmla_list(string list, int line_idx);
+vector<SignedFmla> converts_str_to_signed_fmla_list(string list, int line_idx);
 
-TblRule pre_process_single_expansion_rule(string line, int line_idx);
+TblRule converts_str_to_single_expansion_rule(string line, int line_idx);
 
 vector<TblRule> pre_process_expansion_rules_input(string file_name);
 
-vector<SignedFmla> pre_process_signed_fmla_input(string file_name);
+vector<SignedFmla> converts_str_to_signed_fmla_input(string file_name);
 
 set<string> pre_process_skolem_symbs();
 

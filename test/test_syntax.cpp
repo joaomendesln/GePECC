@@ -70,7 +70,7 @@ void test_subst_parameter_by_term() {
     Term term = get_term_of_fmla(fmla, 2);
 
     Fmla resulting_fmla = subst_parameter_by_term(fmla, 1, term);
-    print_fmla_prefix(resulting_fmla);
+    pretty_printing_fmla(resulting_fmla);
 
     cout << "\n";
 
@@ -78,7 +78,7 @@ void test_subst_parameter_by_term() {
     term = get_term_of_fmla(fmla, 5);
 
     resulting_fmla = subst_parameter_by_term(fmla, 1, term);
-    print_fmla_prefix(resulting_fmla);
+    pretty_printing_fmla(resulting_fmla);
 
     cout << "\n";
 }

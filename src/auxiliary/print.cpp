@@ -1,7 +1,25 @@
+/**
+ * @file print.cpp
+ * @author João Mendes
+ * @brief Printing functions to output the result of the generation of proof exercises
+ * @version 0.0.1
+ * @date 2025-06-21
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #include "print.h"
 
 using namespace std;
 
+/**
+ * @brief Pretty-prints a node of formula
+ * 
+ * @param fmla Formula
+ * @param node Node of the formula
+ * @param level Level in which `node` is in `fmla`
+ */
 void pretty_printing_fmla_aux(Fmla fmla, FmlaNode node, int level) {
     if (node.children.size() == 0) {
         cout << node.data;
@@ -48,10 +66,20 @@ void pretty_printing_fmla_aux(Fmla fmla, FmlaNode node, int level) {
     
 }
 
+/**
+ * @brief Recursively pretty-prints a formula
+ * 
+ * @param fmla Formula do be printed
+ */
 void pretty_printing_fmla(Fmla fmla) {
     pretty_printing_fmla_aux(fmla, fmla[0], 0);
 }
 
+/**
+ * @brief Prints a vector of integers
+ * 
+ * @param vec Vector of integers
+ */
 void print_vec_int(vector<int> vec) {
     cout << "[";
     for (int i = 0; i < vec.size(); i++){
@@ -65,30 +93,12 @@ void print_vec_int(vector<int> vec) {
     cout << "]";
 }
 
-void print_fmla_prefix(Fmla fmla) {
-    print_fmla_prefix_aux(fmla, 0);
-}
-
-void print_fmla_prefix_aux(Fmla fmla, int idx) {
-    FmlaNode fmla_node = fmla[idx];
-
-    cout << fmla_node.data;
-
-    if (fmla_node.children.size() > 0) {
-        cout << "(";
-        for (int i = 0; i < fmla_node.children.size(); i++) {
-            print_fmla_prefix_aux(fmla, fmla_node.children[i]);
-            if (i < fmla_node.children.size() - 1) cout << ",";
-        }
-        cout << ")";
-    }
-
-}
-
-void print_term_prefix(Term term) {
-    print_term_prefix_aux(term, 0);
-}
-
+/**
+ * @brief Prints a node of a term using prefix notation
+ * 
+ * @param term Term
+ * @param idx Index of the node to be printed
+ */
 void print_term_prefix_aux(Term term, int idx) {
     TermNode term_node = term[idx];
 
@@ -105,6 +115,20 @@ void print_term_prefix_aux(Term term, int idx) {
 
 }
 
+/**
+ * @brief Recursively prints a term using prefix notation
+ * 
+ * @param term Term to be printed
+ */
+void print_term_prefix(Term term) {
+    print_term_prefix_aux(term, 0);
+}
+
+/**
+ * @brief Prints a tableau in tree-format
+ * 
+ * @param tbl Tableau
+ */
 void print_tableau(Tableau tbl) {
 
     vector< vector<int>> branches = get_tbl_branches(tbl);
@@ -148,6 +172,12 @@ void print_tableau(Tableau tbl) {
     }
 }
 
+/**
+ * @brief Prints a tableau proof in tree-format
+ * 
+ * @param tbl Tableau proof
+ * @param er Expansion rules
+ */
 void print_proof(Tableau tbl, vector<TblRule> er) {
 
     vector< vector<int>> branches = get_tbl_branches(tbl);
@@ -205,6 +235,11 @@ void print_proof(Tableau tbl, vector<TblRule> er) {
     }
 }
 
+/**
+ * @brief Prints a tableau as a list of nodes
+ * 
+ * @param tbl Tableau
+ */
 void print_tableau_as_list(Tableau tbl) {
     for (int i = 0; i < tbl.size(); i++){
         TblNode node = tbl[i];
@@ -213,23 +248,6 @@ void print_tableau_as_list(Tableau tbl) {
         if (sf.sign == polarity::plus) cout << "+ ";
         if (sf.sign == polarity::minus) cout << "- ";
         if (sf.sign == polarity::plus || sf.sign == polarity::minus) pretty_printing_fmla(sf.fmla);
-        else cout << sf.fmla[0].data;
-        cout << ", ";
-        print_vec_int(node.justification_parents);
-        cout << ", " << node.tbl_parent << ", ";
-        print_vec_int(node.tbl_children);
-        cout << "\n";
-    }
-}
-
-void print_tableau_as_list_fmla_prefix(Tableau tbl) {
-    for (int i = 0; i < tbl.size(); i++){
-        TblNode node = tbl[i];
-        cout << i << ": ";
-        SignedFmla sf = node.signed_fmla;
-        if (sf.sign == polarity::plus) cout << "+ ";
-        if (sf.sign == polarity::minus) cout << "- ";
-        if (sf.sign == polarity::plus || sf.sign == polarity::minus) print_fmla_prefix(sf.fmla);
         else cout << sf.fmla[0].data;
         cout << ", ";
         print_vec_int(node.justification_parents);

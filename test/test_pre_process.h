@@ -11,7 +11,7 @@ void test_pre_process_predicate_symbs();
 
 void test_pre_process_expension_rules();
 
-void test_pre_process_signed_fmlas_input();
+void test_converts_str_to_signed_fmlas_input();
 
 void test_pre_process_cut_fmlas();
 

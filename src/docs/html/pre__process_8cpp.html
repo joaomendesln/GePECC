@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">GePECC<span id="projectnumber">&#160;v0.0.0</span>
+   <div id="projectname">GePECC<span id="projectnumber">&#160;v0.0.1</span>
    </div>
   </td>
  </tr>
@@ -100,12 +100,12 @@ $(function(){initNavTree('pre__process_8cpp.html','',''); });
 Functions</h2></td></tr>
 <tr class="memitem:abbe0d587b4d958d5b3b7877a086c2cd8" id="r_abbe0d587b4d958d5b3b7877a086c2cd8"><td class="memItemLeft" align="right" valign="top">vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abbe0d587b4d958d5b3b7877a086c2cd8">open_file</a> (string file_path)</td></tr>
 <tr class="memdesc:abbe0d587b4d958d5b3b7877a086c2cd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a file and stores its content on a vector of strings.  <br /></td></tr>
-<tr class="memitem:acba85bac143c9cd356144152ad33df1f" id="r_acba85bac143c9cd356144152ad33df1f"><td class="memItemLeft" align="right" valign="top">map&lt; string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acba85bac143c9cd356144152ad33df1f">pre_process_symb_line</a> (string symb_line)</td></tr>
-<tr class="memdesc:acba85bac143c9cd356144152ad33df1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pre-processes a line of symbols.  <br /></td></tr>
+<tr class="memitem:a22c469233974012919e18c070d300206" id="r_a22c469233974012919e18c070d300206"><td class="memItemLeft" align="right" valign="top">map&lt; string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22c469233974012919e18c070d300206">converts_str_to_symb_map</a> (string symb_line)</td></tr>
+<tr class="memdesc:a22c469233974012919e18c070d300206"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string containing a line describing all symbols of certain arity to a map indexed by the symbols whose value is the arity.  <br /></td></tr>
 <tr class="memitem:afad5d42c52f8931020977bc3f6107f0e" id="r_afad5d42c52f8931020977bc3f6107f0e"><td class="memItemLeft" align="right" valign="top">set&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afad5d42c52f8931020977bc3f6107f0e">pre_process_skolem_symbs</a> ()</td></tr>
 <tr class="memdesc:afad5d42c52f8931020977bc3f6107f0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pre-processes skolemization symbols.  <br /></td></tr>
 <tr class="memitem:a7796d8762c2336f3064d179efbcdc0b1" id="r_a7796d8762c2336f3064d179efbcdc0b1"><td class="memItemLeft" align="right" valign="top">pair&lt; map&lt; string, int &gt;, map&lt; string, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7796d8762c2336f3064d179efbcdc0b1">pre_process_symbols</a> ()</td></tr>
-<tr class="memdesc:a7796d8762c2336f3064d179efbcdc0b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pre-processes symbols files.  <br /></td></tr>
+<tr class="memdesc:a7796d8762c2336f3064d179efbcdc0b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pre-processes the file describing the symbols of the language.  <br /></td></tr>
 <tr class="memitem:a3df42a247ad9f849771e3542faceaac3" id="r_a3df42a247ad9f849771e3542faceaac3"><td class="memItemLeft" align="right" valign="top">map&lt; string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3df42a247ad9f849771e3542faceaac3">pre_process_function_symbs</a> ()</td></tr>
 <tr class="memdesc:a3df42a247ad9f849771e3542faceaac3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pre-processes the function symbols.  <br /></td></tr>
 <tr class="memitem:a95b2c1191cc395e04ff4b585af01383d" id="r_a95b2c1191cc395e04ff4b585af01383d"><td class="memItemLeft" align="right" valign="top">map&lt; string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95b2c1191cc395e04ff4b585af01383d">pre_process_predicate_symbs</a> ()</td></tr>
@@ -114,16 +114,16 @@ Functions</h2></td></tr>
 <tr class="memdesc:a2292534298c3f8e923f089f375c5947d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joins the function and predicate symbols in a single map.  <br /></td></tr>
 <tr class="memitem:a7b874cfcc07eabfc75a4275ee5661a98" id="r_a7b874cfcc07eabfc75a4275ee5661a98"><td class="memItemLeft" align="right" valign="top">map&lt; string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b874cfcc07eabfc75a4275ee5661a98">pre_process_no_skolem_symbs</a> ()</td></tr>
 <tr class="memdesc:a7b874cfcc07eabfc75a4275ee5661a98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pre-processes the symbols that are not skolemization symbols.  <br /></td></tr>
-<tr class="memitem:a8469d0c44b94b4f9418fbcdaf7e917ec" id="r_a8469d0c44b94b4f9418fbcdaf7e917ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_tbl_rule.html">TblRule</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8469d0c44b94b4f9418fbcdaf7e917ec">pre_process_single_expansion_rule</a> (string line, int line_idx)</td></tr>
-<tr class="memdesc:a8469d0c44b94b4f9418fbcdaf7e917ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pre-processes a line of the file with the expansion rules.  <br /></td></tr>
-<tr class="memitem:a051ce8b81697c80bed46b6400f24ebe9" id="r_a051ce8b81697c80bed46b6400f24ebe9"><td class="memItemLeft" align="right" valign="top"><a id="a051ce8b81697c80bed46b6400f24ebe9" name="a051ce8b81697c80bed46b6400f24ebe9"></a>
-vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>pre_process_signed_fmla_list</b> (string list, int line_idx)</td></tr>
-<tr class="memitem:a07133d4377f11189cc5b206b7171f227" id="r_a07133d4377f11189cc5b206b7171f227"><td class="memItemLeft" align="right" valign="top"><a id="a07133d4377f11189cc5b206b7171f227" name="a07133d4377f11189cc5b206b7171f227"></a>
-<a class="el" href="struct_signed_fmla.html">SignedFmla</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pre_process_signed_fmla</b> (string signed_fmla_str, int line_idx)</td></tr>
-<tr class="memitem:ae368d9811f3892fc7cc31d422f8d62c1" id="r_ae368d9811f3892fc7cc31d422f8d62c1"><td class="memItemLeft" align="right" valign="top"><a id="ae368d9811f3892fc7cc31d422f8d62c1" name="ae368d9811f3892fc7cc31d422f8d62c1"></a>
-vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>pre_process_expansion_rules_input</b> (string file_name)</td></tr>
-<tr class="memitem:a4a22ca4bcbcc01fa1a2336c7e24fefc6" id="r_a4a22ca4bcbcc01fa1a2336c7e24fefc6"><td class="memItemLeft" align="right" valign="top"><a id="a4a22ca4bcbcc01fa1a2336c7e24fefc6" name="a4a22ca4bcbcc01fa1a2336c7e24fefc6"></a>
-vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>pre_process_signed_fmla_input</b> (string file_name)</td></tr>
+<tr class="memitem:ab4e8654764ead3df37a3dc64fc563ee9" id="r_ab4e8654764ead3df37a3dc64fc563ee9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_tbl_rule.html">TblRule</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4e8654764ead3df37a3dc64fc563ee9">converts_str_to_single_expansion_rule</a> (string line, int line_idx)</td></tr>
+<tr class="memdesc:ab4e8654764ead3df37a3dc64fc563ee9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string containing an expansion rule into an expansion rule.  <br /></td></tr>
+<tr class="memitem:aaf7aee0e91bb31bd773da521e7abed31" id="r_aaf7aee0e91bb31bd773da521e7abed31"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf7aee0e91bb31bd773da521e7abed31">converts_str_to_signed_fmla_list</a> (string list_str, int line_idx)</td></tr>
+<tr class="memdesc:aaf7aee0e91bb31bd773da521e7abed31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string containing a list of signed formulas into a vector of signed formulas.  <br /></td></tr>
+<tr class="memitem:aa51d9474eef76146135589d8a02933a4" id="r_aa51d9474eef76146135589d8a02933a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_signed_fmla.html">SignedFmla</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa51d9474eef76146135589d8a02933a4">converts_str_to_signed_fmla</a> (string signed_fmla_str, int line_idx)</td></tr>
+<tr class="memdesc:aa51d9474eef76146135589d8a02933a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string containing a signed formula into a signed formula.  <br /></td></tr>
+<tr class="memitem:ae368d9811f3892fc7cc31d422f8d62c1" id="r_ae368d9811f3892fc7cc31d422f8d62c1"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae368d9811f3892fc7cc31d422f8d62c1">pre_process_expansion_rules_input</a> (string file_name)</td></tr>
+<tr class="memdesc:ae368d9811f3892fc7cc31d422f8d62c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pre-processes the file describing the expansion rules provided as the input of the genereation of exercises procedure.  <br /></td></tr>
+<tr class="memitem:a3df7ea830d8a4e381bb4ec8c66958bdb" id="r_a3df7ea830d8a4e381bb4ec8c66958bdb"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3df7ea830d8a4e381bb4ec8c66958bdb">converts_str_to_signed_fmla_input</a> (string file_name)</td></tr>
+<tr class="memdesc:a3df7ea830d8a4e381bb4ec8c66958bdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pre-processes the file describing the signed formulas provided as the input of the genereation of exercises procedure.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Pre-process module of the input files. </p>
@@ -132,6 +132,151 @@ vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;&#160
 <dl class="section date"><dt>Date</dt><dd>2025-06-20</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 </dd></dl>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="aa51d9474eef76146135589d8a02933a4" name="aa51d9474eef76146135589d8a02933a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa51d9474eef76146135589d8a02933a4">&#9670;&#160;</a></span>converts_str_to_signed_fmla()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_signed_fmla.html">SignedFmla</a> converts_str_to_signed_fmla </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>signed_fmla_str</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>line_idx</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a string containing a signed formula into a signed formula. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">signed_fmla_str</td><td>String containing a signed formula </td></tr>
+    <tr><td class="paramname">line_idx</td><td>Index of the line in the file in which <span class="tt">signed_fmla_str</span> is </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Signed formula in <span class="tt">signed_fmla_str</span> </dd></dl>
+
+</div>
+</div>
+<a id="a3df7ea830d8a4e381bb4ec8c66958bdb" name="a3df7ea830d8a4e381bb4ec8c66958bdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3df7ea830d8a4e381bb4ec8c66958bdb">&#9670;&#160;</a></span>converts_str_to_signed_fmla_input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; converts_str_to_signed_fmla_input </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>file_name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pre-processes the file describing the signed formulas provided as the input of the genereation of exercises procedure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file_name</td><td>Name of the file to be pre-processed </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of signed formulas </dd></dl>
+
+</div>
+</div>
+<a id="aaf7aee0e91bb31bd773da521e7abed31" name="aaf7aee0e91bb31bd773da521e7abed31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf7aee0e91bb31bd773da521e7abed31">&#9670;&#160;</a></span>converts_str_to_signed_fmla_list()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt; converts_str_to_signed_fmla_list </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>list_str</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>line_idx</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a string containing a list of signed formulas into a vector of signed formulas. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list_str</td><td>String containing a list of signed formulas </td></tr>
+    <tr><td class="paramname">line_idx</td><td>Index of the line in the file in which <span class="tt">list</span> is </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of the signed formulas of <span class="tt">list</span> </dd></dl>
+
+</div>
+</div>
+<a id="ab4e8654764ead3df37a3dc64fc563ee9" name="ab4e8654764ead3df37a3dc64fc563ee9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4e8654764ead3df37a3dc64fc563ee9">&#9670;&#160;</a></span>converts_str_to_single_expansion_rule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_tbl_rule.html">TblRule</a> converts_str_to_single_expansion_rule </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>line</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>line_idx</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a string containing an expansion rule into an expansion rule. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">line</td><td>Line of the file with the expansion rules </td></tr>
+    <tr><td class="paramname">line_idx</td><td>Index of <span class="tt">line</span> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Expansion rule described in <span class="tt">line</span> </dd></dl>
+
+</div>
+</div>
+<a id="a22c469233974012919e18c070d300206" name="a22c469233974012919e18c070d300206"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22c469233974012919e18c070d300206">&#9670;&#160;</a></span>converts_str_to_symb_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">map&lt; string, int &gt; converts_str_to_symb_map </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>symb_line</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a string containing a line describing all symbols of certain arity to a map indexed by the symbols whose value is the arity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">symb_line</td><td>Symbol line content </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A map with symbols and their respective arities </dd></dl>
+
+</div>
+</div>
 <a id="abbe0d587b4d958d5b3b7877a086c2cd8" name="abbe0d587b4d958d5b3b7877a086c2cd8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abbe0d587b4d958d5b3b7877a086c2cd8">&#9670;&#160;</a></span>open_file()</h2>
 
@@ -155,6 +300,32 @@ vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;&#160
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Vector of strings with the content of the file with the path of <span class="tt">file_path</span> </dd></dl>
+
+</div>
+</div>
+<a id="ae368d9811f3892fc7cc31d422f8d62c1" name="ae368d9811f3892fc7cc31d422f8d62c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae368d9811f3892fc7cc31d422f8d62c1">&#9670;&#160;</a></span>pre_process_expansion_rules_input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; <a class="el" href="struct_tbl_rule.html">TblRule</a> &gt; pre_process_expansion_rules_input </td>
+          <td>(</td>
+          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>file_name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pre-processes the file describing the expansion rules provided as the input of the genereation of exercises procedure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file_name</td><td>Name of the file to be pre-processed </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of expansion rules </dd></dl>
 
 </div>
 </div>
@@ -238,37 +409,6 @@ vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;&#160
 
 </div>
 </div>
-<a id="a8469d0c44b94b4f9418fbcdaf7e917ec" name="a8469d0c44b94b4f9418fbcdaf7e917ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8469d0c44b94b4f9418fbcdaf7e917ec">&#9670;&#160;</a></span>pre_process_single_expansion_rule()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_tbl_rule.html">TblRule</a> pre_process_single_expansion_rule </td>
-          <td>(</td>
-          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>line</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>line_idx</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pre-processes a line of the file with the expansion rules. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">line</td><td>Line of the file with the expansion rules </td></tr>
-    <tr><td class="paramname">line_idx</td><td>Index of <span class="tt">line</span> </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Expansion rule described in <span class="tt">line</span> </dd></dl>
-
-</div>
-</div>
 <a id="afad5d42c52f8931020977bc3f6107f0e" name="afad5d42c52f8931020977bc3f6107f0e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afad5d42c52f8931020977bc3f6107f0e">&#9670;&#160;</a></span>pre_process_skolem_symbs()</h2>
 
@@ -289,32 +429,6 @@ vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;&#160
 
 </div>
 </div>
-<a id="acba85bac143c9cd356144152ad33df1f" name="acba85bac143c9cd356144152ad33df1f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acba85bac143c9cd356144152ad33df1f">&#9670;&#160;</a></span>pre_process_symb_line()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">map&lt; string, int &gt; pre_process_symb_line </td>
-          <td>(</td>
-          <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>symb_line</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Pre-processes a line of symbols. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">symb_line</td><td>Symbol line content </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A map with symbols and their respective arities </dd></dl>
-
-</div>
-</div>
 <a id="a7796d8762c2336f3064d179efbcdc0b1" name="a7796d8762c2336f3064d179efbcdc0b1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7796d8762c2336f3064d179efbcdc0b1">&#9670;&#160;</a></span>pre_process_symbols()</h2>
 
@@ -330,7 +444,7 @@ vector&lt; <a class="el" href="struct_signed_fmla.html">SignedFmla</a> &gt;&#160
       </table>
 </div><div class="memdoc">
 
-<p>Pre-processes symbols files. </p>
+<p>Pre-processes the file describing the symbols of the language. </p>
 <dl class="section return"><dt>Returns</dt><dd>A pair with a map with the function symbols and their respective arities and another map with the predicate symbols and their respective arities </dd></dl>
 
 </div>
