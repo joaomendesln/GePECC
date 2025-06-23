@@ -851,7 +851,7 @@ vector<Tableau> get_tbl_successors(Tableau tbl, vector<TblRule> er) {
         }
     }
 
-    if (successors_amt == 0) { // tableau is already saturated and we need to resort to 0-premise rules
+    if (successors_amt == 0) { // tableau is already saturated and we need to resort to cut rules
         vector<Tableau> tbl_successors_cut = apply_cut(tbl, er);
         
         for (Tableau tbl_successor : tbl_successors_cut) {
