@@ -74,8 +74,6 @@ In the `src` folder, run `make`. Then, run `./main <expansion_rules> <signed_fml
 
 Inside the `src/input` folder, there may be found two folders, `numbers` and `sets`, with examples of input files. The image below illustrates the output after the execution of the program when `src/input/sets/symbols`, `src/input/sets/expansions_rules` and `src/input/sets/signed_fmlas/example1` are provided, respectively, as `symbols`, `expansion_rules` and `signed_fmlas` files.
 
-PRINT IMAGE
-
 ## Requirements
 
 - C++17 or later
