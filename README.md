@@ -16,8 +16,8 @@ Besides the exercises, two other inputs are required. A description of the three
 
 | Input file | File name | What is provided on it
 |--|--|--|
-| Symbols | `symbols` | Function and predicate of symbols of the signature we use in the working language |
-| Expansion rules | `expansion_rules` | Set of cut-based expansion rules |
+| Symbols | `symbols` | Function and predicate symbols of the signature we use in the working language and their respective arities |
+| Expansion rules | `expansion_rules` | Set of theory-specific rules |
 | Signed formulas | `signed_fmlas` | Set of signed formulas describing the input exercise |
 
 All the input files should be inside the `src/inputs` folder. You can find examples at `sets` and `numbers` folders.
@@ -76,7 +76,7 @@ Inside the `src/input` folder, there may be found two folders, `numbers` and `se
 
 ## Requirements
 
-- C++17 or later
+- g++ with support to C++17
 - make
 
 ## References
