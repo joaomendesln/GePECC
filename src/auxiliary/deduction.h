@@ -59,10 +59,6 @@ bool tbl_is_closed(Tableau tbl, vector<TblRule> er);
 
 vector<Term> get_all_terms_of_branch(Tableau tbl, vector<int> branch);
 
-bool has_single_justification_nodes(Tableau tbl, vector<TblRule> er);
-
-Tableau apply_single_premise_rules(Tableau tbl, vector<TblRule> er);
-
 vector<Tableau> get_tbl_successors(Tableau tbl, vector<TblRule> er);
 
 vector<int> branch_closure_nodes(vector<int> branch, Tableau tbl, vector<TblRule> er);

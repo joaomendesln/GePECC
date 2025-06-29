@@ -28,6 +28,7 @@ void pretty_printing_fmla_aux(Fmla fmla, FmlaNode node, int level) {
 
     if (skolem_symbs.find(node.data) == skolem_symbs.end() && (node.children.size() == 1 || node.children.size() == 2) ) {
         if (node.children.size() == 1) {
+            cout << node.data;
             cout << "(";
             pretty_printing_fmla_aux(fmla, fmla[node.children[0]], level + 1);
             cout << ")";

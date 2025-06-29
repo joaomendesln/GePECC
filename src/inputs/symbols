@@ -1,8 +1,6 @@
 function
-0: ∅
-1: fst, snd
-2: f, g, ∩, ∪, ×, △, -
+2: f, g, +, ·
 predicate
-2: ∈, ⊆, ⪥
+2: ≈, |, ≤
 skolem
 f, g

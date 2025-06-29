@@ -9,9 +9,13 @@
  * 
  */
 
+
 #include "deduction.h"
 
+
 using namespace std;
+
+
 
 
 /**
@@ -23,12 +27,15 @@ using namespace std;
 Tableau get_initial_tableau(vector<SignedFmla> sf_input) {
     Tableau initial_tableau;
 
+
     int idx = 0;
     for (SignedFmla sf : sf_input) {
         TblNode tbl_node;
 
+
         tbl_node.signed_fmla = sf;
         tbl_node.justification_parents = {-1};
+
 
         if (idx == 0) {
             tbl_node.tbl_parent = 0;
@@ -41,11 +48,14 @@ Tableau get_initial_tableau(vector<SignedFmla> sf_input) {
         tbl_node.expansion_rule_idx = -1;
         tbl_node.conclusion_idx = -1;
 
+
         initial_tableau.push_back(tbl_node);
     }
 
+
     return initial_tableau;
 }
+
 
 /**
  * @brief Get the height initial nodes object
@@ -61,8 +71,10 @@ int get_height_initial_nodes(Tableau tbl) {
         }
     }
 
+
     return get_height(fmlas);
 }
+
 
 /**
  * @brief Tries to apply a rule in a tableau
@@ -79,11 +91,15 @@ Tableau apply_rule_with_premise(Tableau tbl, TblRule expansion_rule, int rule_id
     vector<SignedFmla> premises = expansion_rule.premises;
     vector<SignedFmla> conclusions = expansion_rule.conclusions;
 
+
     vector<vector<int>> branches = get_tbl_open_branches(tbl, er);
+
 
     Tableau new_tbl = tbl;
 
+
     int height_initial_nodes = get_height_initial_nodes(tbl);
+
 
     for (vector<int> branch : branches) {
         int nodes_added_amt = 0;
@@ -96,14 +112,17 @@ Tableau apply_rule_with_premise(Tableau tbl, TblRule expansion_rule, int rule_id
                 vector<int> arrange = all_arranges[i];
                 vector<int> justifications;
 
+
                 for (int j = 0; j < premises.size(); j++) {
                     justifications.push_back(branch[arrange[j]]);
                 }
+
 
                 bool all_premises_match = true;
                 for (int j = 0; j < premises.size(); j++) {
                     if (!is_a_match(tbl[justifications[j]].signed_fmla, premises[j])) all_premises_match = false;
                 }
+
 
                 if (all_premises_match) {
                     // check if all matching of premises agree on substitution of parameters
@@ -115,6 +134,7 @@ Tableau apply_rule_with_premise(Tableau tbl, TblRule expansion_rule, int rule_id
                         premises_fmlas.push_back(premise.fmla);
                     }
                     set<string> premises_parameters = get_parameters(premises_fmlas);
+
 
                     for (int j = 0; j < premises.size(); j++) {
                         Subst matching_parameters_map = matching_parameters(tbl[justifications[j]].signed_fmla, premises[j]);
@@ -133,6 +153,7 @@ Tableau apply_rule_with_premise(Tableau tbl, TblRule expansion_rule, int rule_id
                         }
                     }
 
+
                     // expand tableau
                     if (all_parameters_match) {
                         int leaf = branch_leaf(new_tbl, branch);
@@ -146,9 +167,11 @@ Tableau apply_rule_with_premise(Tableau tbl, TblRule expansion_rule, int rule_id
                                     leaf = new_tbl.size() - 1;
                                 }
 
+
                                 TblNode new_tbl_node (expansion_node, justifications, leaf, {}, rule_idx, j);
                                 
                                 new_tbl[leaf].tbl_children.push_back(new_tbl.size());
+
 
                                 nodes_added_amt += 1;
                                 new_tbl.push_back(new_tbl_node);
@@ -161,6 +184,7 @@ Tableau apply_rule_with_premise(Tableau tbl, TblRule expansion_rule, int rule_id
     }
     return new_tbl;
 }
+
 
 /**
  * @brief Checks if it is possible to apply a closure rule in a tableau
@@ -175,9 +199,12 @@ bool try_apply_closure_rule(Tableau tbl, vector<int> branch, TblRule closure_rul
     vector<Tableau> resuling_tableaux;
     vector<SignedFmla> premises = closure_rule.premises;
 
+
     vector<vector<int>> branches = get_tbl_branches(tbl);
 
+
     Tableau new_tbl = tbl;
+
 
     int branch_size = branch.size();
     int premises_size = premises.size();
@@ -188,14 +215,17 @@ bool try_apply_closure_rule(Tableau tbl, vector<int> branch, TblRule closure_rul
             vector<int> arrange = all_arranges[i];
             vector<int> justifications;
 
+
             for (int j = 0; j < premises.size(); j++) {
                 justifications.push_back(branch[arrange[j]]);
             }
+
 
             bool all_premises_match = true;
             for (int j = 0; j < premises.size(); j++) {
                 if (!is_a_match(tbl[justifications[j]].signed_fmla, premises[j])) all_premises_match = false;
             }
+
 
             if (all_premises_match) {
                 // check if all matching of premises agree on substitution of parameters
@@ -207,6 +237,7 @@ bool try_apply_closure_rule(Tableau tbl, vector<int> branch, TblRule closure_rul
                     premises_fmlas.push_back(premise.fmla);
                 }
                 set<string> premises_parameters = get_parameters(premises_fmlas);
+
 
                 for (int j = 0; j < premises.size(); j++) {
                     Subst matching_parameters_map = matching_parameters(tbl[justifications[j]].signed_fmla, premises[j]);
@@ -225,6 +256,7 @@ bool try_apply_closure_rule(Tableau tbl, vector<int> branch, TblRule closure_rul
                     }
                 }
 
+
                 if (all_parameters_match) {
                     return true;
                 }
@@ -233,6 +265,7 @@ bool try_apply_closure_rule(Tableau tbl, vector<int> branch, TblRule closure_rul
     }
     return false;
 }
+
 
 /**
  * @brief Gets the index of the justifications for the application of a closure rule
@@ -246,9 +279,12 @@ vector<int> get_justifications_closure_rule(Tableau tbl, vector<int> branch, Tbl
     vector<Tableau> resuling_tableaux;
     vector<SignedFmla> premises = closure_rule.premises;
 
+
     vector<vector<int>> branches = get_tbl_branches(tbl);
 
+
     Tableau new_tbl = tbl;
+
 
     for (vector<int> branch : branches) {
         int branch_size = branch.size();
@@ -260,14 +296,17 @@ vector<int> get_justifications_closure_rule(Tableau tbl, vector<int> branch, Tbl
                 vector<int> arrange = all_arranges[i];
                 vector<int> justifications;
 
+
                 for (int j = 0; j < premises.size(); j++) {
                     justifications.push_back(branch[arrange[j]]);
                 }
+
 
                 bool all_premises_match = true;
                 for (int j = 0; j < premises.size(); j++) {
                     if (!is_a_match(tbl[justifications[j]].signed_fmla, premises[j])) all_premises_match = false;
                 }
+
 
                 if (all_premises_match) {
                     // check if all matching of premises agree on substitution of parameters
@@ -279,6 +318,7 @@ vector<int> get_justifications_closure_rule(Tableau tbl, vector<int> branch, Tbl
                         premises_fmlas.push_back(premise.fmla);
                     }
                     set<string> premises_parameters = get_parameters(premises_fmlas);
+
 
                     for (int j = 0; j < premises.size(); j++) {
                         Subst matching_parameters_map = matching_parameters(tbl[justifications[j]].signed_fmla, premises[j]);
@@ -297,6 +337,7 @@ vector<int> get_justifications_closure_rule(Tableau tbl, vector<int> branch, Tbl
                         }
                     }
 
+
                     if (all_parameters_match) {
                         return justifications;
                     }
@@ -306,6 +347,7 @@ vector<int> get_justifications_closure_rule(Tableau tbl, vector<int> branch, Tbl
     }
     return {};
 }
+
 
 /**
  * @brief Applies a cut rule in a tableau
@@ -317,13 +359,18 @@ vector<int> get_justifications_closure_rule(Tableau tbl, vector<int> branch, Tbl
 vector<Tableau> apply_cut(Tableau tbl, vector<TblRule> er) {
     vector<Tableau> resuling_tableaux;
 
+
     vector<vector<int>> branches = get_tbl_open_branches(tbl, er);
+
 
     for (vector<int> branch : branches) {
 
+
         vector<SignedFmla> copremises = minor_copremises_branch(tbl, branch, er);
 
+
         int cuts_amt = 0;
+
 
         for (int branch_node_idx : branch) {
             TblNode branch_node = tbl[branch_node_idx];
@@ -332,14 +379,18 @@ vector<Tableau> apply_cut(Tableau tbl, vector<TblRule> er) {
             }
         }
 
+
         if (cuts_amt < 1) {
             for (SignedFmla signed_fmla : copremises) {
                 SignedFmla expansion_node1(polarity::plus, signed_fmla.fmla);
                 SignedFmla expansion_node2(polarity::minus, signed_fmla.fmla);
 
+
                 if (!node_in_branch(expansion_node1, tbl, branch) && !node_in_branch(expansion_node2, tbl, branch)){
 
+
                     Tableau new_tbl = tbl;
+
 
                     int leaf = branch_leaf(tbl, branch);
                     TblNode new_tbl_node1(expansion_node1, {-2}, leaf, {}, -1, -1);
@@ -347,6 +398,7 @@ vector<Tableau> apply_cut(Tableau tbl, vector<TblRule> er) {
                     
                     new_tbl[leaf].tbl_children.push_back(tbl.size());
                     new_tbl[leaf].tbl_children.push_back(tbl.size() + 1);
+
 
                     new_tbl.push_back(new_tbl_node1);
                     new_tbl.push_back(new_tbl_node2);
@@ -356,8 +408,10 @@ vector<Tableau> apply_cut(Tableau tbl, vector<TblRule> er) {
         }
     }
 
+
     return resuling_tableaux;
 }
+
 
 /**
  * @brief Checks if a signed formula and a premise of a rule are equal under substitution
@@ -372,32 +426,42 @@ bool is_a_match(SignedFmla sf_tbl, SignedFmla premise) {
         return false;
     }
 
+
     if (sf_tbl.fmla.size() < premise.fmla.size()) {
         return false;
     }
 
+
     map<string, int> function_symbs = pre_process_function_symbs();
     map<string, int> predicate_symbs = pre_process_predicate_symbs();
 
+
     Subst subst;
+
 
     queue<int> sf_tbl_queue;
     queue<int> premise_queue;
 
+
     sf_tbl_queue.push(0);
     premise_queue.push(0);
 
+
     if (premise.fmla[0].data != sf_tbl.fmla[0].data) return false; // if the predicate symbols are different
+
 
     while (!premise_queue.empty()) {
         int premise_node_idx = premise_queue.front();
         int sf_tbl_node_idx = sf_tbl_queue.front();
 
+
         FmlaNode premise_node = premise.fmla[premise_node_idx];
         FmlaNode sf_tbl_node = sf_tbl.fmla[sf_tbl_node_idx];
 
+
         premise_queue.pop();
         sf_tbl_queue.pop();
+
 
         if (!is_a_parameter(premise_node)) {
             if (premise_node.children.size() != sf_tbl_node.children.size()) return false;
@@ -412,10 +476,12 @@ bool is_a_match(SignedFmla sf_tbl, SignedFmla premise) {
             }
         }
 
+
         for (int i = 0; i < premise_node.children.size(); i++) {
             premise_queue.push(premise_node.children[i]);
             sf_tbl_queue.push(sf_tbl_node.children[i]);
         }
+
 
         if (is_function_symb(premise_node.data) || is_predicate_symb(premise_node.data)) {
             if (premise_node.data != sf_tbl_node.data) return false;
@@ -423,6 +489,7 @@ bool is_a_match(SignedFmla sf_tbl, SignedFmla premise) {
     }
     return true;
 }
+
 
 /**
  * @brief Checks if a formula and a formula of a premise of a rule are equal under substitution
@@ -434,29 +501,38 @@ bool is_a_match(SignedFmla sf_tbl, SignedFmla premise) {
  */
 bool is_a_match(Fmla fmla_tbl, Fmla premise_fmla) {
 
+
     if (fmla_tbl.size() < premise_fmla.size()) {
         return false;
     }
 
+
     Subst subst;
+
 
     queue<int> fmla_tbl_queue;
     queue<int> premise_fmla_queue;
 
+
     fmla_tbl_queue.push(0);
     premise_fmla_queue.push(0);
 
+
     if (premise_fmla[0].data != fmla_tbl[0].data) return false; // if the predicate symbols are different
+
 
     while (!premise_fmla_queue.empty()) {
         int premise_node_idx = premise_fmla_queue.front();
         int fmla_tbl_node_idx = fmla_tbl_queue.front();
 
+
         FmlaNode premise_fmla_node = premise_fmla[premise_node_idx];
         FmlaNode fmla_tbl_node = fmla_tbl[fmla_tbl_node_idx];
 
+
         premise_fmla_queue.pop();
         fmla_tbl_queue.pop();
+
 
         if (!is_a_parameter(premise_fmla_node)) {
             if (premise_fmla_node.children.size() != fmla_tbl_node.children.size()) return false;
@@ -471,10 +547,12 @@ bool is_a_match(Fmla fmla_tbl, Fmla premise_fmla) {
             }
         }
 
+
         for (int i = 0; i < premise_fmla_node.children.size(); i++) {
             premise_fmla_queue.push(premise_fmla_node.children[i]);
             fmla_tbl_queue.push(fmla_tbl_node.children[i]);
         }
+
 
         if (is_function_symb(premise_fmla_node.data) || is_predicate_symb(premise_fmla_node.data)) {
             if (premise_fmla_node.data != fmla_tbl_node.data) return false;
@@ -482,6 +560,7 @@ bool is_a_match(Fmla fmla_tbl, Fmla premise_fmla) {
     }
     return true;
 }
+
 
 /**
  * @brief Constructs the substitution that allows two signed formulas to match, ie, to be equal under substitution
@@ -493,31 +572,40 @@ bool is_a_match(Fmla fmla_tbl, Fmla premise_fmla) {
 Subst matching_parameters(SignedFmla sf_tbl, SignedFmla premise) {
     Subst matching_parameters_map;
 
+
     if (!is_a_match(sf_tbl, premise)) return matching_parameters_map;
+
 
     queue<int> sf_tbl_queue;
     queue<int> premise_queue;
 
+
     map<string, int> predicate_symbs = pre_process_predicate_symbs();
     map<string, int> function_symbs = pre_process_function_symbs();
 
+
     sf_tbl_queue.push(0);
     premise_queue.push(0);
+
 
     while (!premise_queue.empty()) {
         int premise_node_idx = premise_queue.front();
         int sf_tbl_node_idx = sf_tbl_queue.front();
 
+
         FmlaNode premise_node = premise.fmla[premise_node_idx];
         FmlaNode sf_tbl_node = sf_tbl.fmla[sf_tbl_node_idx];
 
+
         sf_tbl_queue.pop();
         premise_queue.pop();
+
 
         for (int i = 0; i < premise_node.children.size(); i++) {
             premise_queue.push(premise_node.children[i]);
             sf_tbl_queue.push(sf_tbl_node.children[i]);
         }
+
 
         if (is_a_parameter(premise_node)) {
             matching_parameters_map[premise_node.data] = get_term_of_fmla(sf_tbl.fmla, sf_tbl_node_idx);
@@ -525,6 +613,7 @@ Subst matching_parameters(SignedFmla sf_tbl, SignedFmla premise) {
     }
     return matching_parameters_map;
 }
+
 
 /**
  * @brief Constructs the substitution that allows two formulas to match, ie, to be equal under substitution
@@ -536,31 +625,40 @@ Subst matching_parameters(SignedFmla sf_tbl, SignedFmla premise) {
 Subst matching_parameters(Fmla fmla_tbl, Fmla premise_fmla) {
     Subst matching_parameters_map;
 
+
     if (!are_syntactically_isomorphic(fmla_tbl, premise_fmla)) return matching_parameters_map;
+
 
     queue<int> fmla_tbl_queue;
     queue<int> premise_fmla_queue;
 
+
     map<string, int> predicate_symbs = pre_process_predicate_symbs();
     map<string, int> function_symbs = pre_process_function_symbs();
 
+
     fmla_tbl_queue.push(0);
     premise_fmla_queue.push(0);
+
 
     while (!premise_fmla_queue.empty()) {
         int premise_fmla_node_idx = premise_fmla_queue.front();
         int fmla_tbl_node_idx = fmla_tbl_queue.front();
 
+
         FmlaNode premise_fmla_node = premise_fmla[premise_fmla_node_idx];
         FmlaNode fmla_tbl_node = fmla_tbl[fmla_tbl_node_idx];
 
+
         fmla_tbl_queue.pop();
         premise_fmla_queue.pop();
+
 
         for (int i = 0; i < premise_fmla_node.children.size(); i++) {
             premise_fmla_queue.push(premise_fmla_node.children[i]);
             fmla_tbl_queue.push(fmla_tbl_node.children[i]);
         }
+
 
         if (is_a_parameter(premise_fmla_node)) {
             matching_parameters_map[premise_fmla_node.data] = get_term_of_fmla(fmla_tbl, fmla_tbl_node_idx);
@@ -568,6 +666,7 @@ Subst matching_parameters(Fmla fmla_tbl, Fmla premise_fmla) {
     }
     return matching_parameters_map;
 }
+
 
 /**
  * @brief Gets the leaves of a tableau
@@ -585,6 +684,7 @@ vector<int> get_tbl_leaves(Tableau tbl) {
     return leaves_idx;
 }
 
+
 /**
  * @brief Gets the branches of a tableau
  * 
@@ -594,7 +694,9 @@ vector<int> get_tbl_leaves(Tableau tbl) {
 vector<vector<int>> get_tbl_branches(Tableau tbl) {
     vector<int> leaves = get_tbl_leaves(tbl);
 
+
     vector< vector<int>> branches;
+
 
     for (int i = 0; i < leaves.size(); i++){
         vector<int> branch;
@@ -610,8 +712,10 @@ vector<vector<int>> get_tbl_branches(Tableau tbl) {
         branches.push_back(branch);
     }
 
+
     return branches;
 }
+
 
 /**
  * @brief Gets the index of leaf node of a tableau branch
@@ -629,6 +733,7 @@ int branch_leaf(Tableau tbl, vector<int> branch) {
     return -1;
 }
 
+
 /**
  * @brief Gets the level of each node of a tableau tree
  * 
@@ -637,15 +742,20 @@ int branch_leaf(Tableau tbl, vector<int> branch) {
  */
 vector<int> get_tbl_levels(Tableau tbl) {
 
+
     vector<int> tbl_level(tbl.size(), 0);
+
 
     queue<int> q;
     q.push(0);
 
+
     while (!q.empty()) {
         int current = q.front();
 
+
         if (current != 0) tbl_level[current] = tbl_level[tbl[current].tbl_parent] + 1;
+
 
         q.pop();
         for (int child : tbl[current].tbl_children) {
@@ -653,9 +763,12 @@ vector<int> get_tbl_levels(Tableau tbl) {
         }
     }
 
+
     return tbl_level;
 
+
 }
+
 
 /**
  * @brief Check if two nodes of a tableau have opposite polarity
@@ -668,10 +781,13 @@ vector<int> get_tbl_levels(Tableau tbl) {
 bool opposite_polarity_nodes(TblNode node1, TblNode node2) {
     if (node1.signed_fmla.sign == polarity::plus && node2.signed_fmla.sign == polarity::minus) return true;
 
+
     if (node1.signed_fmla.sign == polarity::minus && node2.signed_fmla.sign == polarity::plus) return true;
+
 
     return false;
 }
+
 
 /**
  * @brief Checks if a branch is closed
@@ -694,6 +810,7 @@ bool branch_is_closed(vector<int> branch, Tableau tbl, vector<TblRule> er) {
         }
     }
 
+
     // Closure by application of a closure rule
     vector<TblRule> closure_rules = get_closure_rules(er);
     for (TblRule closure_rule : closure_rules) {
@@ -702,8 +819,10 @@ bool branch_is_closed(vector<int> branch, Tableau tbl, vector<TblRule> er) {
         }
     }
 
+
     return false;
 }
+
 
 /**
  * @brief Gets the closure rules of a vector of expansion rules
@@ -714,14 +833,17 @@ bool branch_is_closed(vector<int> branch, Tableau tbl, vector<TblRule> er) {
 vector<TblRule> get_closure_rules(vector<TblRule> er) {
     vector<TblRule> closure_rules;
 
+
     for (TblRule rule : er) {
         if (rule.conclusions.size() == 0) {
             closure_rules.push_back(rule);
         }
     }
 
+
     return closure_rules;
 }
+
 
 /**
  * @brief Gets the open branches of a tableau
@@ -732,15 +854,19 @@ vector<TblRule> get_closure_rules(vector<TblRule> er) {
  */
 vector< vector<int>> get_tbl_open_branches(Tableau tbl, vector<TblRule> er) {
 
+
     vector<vector<int>> open_branches;
     vector<vector<int>> all_branches = get_tbl_branches(tbl);
+
 
     for (vector<int> branch : all_branches) {
         if (!branch_is_closed(branch, tbl, er)) open_branches.push_back(branch);
     }
 
+
     return open_branches;
 }
+
 
 /**
  * @brief Checks if a tableau is closed
@@ -753,13 +879,16 @@ vector< vector<int>> get_tbl_open_branches(Tableau tbl, vector<TblRule> er) {
 bool tbl_is_closed(Tableau tbl, vector<TblRule> er) {
     vector< vector<int>> branches = get_tbl_branches(tbl);
 
+
     bool is_closed = true;
     for (int i = 0; i < branches.size(); i++){
         is_closed = is_closed && branch_is_closed(branches[i], tbl, er); 
     }
 
+
     return is_closed;
 }
+
 
 /**
  * @brief Gets all terms of a tableau branch
@@ -771,10 +900,12 @@ bool tbl_is_closed(Tableau tbl, vector<TblRule> er) {
 vector<Term> get_all_terms_of_branch(Tableau tbl, vector<int> branch) {
     vector<Term> all_terms;
 
+
     for (int i : branch) {
         TblNode tbl_node = tbl[i];
         Fmla fmla = tbl_node.signed_fmla.fmla;
         vector<Term> terms_of_fmla = get_all_terms_of_fmla(fmla);
+
 
         for (Term term_fmla : terms_of_fmla) {
             bool already_in_all_terms = false;
@@ -789,43 +920,8 @@ vector<Term> get_all_terms_of_branch(Tableau tbl, vector<int> branch) {
         }
     }
 
+
     return all_terms;
-}
-
-/**
- * @brief Checks if a tableau has a node that is a justification for a 1-premise rule
- * 
- * @param tbl Tableau
- * @param er Expasnion rules
- * @return True if there is a node in tbl that is a a justification for a 1-premise rule of er
- * @return False otherwise 
- */
-bool has_single_justification_nodes(Tableau tbl, vector<TblRule> er) {
-    for (int i = 0; i < er.size(); i++) {
-        TblRule rule = er[i];
-        if (rule.premises.size() == 1) {
-            Tableau tbl_successor_rule = apply_rule_with_premise(tbl, rule, i, er);
-            if (tbl_successor_rule.size() > tbl.size()) return true;
-        }
-    }
-    return false;
-}
-
-/**
- * @brief Applies all possible single premise rules in a tableau
- * 
- * @param tbl Tableau
- * @param er Expansion rules
- * @return The resulting tableau of applying in `tbl` all possible single premise rules of `er`
- */
-Tableau apply_single_premise_rules(Tableau tbl, vector<TblRule> er) {
-    for (int i = 0; i < er.size(); i++) {
-        TblRule rule = er[i];
-        if (rule.premises.size() == 1) {
-            tbl = apply_rule_with_premise(tbl, rule, i, er);
-        }
-    }
-    return tbl;
 }
 
 /**
@@ -838,22 +934,39 @@ Tableau apply_single_premise_rules(Tableau tbl, vector<TblRule> er) {
 vector<Tableau> get_tbl_successors(Tableau tbl, vector<TblRule> er) {
     vector<Tableau> tableau_successors;
 
-    // get tableau successors from linear rules
     int successors_amt = 0;
+    // apply 1-premise rules
     for (int i = 0; i < er.size(); i++) {
         TblRule rule = er[i];
-        if (rule.premises.size() > 1) {
+        if (rule.premises.size() == 1) {
             Tableau tbl_successor_rule = apply_rule_with_premise(tbl, rule, i, er);
             if (tbl_successor_rule.size() > tbl.size()) {
                 successors_amt += 1;
-                tableau_successors.push_back(tbl_successor_rule);
+                tbl = apply_rule_with_premise(tbl, rule, i, er);
+            }
+        }
+    }
+    if (successors_amt > 0) {
+        return {tbl};
+    }
+
+    // apply n-premise rules, where n > 1
+    if (successors_amt == 0) {
+        for (int i = 0; i < er.size(); i++) {
+            TblRule rule = er[i];
+            if (rule.premises.size() > 1) {
+                Tableau tbl_successor_rule = apply_rule_with_premise(tbl, rule, i, er);
+                if (tbl_successor_rule.size() > tbl.size()) {
+                    successors_amt += 1;
+                    tableau_successors.push_back(tbl_successor_rule);
+                }
             }
         }
     }
 
-    if (successors_amt == 0) { // tableau is already saturated and we need to resort to cut rules
+    // apply cut rules
+    if (successors_amt == 0) {
         vector<Tableau> tbl_successors_cut = apply_cut(tbl, er);
-        
         for (Tableau tbl_successor : tbl_successors_cut) {
             tableau_successors.push_back(tbl_successor);
         }
@@ -862,6 +975,7 @@ vector<Tableau> get_tbl_successors(Tableau tbl, vector<TblRule> er) {
     return tableau_successors;
 
 }
+
 
 /**
  * @brief Gets the indexes of the nodes that make a branch to close
@@ -882,6 +996,7 @@ vector<int> branch_closure_nodes(vector<int> branch, Tableau tbl, vector<TblRule
         }
     }
 
+
     vector<TblRule> closure_rules = get_closure_rules(er);
     for (TblRule closure_rule : closure_rules) {
         if (try_apply_closure_rule(tbl, branch, closure_rule)) {
@@ -889,8 +1004,10 @@ vector<int> branch_closure_nodes(vector<int> branch, Tableau tbl, vector<TblRule
         }
     }
 
+
     return {};
 }
+
 
 /**
  * @brief Gets the size of a branch of a tableau
@@ -904,14 +1021,17 @@ int get_branch_size(Tableau tbl, vector<int> branch, vector<TblRule> er) {
     int branch_size = 0;
     vector<int> closure_nodes = branch_closure_nodes(branch, tbl, er);
 
+
     for (int node : closure_nodes) {
         queue<int> q;
         q.push(node);
+
 
         while (!q.empty()) {
             int current = q.front();
             branch_size += 1;
             q.pop();
+
 
             for (int justification : tbl[current].justification_parents) {
                 if (justification == 0) {
@@ -922,8 +1042,10 @@ int get_branch_size(Tableau tbl, vector<int> branch, vector<TblRule> er) {
         }
     }    
 
+
     return branch_size + 1; // '+ 1' so we count the closure
 }
+
 
 /**
  * @brief Gets the size of a tableau
@@ -936,12 +1058,15 @@ int get_size(Tableau tbl, vector<TblRule> er) {
     int size = 0;
     vector<vector<int>> branches = get_tbl_branches(tbl);
 
+
     for (vector<int> branch : branches) {
         size += get_branch_size(tbl, branch, er);
     }
 
+
     return size;
 }
+
 
 /**
  * @brief Searches for the minimal proofs for a set of signed formulas
@@ -953,17 +1078,21 @@ int get_size(Tableau tbl, vector<TblRule> er) {
 vector<Tableau> search_minimal_proofs(vector<SignedFmla> sf, vector<TblRule> er) {
     queue<tuple<Tableau, int>> aux_queue;
 
+
     Tableau initial_tbl = get_initial_tableau(sf);
     aux_queue.push(make_tuple(initial_tbl, 1));
     vector<Tableau> minimal_proofs;
     int minimal_proof_size = -1;
 
+
     while (!aux_queue.empty()) {
+
 
         tuple<Tableau, int> current = aux_queue.front();
         Tableau tbl = get<0>(current);
         int level = get<1>(current);
         aux_queue.pop();
+
 
         if (tbl_is_closed(tbl, er)) {
             Tableau tbl_clean = clean_tbl(tbl, er);
@@ -985,24 +1114,20 @@ vector<Tableau> search_minimal_proofs(vector<SignedFmla> sf, vector<TblRule> er)
         }
         else {
             if (minimal_proofs.size() == 0 || level < minimal_proof_size + 1) {
-                if (has_single_justification_nodes(tbl, er)) {
-                    Tableau tbl_child = apply_single_premise_rules(tbl, er);
-                    aux_queue.push(make_tuple(tbl_child, level + 1));
-                }
-                else {
-                    vector<Tableau> tbl_children = get_tbl_successors(tbl, er);
-                    for (Tableau tbl_child : tbl_children) {
-                        if (tbl_child.size() < 120) {
-                            aux_queue.push(make_tuple(tbl_child, level + 1));
-                        }
+                vector<Tableau> tbl_children = get_tbl_successors(tbl, er);
+                for (Tableau tbl_child : tbl_children) {
+                    if (tbl_child.size() < 120) {
+                        aux_queue.push(make_tuple(tbl_child, level + 1));
                     }
                 }
             }
         }
     }
 
+
     return minimal_proofs;
 }
+
 
 /**
  * @brief Gets the clean proof for a proof
@@ -1014,24 +1139,31 @@ vector<Tableau> search_minimal_proofs(vector<SignedFmla> sf, vector<TblRule> er)
 Tableau clean_tbl(Tableau tbl, vector<TblRule> er) {
     map<int, bool> is_dispensable;
 
+
     for (int i = 0; i < tbl.size(); i++){
         is_dispensable[i] = true;
     }
 
+
     vector<vector<int>> branches = get_tbl_branches(tbl);
+
 
     for (vector<int> branch : branches) {
         vector<int> closure_nodes = branch_closure_nodes(branch, tbl, er);
+
 
         for (int node : closure_nodes) {
             queue<int> q;
             q.push(node);
 
+
             while (!q.empty()) {
                 int current = q.front();
                 q.pop();
 
+
                 is_dispensable[current] = false;
+
 
                 for (int justification : tbl[current].justification_parents) {
                     if (justification > 0) q.push(justification);
@@ -1039,6 +1171,7 @@ Tableau clean_tbl(Tableau tbl, vector<TblRule> er) {
             }
         }
     }
+
 
     Tableau resulting_tbl = tbl;
     for (int i = resulting_tbl.size() - 1; i > 0; i--){
@@ -1049,8 +1182,10 @@ Tableau clean_tbl(Tableau tbl, vector<TblRule> er) {
         }
     }
 
+
     return resulting_tbl;
 }
+
 
 /**
  * @brief Removes a node of a tableau
@@ -1063,15 +1198,19 @@ Tableau remove_node(Tableau tbl, int idx) {
     vector<int> tbl_children_idx = tbl[idx].tbl_children;
     int tbl_parent_idx = tbl[idx].tbl_parent;
 
+
     tbl[tbl_parent_idx].tbl_children = tbl_children_idx;
     for (int child : tbl_children_idx) {
         tbl[child].tbl_parent = tbl_parent_idx;
     }
 
+
     tbl.erase(tbl.begin() + idx);
+
 
     for (int i = 0; i < tbl.size(); i++) {
         TblNode tbl_node = tbl[i];
+
 
         vector<int> justification_parents = tbl_node.justification_parents;
         for (int j = 0; j < justification_parents.size(); j++) {
@@ -1079,12 +1218,15 @@ Tableau remove_node(Tableau tbl, int idx) {
                 justification_parents[j] = justification_parents[j] - 1;
             }
 
+
         }
         tbl_node.justification_parents = justification_parents;
+
 
         if (tbl_node.tbl_parent >= idx) {
             tbl_node.tbl_parent = tbl_node.tbl_parent - 1;
         }
+
 
         vector<int> tbl_children = tbl_node.tbl_children;
         for (int j = 0; j < tbl_children.size(); j++) {
@@ -1092,14 +1234,18 @@ Tableau remove_node(Tableau tbl, int idx) {
                 tbl_children[j] = tbl_children[j] - 1;
             }
 
+
         }
         tbl_node.tbl_children = tbl_children;
+
 
         tbl[i] = tbl_node;
     }
 
+
     return tbl;
 }
+
 
 /**
  * @brief Gets the minor co-premises of a branch
@@ -1112,14 +1258,18 @@ Tableau remove_node(Tableau tbl, int idx) {
 vector<SignedFmla> minor_copremises_branch(Tableau tbl, vector<int> branch, vector<TblRule> er) {
     vector<SignedFmla> resulting_nodes; 
 
+
     vector<Term> branch_terms = get_all_terms_of_branch(tbl, branch);
     set<string> branch_pred_symbols;
+
 
     for (int branch_node : branch) {
         TblNode tbl_node = tbl[branch_node];
         SignedFmla signed_fmla = tbl_node.signed_fmla;
         branch_pred_symbols.insert(signed_fmla.fmla[0].data);    
     }
+
+
 
 
     for (int branch_node : branch) {
@@ -1133,6 +1283,7 @@ vector<SignedFmla> minor_copremises_branch(Tableau tbl, vector<int> branch, vect
                 for (SignedFmla copremise : copremises) {
                     vector<Term> premise_terms = get_all_terms_of_fmla(copremise.fmla);
 
+
                     bool all_premises_terms_in_branch = true;
                     for (Term premise_term : premise_terms) {
                         bool all_single_premise_terms_in_branch = false;
@@ -1143,6 +1294,7 @@ vector<SignedFmla> minor_copremises_branch(Tableau tbl, vector<int> branch, vect
                         }
                         all_premises_terms_in_branch &= all_single_premise_terms_in_branch;
                     }
+
 
                     if (all_premises_terms_in_branch == true) {
                         if (branch_pred_symbols.find(copremise.fmla[0].data) != branch_pred_symbols.end()) {
@@ -1157,6 +1309,7 @@ vector<SignedFmla> minor_copremises_branch(Tableau tbl, vector<int> branch, vect
     }
     return resulting_nodes;
 }
+
 
 /**
  * @brief Gets the minor co-premises of a rule
@@ -1176,6 +1329,7 @@ vector<SignedFmla> minor_copremises_rule(SignedFmla sf, TblRule rule) {
                 if (i != j) {
                     set<string> prem_parameters = get_parameters(rule.premises[j].fmla);
 
+
                     bool parameters_are_in_subst = true;
                     for (string prem_param : prem_parameters) {
                         if (matching_parameters_map.find(prem_param) == matching_parameters_map.end()) parameters_are_in_subst = false;
@@ -1191,8 +1345,10 @@ vector<SignedFmla> minor_copremises_rule(SignedFmla sf, TblRule rule) {
         }
     }
 
+
     return resulting_copremises;
 }
+
 
 /**
  * @brief Checks if a formula is in a vector of formulas
@@ -1208,6 +1364,7 @@ bool fmla_in_vec_fmla(vector<Fmla> fmlas, Fmla fmla) {
     }
     return false;
 }
+
 
 /**
  * @brief Checks if a formula is in a formula of a vector of signed formulas
@@ -1226,6 +1383,7 @@ bool fmla_in_vec_signed_fmla(vector<SignedFmla> signed_fmlas, Fmla fmla) {
     return fmla_in_vec_fmla(vec_fmla, fmla);
 }
 
+
 /**
  * @brief Checks if a signed formula is in a vector of signed formula
  * 
@@ -1236,11 +1394,13 @@ bool fmla_in_vec_signed_fmla(vector<SignedFmla> signed_fmlas, Fmla fmla) {
  */
 bool signed_fmla_in_vec_signed_fmla(vector<SignedFmla> signed_fmlas, SignedFmla sf) {
 
+
     for (SignedFmla vec_sf : signed_fmlas) {
         if (fmla_equality(vec_sf.fmla, sf.fmla) && vec_sf.sign == sf.sign) return true;
     }
     return false;
 }
+
 
 /**
  * @brief Checks if a signed formula is in a branch of a tableau
@@ -1261,6 +1421,7 @@ bool node_in_branch(SignedFmla sf, Tableau tbl, vector<int> branch) {
     return false;
 }
 
+
 /**
  * @brief Searches for proof-isomorphic sets of signed formulas
  * 
@@ -1272,11 +1433,15 @@ vector<vector<SignedFmla>> search_proof_isomorphic_sf_sets(Tableau tbl, vector<T
     vector<vector <SignedFmla>> resulting_sf_sets;
     vector<SignedFmla> initial_sf = get_initial_sf(tbl);
 
+
     map<pair<int,int>, set<string>> ps_candidate_symbols = get_ps_candidate_symbols(tbl, er);
+
 
     vector<vector<SignedFmla>> sf_candidates = get_sf_candidates(initial_sf, ps_candidate_symbols);
 
+
     for (vector<SignedFmla> sf_candidate : sf_candidates) {
+
 
         if (is_proof_isomorphic_sf_set(tbl, er, sf_candidate)) {
             if (!vec_sf_in_vec_vec_sf(resulting_sf_sets, sf_candidate)) {
@@ -1286,6 +1451,7 @@ vector<vector<SignedFmla>> search_proof_isomorphic_sf_sets(Tableau tbl, vector<T
     }
     return resulting_sf_sets;
 }
+
 
 /**
  * @brief Gets the proof-isomorphic candidate symbols of the nodes in the initial segment of a tableau
@@ -1297,12 +1463,14 @@ vector<vector<SignedFmla>> search_proof_isomorphic_sf_sets(Tableau tbl, vector<T
 map<pair<int,int>, set<string>> get_ps_candidate_symbols(Tableau tbl, vector<TblRule> er) {
     map<pair<int,int>, set<string>> candidate_symbs;
 
+
     queue<pair<int, vector<tuple<int, pair<int, int>>>>> q;
     // n := q.first
     // vec := q.second
     // p := vec[i].first
     // (x,y) := vec[i].second
     // the p-th symbol of the n-th node in tbl is a root of a subterm of the initial tableau of tbl. (x,y) is the reference for the symbol in the initial tableau
+
 
     for(int i = 0; i < tbl.size(); i++) {
         TblNode tbl_node = tbl[i];
@@ -1319,14 +1487,18 @@ map<pair<int,int>, set<string>> get_ps_candidate_symbols(Tableau tbl, vector<Tbl
         }
     }
 
+
     while(!q.empty()) {
         pair<int, vector<tuple<int, pair<int, int>>>> current = q.front();
         int node_idx = current.first;
         vector<tuple<int, pair<int, int>>> current_vec = current.second;
 
+
         q.pop();
 
+
         vector<int> expansion_nodes;
+
 
         for(int i = 0; i < tbl.size(); i++) {
             TblNode tbl_node = tbl[i];
@@ -1337,10 +1509,12 @@ map<pair<int,int>, set<string>> get_ps_candidate_symbols(Tableau tbl, vector<Tbl
                 }
             }
 
+
             if(expansion_node_found) {
                 expansion_nodes.push_back(i);
             }
         }
+
 
         for (int exp_idx : expansion_nodes) {
             // getting the premise idx of the expansion node in the rule
@@ -1352,6 +1526,7 @@ map<pair<int,int>, set<string>> get_ps_candidate_symbols(Tableau tbl, vector<Tbl
                 }
             }
             TblRule rule = er[tbl[exp_idx].expansion_rule_idx];
+
 
             // processing the expansion node
             int conc_idx = tbl[exp_idx].conclusion_idx;
@@ -1367,11 +1542,13 @@ map<pair<int,int>, set<string>> get_ps_candidate_symbols(Tableau tbl, vector<Tbl
                             int x = get<1>(current_vec[i]).first;
                             int y = get<1>(current_vec[i]).second;
 
+
                             candidate_symbs[{x,y}].insert(matching_symb);
                         }
                     }
                 }
             }
+
 
             // adding nodes in q
             Fmla prem_fmla = rule.premises[premise_idx].fmla;
@@ -1380,15 +1557,18 @@ map<pair<int,int>, set<string>> get_ps_candidate_symbols(Tableau tbl, vector<Tbl
             Fmla exp_fmla = tbl[exp_idx].signed_fmla.fmla;
             vector<tuple<int, pair<int, int>>> vec_symb_descendant_occurrences = get_vec_symb_descendant_occurrences(prem_fmla, conc_fmla, justf_fmla, exp_fmla, current_vec);
 
+
             if (vec_symb_descendant_occurrences.size() > 0) {
                 q.push({exp_idx, vec_symb_descendant_occurrences});
             }
         }
     }
 
+
     return candidate_symbs;
     
 }
+
 
 /**
  * @brief For every symbol occurrence `o`, gets the occurrence of the symbol in the initial tableau segment for which `o` is a descendant occurrence
@@ -1403,7 +1583,9 @@ map<pair<int,int>, set<string>> get_ps_candidate_symbols(Tableau tbl, vector<Tbl
 vector<tuple<int, pair<int, int>>> get_vec_symb_descendant_occurrences(Fmla prem_fmla, Fmla conc_fmla, Fmla justf_fmla, Fmla exp_fmla, vector<tuple<int, pair<int, int>>> ps_symbs) {
     vector<tuple<int, pair<int, int>>> result;
 
+
     set<int> prem_param_idxs = get_parameters_idxs(prem_fmla);
+
 
     for(int prem_param_idx : prem_param_idxs) {
         int term_justf_idx = get_term_idx_img_subst(prem_fmla, prem_param_idx, justf_fmla);
@@ -1421,12 +1603,15 @@ vector<tuple<int, pair<int, int>>> get_vec_symb_descendant_occurrences(Fmla prem
                 q_justf.push(term_justf_idx);
                 q_exp.push(term_conc_idx);
 
+
                 while(!q_justf.empty()) {
                     int curr_justf = q_justf.front();
                     int curr_exp = q_exp.front();
 
+
                     q_justf.pop();
                     q_exp.pop();
+
 
                     if (is_not_skolem_symb(justf_fmla[curr_justf].data)){
                         pair<int, int> p;
@@ -1446,8 +1631,10 @@ vector<tuple<int, pair<int, int>>> get_vec_symb_descendant_occurrences(Fmla prem
         }
     }
 
+
     return result;
 }
+
 
 /**
  * @brief Gets the proof-isomorphic candidates set of signed formulas
@@ -1458,7 +1645,9 @@ vector<tuple<int, pair<int, int>>> get_vec_symb_descendant_occurrences(Fmla prem
  */
 vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf, map<pair<int,int>, set<string>> ps_candidate_symbols) {
 
+
     vector<vector<SignedFmla>> sf_candidates;
+
 
     for(int i = 0; i < initial_sf.size(); i++) {
         SignedFmla signed_fmla = initial_sf[i];
@@ -1479,6 +1668,7 @@ vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf, map<
                         is_a_param = false;
                         map<string, int> no_skolem_symbs = pre_process_no_skolem_symbs();
 
+
                         for (const auto& [key, value] : no_skolem_symbs) {
                             if (is_function_symb(key)) {
                                 language_symbs[key] = value;
@@ -1498,10 +1688,13 @@ vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf, map<
         }
     }
 
+
     // count amount of combinations
     int signed_fmlas_amt = initial_sf.size();
 
+
     vector<int> signs_mask(signed_fmlas_amt, 1); // start with a vector of 1's so in 1st iteration, they are all set to 0
+
 
     // processing symbols combinations
     vector<pair<int, int>> map_no_skolem_symb;
@@ -1517,13 +1710,16 @@ vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf, map<
     }
     int no_skolem_symbs_amt = ps_candidate_symbols.size();
 
+
     vector<int> theory_symbs_mask;
     long int combinations_symbs = 1;
+
 
     for (int j = 0; j < base_no_skolem_symbs.size(); j++) {
         combinations_symbs *= base_no_skolem_symbs[j];
         theory_symbs_mask.push_back(base_no_skolem_symbs[j] - 1);
     }
+
 
     for (int j = 0; j < combinations_symbs; j++) {
         vector<SignedFmla> filled_cs = initial_sf;
@@ -1535,7 +1731,9 @@ vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf, map<
             SignedFmla sf = filled_cs[sf_node_idx];
             FmlaNode fmla_node = sf.fmla[fmla_node_idx];
 
+
             fmla_node.data = ps_candidate_symbols_vec[{sf_node_idx, fmla_node_idx}][theory_symbs_mask[k]];
+
 
             sf.fmla[fmla_node_idx] = fmla_node;
             filled_cs[sf_node_idx] = sf;
@@ -1544,6 +1742,7 @@ vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf, map<
     }
     return sf_candidates;
 }
+
 
 /**
  * @brief Checks if two vector of signed formulas are
@@ -1556,6 +1755,7 @@ vector<vector<SignedFmla>> get_sf_candidates(vector<SignedFmla> initial_sf, map<
 bool vec_sf_equality(vector<SignedFmla> vec_sf1, vector<SignedFmla> vec_sf2) {
     if (vec_sf1.size() != vec_sf2.size()) return false;
 
+
     for (int i = 0; i < vec_sf1.size(); i++) {
         SignedFmla sf1 = vec_sf1[i];
         SignedFmla sf2 = vec_sf2[i];
@@ -1563,6 +1763,7 @@ bool vec_sf_equality(vector<SignedFmla> vec_sf1, vector<SignedFmla> vec_sf2) {
     }
     return true;
 }
+
 
 /**
  * @brief Checks if a vector of signed formulas is in a vector of vector of signed formulas
@@ -1577,8 +1778,10 @@ bool vec_sf_in_vec_vec_sf(vector<vector<SignedFmla>> vec_vec_sf, vector<SignedFm
         if (vec_sf_equality(vec_sf, vec_sf2)) return true;
     }
 
+
     return false;
 }
+
 
 /**
  * @brief Gets the index of the sibling node of a cut node
@@ -1592,11 +1795,13 @@ int get_cut_sibling_node(Tableau tbl, int cut_node_idx) {
         return -1;
     }
 
+
     int tbl_parent_node_idx = tbl[cut_node_idx].tbl_parent;
     vector<int> tbl_children = tbl[tbl_parent_node_idx].tbl_children;
     if (tbl_children[0] == cut_node_idx) return tbl_children[1];
     else return tbl_children[0];
 }
+
 
 /**
  * @brief Check if there is a proof for a vector of signed formulas that is proof-isomorphic to a tableau given as input
@@ -1611,15 +1816,20 @@ bool is_proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFm
     Tableau proof_isomorphic_tbl = get_initial_tableau(sf);
     set<int> visited_cut_nodes;
 
+
     queue<Tableau> q;
 
+
     q.push(proof_isomorphic_tbl);
+
 
     while (!q.empty()) {
         Tableau current = q.front();
         int size = current.size();
 
+
         q.pop();
+
 
         if (current.size() == tbl.size()) {
             if (is_closure_isomorphic(tbl, current, er)) {
@@ -1628,6 +1838,7 @@ bool is_proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFm
         }
         else if (current.size() < tbl.size()) {
             TblNode tbl_node = tbl[size];
+
 
             if (visited_cut_nodes.find(size) == visited_cut_nodes.end()) {
                 if (tbl_node.justification_parents[0] == -2) { // is a cut
@@ -1640,9 +1851,11 @@ bool is_proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFm
                     proof_isomorphic_branch.push_back(0);
                     vector<SignedFmla> copremises = minor_copremises_branch(current, proof_isomorphic_branch, er);
 
+
                     int sibling_node_idx = get_cut_sibling_node(tbl, size);
                     visited_cut_nodes.insert(sibling_node_idx);
                     TblNode sibling_node = tbl[sibling_node_idx];
+
 
                     TblNode expansion_node1, expansion_node2;
                     for (SignedFmla copremise : copremises) {
@@ -1653,6 +1866,7 @@ bool is_proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFm
                             SignedFmla sf1(tbl_node.signed_fmla.sign, copremise.fmla);
                             expansion_node1.signed_fmla = sf1;
 
+
                             expansion_node2.justification_parents = sibling_node.justification_parents;
                             expansion_node2.tbl_parent = sibling_node.tbl_parent;
                             expansion_node2.tbl_children = sibling_node.tbl_children;
@@ -1660,11 +1874,13 @@ bool is_proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFm
                             SignedFmla sf2(sibling_node.signed_fmla.sign, copremise.fmla);
                             expansion_node2.signed_fmla = sf2;
 
+
                             current.push_back(expansion_node1);
                             current.push_back(expansion_node2);
                             q.push(current);
                         }
                     }
+
 
                 } else {
                     vector<SignedFmla> justifications;
@@ -1683,6 +1899,7 @@ bool is_proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFm
                                 expansion_node.tbl_children = tbl_node.tbl_children;
                                 expansion_node.signed_fmla = conclusion;
 
+
                                 conc.push_back(expansion_node);
                                 q.push(conc);
                             }
@@ -1692,10 +1909,13 @@ bool is_proof_isomorphic_sf_set(Tableau tbl, vector<TblRule> er, vector<SignedFm
             }
         }
 
+
     }
+
 
     return false;
 }
+
 
 /**
  * @brief Checks if two tableaux proofs are closure-isomorphic
@@ -1710,9 +1930,11 @@ bool is_closure_isomorphic(Tableau tbl, Tableau proof_isomorphic_tbl, vector<Tbl
     // tbl is the tableau that is closed
     vector< vector<int>> branches = get_tbl_branches(tbl);
 
+
     bool all_branches_closure_isomorphic = true;
     for (vector<int> branch : branches){
         vector<int> closure_nodes = branch_closure_nodes(branch, tbl, er);
+
 
         bool branch_closure_isomorphic = false; 
         if (closure_nodes.size() == 2) { // closure IS given by conjugate nodes
@@ -1733,6 +1955,7 @@ bool is_closure_isomorphic(Tableau tbl, Tableau proof_isomorphic_tbl, vector<Tbl
             }
         }
 
+
         if (closure_isomorphic_nodes.size() != closure_nodes.size()) {
             all_closure_nodes_isomorphic = false;
         }
@@ -1749,11 +1972,13 @@ bool is_closure_isomorphic(Tableau tbl, Tableau proof_isomorphic_tbl, vector<Tbl
             branch_closure_isomorphic = true;
         }
 
+
         all_branches_closure_isomorphic &= branch_closure_isomorphic;
         
     }
     return all_branches_closure_isomorphic; 
 }
+
 
 /**
  * @brief Gets the result of applying a rule having as justifications a vector of signed formula given as input
@@ -1773,10 +1998,12 @@ vector<SignedFmla> get_conclusions_from_justifications(vector<SignedFmla> justif
             for (int i = 0; i < arranges_amt; i++) {
                 vector<int> justifications_idx = all_arranges[i];
 
+
                 bool all_premises_match = true;
                 for (int j = 0; j < premises.size(); j++) {
                     if (!is_a_match(justifications[justifications_idx[j]], premises[j])) all_premises_match = false;
                 }
+
 
                 if (all_premises_match) {
                     // check if all matching of premises agree on substitution of parameters
@@ -1788,6 +2015,7 @@ vector<SignedFmla> get_conclusions_from_justifications(vector<SignedFmla> justif
                         premises_fmlas.push_back(premise.fmla);
                     }
                     set<string> premises_parameters = get_parameters(premises_fmlas);
+
 
                     for (int j = 0; j < premises.size(); j++) {
                         set<string> premise_parameter = get_parameters(premises[j].fmla);
@@ -1803,6 +2031,7 @@ vector<SignedFmla> get_conclusions_from_justifications(vector<SignedFmla> justif
                         }
                     }
 
+
                     // expand tableau
                     if (all_parameters_match) {
                         for (int j = 0; j < conclusions.size(); j++) {
@@ -1817,6 +2046,7 @@ vector<SignedFmla> get_conclusions_from_justifications(vector<SignedFmla> justif
     }
     return resulting_conclusions;
 }
+
 
 /**
  * @brief Checks if a vector of signed formulas can be the justification of a rule and if a signed formula can be the result of applying such rule
@@ -1837,10 +2067,12 @@ bool check_rule_application(vector<SignedFmla> justifications, SignedFmla expans
             for (int i = 0; i < arranges_amt; i++) {
                 vector<int> justifications_idx = all_arranges[i];
 
+
                 bool all_premises_match = true;
                 for (int j = 0; j < premises.size(); j++) {
                     if (!is_a_match(justifications[justifications_idx[j]], premises[j])) all_premises_match = false;
                 }
+
 
                 if (all_premises_match) {
                     // check if all matching of premises agree on substitution of parameters
@@ -1852,6 +2084,7 @@ bool check_rule_application(vector<SignedFmla> justifications, SignedFmla expans
                         premises_fmlas.push_back(premise.fmla);
                     }
                     set<string> premises_parameters = get_parameters(premises_fmlas);
+
 
                     for (int j = 0; j < premises.size(); j++) {
                         set<string> premise_parameter = get_parameters(premises[j].fmla);
@@ -1866,6 +2099,7 @@ bool check_rule_application(vector<SignedFmla> justifications, SignedFmla expans
                             }
                         }
                     }
+
 
                     // expand tableau
                     if (all_parameters_match) {
@@ -1882,6 +2116,7 @@ bool check_rule_application(vector<SignedFmla> justifications, SignedFmla expans
     return false;
 }
 
+
 /**
  * @brief Gets the signed formulas of the initial segment of a tableau
  * 
@@ -1891,14 +2126,17 @@ bool check_rule_application(vector<SignedFmla> justifications, SignedFmla expans
 vector<SignedFmla> get_initial_sf(Tableau tbl) {
     vector<SignedFmla> initial_sf;
 
+
     for (TblNode tbl_node : tbl) {
         if (tbl_node.justification_parents[0] == -1) {
             initial_sf.push_back(tbl_node.signed_fmla);
         }
     }
 
+
     return initial_sf;
 }
+
 
 /**
  * @brief Gets the premises of the rules that are syntatically isomorphic to the premises of a rule given as input
@@ -1912,11 +2150,14 @@ vector<SignedFmla> get_initial_sf(Tableau tbl) {
 vector<SignedFmla> pattern_matching_premises(vector<TblRule> er, TblRule rule, int prem_idx, int conc_idx) {
     vector<SignedFmla> result;
 
+
     vector<SignedFmla> rule_premises = rule.premises;
+
 
     if (prem_idx >= rule_premises.size()) { // avoiding index out of range
         return result;
     }
+
 
     for (TblRule exp_rule : er) {
         vector<SignedFmla> premises = exp_rule.premises;
@@ -1927,10 +2168,12 @@ vector<SignedFmla> pattern_matching_premises(vector<TblRule> er, TblRule rule, i
             for (int i = 0; i < arranges_amt; i++) {
                 vector<int> rule_premises_idx = all_arranges[i];
 
+
                 bool all_premises_match = true;
                 for (int j = 0; j < premises.size(); j++) {
                     if (!are_syntactically_isomorphic(rule_premises[rule_premises_idx[j]].fmla, premises[j].fmla)) all_premises_match = false;
                 }
+
 
                 if (all_premises_match) {
                     // check if all matching of premises agree on substitution of parameters
@@ -1942,6 +2185,7 @@ vector<SignedFmla> pattern_matching_premises(vector<TblRule> er, TblRule rule, i
                         premises_fmlas.push_back(premise.fmla);
                     }
                     set<string> premises_parameters = get_parameters(premises_fmlas);
+
 
                     for (int j = 0; j < premises.size(); j++) {
                         Subst matching_parameters_map = matching_parameters(rule_premises[rule_premises_idx[j]].fmla, premises[j].fmla);
@@ -1960,9 +2204,11 @@ vector<SignedFmla> pattern_matching_premises(vector<TblRule> er, TblRule rule, i
                         }
                     }
 
+
                     if (all_parameters_match) {
                         bool some_conclusion_matches = false;
                         SignedFmla rule_conclusion = rule.conclusions[conc_idx];
+
 
                         for (SignedFmla conclusion : conclusions) {
                             if (are_syntactically_isomorphic(conclusion.fmla, rule_conclusion.fmla)) some_conclusion_matches = true;
@@ -1980,6 +2226,7 @@ vector<SignedFmla> pattern_matching_premises(vector<TblRule> er, TblRule rule, i
     return result;
 }
 
+
 /**
  * @brief Gets the syntactic matching symbol of the occurrence of a symbol given as input
  * 
@@ -1990,14 +2237,17 @@ vector<SignedFmla> pattern_matching_premises(vector<TblRule> er, TblRule rule, i
  */
 string get_syntactic_matching_symb(Fmla fmla, int node_idx, Fmla matching_fmla) {
 
+
     queue<int> q1, q2;
     q1.push(0);
     q2.push(0);
+
 
     while (!q2.empty()) {
         int current1 = q1.front();
         int current2 = q2.front();
         q1.pop(); q2.pop();
+
 
         if (node_idx == current1) {
             if (!is_a_parameter(matching_fmla[current2])) {
@@ -2011,6 +2261,7 @@ string get_syntactic_matching_symb(Fmla fmla, int node_idx, Fmla matching_fmla) 
         }
         
     }
+
 
     return "";
 }

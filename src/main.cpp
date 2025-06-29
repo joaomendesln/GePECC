@@ -36,48 +36,50 @@ int main(int argc, char* argv[]) {
         er = pre_process_expansion_rules_input("");
     }
 
-    cout << "\n===== Searching for minimal proofs\n";
-    vector<Tableau> minimal_proofs = search_minimal_proofs(input_sf, er);
+    if (input_sf.size() > 0 && er.size() > 0) {
+        cout << "\n===== Searching for minimal proofs\n";
 
-    if (minimal_proofs.size() > 0) {
-        cout << "Amount of proofs: " << minimal_proofs.size() << "\n";
-        cout << "Size of proofs: " << get_size(minimal_proofs[0], er) << "\n";
-        int i = 1;
-        vector<vector<SignedFmla> > isomorphic_sets;
-        for (Tableau m : minimal_proofs) {
-            cout << "\n>> Proof " << i << "\n";
-            print_proof(m, er);
+        vector<Tableau> minimal_proofs = search_minimal_proofs(input_sf, er);
 
-            i += 1;
-        }
-    }
-    else {
-        cout << "No proof has been found\n";
-    }
-    
-    int i = 1;
+        if (minimal_proofs.size() > 0) {
+            cout << "Amount of proofs: " << minimal_proofs.size() << "\n";
+            cout << "Size of proofs: " << get_size(minimal_proofs[0], er) << "\n";
+            int i = 1;
+            vector<vector<SignedFmla> > isomorphic_sets;
+            for (Tableau m : minimal_proofs) {
+                cout << "\n>> Proof " << i << "\n";
+                print_proof(m, er);
 
-    cout << "\n===== Searching for proof-isomorphic sets of signed formulas\n";
-    vector<vector<SignedFmla> > resulting_isomorphic_sets;
-    for (Tableau m : minimal_proofs) {
-        vector<vector<SignedFmla> > isomorphic_sets = search_proof_isomorphic_sf_sets(m, er);
-        for (vector<SignedFmla> set_sf : isomorphic_sets) {
-            if (!vec_sf_in_vec_vec_sf(resulting_isomorphic_sets, set_sf)) {
-                resulting_isomorphic_sets.push_back(set_sf);
+                i += 1;
             }
         }
-    }
+        else {
+            cout << "No proof has been found\n";
+        }
+        
+        int i = 1;
 
-    for (vector<SignedFmla> set_sf : resulting_isomorphic_sets) {
-        cout << ">> Set " << i << "\n";
-        i += 1;
-        for (SignedFmla sf : set_sf) {
-            if (sf.sign == polarity::plus) cout << "+ ";
-            if (sf.sign == polarity::minus) cout << "- ";
-            pretty_printing_fmla(sf.fmla);
+        cout << "\n===== Searching for proof-isomorphic sets of signed formulas\n";
+        vector<vector<SignedFmla> > resulting_isomorphic_sets;
+        for (Tableau m : minimal_proofs) {
+            vector<vector<SignedFmla> > isomorphic_sets = search_proof_isomorphic_sf_sets(m, er);
+            for (vector<SignedFmla> set_sf : isomorphic_sets) {
+                if (!vec_sf_in_vec_vec_sf(resulting_isomorphic_sets, set_sf)) {
+                    resulting_isomorphic_sets.push_back(set_sf);
+                }
+            }
+        }
+
+        for (vector<SignedFmla> set_sf : resulting_isomorphic_sets) {
+            cout << ">> Set " << i << "\n";
+            i += 1;
+            for (SignedFmla sf : set_sf) {
+                if (sf.sign == polarity::plus) cout << "+ ";
+                if (sf.sign == polarity::minus) cout << "- ";
+                pretty_printing_fmla(sf.fmla);
+                cout << "\n";
+            }
             cout << "\n";
         }
-        cout << "\n";
     }
-    return 0;
 }
