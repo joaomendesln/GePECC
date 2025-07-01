@@ -2,7 +2,7 @@
 CXX = g++
 
 # Compiler flags
-CXXFLAGS = -std=c++17 -Wall -g
+CXXFLAGS = -std=c++17 -w -g
 
 # Source files
 SRCS = main.cpp auxiliary/print.cpp auxiliary/syntax.cpp auxiliary/deduction.cpp auxiliary/parser.cpp auxiliary/pre_process.cpp auxiliary/combinatorics.cpp
