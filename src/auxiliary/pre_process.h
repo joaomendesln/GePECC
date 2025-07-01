@@ -36,9 +36,9 @@ vector<SignedFmla> converts_str_to_signed_fmla_list(string list, int line_idx);
 
 TblRule converts_str_to_single_expansion_rule(string line, int line_idx);
 
-vector<TblRule> pre_process_expansion_rules_input(string file_name);
+vector<TblRule> pre_process_expansion_rules_input(string file_path);
 
-vector<SignedFmla> converts_str_to_signed_fmla_input(string file_name);
+vector<SignedFmla> converts_str_to_signed_fmla_input(string file_path);
 
 set<string> pre_process_skolem_symbs();
 

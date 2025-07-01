@@ -403,18 +403,18 @@ SignedFmla converts_str_to_signed_fmla(string signed_fmla_str, int line_idx) {
 /**
  * @brief Pre-processes the file describing the expansion rules provided as the input of the genereation of exercises procedure
  * 
- * @param file_name Name of the file to be pre-processed
+ * @param file_path Path of the file to be pre-processed
  * @return Vector of expansion rules 
  */
-vector<TblRule> pre_process_expansion_rules_input(string file_name) {
+vector<TblRule> pre_process_expansion_rules_input(string file_path) {
 
     vector<TblRule> resulting_expansion_rules;
 
     vector<string> lines;
 
     if (lines.size() == 0){
-        string file_path = "../src/inputs/" + file_name;
-        lines = open_file(file_path);
+        string complete_path = "../src/" + file_path;
+        lines = open_file(complete_path);
     }
 
     for (int i = 0; i < lines.size(); i++) {
@@ -432,17 +432,17 @@ vector<TblRule> pre_process_expansion_rules_input(string file_name) {
 /**
  * @brief Pre-processes the file describing the signed formulas provided as the input of the genereation of exercises procedure
  * 
- * @param file_name Name of the file to be pre-processed
+ * @param file_path Path of the file to be pre-processed
  * @return Vector of signed formulas 
  */
-vector<SignedFmla> converts_str_to_signed_fmla_input(string file_name) {
+vector<SignedFmla> converts_str_to_signed_fmla_input(string file_path) {
     vector<SignedFmla> resulting_signed_fmlas;
 
     vector<string> lines = {};
 
     if (lines.size() == 0){
-        string file_path = "../src/inputs/" + file_name;
-        lines = open_file(file_path);
+        string complete_path = "../src/" + file_path;
+        lines = open_file(complete_path);
     }
 
     for (int i = 0; i < lines.size(); i++) {
