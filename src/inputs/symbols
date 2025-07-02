@@ -1,6 +1,0 @@
-function
-2: f, g, +, x
-predicate
-2: =, |, <=
-skolem
-f, g
