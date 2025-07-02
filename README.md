@@ -70,17 +70,17 @@ The program outputs the signed formulas representing the exercises with comparab
 
 In the `src` folder, run `make`. Then, run:
 
-- `cp <path_to_symbols_file> inputs/symbols`.
+- `cp <path_to_symbols_file> inputs/symbols`
 
-- `./main <path_to_expansion_rules> <path_to_signed_fmlas>`.
+- `./main <path_to_expansion_rules> <path_to_signed_fmlas>`
 
 ### Example
 
 Inside the `src/input` folder, there may be found two folders, `numbers` and `sets`, with examples of input files. The image below illustrates the output after the execution of the program by running the following commands in the `src` folder: 
 
-- `cp inputs/sets/symbols inputs/symbols`.
+- `cp inputs/sets/symbols inputs/symbols`
 
-- `./main inputs/sets/expansion_rules inputs/sets/signed_fmlas/example1`.
+- `./main inputs/sets/expansion_rules inputs/sets/signed_fmlas/example1`
 
 In the following image, there is the result displayed in the terminal after the execution of an example in `sets` folder:
 ![Alt text](src/inputs/sets/signed_fmlas/example1_execution.png?raw=true)
