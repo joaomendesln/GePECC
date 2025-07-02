@@ -20,7 +20,7 @@ Besides the exercises, two other inputs are required. A description of the three
 | Expansion rules | `expansion_rules` | Set of theory-specific rules |
 | Signed formulas | `signed_fmlas` | Set of signed formulas describing the input exercise |
 
-All the input files should be inside the `src/inputs` folder. You can find examples at `sets` and `numbers` folders.
+The `symbols` file is placed inside the `src/inputs` folder and its content needs to be set manually or via `cp` command, as we exemplify in what follows. The other two inputs are passed as argument of the command that run the program. You can find examples at `sets` and `numbers` folders.
 
 The format the input files are described below.
 
@@ -68,11 +68,19 @@ The program outputs the signed formulas representing the exercises with comparab
 
 ## Running the program
 
-In the `src` folder, run `make`. Then, run `./main <expansion_rules> <signed_fmlas>`.
+In the `src` folder, run `make`. Then, run:
+
+- `cp <path_to_symbols_file> inputs/symbols`.
+
+- `./main <path_to_expansion_rules> <path_to_signed_fmlas>`.
 
 ### Example
 
-Inside the `src/input` folder, there may be found two folders, `numbers` and `sets`, with examples of input files. The image below illustrates the output after the execution of the program when `src/input/sets/symbols`, `src/input/sets/expansions_rules` and `src/input/sets/signed_fmlas/example1` are provided, respectively, as `symbols`, `expansion_rules` and `signed_fmlas` files.
+Inside the `src/input` folder, there may be found two folders, `numbers` and `sets`, with examples of input files. The image below illustrates the output after the execution of the program by running the following commands in the `src` folder: 
+
+- `cp inputs/sets/symbols inputs/symbols`.
+
+- `./main inputs/sets/expansion_rules inputs/sets/signed_fmlas/example1`.
 
 In the following image, there is the result displayed in the terminal after the execution of an example in `sets` folder:
 ![Alt text](src/inputs/sets/signed_fmlas/example1_execution.png?raw=true)
