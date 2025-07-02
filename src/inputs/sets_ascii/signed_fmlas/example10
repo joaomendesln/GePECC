@@ -1,0 +1,2 @@
+(+, in(p1, cap(p2, p3)))
+(-, in(p1, cap(cup(p2, p4), cup(p3, p5))))

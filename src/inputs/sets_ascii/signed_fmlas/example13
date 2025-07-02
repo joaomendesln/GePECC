@@ -1,0 +1,2 @@
+(+, in(p5,cap(times(p1,p2),times(p3,p4))))
+(-, in(p5,times(cap(p1,p3),cap(p2,p4))))

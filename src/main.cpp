@@ -20,26 +20,32 @@ int main(int argc, char* argv[]) {
         }
 
         cout << ">> Function symbols\n";
-        for (const auto& [arity, symbols] : function_by_arity) {
-            if (arity == 0) cout << "Constants: ";
-            if (arity > 0) cout << "Arity " << arity << ": ";
-            for (int j = 0; j < symbols.size(); j++){
-                if (j < symbols.size() - 1) {
-                    cout << symbols[j] << ", ";
-                }
-                else {
-                    cout << symbols[j] << "";
-                }
+            if (function_by_arity.size() == 0) {
+                cout << "No functions symbol has been provided\n";
             }
-            cout << "\n";
-        }
-        set<string> skolem_set = pre_process_skolem_symbs();
-        vector<string> skolem_vec(skolem_set.begin(), skolem_set.end());
+            else {
 
-        cout << "Skolemization: ";
-        for (int i = 0; i < skolem_vec.size(); i++) {
-            if (i < skolem_vec.size() - 1) cout << skolem_vec[i] << ", ";
-            else  cout << skolem_vec[i] << "\n\n";
+            for (const auto& [arity, symbols] : function_by_arity) {
+                if (arity == 0) cout << "Constants: ";
+                if (arity > 0) cout << "Arity " << arity << ": ";
+                for (int j = 0; j < symbols.size(); j++){
+                    if (j < symbols.size() - 1) {
+                        cout << symbols[j] << ", ";
+                    }
+                    else {
+                        cout << symbols[j] << "";
+                    }
+                }
+                cout << "\n";
+            }
+            set<string> skolem_set = pre_process_skolem_symbs();
+            vector<string> skolem_vec(skolem_set.begin(), skolem_set.end());
+
+            cout << "Skolemization: ";
+            for (int i = 0; i < skolem_vec.size(); i++) {
+                if (i < skolem_vec.size() - 1) cout << skolem_vec[i] << ", ";
+                else  cout << skolem_vec[i] << "\n\n";
+        }
         }
 
         map<string, int> predicate_symbols = pre_process_predicate_symbs();
@@ -50,19 +56,23 @@ int main(int argc, char* argv[]) {
         }
 
         cout << ">> Predicate symbols\n";
-        for (const auto& [arity, symbols] : predicate_by_arity) {
-            cout << "Arity " << arity << ": ";
-            for (int j = 0; j < symbols.size(); j++){
-                if (j < symbols.size() - 1) {
-                    cout << symbols[j] << ", ";
-                }
-                else {
-                    cout << symbols[j] << "";
-                }
-            }
-            cout << "\n";
+        if (predicate_by_arity.size() == 0) {
+            cout << "No function symbol has been provided\n";
         }
-
+        else {    
+            for (const auto& [arity, symbols] : predicate_by_arity) {
+                cout << "Arity " << arity << ": ";
+                for (int j = 0; j < symbols.size(); j++){
+                    if (j < symbols.size() - 1) {
+                        cout << symbols[j] << ", ";
+                    }
+                    else {
+                        cout << symbols[j] << "";
+                    }
+                }
+                cout << "\n";
+            }
+        }
         cout << "\n===== Pre-processing expansion rules file\n";
         er = pre_process_expansion_rules_input(argv[1]);
 

@@ -1,0 +1,1 @@
+(-, exclusion(cap(p2, cup(p3, p4)), minus(symm(p2, p3), p4)))

@@ -1,0 +1,35 @@
+[ax cap]
+(+, in(p1, cap(p2, p3))); (+, in(p1, p2)), (+, in(p1, p3))
+(-, in(p1, cap(p2, p3))), (+, in(p1, p2)); (-, in(p1, p3))
+(-, in(p1, cap(p2, p3))), (+, in(p1, p3)); (-, in(p1, p2))
+[ax cup]
+(-, in(p1, cup(p2, p3))); (-, in(p1, p2)), (-, in(p1, p3))
+(+, in(p1, cup(p2, p3))), (-, in(p1, p2)); (+, in(p1, p3))
+(+, in(p1, cup(p2, p3))), (-, in(p1, p3)); (+, in(p1, p2))
+[ax minus]
+(+, in(p1, minus(p2, p3))); (+, in(p1, p2)), (-, in(p1, p3))
+(-, in(p1, minus(p2, p3))), (+, in(p1, p2)); (+, in(p1, p3))
+(-, in(p1, minus(p2, p3))), (-, in(p1, p3)); (-, in(p1, p2))
+[ax symm]
+(+, in(p1, symm(p2, p3))), (-, in(p1, p2)); (+, in(p1, p3))
+(+, in(p1, symm(p2, p3))), (-, in(p1, p3)); (+, in(p1, p2))
+(+, in(p1, symm(p2, p3))), (+, in(p1, p2)); (-, in(p1, p3))
+(+, in(p1, symm(p2, p3))), (+, in(p1, p3)); (-, in(p1, p2))
+(-, in(p1, symm(p2, p3))), (-, in(p1, p2)); (-, in(p1, p3))
+(-, in(p1, symm(p2, p3))), (-, in(p1, p3)); (-, in(p1, p2))
+(-, in(p1, symm(p2, p3))), (+, in(p1, p2)); (+, in(p1, p3))
+(-, in(p1, symm(p2, p3))), (+, in(p1, p3)); (+, in(p1, p2))
+[ax emptyset]
+(+, in(p1,emptyset));
+[ax times]
+(+, in(p1, times(p2,p3))); (+, in(fst(p1), p2)), (+, in(snd(p1), p3))
+(+, in(fst(p1), p2)), (-, in(p1, times(p2,p3))); (-, in(snd(p1), p3))
+(+, in(snd(p1), p3)), (-, in(p1, times(p2,p3))); (-, in(fst(p1), p2))
+[ax subseteq]
+(+, in(p3,p1)), (+, subseteq(p1,p2)); (+, in(p3,p2))
+(-, in(p3,p2)), (+, subseteq(p1,p2)); (-, in(p3,p1))
+(-, subseteq(p1, p2)); (+, in(f(p1,p2), p1)), (-, in(f(p1,p2), p2))
+[ax exclusion]
+(+, in(p3,p1)), (+, exclusion(p1,p2)); (-, in(p3,p2))
+(+, in(p3,p2)), (+, exclusion(p1,p2)); (-, in(p3,p1))
+(-, exclusion(p1, p2)); (+, in(g(p1,p2), p1)), (+, in(g(p1,p2), p2))

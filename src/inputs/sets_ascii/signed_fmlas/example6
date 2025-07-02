@@ -1,0 +1,1 @@
+(-, subseteq(cap(p1, cup(p2, p3)), cup(cap(p1, p2), p3)))

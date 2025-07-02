@@ -1,0 +1,2 @@
+(+, exclusion(p1, p2))
+(-, exclusion(p2, p1))

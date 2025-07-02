@@ -1,0 +1,8 @@
+function
+0: emptyset
+1: fst, snd
+2: f, g, cap, cup, times, symm, minus
+predicate
+2: in, subseteq, exclusion
+skolem
+f, g
