@@ -90,6 +90,14 @@ In the following image, there is the result displayed in the terminal after the 
 - g++ with support to C++17
 - make
 
+## Constraints and limitations
+
+We have adopted some constraints to improve the performance of the prototype:
+* Cut applications: The only restriction to apply a cut to a tableau T is the existence of a main premise in T. Not restricting the amount of cuts can make the procedure explodes easily. So we postpone the application of the cut to a tableau rule until there is no other linear can be applied and a tableau can only have one cut application in our implementation.
+* Tableaux size: The bigger the tableau, the more verifications must be done to apply a rule on it. Because of this, the tableaux in the tree of successor tableaux can have at most 120 nodes.
+
+In this prototype version, there is no mechanism to verify if the input files are written according to the desired format and if the rules provided as input are theory-specific.
+
 ## References
 
 [1] M. D’Agostino and M. Mondadori. The taming of the cut. Classical refutations with analytic cut. Journal of Logic and Computation, 4:285–319, 1994.
