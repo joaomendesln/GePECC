@@ -93,7 +93,7 @@ In the following image, there is the result displayed in the terminal after the 
 ## Constraints and limitations
 
 We have adopted some constraints to improve the performance of the prototype:
-* Cut applications: The only restriction to apply a cut to a tableau T is the existence of a main premise in T. Not restricting the amount of cuts can make the procedure explodes easily. So we postpone the application of the cut to a tableau rule until no other linear can be applied. Moreover, a tableau can only have one cut application in our implementation.
+* Cut applications: The only restriction to apply a cut to a tableau T is the existence of a main premise in T. Not restricting the amount of cuts can make the procedure explodes easily. So we postpone the application of the cut to a tableau until no other linear can be applied. Moreover, a tableau can only have one cut application in our implementation.
 * Tableaux size: The bigger the tableau, the more verifications must be done to apply a rule on it. Because of this, the tableaux in the tree of successor tableaux can have at most 120 nodes.
 
 In this prototype version, there is no mechanism to verify if the input files are written according to the desired format and if the rules provided as input are theory-specific.
